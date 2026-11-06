@@ -3,10 +3,8 @@ import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 // @ts-expect-error Pure JavaScript release predicates are exercised directly.
-import {
-  artifactMatchesRelease,
-  validateRelease,
-} from "../../scripts/audit-core.mjs";
+import * as core from "../../scripts/audit-core.mjs";
+const { artifactMatchesRelease, validateRelease } = core;
 // @ts-expect-error Artifact inspection is a JavaScript CLI and module.
 import { auditArtifact } from "../../scripts/audit-artifact.mjs";
 const sha = "a".repeat(40);

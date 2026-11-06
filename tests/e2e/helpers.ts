@@ -136,7 +136,12 @@ export async function screenshotEvidence(
       requestAnimationFrame(() => resolve()),
     );
   });
-  await page.screenshot({ path: file, fullPage: true, animations: "disabled" });
+  await page.screenshot({
+    path: file,
+    fullPage: true,
+    animations: "disabled",
+    scale: "css",
+  });
   await info.attach(name, { path: file, contentType: "image/png" });
 }
 

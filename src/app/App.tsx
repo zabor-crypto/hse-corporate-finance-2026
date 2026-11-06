@@ -171,7 +171,7 @@ export default function App() {
             <strong>Тема 3</strong>
           </div>
           <span className="local-badge">
-            <span /> Учебная версия · 0.3
+            <span /> Учебная версия · 0.3 Beta
           </span>
         </header>
         <main id="main" tabIndex={-1}>
@@ -239,7 +239,7 @@ export default function App() {
           )}
           <footer>
             <span data-testid="build-version" title={buildInfo.commit}>
-              v{buildInfo.version} · {buildInfo.commit.slice(0, 8)}
+              v{buildInfo.version} Beta · {buildInfo.commit.slice(0, 8)}
               {buildInfo.sourceKind === "review-handoff"
                 ? " · review-комплект"
                 : buildInfo.dirty
@@ -247,6 +247,22 @@ export default function App() {
                   : ""}
             </span>
             Corporate Finance Learning OS{" "}
+            <a
+              className="text-link"
+              href="https://github.com/zabor-crypto/hse-corporate-finance-2026/blob/main/LICENSE-CODE"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Код · MIT
+            </a>
+            <a
+              className="text-link"
+              href="https://github.com/zabor-crypto/hse-corporate-finance-2026/blob/main/LICENSE-CONTENT"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Текст · CC BY 4.0
+            </a>
             <span>
               Независимый учебный проект · не официальный продукт НИУ ВШЭ
             </span>

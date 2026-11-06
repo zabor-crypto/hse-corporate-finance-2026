@@ -1,10 +1,23 @@
 {
   "schemaVersion": 1,
-  "originalCodeLicense": "UNDECIDED",
-  "originalContentLicense": "UNDECIDED",
-  "redistributionApproved": false,
+  "originalCodeLicense": "MIT",
+  "originalContentLicense": "CC-BY-4.0",
+  "redistributionApproved": true,
   "universityEndorsement": false,
   "teacherSourceFilesRedistributable": false,
-  "note": "Owner must select code and educational-content licenses and approve a specific release candidate before public deployment. This file grants no rights.",
-  "reviewedImageHashes": []
+  "note": "Owner authorization for v0.3.0 Beta permits publication only after successful release gates. MIT covers original software; CC BY 4.0 covers original authored educational expression. No rights are granted to excluded teacher PDFs, control-work photos, personal data or third-party materials.",
+  "reviewedImageHashes": [],
+  "ownerAuthorization": {
+    "version": "0.3.0",
+    "channel": "Beta",
+    "repository": "zabor-crypto/hse-corporate-finance-2026",
+    "authorizationSha256": "5b1a5032bc67c205ccc4da650d14bcf4766539439c8912b411fd36e494ba997b",
+    "conditions": "Independent scope review, current release gates and exact candidate SHA; no bypass."
+  },
+  "publicationScope": {
+    "software": "Original executable program code, build/test tooling and interfaces: MIT. Text embedded in mixed source files is covered separately below.",
+    "educationalContent": "Original lesson explanations, authored prompts, feedback, hints and rubrics, and original documentation prose: CC BY 4.0.",
+    "excluded": "Teacher PDF files, photographs, private evidence/history, personal data and third-party material without redistribution rights. Mathematical facts and bibliographic references do not acquire exclusive rights through this notice.",
+    "thirdParty": "Dependencies and their font/assets remain under their own licenses; see bundled THIRD_PARTY_NOTICES."
+  }
 }

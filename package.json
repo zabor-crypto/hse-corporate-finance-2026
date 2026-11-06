@@ -1,0 +1,40 @@
+{
+  "name": "hse-corporate-finance-2026",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "review:storage": "node tests/review/storage-review.mjs",
+    "test:e2e": "playwright test",
+    "test:financial": "vitest run tests/unit/finance.test.ts tests/unit/ratios.test.ts tests/unit/financial-fixtures.test.ts tests/unit/tranche03-oracles.test.ts",
+    "audit:artifact": "node scripts/audit-artifact.mjs",
+    "audit:public": "node scripts/audit-public.mjs",
+    "check:release": "node scripts/check-release.mjs",
+    "handoff": "node scripts/create-handoff.mjs",
+    "prepare:public": "node scripts/prepare-public-source.mjs"
+  },
+  "dependencies": {
+    "katex": "^0.16.25",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.0",
+    "@types/katex": "^0.16.7",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.0",
+    "vitest": "^4.0.0",
+    "yaml": "^2.9.1"
+  }
+}

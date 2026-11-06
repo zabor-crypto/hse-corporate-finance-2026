@@ -1,0 +1,66 @@
+{
+  "source": "Independent finance-review keys preserved in baseline docs/CONTENT_REVIEW.md; UI regression only, not a new financial approval.",
+  "answers": {
+    "T3-Q01": {
+      "selected": [
+        "b"
+      ]
+    },
+    "T3-Q02": {
+      "selected": [
+        "c"
+      ]
+    },
+    "T3-Q03": {
+      "selected": [
+        "a",
+        "b",
+        "e"
+      ]
+    },
+    "T3-Q04": {
+      "selected": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "T3-Q05": {
+      "values": {
+        "ebitda": "70"
+      }
+    },
+    "T3-Q06": {
+      "values": {
+        "delta-fcff": "-3"
+      }
+    },
+    "T3-Q07": {
+      "values": {
+        "nopat": "104",
+        "delta-nwc": "20",
+        "fcff": "34"
+      }
+    },
+    "T3-Q08": {
+      "values": {
+        "ebit": "75",
+        "ni": "48",
+        "nopat": "60"
+      }
+    },
+    "T3-Q09": {
+      "values": {
+        "operating-nwc": "35"
+      }
+    },
+    "T3-Q10": {
+      "values": {
+        "financing": "12",
+        "delta-nwc": "15",
+        "cfo": "75",
+        "fcff": "53"
+      }
+    }
+  }
+}

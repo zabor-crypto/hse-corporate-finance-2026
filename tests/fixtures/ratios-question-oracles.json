@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "origin": "Independent Finance Reviewer; all values computed directly from exact conditions without author engine or author keys as sole oracle",
+  "sourceReceiptSha256": "cc50797cb8009a55dc701c38d0401897fb046cad57124a1d73ce0b30010f2f22",
+  "problems": [
+    {
+      "id": "T3-Q11",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "roa-ebit",
+          "expected": 20,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roa-nopat",
+          "expected": 16,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roa-ni",
+          "expected": 12,
+          "unit": "%",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q12",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 100,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roa-ni",
+          "expected": 20,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "turnover",
+          "expected": 2.4,
+          "unit": "раз",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q13",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "sales",
+          "expected": 150,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 12,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 11.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 38.666666666666664,
+          "unit": "%",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q14",
+      "version": "1.0.0",
+      "correctOptionIds": [
+        "a",
+        "c",
+        "e"
+      ],
+      "derivation": "100/50=2;20/20=1. NI margins10%/20% known;NOPATtaxbridgeunknownwithoutt;postmergerinternal/externalSalesandconsolidationadjustmentsunknown."
+    },
+    {
+      "id": "T3-Q15",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "roc",
+          "expected": 18.441176470588236,
+          "unit": "%",
+          "tolerance": 0.001
+        }
+      ]
+    },
+    {
+      "id": "T3-Q16",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 36,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "icr",
+          "expected": 2.5,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dfl",
+          "expected": 1.6666666666666667,
+          "unit": "раз",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q17",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "icr",
+          "expected": 3,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dfl",
+          "expected": 1.5,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni-new",
+          "expected": 18.400000000000002,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q18",
+      "version": "1.0.0",
+      "correctOptionIds": [
+        "b"
+      ],
+      "derivation": "12/0 ICRundefined;12/(12−0)=1 DFLunderfixed0≤t<1;both0undefined."
+    },
+    {
+      "id": "T3-Q19",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "ep",
+          "expected": -2,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q20",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "sales",
+          "expected": 240,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 12,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 16,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roa-nopat",
+          "expected": 13.333333333333334,
+          "unit": "%",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q21",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "roe-1",
+          "expected": 24,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-2",
+          "expected": 40,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roa-ni-2",
+          "expected": 10,
+          "unit": "%",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q22",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "roc-net",
+          "expected": 20,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roc-gross",
+          "expected": 16,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 21.333333333333336,
+          "unit": "%",
+          "tolerance": 0.01
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Original-code and financial-content author role separate from reviewer",
+    "Tolerances implement reviewed exercise rounding policy",
+    "No teacher approval or public release authority"
+  ]
+}

@@ -1,0 +1,101 @@
+name: Verify and release GitHub Pages
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      release_candidate_sha:
+        description: Exact 40-character main commit explicitly approved for public release
+        required: true
+        type: string
+      owner_approved:
+        description: I approve public redistribution and deployment of this exact candidate
+        required: true
+        default: false
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '26.6.0'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npm test
+      - run: npm run test:financial
+      - run: npm run review:storage
+      - run: npm run build
+      - run: npm run test:e2e
+      - run: npm run audit:artifact
+      - run: npm run audit:public
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        if: ${{ !cancelled() }}
+        with:
+          name: verification-${{ github.sha }}
+          path: |
+            evidence/tranche02
+            evidence/tranche03
+            playwright-report
+            test-results
+          retention-days: 14
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: static-manifest-${{ github.sha }}
+          path: evidence/tranche03/artifact-audit.json
+          retention-days: 14
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: dist
+  deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && github.actor == github.repository_owner && inputs.owner_approved && inputs.release_candidate_sha == github.sha && vars.PUBLIC_RELEASE_ENABLED == 'true' }}
+    needs: verify
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '26.6.0'
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          name: github-pages
+          path: pages-artifact
+      - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          name: static-manifest-${{ github.sha }}
+          path: verified-manifest
+      - name: Unpack only the verified static artifact
+        run: mkdir dist && tar -xf pages-artifact/artifact.tar -C dist
+      - name: Check exact candidate, owner approval, history and licenses
+        run: npm run check:release
+        env:
+          RELEASE_CANDIDATE_SHA: ${{ inputs.release_candidate_sha }}
+          OWNER_APPROVED: ${{ inputs.owner_approved }}
+          PUBLIC_RELEASE_ENABLED: ${{ vars.PUBLIC_RELEASE_ENABLED }}
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: Deploy verified artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

@@ -1,0 +1,778 @@
+@media (min-width: 1600px) {
+  main {
+    padding-top: 55px;
+  }
+  .hero-card {
+    min-height: 360px;
+  }
+  .hero-content {
+    padding: 38px 40px;
+  }
+  .hero-card h2 {
+    font-size: 35px;
+  }
+  .finance-art {
+    transform: scale(1.1);
+    transform-origin: 55% 40%;
+  }
+  .page-heading h1 {
+    font-size: 53px;
+  }
+  .lesson-card {
+    padding: 30px;
+  }
+  .lesson-card h3 {
+    font-size: 21px;
+  }
+  .lesson-card > p {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1150px) {
+  .sidebar {
+    width: 220px;
+    padding: 30px 15px;
+  }
+  .brand {
+    font-size: 12px;
+  }
+  .workspace {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+  }
+  main {
+    padding: 35px 30px 0;
+  }
+  .topbar {
+    padding: 0 30px;
+  }
+  .hero-card {
+    grid-template-columns: 1.2fr 0.9fr;
+  }
+  .hero-content {
+    padding: 28px;
+  }
+  .hero-card h2 {
+    font-size: 25px;
+  }
+  .finance-art {
+    transform: scale(0.85);
+    transform-origin: 40% 45%;
+    width: 320px;
+    margin-left: -30px;
+  }
+  .hero-content p {
+    font-size: 10px;
+  }
+  .stats-grid > div {
+    padding: 0 17px;
+    gap: 12px;
+  }
+  .stat-icon {
+    display: none;
+  }
+  .practice-banner {
+    gap: 13px;
+    padding: 20px;
+  }
+  .practice-banner .button {
+    font-size: 8px;
+    padding: 10px;
+  }
+  .reading-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .toc {
+    display: none;
+  }
+  .practice-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .support-card {
+    position: static;
+  }
+  .support-card button {
+    max-width: 400px;
+  }
+}
+@media (max-width: 820px) {
+  .sidebar {
+    width: 200px;
+    padding: 25px 12px;
+  }
+  .brand {
+    gap: 8px;
+    margin-bottom: 35px;
+    font-size: 11px;
+  }
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    font-size: 25px;
+  }
+  .brand small {
+    font-size: 7px;
+  }
+  .course-label {
+    font-size: 6px;
+    padding: 0 7px;
+  }
+  .nav-item {
+    font-size: 10px;
+    gap: 9px;
+    padding: 12px 10px;
+  }
+  .sidebar-course {
+    padding: 18px 8px;
+  }
+  .workspace {
+    width: calc(100% - 200px);
+    margin-left: 200px;
+  }
+  main {
+    padding: 28px 22px 0;
+  }
+  .topbar {
+    padding: 0 22px;
+    height: 64px;
+  }
+  .local-badge {
+    font-size: 8px;
+  }
+  .page-heading h1 {
+    font-size: 37px;
+  }
+  .semester {
+    display: none;
+  }
+  .hero-card {
+    grid-template-columns: 1fr;
+  }
+  .hero-content {
+    padding: 28px;
+  }
+  .finance-art {
+    display: none;
+  }
+  .hero-card h2 {
+    font-size: 29px;
+  }
+  .hero-card p {
+    font-size: 12px;
+  }
+  .stats-grid {
+    padding: 19px 0;
+  }
+  .stats-grid > div {
+    padding: 0 13px;
+  }
+  .stats-grid p {
+    font-size: 8px;
+  }
+  .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+  .practice-banner {
+    flex-wrap: wrap;
+  }
+  .practice-banner .button {
+    margin-left: 64px;
+    font-size: 10px;
+  }
+  .scope-note {
+    display: block;
+  }
+  .scope-note p {
+    margin-top: 10px;
+  }
+  footer {
+    display: block;
+    line-height: 1.8;
+  }
+  footer span {
+    display: block;
+  }
+  .section-heading h2 {
+    font-size: 16px;
+  }
+  .compact h1 {
+    font-size: 32px;
+  }
+  .panel {
+    padding: 22px;
+  }
+  .inputs-grid {
+    gap: 14px;
+    padding: 15px;
+  }
+  .inputs-grid dd {
+    font-size: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .mobile-menu {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    gap: 13px;
+    background: #fffefa;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 0 21px;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .shell {
+    display: block;
+  }
+  .sidebar {
+    display: none;
+    width: 270px;
+    top: 60px;
+    padding-top: 23px;
+  }
+  .sidebar.is-open {
+    display: flex;
+    box-shadow: 50px 0 0 80vw #18362745;
+  }
+  .sidebar .brand {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  .sidebar .brand small {
+    font-size: 9px;
+  }
+  .sidebar .nav-item {
+    font-size: 12px;
+  }
+  .sidebar .course-label {
+    font-size: 8px;
+  }
+  .sidebar-course {
+    margin-top: 20px;
+  }
+  .workspace {
+    margin-left: 0;
+    width: 100%;
+  }
+  .topbar {
+    height: 49px;
+    padding: 0 21px;
+  }
+  .topbar > div {
+    font-size: 9px;
+    gap: 8px;
+  }
+  .local-badge {
+    font-size: 0;
+    gap: 0;
+  }
+  .local-badge > span {
+    width: 6px;
+    height: 6px;
+  }
+  main {
+    padding: 29px 20px 0;
+  }
+  .page-heading {
+    margin-bottom: 24px;
+  }
+  .page-heading .eyebrow {
+    font-size: 7px;
+    letter-spacing: 1.1px;
+    margin-bottom: 16px;
+  }
+  .page-heading h1 {
+    font-size: 35px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+  }
+  .page-heading p {
+    font-size: 11px;
+    line-height: 1.9;
+  }
+  .desktop {
+    display: none;
+  }
+  .hero-card {
+    border-radius: 10px;
+    min-height: 0;
+  }
+  .hero-content {
+    padding: 27px 24px;
+  }
+  .hero-card h2 {
+    font-size: 28px;
+    line-height: 1.27;
+  }
+  .hero-card p {
+    font-size: 11px;
+  }
+  .hero-card .pill {
+    margin-bottom: 19px;
+  }
+  .hero-meta {
+    font-size: 7px;
+    gap: 6px;
+  }
+  .hero-content .button {
+    padding: 12px 15px;
+  }
+  .stats-grid {
+    padding: 19px 0;
+    margin-top: 17px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+  }
+  .stats-grid > div {
+    display: block;
+    text-align: center;
+    padding: 0 9px;
+  }
+  .stats-grid strong {
+    font-size: 23px;
+  }
+  .stats-grid strong small {
+    font-size: 12px;
+  }
+  .stats-grid p {
+    font-size: 8px;
+    line-height: 1.6;
+    max-width: 90px;
+    margin: 6px auto 0;
+  }
+  .section-heading {
+    gap: 10px;
+  }
+  .section-heading h2 {
+    font-size: 16px;
+  }
+  .section-heading a {
+    font-size: 8px;
+    gap: 6px;
+  }
+  .section-heading a svg {
+    width: 12px;
+  }
+  .lesson-grid {
+    gap: 13px;
+  }
+  .lesson-card {
+    padding: 23px;
+  }
+  .lesson-card h3 {
+    font-size: 19px;
+  }
+  .lesson-card > p {
+    font-size: 11px;
+    min-height: 0;
+  }
+  .card-foot > span:first-child {
+    font-size: 10px;
+  }
+  .practice-banner {
+    padding: 20px;
+    gap: 14px;
+    margin-top: 17px;
+  }
+  .banner-icon {
+    width: 39px;
+    height: 43px;
+  }
+  .practice-banner > div:nth-child(2) {
+    flex: 1;
+    min-width: 0;
+  }
+  .practice-banner .eyebrow {
+    font-size: 6px;
+    letter-spacing: 0.4px;
+  }
+  .practice-banner h3 {
+    font-size: 12px;
+  }
+  .practice-banner p {
+    font-size: 9px;
+  }
+  .practice-banner .button {
+    margin-left: 53px;
+    font-size: 9px;
+  }
+  .scope-note p {
+    font-size: 9px;
+  }
+  .compact h1 {
+    font-size: 32px;
+  }
+  .compact p {
+    font-size: 12px;
+  }
+  .lesson-body {
+    font-size: 13px;
+  }
+  .lesson-body h2 {
+    font-size: 22px;
+  }
+  .mental-model {
+    padding: 20px;
+  }
+  .mental-model p {
+    font-size: 15px;
+  }
+  .lesson-section {
+    margin-top: 33px;
+  }
+  .worked-example,
+  .recall,
+  .mistake-note {
+    padding: 18px;
+  }
+  .formula-card {
+    padding: 18px;
+  }
+  .katex-display {
+    font-size: 0.95em;
+  }
+  .symbol-grid > div {
+    font-size: 11px;
+    gap: 10px;
+  }
+  .panel {
+    padding: 20px;
+  }
+  .problem-row {
+    gap: 14px;
+    padding: 19px 17px;
+  }
+  .problem-row h3 {
+    font-size: 16px;
+  }
+  .problem-row p {
+    font-size: 10px;
+  }
+  .problem-row .eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+  .problem-row .chapter-number {
+    font-size: 25px;
+  }
+  .problem-prompt {
+    font-size: 14px;
+  }
+  .inputs-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 17px 10px;
+  }
+  .inputs-grid dt {
+    font-size: 9px;
+  }
+  .inputs-grid dd {
+    font-size: 18px;
+  }
+  .inputs-grid dd small {
+    font-size: 9px;
+  }
+  .answer-stage > label {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .number-field input {
+    font-size: 16px;
+    padding: 12px 10px;
+  }
+  .number-field span {
+    padding: 0 10px;
+    font-size: 9px;
+  }
+  .exam-intro {
+    padding: 30px 22px;
+  }
+  .exam-intro h2 {
+    font-size: 25px;
+  }
+  .exam-facts {
+    display: grid;
+    gap: 17px;
+  }
+  .question-title {
+    font-size: 26px;
+  }
+  .exam-navigation {
+    gap: 7px;
+  }
+  .exam-navigation button {
+    width: 33px;
+    height: 33px;
+  }
+  .exam-navigation span {
+    margin-left: 0;
+    font-size: 9px;
+  }
+  .leverage-preview {
+    padding: 16px;
+  }
+  .mistake-row {
+    flex-wrap: wrap;
+  }
+  .row > .button {
+    font-size: 10px;
+  }
+  .file-input {
+    left: 0;
+  }
+  .skip {
+    left: 20px;
+  }
+  .back-link {
+    font-size: 10px;
+  }
+  .formula-list ul {
+    padding-left: 17px;
+  }
+  .toc {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+.guided-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.guided-nav button {
+  background: #f6f7ef;
+  border: 1px solid #dbe2d0;
+  border-radius: 5px;
+  padding: 8px 13px;
+  font-size: 12px;
+}
+.guided-nav button.current {
+  background: var(--green);
+  color: white;
+}
+.nwc-lab {
+  background: #edf1e3;
+  border: 1px solid #d8e2cb;
+  border-radius: 10px;
+  padding: 24px;
+  margin-top: 40px;
+}
+.nwc-lab h2 {
+  margin-top: 12px;
+}
+.nwc-lab > label {
+  display: block;
+  font-size: 12px;
+  margin: 22px 0;
+}
+.nwc-lab input {
+  display: block;
+  width: 100%;
+  accent-color: var(--green);
+  margin-top: 13px;
+}
+.lab-results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  border-top: 1px solid #d5dfc7;
+  padding-top: 20px;
+}
+.lab-results > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.lab-results small {
+  font-size: 9px;
+}
+.lab-results strong {
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--green);
+}
+@media (max-width: 600px) {
+  .nwc-lab {
+    padding: 19px;
+  }
+  .lab-results {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+.assessment-banner {
+  background: #f1e8d6;
+  border: 1px solid #e5d6ba;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0;
+}
+.assessment-banner h2 {
+  font-family: "PT Serif", Georgia, serif;
+  margin: 8px 0;
+  font-size: 28px;
+  font-weight: 400;
+}
+.assessment-banner p {
+  font-size: 12px;
+  color: #8b795c;
+  margin-bottom: 0;
+}
+.assessment-banner .button {
+  white-space: nowrap;
+}
+.ratio-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 23px;
+}
+.ratio-inputs {
+  align-self: start;
+  position: sticky;
+  top: 20px;
+}
+.ratio-inputs label {
+  display: grid;
+  gap: 8px;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 17px 0;
+}
+.ratio-inputs input,
+.ratio-inputs select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccd6c1;
+  background: #fffefa;
+  border-radius: 5px;
+  font: inherit;
+  color: var(--ink);
+  font-size: 13px;
+}
+.ratio-results {
+  min-width: 0;
+}
+.ratio-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.ratio-result-grid .panel {
+  margin: 0;
+  padding: 20px;
+}
+.ratio-result-grid strong {
+  display: block;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 31px;
+  font-weight: 400;
+  color: var(--green);
+  margin-top: 12px;
+}
+.ratio-results .panel p {
+  font-size: 13px;
+}
+.ratio-results .panel h2 {
+  font-size: 22px;
+}
+.reasoning-input {
+  width: 100%;
+  min-height: 100px;
+  padding: 13px;
+  background: white;
+  border: 1px solid #cbd5c2;
+  border-radius: 5px;
+  font: inherit;
+  line-height: 1.7;
+  resize: vertical;
+}
+.reasoning-box {
+  padding: 19px;
+  border: 1px solid #dce3d2;
+  background: #f2f5eb;
+  border-radius: 7px;
+  margin: 23px 0;
+}
+.reasoning-box label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.exam-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.versioned-progress {
+  font-size: 11px;
+  color: #7a866e;
+}
+@media (max-width: 1100px) {
+  .ratio-layout {
+    grid-template-columns: 1fr;
+  }
+  .ratio-inputs {
+    position: static;
+  }
+  .ratio-inputs > label {
+    display: inline-grid;
+    width: calc(50% - 10px);
+    margin-right: 10px;
+    vertical-align: top;
+  }
+  .assessment-banner {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 600px) {
+  .ratio-result-grid {
+    gap: 10px;
+  }
+  .ratio-result-grid .panel {
+    padding: 16px;
+  }
+  .ratio-result-grid strong {
+    font-size: 27px;
+  }
+  .ratio-result-grid .eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+  .ratio-inputs > label {
+    display: grid;
+    width: 100%;
+    margin-right: 0;
+  }
+  .assessment-banner {
+    padding: 20px;
+  }
+  .assessment-banner h2 {
+    font-size: 24px;
+  }
+  .exam-choice {
+    grid-template-columns: 1fr;
+  }
+  .sidebar .sidebar-course {
+    margin-top: 15px;
+  }
+  .sidebar .nav-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 38px;
+    margin-bottom: 2px;
+  }
+}

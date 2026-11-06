@@ -1,0 +1,1097 @@
+{
+  "schemaVersion": 1,
+  "lessons": {
+    "T3-01@1.0.0": "2026-11-06T16:41:48.886Z"
+  },
+  "drafts": {
+    "practice:T3-Q06@1.0.0": {
+      "values": {
+        "delta-fcff": "-3,00"
+      },
+      "selected": []
+    },
+    "exam:d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q01@1.0.0": {
+      "values": {},
+      "selected": [
+        "b"
+      ]
+    },
+    "exam:d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q02@1.0.0": {
+      "values": {},
+      "selected": [
+        "c"
+      ]
+    },
+    "exam:d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q03@1.0.0": {
+      "values": {},
+      "selected": [
+        "a",
+        "b",
+        "e"
+      ]
+    },
+    "exam:d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q04@1.0.0": {
+      "values": {},
+      "selected": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "exam:d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q05@1.0.0": {
+      "values": {
+        "ebitda": "70"
+      },
+      "selected": []
+    },
+    "exam:d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q06@1.0.0": {
+      "values": {
+        "delta-fcff": "-3"
+      },
+      "selected": []
+    },
+    "exam:d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q07@1.0.0": {
+      "values": {
+        "nopat": "104",
+        "delta-nwc": "20",
+        "fcff": "34"
+      },
+      "selected": []
+    }
+  },
+  "answers": [
+    {
+      "id": "75560171-b30a-4ef5-9525-68a4a4d4ee68",
+      "problemId": "T3-Q06",
+      "version": "1.0.0",
+      "mode": "practice",
+      "timestamp": "2026-11-06T16:42:35.387Z",
+      "stageResults": [
+        {
+          "id": "delta-fcff",
+          "correct": false,
+          "score": 0,
+          "errorCode": "SIGN"
+        }
+      ],
+      "userResponse": {
+        "values": {
+          "delta-fcff": "3"
+        },
+        "selected": []
+      },
+      "score": 0,
+      "errorCodes": [
+        "SIGN"
+      ],
+      "verificationStatus": "CONTENT_REVIEW_PENDING",
+      "problemSnapshot": {
+        "version": "1.0.0",
+        "reviewStatus": "CONTENT_REVIEW_PENDING",
+        "alternativeMethods": [
+          "Любой алгебраически эквивалентный метод при тех же предпосылках."
+        ],
+        "commonErrors": [
+          {
+            "code": "NWC_SIGN",
+            "message": "Прирост NWC входит в FCFF с минусом."
+          },
+          {
+            "code": "LEVEL_VS_CHANGE",
+            "message": "Известен только эффект NWC, не полный уровень FCFF."
+          }
+        ],
+        "id": "T3-Q06",
+        "topicId": "T3-03",
+        "title": "Семинар 3.2: изменение FCFF",
+        "type": "numeric",
+        "difficulty": "L3",
+        "objective": "Найти влияние трёх изменений NWC на свободный поток.",
+        "prompt": "Запасы изменились с 10 до 7, AR — с 6 до 11, AP — с 8 до 7 млн ₽. На сколько изменится FCFF только из-за этих изменений? Введите изменение со знаком.",
+        "inputs": [
+          {
+            "label": "INV: начало → конец",
+            "value": "10 → 7",
+            "unit": "млн ₽"
+          },
+          {
+            "label": "AR: начало → конец",
+            "value": "6 → 11",
+            "unit": "млн ₽"
+          },
+          {
+            "label": "AP: начало → конец",
+            "value": "8 → 7",
+            "unit": "млн ₽"
+          }
+        ],
+        "assumptions": [
+          "Прочие составляющие FCFF неизменны.",
+          "NWC операционный неденежный, только AR+INV−AP.",
+          "Неденежных переоценок и списаний нет."
+        ],
+        "stages": [
+          {
+            "id": "delta-fcff",
+            "label": "Изменение FCFF",
+            "expected": -3,
+            "unit": "млн ₽",
+            "tolerance": 0.01,
+            "hint": "Сначала найдите ΔNWC, затем возьмите противоположный знак.",
+            "solution": "NWC₀=6+10−8=8; NWC₁=11+7−7=11; ΔNWC=+3; влияние на FCFF=−3 млн ₽.",
+            "errorCode": "NWC_SIGN",
+            "weight": 1
+          }
+        ],
+        "formulaIds": [
+          "operating-nwc",
+          "delta-nwc",
+          "nwc-impact"
+        ],
+        "lessonId": "T3-03",
+        "solution": [
+          "Через компоненты: ΔAR=+5, ΔINV=−3, ΔAP=−1.",
+          "ΔNWC=5−3−(−1)=3; ΔFCFF|NWC=−3 млн ₽.",
+          "Это ухудшение потока на 3, а не абсолютное значение FCFF компании."
+        ],
+        "sourceRefs": [
+          {
+            "kind": "seminar",
+            "label": "Семинар 3 · задача 3.2",
+            "seminar": "3.2"
+          },
+          {
+            "kind": "lecture",
+            "label": "Лекции 1–4 · слайды 71, 72, 86",
+            "pages": [
+              71,
+              72,
+              86
+            ]
+          }
+        ],
+        "oracleId": "SEM3.2_NWC_IMPACT"
+      }
+    },
+    {
+      "id": "ec00860d-14f2-4172-b93f-656e001dbdc5",
+      "problemId": "T3-Q06",
+      "version": "1.0.0",
+      "mode": "practice",
+      "timestamp": "2026-11-06T16:42:45.784Z",
+      "stageResults": [
+        {
+          "id": "delta-fcff",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        }
+      ],
+      "userResponse": {
+        "values": {
+          "delta-fcff": "-3,00"
+        },
+        "selected": []
+      },
+      "score": 1,
+      "errorCodes": [],
+      "verificationStatus": "CONTENT_REVIEW_PENDING",
+      "problemSnapshot": {
+        "version": "1.0.0",
+        "reviewStatus": "CONTENT_REVIEW_PENDING",
+        "alternativeMethods": [
+          "Любой алгебраически эквивалентный метод при тех же предпосылках."
+        ],
+        "commonErrors": [
+          {
+            "code": "NWC_SIGN",
+            "message": "Прирост NWC входит в FCFF с минусом."
+          },
+          {
+            "code": "LEVEL_VS_CHANGE",
+            "message": "Известен только эффект NWC, не полный уровень FCFF."
+          }
+        ],
+        "id": "T3-Q06",
+        "topicId": "T3-03",
+        "title": "Семинар 3.2: изменение FCFF",
+        "type": "numeric",
+        "difficulty": "L3",
+        "objective": "Найти влияние трёх изменений NWC на свободный поток.",
+        "prompt": "Запасы изменились с 10 до 7, AR — с 6 до 11, AP — с 8 до 7 млн ₽. На сколько изменится FCFF только из-за этих изменений? Введите изменение со знаком.",
+        "inputs": [
+          {
+            "label": "INV: начало → конец",
+            "value": "10 → 7",
+            "unit": "млн ₽"
+          },
+          {
+            "label": "AR: начало → конец",
+            "value": "6 → 11",
+            "unit": "млн ₽"
+          },
+          {
+            "label": "AP: начало → конец",
+            "value": "8 → 7",
+            "unit": "млн ₽"
+          }
+        ],
+        "assumptions": [
+          "Прочие составляющие FCFF неизменны.",
+          "NWC операционный неденежный, только AR+INV−AP.",
+          "Неденежных переоценок и списаний нет."
+        ],
+        "stages": [
+          {
+            "id": "delta-fcff",
+            "label": "Изменение FCFF",
+            "expected": -3,
+            "unit": "млн ₽",
+            "tolerance": 0.01,
+            "hint": "Сначала найдите ΔNWC, затем возьмите противоположный знак.",
+            "solution": "NWC₀=6+10−8=8; NWC₁=11+7−7=11; ΔNWC=+3; влияние на FCFF=−3 млн ₽.",
+            "errorCode": "NWC_SIGN",
+            "weight": 1
+          }
+        ],
+        "formulaIds": [
+          "operating-nwc",
+          "delta-nwc",
+          "nwc-impact"
+        ],
+        "lessonId": "T3-03",
+        "solution": [
+          "Через компоненты: ΔAR=+5, ΔINV=−3, ΔAP=−1.",
+          "ΔNWC=5−3−(−1)=3; ΔFCFF|NWC=−3 млн ₽.",
+          "Это ухудшение потока на 3, а не абсолютное значение FCFF компании."
+        ],
+        "sourceRefs": [
+          {
+            "kind": "seminar",
+            "label": "Семинар 3 · задача 3.2",
+            "seminar": "3.2"
+          },
+          {
+            "kind": "lecture",
+            "label": "Лекции 1–4 · слайды 71, 72, 86",
+            "pages": [
+              71,
+              72,
+              86
+            ]
+          }
+        ],
+        "oracleId": "SEM3.2_NWC_IMPACT"
+      }
+    },
+    {
+      "id": "d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q01",
+      "problemId": "T3-Q01",
+      "version": "1.0.0",
+      "mode": "exam",
+      "timestamp": "2026-11-06T16:44:21.965Z",
+      "stageResults": [
+        {
+          "id": "selection",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        }
+      ],
+      "userResponse": {
+        "values": {},
+        "selected": [
+          "b"
+        ]
+      },
+      "score": 1,
+      "errorCodes": [],
+      "verificationStatus": "CONTENT_REVIEW_PENDING",
+      "problemSnapshot": {
+        "version": "1.0.0",
+        "reviewStatus": "CONTENT_REVIEW_PENDING",
+        "alternativeMethods": [
+          "Любой алгебраически эквивалентный метод при тех же предпосылках."
+        ],
+        "commonErrors": [
+          {
+            "code": "STOCK_FLOW",
+            "message": "Уточните, измерено ли число на дату или накоплено за период."
+          }
+        ],
+        "id": "T3-Q01",
+        "topicId": "T3-01",
+        "title": "Остаток или поток?",
+        "type": "single",
+        "difficulty": "L1",
+        "objective": "Различить баланс на дату и отчёт за период.",
+        "prompt": "Какой из показателей является остатком на конкретную дату, а не потоком за год? Выберите один ответ.",
+        "inputs": [],
+        "assumptions": [
+          "Используются стандартные определения трёх форм отчётности."
+        ],
+        "options": [
+          {
+            "id": "a",
+            "label": "Выручка за год"
+          },
+          {
+            "id": "b",
+            "label": "Дебиторская задолженность на 31 декабря"
+          },
+          {
+            "id": "c",
+            "label": "Амортизация за год"
+          },
+          {
+            "id": "d",
+            "label": "Операционный денежный поток за год"
+          }
+        ],
+        "correctOptionIds": [
+          "b"
+        ],
+        "stages": [],
+        "formulaIds": [
+          "balance"
+        ],
+        "lessonId": "T3-01",
+        "solution": [
+          "AR на 31 декабря показывает накопленное требование на дату и относится к балансу.",
+          "Остальные показатели измеряют деятельность за период; их нельзя напрямую трактовать как конечные остатки."
+        ],
+        "sourceRefs": [
+          {
+            "kind": "lecture",
+            "label": "Лекции 1–4 · слайды 65, 66, 69, 70",
+            "pages": [
+              65,
+              66,
+              69,
+              70
+            ]
+          },
+          {
+            "kind": "original",
+            "label": "Авторское учебное упражнение по понятиям темы 3"
+          }
+        ],
+        "oracleId": "Q01_STOCK_FLOW"
+      }
+    },
+    {
+      "id": "d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q02",
+      "problemId": "T3-Q02",
+      "version": "1.0.0",
+      "mode": "exam",
+      "timestamp": "2026-11-06T16:44:21.965Z",
+      "stageResults": [
+        {
+          "id": "selection",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        }
+      ],
+      "userResponse": {
+        "values": {},
+        "selected": [
+          "c"
+        ]
+      },
+      "score": 1,
+      "errorCodes": [],
+      "verificationStatus": "CONTENT_REVIEW_PENDING",
+      "problemSnapshot": {
+        "version": "1.0.0",
+        "reviewStatus": "CONTENT_REVIEW_PENDING",
+        "alternativeMethods": [
+          "Любой алгебраически эквивалентный метод при тех же предпосылках."
+        ],
+        "commonErrors": [
+          {
+            "code": "DA_CASH",
+            "message": "Отделите бухгалтерское распределение стоимости актива от его денежной покупки."
+          }
+        ],
+        "id": "T3-Q02",
+        "topicId": "T3-01",
+        "title": "Почему возвращаем амортизацию?",
+        "type": "single",
+        "difficulty": "L2",
+        "objective": "Объяснить корректировку NI при косвенном CFO.",
+        "prompt": "В простой модели CFO начинается с NI. Почему к NI прибавляется D&A? Выберите один ответ.",
+        "inputs": [],
+        "assumptions": [
+          "D&A уже вычтена при расчёте NI.",
+          "Другие неденежные корректировки отсутствуют."
+        ],
+        "options": [
+          {
+            "id": "a",
+            "label": "D&A — новая денежная выручка компании"
+          },
+          {
+            "id": "b",
+            "label": "Это способ второй раз учесть налоговую экономию"
+          },
+          {
+            "id": "c",
+            "label": "D&A уменьшила прибыль, но сама не является новым денежным платежом текущего периода"
+          },
+          {
+            "id": "d",
+            "label": "Любые расходы всегда увеличивают денежный поток"
+          }
+        ],
+        "correctOptionIds": [
+          "c"
+        ],
+        "stages": [],
+        "formulaIds": [
+          "cfo"
+        ],
+        "lessonId": "T3-01",
+        "solution": [
+          "Прибыль уменьшена на бухгалтерскую амортизацию, а нового платежа из-за этой записи не было. Поэтому возвращаем неденежный расход.",
+          "Реальный денежный платёж за оборудование отражается отдельно как CapEx; добавление D&A не отменяет его."
+        ],
+        "sourceRefs": [
+          {
+            "kind": "lecture",
+            "label": "Лекции 1–4 · слайды 69, 71, 72",
+            "pages": [
+              69,
+              71,
+              72
+            ]
+          },
+          {
+            "kind": "original",
+            "label": "Авторское учебное упражнение по понятиям темы 3"
+          }
+        ],
+        "oracleId": "Q02_NONCASH"
+      }
+    },
+    {
+      "id": "d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q03",
+      "problemId": "T3-Q03",
+      "version": "1.0.0",
+      "mode": "exam",
+      "timestamp": "2026-11-06T16:44:21.965Z",
+      "stageResults": [
+        {
+          "id": "selection",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        }
+      ],
+      "userResponse": {
+        "values": {},
+        "selected": [
+          "a",
+          "b",
+          "e"
+        ]
+      },
+      "score": 1,
+      "errorCodes": [],
+      "verificationStatus": "CONTENT_REVIEW_PENDING",
+      "problemSnapshot": {
+        "version": "1.0.0",
+        "reviewStatus": "CONTENT_REVIEW_PENDING",
+        "alternativeMethods": [
+          "Любой алгебраически эквивалентный метод при тех же предпосылках."
+        ],
+        "commonErrors": [
+          {
+            "code": "FINANCING_IN_FCFF",
+            "message": "Кредит меняет источник финансирования, но не является заработанным операционным потоком."
+          }
+        ],
+        "id": "T3-Q03",
+        "topicId": "T3-01",
+        "title": "Где финансирование, а где операция?",
+        "type": "multi",
+        "difficulty": "L2",
+        "objective": "Классифицировать притоки и оттоки и исключить кредит из FCFF.",
+        "prompt": "Выберите все верные утверждения в принятой учебной классификации. Ответ оценивается как полный набор.",
+        "inputs": [],
+        "assumptions": [
+          "Оборудование приобретается для длительного использования.",
+          "Банковский кредит не является операционной выручкой."
+        ],
+        "options": [
+          {
+            "id": "a",
+            "label": "Получение банковского кредита относится к CFF"
+          },
+          {
+            "id": "b",
+            "label": "Покупка оборудования относится к CFI"
+          },
+          {
+            "id": "c",
+            "label": "Новый кредит сам по себе увеличивает FCFF"
+          },
+          {
+            "id": "d",
+            "label": "Признанная выручка всегда равна поступлению денег в том же периоде"
+          },
+          {
+            "id": "e",
+            "label": "Продажи с отсрочкой могут увеличить AR без немедленного роста cash"
+          }
+        ],
+        "correctOptionIds": [
+          "a",
+          "b",
+          "e"
+        ],
+        "stages": [],
+        "formulaIds": [
+          "fcff",
+          "balance"
+        ],
+        "lessonId": "T3-01",
+        "solution": [
+          "Верны a, b, e. Кредит — финансовый приток, оборудование — инвестиционный отток, отгрузка с отсрочкой создаёт AR.",
+          "FCFF описывает операционные активы до финансирования. Признание выручки и оплата могут происходить в разные даты."
+        ],
+        "sourceRefs": [
+          {
+            "kind": "lecture",
+            "label": "Лекции 1–4 · слайды 66, 70, 72",
+            "pages": [
+              66,
+              70,
+              72
+            ]
+          },
+          {
+            "kind": "original",
+            "label": "Авторское учебное упражнение по понятиям темы 3"
+          }
+        ],
+        "oracleId": "Q03_FLOW_CLASSIFICATION"
+      }
+    },
+    {
+      "id": "d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q04",
+      "problemId": "T3-Q04",
+      "version": "1.0.0",
+      "mode": "exam",
+      "timestamp": "2026-11-06T16:44:21.965Z",
+      "stageResults": [
+        {
+          "id": "selection",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        }
+      ],
+      "userResponse": {
+        "values": {},
+        "selected": [
+          "a",
+          "c",
+          "e"
+        ]
+      },
+      "score": 1,
+      "errorCodes": [],
+      "verificationStatus": "CONTENT_REVIEW_PENDING",
+      "problemSnapshot": {
+        "version": "1.0.0",
+        "reviewStatus": "CONTENT_REVIEW_PENDING",
+        "alternativeMethods": [
+          "Любой алгебраически эквивалентный метод при тех же предпосылках."
+        ],
+        "commonErrors": [
+          {
+            "code": "NWC_SIGN",
+            "message": "Сначала запишите изменение как конец минус начало, затем примените знак денежной корректировки."
+          }
+        ],
+        "id": "T3-Q04",
+        "topicId": "T3-03",
+        "title": "Какие изменения высвобождают cash?",
+        "type": "multi",
+        "difficulty": "L2",
+        "objective": "Вывести знаки денежной корректировки NWC.",
+        "prompt": "При неизменных остальных условиях какие изменения увеличат CFO за период? Выберите все подходящие варианты.",
+        "inputs": [],
+        "assumptions": [
+          "Изменения связаны с денежными операциями, не с переоценкой и списанием.",
+          "AP — операционная кредиторка."
+        ],
+        "options": [
+          {
+            "id": "a",
+            "label": "Покупатели погасили ранее признанную AR: дебиторка сократилась"
+          },
+          {
+            "id": "b",
+            "label": "Компания накопила больше запасов"
+          },
+          {
+            "id": "c",
+            "label": "AP увеличилась за счёт отсрочки платежей поставщикам"
+          },
+          {
+            "id": "d",
+            "label": "Компания погасила AP: кредиторка сократилась"
+          },
+          {
+            "id": "e",
+            "label": "Запасы сократились без неденежных списаний"
+          }
+        ],
+        "correctOptionIds": [
+          "a",
+          "c",
+          "e"
+        ],
+        "stages": [],
+        "formulaIds": [
+          "delta-nwc",
+          "cfo"
+        ],
+        "lessonId": "T3-03",
+        "solution": [
+          "Верны a, c, e. В CFO входят −ΔAR−ΔINV+ΔAP.",
+          "Сокращение AR и INV означает отрицательные изменения, поэтому денежная корректировка положительна. Рост AP также даёт положительную корректировку.",
+          "Улучшение CFO за период само по себе не доказывает долгосрочную пользу: чрезмерная отсрочка может вредить поставщикам."
+        ],
+        "sourceRefs": [
+          {
+            "kind": "lecture",
+            "label": "Лекции 1–4 · слайды 71, 86",
+            "pages": [
+              71,
+              86
+            ]
+          },
+          {
+            "kind": "original",
+            "label": "Авторское учебное упражнение по понятиям темы 3"
+          }
+        ],
+        "oracleId": "Q04_CASH_SIGNS"
+      }
+    },
+    {
+      "id": "d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q05",
+      "problemId": "T3-Q05",
+      "version": "1.0.0",
+      "mode": "exam",
+      "timestamp": "2026-11-06T16:44:21.965Z",
+      "stageResults": [
+        {
+          "id": "ebitda",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        }
+      ],
+      "userResponse": {
+        "values": {
+          "ebitda": "70"
+        },
+        "selected": []
+      },
+      "score": 1,
+      "errorCodes": [],
+      "verificationStatus": "CONTENT_REVIEW_PENDING",
+      "problemSnapshot": {
+        "version": "1.0.0",
+        "reviewStatus": "CONTENT_REVIEW_PENDING",
+        "alternativeMethods": [
+          "Любой алгебраически эквивалентный метод при тех же предпосылках."
+        ],
+        "commonErrors": [
+          {
+            "code": "DOUBLE_COUNT_DA",
+            "message": "Не вычитайте амортизацию при переходе к EBITDA."
+          }
+        ],
+        "id": "T3-Q05",
+        "topicId": "T3-01",
+        "title": "Первый шаг: EBITDA",
+        "type": "numeric",
+        "difficulty": "L3",
+        "objective": "Рассчитать EBITDA и не вычесть D&A дважды.",
+        "prompt": "Компания получила выручку 240. Себестоимость проданного без амортизации — 120, SG&A без амортизации — 50, D&A — 20 млн ₽. Найдите EBITDA.",
+        "inputs": [
+          {
+            "label": "Выручка",
+            "value": 240,
+            "unit": "млн ₽"
+          },
+          {
+            "label": "COGS без D&A",
+            "value": 120,
+            "unit": "млн ₽"
+          },
+          {
+            "label": "SG&A без D&A",
+            "value": 50,
+            "unit": "млн ₽"
+          },
+          {
+            "label": "D&A",
+            "value": 20,
+            "unit": "млн ₽"
+          }
+        ],
+        "assumptions": [
+          "Других операционных расходов нет.",
+          "Обе расходные строки исключают D&A."
+        ],
+        "stages": [
+          {
+            "id": "ebitda",
+            "label": "EBITDA",
+            "expected": 70,
+            "unit": "млн ₽",
+            "tolerance": 0.01,
+            "hint": "EBITDA рассчитывается до амортизации.",
+            "solution": "240−120−50=70 млн ₽. D&A вычитается на следующем шаге для EBIT.",
+            "errorCode": "DOUBLE_COUNT_DA",
+            "weight": 1
+          }
+        ],
+        "formulaIds": [
+          "income"
+        ],
+        "lessonId": "T3-01",
+        "solution": [
+          "EBITDA=Sales−COGS_cash−SG&A_cash=240−120−50=70 млн ₽.",
+          "EBIT был бы 50; это другой показатель."
+        ],
+        "sourceRefs": [
+          {
+            "kind": "lecture",
+            "label": "Лекции 1–4 · слайды 69",
+            "pages": [
+              69
+            ]
+          },
+          {
+            "kind": "original",
+            "label": "Авторское учебное упражнение по понятиям темы 3"
+          }
+        ],
+        "oracleId": "Q05_EBITDA_70"
+      }
+    },
+    {
+      "id": "d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q06",
+      "problemId": "T3-Q06",
+      "version": "1.0.0",
+      "mode": "exam",
+      "timestamp": "2026-11-06T16:44:21.965Z",
+      "stageResults": [
+        {
+          "id": "delta-fcff",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        }
+      ],
+      "userResponse": {
+        "values": {
+          "delta-fcff": "-3"
+        },
+        "selected": []
+      },
+      "score": 1,
+      "errorCodes": [],
+      "verificationStatus": "CONTENT_REVIEW_PENDING",
+      "problemSnapshot": {
+        "version": "1.0.0",
+        "reviewStatus": "CONTENT_REVIEW_PENDING",
+        "alternativeMethods": [
+          "Любой алгебраически эквивалентный метод при тех же предпосылках."
+        ],
+        "commonErrors": [
+          {
+            "code": "NWC_SIGN",
+            "message": "Прирост NWC входит в FCFF с минусом."
+          },
+          {
+            "code": "LEVEL_VS_CHANGE",
+            "message": "Известен только эффект NWC, не полный уровень FCFF."
+          }
+        ],
+        "id": "T3-Q06",
+        "topicId": "T3-03",
+        "title": "Семинар 3.2: изменение FCFF",
+        "type": "numeric",
+        "difficulty": "L3",
+        "objective": "Найти влияние трёх изменений NWC на свободный поток.",
+        "prompt": "Запасы изменились с 10 до 7, AR — с 6 до 11, AP — с 8 до 7 млн ₽. На сколько изменится FCFF только из-за этих изменений? Введите изменение со знаком.",
+        "inputs": [
+          {
+            "label": "INV: начало → конец",
+            "value": "10 → 7",
+            "unit": "млн ₽"
+          },
+          {
+            "label": "AR: начало → конец",
+            "value": "6 → 11",
+            "unit": "млн ₽"
+          },
+          {
+            "label": "AP: начало → конец",
+            "value": "8 → 7",
+            "unit": "млн ₽"
+          }
+        ],
+        "assumptions": [
+          "Прочие составляющие FCFF неизменны.",
+          "NWC операционный неденежный, только AR+INV−AP.",
+          "Неденежных переоценок и списаний нет."
+        ],
+        "stages": [
+          {
+            "id": "delta-fcff",
+            "label": "Изменение FCFF",
+            "expected": -3,
+            "unit": "млн ₽",
+            "tolerance": 0.01,
+            "hint": "Сначала найдите ΔNWC, затем возьмите противоположный знак.",
+            "solution": "NWC₀=6+10−8=8; NWC₁=11+7−7=11; ΔNWC=+3; влияние на FCFF=−3 млн ₽.",
+            "errorCode": "NWC_SIGN",
+            "weight": 1
+          }
+        ],
+        "formulaIds": [
+          "operating-nwc",
+          "delta-nwc",
+          "nwc-impact"
+        ],
+        "lessonId": "T3-03",
+        "solution": [
+          "Через компоненты: ΔAR=+5, ΔINV=−3, ΔAP=−1.",
+          "ΔNWC=5−3−(−1)=3; ΔFCFF|NWC=−3 млн ₽.",
+          "Это ухудшение потока на 3, а не абсолютное значение FCFF компании."
+        ],
+        "sourceRefs": [
+          {
+            "kind": "seminar",
+            "label": "Семинар 3 · задача 3.2",
+            "seminar": "3.2"
+          },
+          {
+            "kind": "lecture",
+            "label": "Лекции 1–4 · слайды 71, 72, 86",
+            "pages": [
+              71,
+              72,
+              86
+            ]
+          }
+        ],
+        "oracleId": "SEM3.2_NWC_IMPACT"
+      }
+    },
+    {
+      "id": "d1f04c03-abe4-4f7d-ae32-782e96092be8:T3-Q07",
+      "problemId": "T3-Q07",
+      "version": "1.0.0",
+      "mode": "exam",
+      "timestamp": "2026-11-06T16:44:21.965Z",
+      "stageResults": [
+        {
+          "id": "nopat",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        },
+        {
+          "id": "delta-nwc",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        },
+        {
+          "id": "fcff",
+          "correct": true,
+          "score": 1,
+          "errorCode": null
+        }
+      ],
+      "userResponse": {
+        "values": {
+          "nopat": "104",
+          "delta-nwc": "20",
+          "fcff": "34"
+        },
+        "selected": []
+      },
+      "score": 1,
+      "errorCodes": [],
+      "verificationStatus": "CONTENT_REVIEW_PENDING",
+      "problemSnapshot": {
+        "version": "1.0.0",
+        "reviewStatus": "CONTENT_REVIEW_PENDING",
+        "alternativeMethods": [
+          "Через EBITDA: EBITDA(1−t)+t·DA−ΔNWC−CapEx=150×0,8+0,2×20−20−70=34.",
+          "Через NOPAT: 104+20−20−70=34."
+        ],
+        "commonErrors": [
+          {
+            "code": "NOPAT_VS_NI",
+            "message": "Для FCFF нужен NOPAT, а не NI после процентов."
+          },
+          {
+            "code": "FINANCING_IN_FCFF",
+            "message": "Привлечение кредита финансирует инвестиции, но не создаёт дополнительный FCFF."
+          }
+        ],
+        "id": "T3-Q07",
+        "topicId": "T3-03",
+        "title": "Семинар 3.1: соберите FCFF",
+        "type": "steps",
+        "difficulty": "L4",
+        "objective": "Пройти от операционных статей к NOPAT, инвестиции в NWC и FCFF.",
+        "prompt": "Revenue=350, COGS без D&A=120, SG&A без D&A=80, D&A=20 млн ₽; налог 20%. Operating NWC в начале 50, в конце — 20% выручки. Оплаченный CapEx=70. Компания привлекла кредит 50 млн ₽. Рассчитайте три этапа. Новый кредит классифицируйте как финансирование и исключите из FCFF.",
+        "inputs": [
+          {
+            "label": "Revenue / COGS / SG&A cash",
+            "value": "350 / 120 / 80",
+            "unit": "млн ₽"
+          },
+          {
+            "label": "D&A",
+            "value": 20,
+            "unit": "млн ₽"
+          },
+          {
+            "label": "Налог",
+            "value": 20,
+            "unit": "%"
+          },
+          {
+            "label": "Operating NWC₀",
+            "value": 50,
+            "unit": "млн ₽"
+          },
+          {
+            "label": "Operating NWC₁ / Revenue",
+            "value": 20,
+            "unit": "%"
+          },
+          {
+            "label": "Оплаченный CapEx",
+            "value": 70,
+            "unit": "млн ₽"
+          },
+          {
+            "label": "Новый кредит (CFF)",
+            "value": 50,
+            "unit": "млн ₽"
+          }
+        ],
+        "assumptions": [
+          "NWC трактуется как операционный неденежный.",
+          "COGS и SG&A исключают D&A.",
+          "CapEx оплачен за текущий период.",
+          "Других корректировок FCFF нет.",
+          "Начисление процентов нового кредита не требуется для FCFF; NI и ROC без дополнительных предпосылок здесь не оцениваются."
+        ],
+        "stages": [
+          {
+            "id": "nopat",
+            "label": "1. NOPAT",
+            "expected": 104,
+            "unit": "млн ₽",
+            "tolerance": 0.01,
+            "hint": "Сначала EBITDA, затем EBIT, затем условный операционный налог.",
+            "solution": "EBITDA=350−120−80=150; EBIT=150−20=130; NOPAT=130×0,8=104.",
+            "errorCode": "NOPAT_VS_NI",
+            "weight": 1
+          },
+          {
+            "id": "delta-nwc",
+            "label": "2. Прирост Operating NWC",
+            "expected": 20,
+            "unit": "млн ₽",
+            "tolerance": 0.01,
+            "hint": "Конечный NWC — 20% выручки, а не его прирост.",
+            "solution": "NWC₁=350×0,2=70; ΔNWC=70−50=20.",
+            "errorCode": "LEVEL_VS_CHANGE",
+            "weight": 1
+          },
+          {
+            "id": "fcff",
+            "label": "3. FCFF",
+            "expected": 34,
+            "unit": "млн ₽",
+            "tolerance": 0.01,
+            "hint": "FCFF начинается с NOPAT и не включает кредит.",
+            "solution": "104+20−20−70=34 млн ₽. Кредит 50 относится к CFF.",
+            "errorCode": "FINANCING_IN_FCFF",
+            "weight": 1
+          }
+        ],
+        "formulaIds": [
+          "income",
+          "nopat",
+          "delta-nwc",
+          "fcff"
+        ],
+        "lessonId": "T3-03",
+        "solution": [
+          "Выделяем финансирование: кредит 50 не включаем в FCFF.",
+          "NOPAT=104; прирост операционной инвестиции 20; FCFF=34 млн ₽.",
+          "Интерпретация: операционный результат после налога и возврата D&A равен 124. Из него 20 связано в дополнительном NWC и 70 потрачено на основные средства. Остаток для всех инвесторов — 34.",
+          "Проверка смысла: увеличение кредита при тех же операциях не должно менять FCFF; CapEx или ΔNWC +1 уменьшили бы его на 1."
+        ],
+        "sourceRefs": [
+          {
+            "kind": "seminar",
+            "label": "Семинар 3 · задача 3.1",
+            "seminar": "3.1"
+          },
+          {
+            "kind": "lecture",
+            "label": "Лекции 1–4 · слайды 69, 72",
+            "pages": [
+              69,
+              72
+            ]
+          }
+        ],
+        "oracleId": "SEM3.1_CORE"
+      }
+    }
+  ],
+  "exam": {
+    "id": "d1f04c03-abe4-4f7d-ae32-782e96092be8",
+    "problemIds": [
+      "T3-Q01",
+      "T3-Q02",
+      "T3-Q03",
+      "T3-Q04",
+      "T3-Q05",
+      "T3-Q06",
+      "T3-Q07"
+    ],
+    "versions": {
+      "T3-Q01": "1.0.0",
+      "T3-Q02": "1.0.0",
+      "T3-Q03": "1.0.0",
+      "T3-Q04": "1.0.0",
+      "T3-Q05": "1.0.0",
+      "T3-Q06": "1.0.0",
+      "T3-Q07": "1.0.0"
+    },
+    "startedAt": "2026-11-06T16:43:43.466Z",
+    "finishedAt": "2026-11-06T16:44:21.964Z"
+  },
+  "archives": []
+}

@@ -1,0 +1,2111 @@
+{
+  "schemaVersion": 1,
+  "origin": "Independent Financial Reviewer; Python Fraction accounting oracle; no application finance/builder as sole oracle",
+  "problems": [
+    {
+      "id": "T3-Q23",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "ebit",
+          "expected": 120.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 79.5,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "delta-nwc",
+          "expected": 23.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 82.5,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff",
+          "expected": 21.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 39.5,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q24",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 220.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "sales",
+          "expected": 528.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 39.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 29.1,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 36.375,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep",
+          "expected": -2.2,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-difference",
+          "expected": 18.375,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q25",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "cr-start",
+          "expected": 3.4,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cr-end",
+          "expected": 3.8666666666666667,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "qr-end",
+          "expected": 1.7833333333333334,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "purchases",
+          "expected": 695.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dso",
+          "expected": 28.2875,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dih",
+          "expected": 59.45075757575758,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dpo",
+          "expected": 17.33093525179856,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ccc",
+          "expected": 70.40732232395901,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 36.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q26",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 22.0,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-old",
+          "expected": 8.8,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-new",
+          "expected": 12.1,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-old",
+          "expected": 47.0016,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-new",
+          "expected": 36.3204,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-old",
+          "expected": 419.65714285714284,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-new",
+          "expected": 459.7518987341772,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q27",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "turnover-a",
+          "expected": 1.3333333333333333,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "turnover-b",
+          "expected": 1.1111111111111112,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "margin-a",
+          "expected": 8.0,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "margin-b",
+          "expected": 12.0,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roa-a",
+          "expected": 10.666666666666666,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roa-b",
+          "expected": 13.333333333333334,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "group-sales",
+          "expected": 240.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "group-ebit",
+          "expected": 29.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "group-assets",
+          "expected": 225.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "group-ni",
+          "expected": 17.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "group-turnover",
+          "expected": 1.0666666666666667,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "group-margin",
+          "expected": 9.666666666666666,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "group-roa",
+          "expected": 10.311111111111112,
+          "unit": "%",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q28",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "ebitda",
+          "expected": 250.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ebit",
+          "expected": 200.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 150.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roa",
+          "expected": 15.0,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni-u",
+          "expected": 150.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni-l",
+          "expected": 112.5,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-u",
+          "expected": 15.0,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-l",
+          "expected": 22.5,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dfl-u",
+          "expected": 1.0,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dfl-l",
+          "expected": 1.3333333333333333,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff-u",
+          "expected": 90.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff-l",
+          "expected": 90.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcfe-u",
+          "expected": 90.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcfe-l",
+          "expected": 52.5,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 40.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-Q29",
+      "version": "1.0.0",
+      "correctOptionIds": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    {
+      "id": "T3-Q30",
+      "version": "1.0.0",
+      "stages": [
+        {
+          "id": "ni-1",
+          "expected": 13.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni-2",
+          "expected": 9.2,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-1",
+          "expected": 19.428571428571427,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-2",
+          "expected": 26.285714285714285,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep-1",
+          "expected": 4.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep-2",
+          "expected": -1.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-change",
+          "expected": 6.857142857142857,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep-change",
+          "expected": -5.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-NWC-0",
+      "version": "1.0.0",
+      "familyId": "nwc-cash",
+      "seed": 0,
+      "stages": [
+        {
+          "id": "ebit",
+          "expected": 115.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 85.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "delta-nwc",
+          "expected": 10.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 90.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff",
+          "expected": 62.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 57.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-NWC-1",
+      "version": "1.0.0",
+      "familyId": "nwc-cash",
+      "seed": 1,
+      "stages": [
+        {
+          "id": "ebit",
+          "expected": 118.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 82.125,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "delta-nwc",
+          "expected": 22.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 76.125,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff",
+          "expected": 42.5,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 62.125,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-NWC-2",
+      "version": "1.0.0",
+      "familyId": "nwc-cash",
+      "seed": 2,
+      "stages": [
+        {
+          "id": "ebit",
+          "expected": 121.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 89.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "delta-nwc",
+          "expected": -8.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 114.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff",
+          "expected": 76.8,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 64.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-NWC-3",
+      "version": "1.0.0",
+      "familyId": "nwc-cash",
+      "seed": 3,
+      "stages": [
+        {
+          "id": "ebit",
+          "expected": 124.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 85.875,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "delta-nwc",
+          "expected": 8.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 95.875,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff",
+          "expected": 53.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 59.875,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-NWC-4",
+      "version": "1.0.0",
+      "familyId": "nwc-cash",
+      "seed": 4,
+      "stages": [
+        {
+          "id": "ebit",
+          "expected": 127.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 93.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "delta-nwc",
+          "expected": -11.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 123.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff",
+          "expected": 76.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 96.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-NWC-5",
+      "version": "1.0.0",
+      "familyId": "nwc-cash",
+      "seed": 5,
+      "stages": [
+        {
+          "id": "ebit",
+          "expected": 130.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 89.625,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "delta-nwc",
+          "expected": 27.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 82.625,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff",
+          "expected": 30.5,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 19.625,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-NWC-6",
+      "version": "1.0.0",
+      "familyId": "nwc-cash",
+      "seed": 6,
+      "stages": [
+        {
+          "id": "ebit",
+          "expected": 133.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 97.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "delta-nwc",
+          "expected": -21.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 139.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff",
+          "expected": 83.4,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 75.6,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-NWC-7",
+      "version": "1.0.0",
+      "familyId": "nwc-cash",
+      "seed": 7,
+      "stages": [
+        {
+          "id": "ebit",
+          "expected": 136.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 93.375,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "delta-nwc",
+          "expected": 8.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 107.375,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "fcff",
+          "expected": 46.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cash-end",
+          "expected": 47.375,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-RET-0",
+      "version": "1.0.0",
+      "familyId": "returns-rebuild",
+      "seed": 0,
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 160.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "sales",
+          "expected": 240.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 19.2,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 12.8,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 21.333333333333332,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep",
+          "expected": -3.2,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-difference",
+          "expected": 9.333333333333334,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-RET-1",
+      "version": "1.0.0",
+      "familyId": "returns-rebuild",
+      "seed": 1,
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 180.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "sales",
+          "expected": 324.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 29.16,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 20.535,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 31.592307692307692,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep",
+          "expected": 0.36,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-difference",
+          "expected": 15.392307692307693,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-RET-2",
+      "version": "1.0.0",
+      "familyId": "returns-rebuild",
+      "seed": 2,
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 200.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "sales",
+          "expected": 400.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 40.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 27.52,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 39.31428571428572,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep",
+          "expected": 0.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-difference",
+          "expected": 19.314285714285713,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-RET-3",
+      "version": "1.0.0",
+      "familyId": "returns-rebuild",
+      "seed": 3,
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 220.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "sales",
+          "expected": 484.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 33.88,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 26.2675,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 35.02333333333333,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep",
+          "expected": 5.28,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-difference",
+          "expected": 19.623333333333335,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-RET-4",
+      "version": "1.0.0",
+      "familyId": "returns-rebuild",
+      "seed": 4,
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 240.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "sales",
+          "expected": 600.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 36.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 24.48,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 30.6,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep",
+          "expected": 2.4,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-difference",
+          "expected": 15.6,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-RET-5",
+      "version": "1.0.0",
+      "familyId": "returns-rebuild",
+      "seed": 5,
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 260.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "sales",
+          "expected": 416.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 45.76,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 31.3225,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 36.85,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep",
+          "expected": -1.04,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-difference",
+          "expected": 19.25,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-RET-6",
+      "version": "1.0.0",
+      "familyId": "returns-rebuild",
+      "seed": 6,
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 280.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "sales",
+          "expected": 672.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 57.12,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 47.24,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 52.48888888888889,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep",
+          "expected": 15.12,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-difference",
+          "expected": 32.08888888888889,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-RET-7",
+      "version": "1.0.0",
+      "familyId": "returns-rebuild",
+      "seed": 7,
+      "stages": [
+        {
+          "id": "assets",
+          "expected": 300.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "sales",
+          "expected": 630.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "nopat",
+          "expected": 59.85,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ni",
+          "expected": 45.24375,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe",
+          "expected": 47.625,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ep",
+          "expected": -6.15,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "roe-difference",
+          "expected": 27.675,
+          "unit": "п.п.",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-LIQ-0",
+      "version": "1.0.0",
+      "familyId": "liquidity-cycle",
+      "seed": 0,
+      "stages": [
+        {
+          "id": "cr-start",
+          "expected": 3.375,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cr-end",
+          "expected": 3.4473684210526314,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "qr-end",
+          "expected": 1.6842105263157894,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "purchases",
+          "expected": 412.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dso",
+          "expected": 22.160714285714285,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dih",
+          "expected": 55.6625,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dpo",
+          "expected": 19.490291262135923,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ccc",
+          "expected": 58.33292302357837,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 55.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-LIQ-1",
+      "version": "1.0.0",
+      "familyId": "liquidity-cycle",
+      "seed": 1,
+      "stages": [
+        {
+          "id": "cr-start",
+          "expected": 3.3142857142857145,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cr-end",
+          "expected": 3.425,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "qr-end",
+          "expected": 1.5,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "purchases",
+          "expected": 448.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dso",
+          "expected": 20.57718120805369,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dih",
+          "expected": 57.72093023255814,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dpo",
+          "expected": 18.738839285714285,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ccc",
+          "expected": 59.55927215489754,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 59.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-LIQ-2",
+      "version": "1.0.0",
+      "familyId": "liquidity-cycle",
+      "seed": 2,
+      "stages": [
+        {
+          "id": "cr-start",
+          "expected": 3.263157894736842,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cr-end",
+          "expected": 3.2888888888888888,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "qr-end",
+          "expected": 1.7333333333333334,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "purchases",
+          "expected": 467.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dso",
+          "expected": 23.563291139240505,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dih",
+          "expected": 52.766304347826086,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dpo",
+          "expected": 21.102783725910065,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ccc",
+          "expected": 55.226811761156526,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 67.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-LIQ-3",
+      "version": "1.0.0",
+      "familyId": "liquidity-cycle",
+      "seed": 3,
+      "stages": [
+        {
+          "id": "cr-start",
+          "expected": 3.2195121951219514,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cr-end",
+          "expected": 3.26,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "qr-end",
+          "expected": 1.42,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "purchases",
+          "expected": 515.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dso",
+          "expected": 21.856287425149702,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dih",
+          "expected": 59.21938775510204,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dpo",
+          "expected": 20.199029126213592,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ccc",
+          "expected": 60.87664605403815,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 61.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-LIQ-4",
+      "version": "1.0.0",
+      "familyId": "liquidity-cycle",
+      "seed": 4,
+      "stages": [
+        {
+          "id": "cr-start",
+          "expected": 3.1818181818181817,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cr-end",
+          "expected": 3.510204081632653,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "qr-end",
+          "expected": 1.7755102040816326,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "purchases",
+          "expected": 534.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dso",
+          "expected": 24.678977272727273,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dih",
+          "expected": 54.75,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dpo",
+          "expected": 20.163857677902623,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ccc",
+          "expected": 59.265119594824654,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 62.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-LIQ-5",
+      "version": "1.0.0",
+      "familyId": "liquidity-cycle",
+      "seed": 5,
+      "stages": [
+        {
+          "id": "cr-start",
+          "expected": 3.148936170212766,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cr-end",
+          "expected": 3.272727272727273,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "qr-end",
+          "expected": 1.5454545454545454,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "purchases",
+          "expected": 570.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dso",
+          "expected": 22.886486486486486,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dih",
+          "expected": 56.40909090909091,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dpo",
+          "expected": 21.45175438596491,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ccc",
+          "expected": 57.843823009612485,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 74.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-LIQ-6",
+      "version": "1.0.0",
+      "familyId": "liquidity-cycle",
+      "seed": 6,
+      "stages": [
+        {
+          "id": "cr-start",
+          "expected": 3.12,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cr-end",
+          "expected": 3.087719298245614,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "qr-end",
+          "expected": 1.4210526315789473,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "purchases",
+          "expected": 596.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dso",
+          "expected": 21.63659793814433,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dih",
+          "expected": 54.75,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dpo",
+          "expected": 20.822147651006713,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ccc",
+          "expected": 55.56445028713762,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 87.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-LIQ-7",
+      "version": "1.0.0",
+      "familyId": "liquidity-cycle",
+      "seed": 7,
+      "stages": [
+        {
+          "id": "cr-start",
+          "expected": 3.0943396226415096,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cr-end",
+          "expected": 3.0634920634920637,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "qr-end",
+          "expected": 1.5873015873015872,
+          "unit": "раз",
+          "tolerance": 0.01
+        },
+        {
+          "id": "purchases",
+          "expected": 620.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dso",
+          "expected": 24.0935960591133,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dih",
+          "expected": 52.65573770491803,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dpo",
+          "expected": 22.370967741935484,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "ccc",
+          "expected": 54.37836602209585,
+          "unit": "дни",
+          "tolerance": 0.01
+        },
+        {
+          "id": "cfo",
+          "expected": 89.0,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-DDM-0",
+      "version": "1.0.0",
+      "familyId": "payout-growth",
+      "seed": 0,
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 14.8,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-old",
+          "expected": 5.92,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-new",
+          "expected": 7.4,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-old",
+          "expected": 25.4208,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-new",
+          "expected": 21.48,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-old",
+          "expected": 180.54545454545453,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-new",
+          "expected": 170.47619047619048,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-DDM-1",
+      "version": "1.0.0",
+      "familyId": "payout-growth",
+      "seed": 1,
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 20.8,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-old",
+          "expected": 9.36,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-new",
+          "expected": 7.28,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-old",
+          "expected": 30.074,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-new",
+          "expected": 34.866,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-old",
+          "expected": 205.42349726775956,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-new",
+          "expected": 208.5287081339713,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-DDM-2",
+      "version": "1.0.0",
+      "familyId": "payout-growth",
+      "seed": 2,
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 22.0,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-old",
+          "expected": 11.0,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-new",
+          "expected": 8.8,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-old",
+          "expected": 24.975,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-new",
+          "expected": 29.376,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-old",
+          "expected": 178.39285714285714,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-new",
+          "expected": 181.33333333333334,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-DDM-3",
+      "version": "1.0.0",
+      "familyId": "payout-growth",
+      "seed": 3,
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 11.76,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-old",
+          "expected": 4.116,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-new",
+          "expected": 5.292,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-old",
+          "expected": 23.68639,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-new",
+          "expected": 20.26871,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-old",
+          "expected": 170.60205992509364,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-new",
+          "expected": 159.4956720176267,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-DDM-4",
+      "version": "1.0.0",
+      "familyId": "payout-growth",
+      "seed": 4,
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 19.25,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-old",
+          "expected": 7.7,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-new",
+          "expected": 5.775,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-old",
+          "expected": 38.772,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-new",
+          "expected": 44.4255,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-old",
+          "expected": 253.41176470588235,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-new",
+          "expected": 257.9129172714078,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-DDM-5",
+      "version": "1.0.0",
+      "familyId": "payout-growth",
+      "seed": 5,
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 18.72,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-old",
+          "expected": 9.36,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-new",
+          "expected": 7.488,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-old",
+          "expected": 30.074,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-new",
+          "expected": 35.47104,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-old",
+          "expected": 237.9272151898734,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-new",
+          "expected": 244.425578831312,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-DDM-6",
+      "version": "1.0.0",
+      "familyId": "payout-growth",
+      "seed": 6,
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 17.9,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-old",
+          "expected": 5.37,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-new",
+          "expected": 7.16,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-old",
+          "expected": 28.02842,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-new",
+          "expected": 24.43248,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-old",
+          "expected": 179.3245041586692,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-new",
+          "expected": 176.53526011560695,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    },
+    {
+      "id": "T3-V-DDM-7",
+      "version": "1.0.0",
+      "familyId": "payout-growth",
+      "seed": 7,
+      "stages": [
+        {
+          "id": "roe",
+          "expected": 22.92,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-old",
+          "expected": 10.314,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "growth-new",
+          "expected": 12.606,
+          "unit": "%",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-old",
+          "expected": 37.617074,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "dividend-next-new",
+          "expected": 31.417074,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-old",
+          "expected": 212.69407440913716,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        },
+        {
+          "id": "equity-value-new",
+          "expected": 204.08648824217227,
+          "unit": "млн ₽",
+          "tolerance": 0.01
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "problems": 40,
+    "fixedNumericStages": 65,
+    "seedNumericStages": 232,
+    "choiceKeys": 1
+  },
+  "supportingReceipts": [
+    {
+      "file": "finance-review-curated.json",
+      "sha256": "de6bbfb8e24dee8c0769e4cf7aeedda532cc813679ed0013fcedac5264af06d7"
+    },
+    {
+      "file": "finance-review-transfer.json",
+      "sha256": "4e929373a12c4c029ae47547fc036e2fe96ad37fb7271d344b709814868493be"
+    }
+  ]
+}

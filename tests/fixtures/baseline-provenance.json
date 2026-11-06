@@ -1,0 +1,7 @@
+{
+  "source": "evidence/browser-export.json at baseline commit 46cc3549293782e5a0f9403d86e36db51d6c42a2",
+  "sha256": "7d84c0ddbd3c8dd08a37d81dbbc24186e0930d849d7b324b02f1510ff095689e",
+  "schemaVersion": 1,
+  "answerCount": 9,
+  "purpose": "Synthetic pre-update export used only for compatibility regression; no student names or private teacher PDFs."
+}

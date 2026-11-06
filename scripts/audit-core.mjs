@@ -9,6 +9,12 @@ export function inspectBytes(bytes,path){
 }
 export function summarize(findings){return findings.some(f=>f.status==='FAIL')?'FAIL':findings.some(f=>f.status==='UNKNOWN')?'UNKNOWN':'PASS';}
 export function validLicenseChoice(value,kind){const choices=kind==='code'?['MIT','Apache-2.0','GPL-3.0-only','GPL-3.0-or-later','BSD-3-Clause']:['CC-BY-4.0','CC-BY-SA-4.0','CC0-1.0'];return typeof value==='string'&&choices.includes(value);}
+// Pure comparison only: publication/approval predicates remain separate in validateRelease.
+export function artifactMatchesRelease({verified,artifact,sha,version}){
+ return /^[0-9a-f]{40}$/.test(sha??'')&&typeof version==='string'&&version.length>0&&
+  [verified,artifact].every(report=>report?.status==='PASS'&&report.sourceCommit===sha&&report.sourceDirty===false&&report.sourceKind==='git'&&report.sourceVersion===version&&Array.isArray(report.files)&&report.files.length>0)&&
+  JSON.stringify(verified.files)===JSON.stringify(artifact.files);
+}
 export function validateRelease({ref,sha,candidate,actor,owner,approved,enabled,auditStatus,codeLicense,contentLicense,redistributionApproved,dirty}){
  const reasons=[];
  if(ref!=='refs/heads/main')reasons.push('MAIN_ONLY');

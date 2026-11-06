@@ -39,7 +39,7 @@ jobs:
       - run: npm run build
       - run: npm run test:e2e
       - run: npm run audit:artifact
-      - run: npm run audit:public
+      - run: npm run audit:public -- --strict
       - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         if: ${{ !cancelled() }}
         with:

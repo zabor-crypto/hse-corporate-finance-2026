@@ -200,7 +200,7 @@
     {
       "path": "scripts/prepare-public-source.mjs",
       "acceptedSourceSha256": "3493aae3d6bea1460fe8a4f3d217e60e9997ca8440f217c363477d2ea4b642dd",
-      "publicSha256": "bca814a921f2b6b753b6df34ef00f9c0c0ef6be56bd55ce0245d551c30f8a779",
+      "publicSha256": "6b6d4f8b4ee68fa3419f97243150d9e3ade6e2ff6db6330c04b15954565acdd8",
       "exactAcceptedBytes": false
     },
     {

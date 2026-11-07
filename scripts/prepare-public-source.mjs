@@ -70,6 +70,7 @@ const rootFiles = new Set([
   ".gitignore",
   ".nvmrc",
   "publication-policy.json",
+  "PUBLIC_RELEASE_DELTA_MANIFEST.json",
   "README.md",
   "THIRD_PARTY_NOTICES.md",
   "LICENSE-CODE",

@@ -716,8 +716,8 @@
     {
       "path": "tests/e2e/c3-ux.spec.ts",
       "acceptedSourceSha256": "fcabc8784f887d8d10fe75fb800b220169f2761c5750839074314f8f0c87caf0",
-      "publicSha256": "fcabc8784f887d8d10fe75fb800b220169f2761c5750839074314f8f0c87caf0",
-      "exactAcceptedBytes": true
+      "publicSha256": "8d59a8217088f7350bf391dcb4a77d5a561e245ad04ea613e87a767d515c96a9",
+      "exactAcceptedBytes": false
     },
     {
       "path": "tests/e2e/helpers.ts",
@@ -1197,7 +1197,8 @@
     "Current public README/status/release docs and complete relative-link/export allowlist",
     "Run full accepted browser coverage in verify job; deploy job/guards unchanged",
     "Configurable local ratios-test ports with reviewed defaults unchanged, extra config paths in build dirty metadata",
-    "Ignore generated evidence/download directories so private validation outputs cannot become source"
+    "Ignore generated evidence/download directories so private validation outputs cannot become source",
+    "Bound native UX PNG capture dimensions after actual Ubuntu32767-pixel failure; retain all route/accessibility/overflow/navigation assertions and report viewport fallback explicitly."
   ],
   "excludedCategories": [
     "Private Git commit objects/history/remotes, entire private auditZIP and evidence/private-derived",

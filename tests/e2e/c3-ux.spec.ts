@@ -120,11 +120,23 @@ for (const engine of ["chromium", "webkit"] as const) {
               window.scrollTo(0, 0);
               await document.fonts.ready;
             });
+            const documentSize = await page.evaluate(() => ({
+              width: Math.max(document.documentElement.scrollWidth, innerWidth),
+              height: Math.max(document.documentElement.scrollHeight, innerHeight),
+            }));
+            // WebKit cannot encode a PNG dimension above 32767 CSS pixels.
+            // Keep every route/assertion; record when evidence captures only the viewport.
+            const fullPage = documentSize.width < 32700 && documentSize.height < 32700;
+            await info.attach(`capture-scope-${route.split("/")[0]}`, {
+              body: JSON.stringify({ route, viewportWidth: width, documentSize, fullPage,
+                captureScope: fullPage ? "full-page" : "viewport", safeDimensionLimit: 32700 }),
+              contentType: "application/json",
+            });
             await page.screenshot({
               path: info.outputPath(
                 `${engine}-${width}-${route.split("/")[0]}.png`,
               ),
-              fullPage: true,
+              fullPage,
               scale: "css",
               animations: "disabled",
             });

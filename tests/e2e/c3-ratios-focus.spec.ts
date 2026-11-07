@@ -24,7 +24,7 @@ const ids = oracles.map(p => p.id);
 const read = (page: Page): Promise<Progress> => page.evaluate(key => JSON.parse(localStorage.getItem(key)!), KEY);
 const errors = new WeakMap<Page, string[]>();
 function observe(page: Page) { const items: string[] = []; errors.set(page, items); page.on("pageerror", e => items.push(e.message)); page.on("console", m => { if (m.type() === "error")
-    items.push(m.text()); }); page.on("response", r => { if (r.status() >= 400 && [base, second].some(origin => r.url().startsWith(origin)))
+    items.push(m.text()); }); page.on("response", r => { if (r.status() >= 400 && [new URL(base).origin, new URL(second).origin].includes(new URL(r.url()).origin))
     items.push(`HTTP${r.status()} ${r.url()}`); }); }
 async function fits(page: Page) { expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true); }
 async function noLeaks(page: Page) { await expect(page.locator(".feedback,.hint,.assumptions,.formula-card,.support-card")).toHaveCount(0); }

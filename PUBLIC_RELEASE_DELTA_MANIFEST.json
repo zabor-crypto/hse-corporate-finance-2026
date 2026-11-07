@@ -710,7 +710,7 @@
     {
       "path": "tests/e2e/c3-ratios-focus.spec.ts",
       "acceptedSourceSha256": "7c72bb3a20feafc0d321e6c3a195e2483aac4abbb4f2be1bccf049d92f25ef91",
-      "publicSha256": "9e1c0eeff294c7b851d5e8f7f6957283bbc32f11c4273a6e958504fb9b4fedbd",
+      "publicSha256": "e2228ffd23d7eccef24ce8c50dd3a9f1bcd3d02df1e13f07585ceb53f6c2de87",
       "exactAcceptedBytes": false
     },
     {

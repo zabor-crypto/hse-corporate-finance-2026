@@ -1,0 +1,145 @@
+{
+  "origin": "Independent Finance Reviewer, rational NI reconciliation and average-component routes; no application engine used",
+  "id": "C3-C01",
+  "version": "1.0.0",
+  "inputs": {
+    "retailSales": 560,
+    "supplierSales": 240,
+    "currentInternalSales": 100,
+    "retailOperatingExpensesExDa": 410,
+    "supplierOperatingExpensesExDa": 180,
+    "retailDa": 30,
+    "supplierDa": 20,
+    "retailExternalInterest": 12,
+    "supplierExternalInterest": 8,
+    "tax": 0.25,
+    "openingRetailAssets": 300,
+    "openingSupplierAssets": 180,
+    "closingRetailAssets": 340,
+    "closingSupplierAssets": 210,
+    "openingInternalReceivable": 24,
+    "closingInternalReceivable": 36,
+    "openingInternalInventoryTransferValue": 30,
+    "openingInternalInventorySupplierCost": 20,
+    "closingInternalInventoryTransferValue": 45,
+    "closingInternalInventorySupplierCost": 30
+  },
+  "stages": [
+    {
+      "id": "group-sales",
+      "expected": 700.0,
+      "exact": "700",
+      "unit": "млн ₽"
+    },
+    {
+      "id": "profit-change",
+      "expected": 5.0,
+      "exact": "5",
+      "unit": "млн ₽"
+    },
+    {
+      "id": "group-ebit",
+      "expected": 155.0,
+      "exact": "155",
+      "unit": "млн ₽"
+    },
+    {
+      "id": "average-assets",
+      "expected": 475.625,
+      "exact": "3805/8",
+      "unit": "млн ₽"
+    },
+    {
+      "id": "group-ni",
+      "expected": 101.25,
+      "exact": "405/4",
+      "unit": "млн ₽"
+    },
+    {
+      "id": "group-turnover",
+      "expected": 1.471747700394218,
+      "exact": "1120/761",
+      "unit": "раза"
+    },
+    {
+      "id": "group-margin",
+      "expected": 16.607142857142858,
+      "exact": "465/28",
+      "unit": "%"
+    },
+    {
+      "id": "group-roa",
+      "expected": 24.441524310118265,
+      "exact": "18600/761",
+      "unit": "%"
+    }
+  ],
+  "proof": {
+    "openingInternalProfit": {
+      "exact": "10",
+      "value": 10.0
+    },
+    "closingInternalProfit": {
+      "exact": "15",
+      "value": 15.0
+    },
+    "individualNI": {
+      "exact": "105",
+      "value": 105.0
+    },
+    "currentTax": {
+      "exact": "35",
+      "value": 35.0
+    },
+    "openingDTA": {
+      "exact": "5/2",
+      "value": 2.5
+    },
+    "closingDTA": {
+      "exact": "15/4",
+      "value": 3.75
+    },
+    "taxExpense": {
+      "exact": "135/4",
+      "value": 33.75
+    },
+    "groupEBT": {
+      "exact": "135",
+      "value": 135.0
+    },
+    "NOPAT": {
+      "exact": "465/4",
+      "value": 116.25
+    },
+    "openingAdjustedAssets": {
+      "exact": "897/2",
+      "value": 448.5
+    },
+    "closingAdjustedAssets": {
+      "exact": "2011/4",
+      "value": 502.75
+    },
+    "averageAdjustedAssets": {
+      "exact": "3805/8",
+      "value": 475.625
+    },
+    "alternativeAverageAdjustedAssets": {
+      "exact": "3805/8",
+      "value": 475.625
+    },
+    "NIifOpeningProfitReleaseOmitted": {
+      "exact": "375/4",
+      "value": 93.75
+    }
+  },
+  "manualReview": {
+    "allConsolidationAdjustmentsExplicitlyBounded": true,
+    "sameDateEliminationsBeforeAverage": true,
+    "DTAexcludedFromIndividualAssetsThenAddedOnce": true,
+    "externalInterestRetained": true,
+    "expenseNotCashTaxPayment": true,
+    "NOPATdistinctFromNI": true,
+    "source3_3UnderdeterminationNotRetconned": true,
+    "oneScenarioNotEvidenceOfBroadMastery": true
+  }
+}

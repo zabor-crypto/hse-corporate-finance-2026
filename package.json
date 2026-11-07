@@ -1,7 +1,7 @@
 {
   "name": "hse-corporate-finance-2026",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
@@ -10,15 +10,17 @@
     "test": "vitest run",
     "review:storage": "node tests/review/storage-review.mjs",
     "test:e2e": "playwright test",
-    "test:financial": "vitest run tests/unit/finance.test.ts tests/unit/ratios.test.ts tests/unit/financial-fixtures.test.ts tests/unit/tranche03-oracles.test.ts",
+    "test:financial": "vitest run tests/unit/finance.test.ts tests/unit/ratios.test.ts tests/unit/financial-fixtures.test.ts tests/unit/tranche03-oracles.test.ts tests/unit/three-year.test.ts tests/unit/c3-content.test.ts tests/unit/c3-oracles.test.ts",
     "audit:artifact": "node scripts/audit-artifact.mjs",
     "audit:public": "node scripts/audit-public.mjs",
     "check:release": "node scripts/check-release.mjs",
     "handoff": "node scripts/create-handoff.mjs",
-    "prepare:public": "node scripts/prepare-public-source.mjs"
+    "prepare:public": "node scripts/prepare-public-source.mjs",
+    "test:curriculum": "vitest run tests/unit/curriculum-registry.test.ts tests/unit/curriculum-content-integrity.test.ts tests/unit/curriculum-storage.test.ts tests/unit/future-topic-ui.test.ts tests/unit/c3-blueprints.test.ts",
+    "test:e2e:c3": "playwright test --config playwright.c3-qa.config.ts"
   },
   "dependencies": {
-    "katex": "^0.16.25",
+    "katex": "0.18.2",
     "lucide-react": "^0.468.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"

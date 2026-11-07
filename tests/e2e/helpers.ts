@@ -153,6 +153,7 @@ export function referenceUnit(label: string) {
     "%": "percent",
     "п.п.": "percentage-point",
     раз: "multiple",
+    раза: "multiple",
     дни: "day",
     дней: "day",
   };

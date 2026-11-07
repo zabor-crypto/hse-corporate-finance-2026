@@ -1,0 +1,2680 @@
+{
+  "method": "Separate Fraction calculations from actual stated facts; formulas and examples read manually; no application finance engine imported.",
+  "newLessons": {
+    "T3-02": [
+      [
+        {
+          "monthlyFixedRent": {
+            "exact": "3/5",
+            "value": 0.6
+          },
+          "minimumCapacity": {
+            "exact": "1000",
+            "value": 1000.0
+          },
+          "maximumCapacity": {
+            "exact": "2000",
+            "value": 2000.0
+          }
+        },
+        {
+          "production": {
+            "exact": "102",
+            "value": 102.0
+          },
+          "variableProduction": {
+            "exact": "93",
+            "value": 93.0
+          },
+          "fixedProduction": {
+            "exact": "9",
+            "value": 9.0
+          },
+          "SGA": {
+            "exact": "28",
+            "value": 28.0
+          }
+        }
+      ],
+      [
+        {
+          "resourceFG": {
+            "exact": "29",
+            "value": 29.0
+          },
+          "COGS": {
+            "exact": "22",
+            "value": 22.0
+          }
+        },
+        {
+          "materials": {
+            "exact": "60",
+            "value": 60.0
+          },
+          "production": {
+            "exact": "102",
+            "value": 102.0
+          },
+          "produced": {
+            "exact": "99",
+            "value": 99.0
+          },
+          "cogs": {
+            "exact": "90",
+            "value": 90.0
+          },
+          "EBIT": {
+            "exact": "62",
+            "value": 62.0
+          },
+          "DA": {
+            "exact": "8",
+            "value": 8.0
+          },
+          "EBITDA": {
+            "exact": "70",
+            "value": 70.0
+          },
+          "EBT": {
+            "exact": "52",
+            "value": 52.0
+          },
+          "tax": {
+            "exact": "13",
+            "value": 13.0
+          },
+          "NI": {
+            "exact": "39",
+            "value": 39.0
+          },
+          "NOPAT": {
+            "exact": "93/2",
+            "value": 46.5
+          }
+        }
+      ],
+      [
+        {
+          "EBIT": {
+            "exact": "30",
+            "value": 30.0
+          },
+          "DA": {
+            "exact": "5",
+            "value": 5.0
+          },
+          "EBITDA": {
+            "exact": "35",
+            "value": 35.0
+          }
+        },
+        {
+          "materials": {
+            "exact": "60",
+            "value": 60.0
+          },
+          "production": {
+            "exact": "102",
+            "value": 102.0
+          },
+          "produced": {
+            "exact": "99",
+            "value": 99.0
+          },
+          "cogs": {
+            "exact": "90",
+            "value": 90.0
+          },
+          "EBIT": {
+            "exact": "62",
+            "value": 62.0
+          },
+          "DA": {
+            "exact": "8",
+            "value": 8.0
+          },
+          "EBITDA": {
+            "exact": "70",
+            "value": 70.0
+          },
+          "EBT": {
+            "exact": "52",
+            "value": 52.0
+          },
+          "tax": {
+            "exact": "13",
+            "value": 13.0
+          },
+          "NI": {
+            "exact": "39",
+            "value": 39.0
+          },
+          "NOPAT": {
+            "exact": "93/2",
+            "value": 46.5
+          }
+        }
+      ],
+      [
+        {
+          "EBT": {
+            "exact": "15",
+            "value": 15.0
+          },
+          "tax": {
+            "exact": "3",
+            "value": 3.0
+          },
+          "NI": {
+            "exact": "12",
+            "value": 12.0
+          },
+          "NOPAT": {
+            "exact": "16",
+            "value": 16.0
+          }
+        },
+        {
+          "materials": {
+            "exact": "60",
+            "value": 60.0
+          },
+          "production": {
+            "exact": "102",
+            "value": 102.0
+          },
+          "produced": {
+            "exact": "99",
+            "value": 99.0
+          },
+          "cogs": {
+            "exact": "90",
+            "value": 90.0
+          },
+          "EBIT": {
+            "exact": "62",
+            "value": 62.0
+          },
+          "DA": {
+            "exact": "8",
+            "value": 8.0
+          },
+          "EBITDA": {
+            "exact": "70",
+            "value": 70.0
+          },
+          "EBT": {
+            "exact": "52",
+            "value": 52.0
+          },
+          "tax": {
+            "exact": "13",
+            "value": 13.0
+          },
+          "NI": {
+            "exact": "39",
+            "value": 39.0
+          },
+          "NOPAT": {
+            "exact": "93/2",
+            "value": 46.5
+          }
+        }
+      ],
+      [
+        {
+          "growthFactor": {
+            "exact": "5/4",
+            "value": 1.25
+          },
+          "growthRate": {
+            "exact": "1/4",
+            "value": 0.25
+          }
+        },
+        {
+          "salesGrowth": {
+            "exact": "1/5",
+            "value": 0.2
+          },
+          "EBITgrowth": {
+            "exact": "6/25",
+            "value": 0.24
+          },
+          "NIgrowth": {
+            "exact": "3/10",
+            "value": 0.3
+          },
+          "COGSshare": {
+            "exact": "1/2",
+            "value": 0.5
+          },
+          "SGAshare": {
+            "exact": "7/45",
+            "value": 0.15555555555555556
+          },
+          "EBITmargin": {
+            "exact": "31/90",
+            "value": 0.34444444444444444
+          },
+          "NOPATmargin": {
+            "exact": "31/120",
+            "value": 0.25833333333333336
+          },
+          "NIshare": {
+            "exact": "13/60",
+            "value": 0.21666666666666667
+          }
+        }
+      ],
+      [
+        {
+          "produced": {
+            "exact": "32",
+            "value": 32.0
+          },
+          "resourceFG": {
+            "exact": "36",
+            "value": 36.0
+          }
+        },
+        {
+          "materials": {
+            "exact": "75",
+            "value": 75.0
+          },
+          "production": {
+            "exact": "125",
+            "value": 125.0
+          },
+          "produced": {
+            "exact": "128",
+            "value": 128.0
+          },
+          "cogs": {
+            "exact": "118",
+            "value": 118.0
+          },
+          "EBIT": {
+            "exact": "72",
+            "value": 72.0
+          },
+          "DA": {
+            "exact": "8",
+            "value": 8.0
+          },
+          "EBITDA": {
+            "exact": "80",
+            "value": 80.0
+          },
+          "EBT": {
+            "exact": "64",
+            "value": 64.0
+          },
+          "tax": {
+            "exact": "64/5",
+            "value": 12.8
+          },
+          "NI": {
+            "exact": "256/5",
+            "value": 51.2
+          },
+          "NOPAT": {
+            "exact": "288/5",
+            "value": 57.6
+          }
+        }
+      ]
+    ],
+    "T3-04": [
+      [
+        {
+          "CFO": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "CFI": {
+            "exact": "-8",
+            "value": -8.0
+          },
+          "CFF": {
+            "exact": "10",
+            "value": 10.0
+          },
+          "deltaCash": {
+            "exact": "2",
+            "value": 2.0
+          },
+          "cashEnd": {
+            "exact": "7",
+            "value": 7.0
+          }
+        },
+        {
+          "CFI": {
+            "exact": "-35",
+            "value": -35.0
+          },
+          "CFF": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "cashOffset": {
+            "exact": "-15",
+            "value": -15.0
+          }
+        }
+      ],
+      [
+        {
+          "collections": {
+            "exact": "25",
+            "value": 25.0
+          }
+        },
+        {
+          "EBITDA": {
+            "exact": "70",
+            "value": 70.0
+          },
+          "EBIT": {
+            "exact": "60",
+            "value": 60.0
+          },
+          "EBT": {
+            "exact": "54",
+            "value": 54.0
+          },
+          "tax": {
+            "exact": "54/5",
+            "value": 10.8
+          },
+          "NI": {
+            "exact": "216/5",
+            "value": 43.2
+          },
+          "NOPAT": {
+            "exact": "48",
+            "value": 48.0
+          },
+          "NWC0": {
+            "exact": "45",
+            "value": 45.0
+          },
+          "NWC1": {
+            "exact": "57",
+            "value": 57.0
+          },
+          "deltaNWC": {
+            "exact": "12",
+            "value": 12.0
+          },
+          "receipts": {
+            "exact": "288",
+            "value": 288.0
+          },
+          "purchases": {
+            "exact": "186",
+            "value": 186.0
+          },
+          "supplierPayments": {
+            "exact": "180",
+            "value": 180.0
+          },
+          "CFO": {
+            "exact": "206/5",
+            "value": 41.2
+          },
+          "FCFF": {
+            "exact": "11",
+            "value": 11.0
+          },
+          "FCFE": {
+            "exact": "106/5",
+            "value": 21.2
+          },
+          "cashEnd": {
+            "exact": "131/5",
+            "value": 26.2
+          },
+          "PPEend": {
+            "exact": "135",
+            "value": 135.0
+          },
+          "debtEnd": {
+            "exact": "90",
+            "value": 90.0
+          },
+          "equityEnd": {
+            "exact": "641/5",
+            "value": 128.2
+          },
+          "assetsEnd": {
+            "exact": "1246/5",
+            "value": 249.2
+          }
+        }
+      ],
+      [
+        {
+          "CFO": {
+            "exact": "20",
+            "value": 20.0
+          }
+        },
+        {
+          "EBITDA": {
+            "exact": "70",
+            "value": 70.0
+          },
+          "EBIT": {
+            "exact": "60",
+            "value": 60.0
+          },
+          "EBT": {
+            "exact": "54",
+            "value": 54.0
+          },
+          "tax": {
+            "exact": "54/5",
+            "value": 10.8
+          },
+          "NI": {
+            "exact": "216/5",
+            "value": 43.2
+          },
+          "NOPAT": {
+            "exact": "48",
+            "value": 48.0
+          },
+          "NWC0": {
+            "exact": "45",
+            "value": 45.0
+          },
+          "NWC1": {
+            "exact": "57",
+            "value": 57.0
+          },
+          "deltaNWC": {
+            "exact": "12",
+            "value": 12.0
+          },
+          "receipts": {
+            "exact": "288",
+            "value": 288.0
+          },
+          "purchases": {
+            "exact": "186",
+            "value": 186.0
+          },
+          "supplierPayments": {
+            "exact": "180",
+            "value": 180.0
+          },
+          "CFO": {
+            "exact": "206/5",
+            "value": 41.2
+          },
+          "FCFF": {
+            "exact": "11",
+            "value": 11.0
+          },
+          "FCFE": {
+            "exact": "106/5",
+            "value": 21.2
+          },
+          "cashEnd": {
+            "exact": "131/5",
+            "value": 26.2
+          },
+          "PPEend": {
+            "exact": "135",
+            "value": 135.0
+          },
+          "debtEnd": {
+            "exact": "90",
+            "value": 90.0
+          },
+          "equityEnd": {
+            "exact": "641/5",
+            "value": 128.2
+          },
+          "assetsEnd": {
+            "exact": "1246/5",
+            "value": 249.2
+          }
+        }
+      ],
+      [
+        {
+          "FCFF": {
+            "exact": "16",
+            "value": 16.0
+          }
+        },
+        {
+          "EBITDA": {
+            "exact": "70",
+            "value": 70.0
+          },
+          "EBIT": {
+            "exact": "60",
+            "value": 60.0
+          },
+          "EBT": {
+            "exact": "54",
+            "value": 54.0
+          },
+          "tax": {
+            "exact": "54/5",
+            "value": 10.8
+          },
+          "NI": {
+            "exact": "216/5",
+            "value": 43.2
+          },
+          "NOPAT": {
+            "exact": "48",
+            "value": 48.0
+          },
+          "NWC0": {
+            "exact": "45",
+            "value": 45.0
+          },
+          "NWC1": {
+            "exact": "57",
+            "value": 57.0
+          },
+          "deltaNWC": {
+            "exact": "12",
+            "value": 12.0
+          },
+          "receipts": {
+            "exact": "288",
+            "value": 288.0
+          },
+          "purchases": {
+            "exact": "186",
+            "value": 186.0
+          },
+          "supplierPayments": {
+            "exact": "180",
+            "value": 180.0
+          },
+          "CFO": {
+            "exact": "206/5",
+            "value": 41.2
+          },
+          "FCFF": {
+            "exact": "11",
+            "value": 11.0
+          },
+          "FCFE": {
+            "exact": "106/5",
+            "value": 21.2
+          },
+          "cashEnd": {
+            "exact": "131/5",
+            "value": 26.2
+          },
+          "PPEend": {
+            "exact": "135",
+            "value": 135.0
+          },
+          "debtEnd": {
+            "exact": "90",
+            "value": 90.0
+          },
+          "equityEnd": {
+            "exact": "641/5",
+            "value": 128.2
+          },
+          "assetsEnd": {
+            "exact": "1246/5",
+            "value": 249.2
+          }
+        }
+      ],
+      [
+        {
+          "NB": {
+            "exact": "5",
+            "value": 5.0
+          },
+          "afterTaxInterest": {
+            "exact": "4",
+            "value": 4.0
+          },
+          "FCFE": {
+            "exact": "31",
+            "value": 31.0
+          }
+        },
+        {
+          "EBITDA": {
+            "exact": "70",
+            "value": 70.0
+          },
+          "EBIT": {
+            "exact": "60",
+            "value": 60.0
+          },
+          "EBT": {
+            "exact": "54",
+            "value": 54.0
+          },
+          "tax": {
+            "exact": "54/5",
+            "value": 10.8
+          },
+          "NI": {
+            "exact": "216/5",
+            "value": 43.2
+          },
+          "NOPAT": {
+            "exact": "48",
+            "value": 48.0
+          },
+          "NWC0": {
+            "exact": "45",
+            "value": 45.0
+          },
+          "NWC1": {
+            "exact": "57",
+            "value": 57.0
+          },
+          "deltaNWC": {
+            "exact": "12",
+            "value": 12.0
+          },
+          "receipts": {
+            "exact": "288",
+            "value": 288.0
+          },
+          "purchases": {
+            "exact": "186",
+            "value": 186.0
+          },
+          "supplierPayments": {
+            "exact": "180",
+            "value": 180.0
+          },
+          "CFO": {
+            "exact": "206/5",
+            "value": 41.2
+          },
+          "FCFF": {
+            "exact": "11",
+            "value": 11.0
+          },
+          "FCFE": {
+            "exact": "106/5",
+            "value": 21.2
+          },
+          "cashEnd": {
+            "exact": "131/5",
+            "value": 26.2
+          },
+          "PPEend": {
+            "exact": "135",
+            "value": 135.0
+          },
+          "debtEnd": {
+            "exact": "90",
+            "value": 90.0
+          },
+          "equityEnd": {
+            "exact": "641/5",
+            "value": 128.2
+          },
+          "assetsEnd": {
+            "exact": "1246/5",
+            "value": 249.2
+          }
+        }
+      ],
+      [
+        {
+          "CFO_fin": {
+            "exact": "236/5",
+            "value": 47.2
+          },
+          "CFF_fin": {
+            "exact": "-6",
+            "value": -6.0
+          },
+          "deltaCash": {
+            "exact": "31/5",
+            "value": 6.2
+          },
+          "FCFF": {
+            "exact": "11",
+            "value": 11.0
+          }
+        },
+        {
+          "CFI": {
+            "exact": "-27",
+            "value": -27.0
+          },
+          "cashEnd": {
+            "exact": "171/5",
+            "value": 34.2
+          },
+          "PPEend": {
+            "exact": "127",
+            "value": 127.0
+          },
+          "FCFFexpanded": {
+            "exact": "19",
+            "value": 19.0
+          },
+          "FCFEexpanded": {
+            "exact": "146/5",
+            "value": 29.2
+          },
+          "deltaCash": {
+            "exact": "71/5",
+            "value": 14.2
+          }
+        }
+      ],
+      [
+        {
+          "NWC_cash_effect": {
+            "exact": "-4",
+            "value": -4.0
+          }
+        },
+        {
+          "EBITDA": {
+            "exact": "60",
+            "value": 60.0
+          },
+          "EBIT": {
+            "exact": "50",
+            "value": 50.0
+          },
+          "NI": {
+            "exact": "36",
+            "value": 36.0
+          },
+          "NOPAT": {
+            "exact": "40",
+            "value": 40.0
+          },
+          "deltaNWC": {
+            "exact": "10",
+            "value": 10.0
+          },
+          "CFO": {
+            "exact": "36",
+            "value": 36.0
+          },
+          "FCFF": {
+            "exact": "15",
+            "value": 15.0
+          },
+          "FCFE": {
+            "exact": "17",
+            "value": 17.0
+          },
+          "CFI": {
+            "exact": "-25",
+            "value": -25.0
+          },
+          "CFF": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "cashEnd": {
+            "exact": "23",
+            "value": 23.0
+          }
+        }
+      ]
+    ],
+    "T3-09": [
+      [
+        {
+          "EPS": {
+            "exact": "4",
+            "value": 4.0
+          },
+          "DPS": {
+            "exact": "8/5",
+            "value": 1.6
+          },
+          "payout": {
+            "exact": "2/5",
+            "value": 0.4
+          },
+          "retention": {
+            "exact": "3/5",
+            "value": 0.6
+          }
+        },
+        {
+          "EPS0": {
+            "exact": "24/5",
+            "value": 4.8
+          },
+          "DIV0_A": {
+            "exact": "48",
+            "value": 48.0
+          },
+          "DPS0_A": {
+            "exact": "12/5",
+            "value": 2.4
+          },
+          "retainedA": {
+            "exact": "48",
+            "value": 48.0
+          },
+          "DIV0_B": {
+            "exact": "288/5",
+            "value": 57.6
+          },
+          "DPS0_B": {
+            "exact": "72/25",
+            "value": 2.88
+          },
+          "retainedB": {
+            "exact": "192/5",
+            "value": 38.4
+          },
+          "immediateDifference": {
+            "exact": "48/5",
+            "value": 9.6
+          }
+        }
+      ],
+      [
+        {
+          "retained": {
+            "exact": "5",
+            "value": 5.0
+          },
+          "Equity1": {
+            "exact": "105",
+            "value": 105.0
+          },
+          "NI1": {
+            "exact": "21",
+            "value": 21.0
+          },
+          "growth": {
+            "exact": "1/20",
+            "value": 0.05
+          }
+        },
+        {
+          "NOPAT0": {
+            "exact": "128",
+            "value": 128.0
+          },
+          "I0": {
+            "exact": "40",
+            "value": 40.0
+          },
+          "NI0": {
+            "exact": "96",
+            "value": 96.0
+          },
+          "ROE": {
+            "exact": "6/25",
+            "value": 0.24
+          },
+          "Equity0": {
+            "exact": "448",
+            "value": 448.0
+          },
+          "debt0": {
+            "exact": "448",
+            "value": 448.0
+          },
+          "NOPAT1": {
+            "exact": "3584/25",
+            "value": 143.36
+          },
+          "interest1": {
+            "exact": "224/5",
+            "value": 44.8
+          },
+          "NI1": {
+            "exact": "2688/25",
+            "value": 107.52
+          },
+          "growth": {
+            "exact": "3/25",
+            "value": 0.12
+          }
+        }
+      ],
+      [
+        {
+          "DIV1": {
+            "exact": "21/5",
+            "value": 4.2
+          },
+          "P0": {
+            "exact": "105/2",
+            "value": 52.5
+          }
+        },
+        {
+          "DIV1": {
+            "exact": "1344/25",
+            "value": 53.76
+          },
+          "P0": {
+            "exact": "672",
+            "value": 672.0
+          },
+          "DPS1": {
+            "exact": "336/125",
+            "value": 2.688
+          },
+          "pricePerShare": {
+            "exact": "168/5",
+            "value": 33.6
+          }
+        }
+      ],
+      [
+        {
+          "divYield": {
+            "exact": "3/50",
+            "value": 0.06
+          },
+          "requiredReturn": {
+            "exact": "1/10",
+            "value": 0.1
+          }
+        },
+        {
+          "price1": {
+            "exact": "18816/25",
+            "value": 752.64
+          },
+          "priceGain": {
+            "exact": "2016/25",
+            "value": 80.64
+          },
+          "TSR": {
+            "exact": "1/5",
+            "value": 0.2
+          },
+          "ROE": {
+            "exact": "6/25",
+            "value": 0.24
+          },
+          "PB": {
+            "exact": "3/2",
+            "value": 1.5
+          },
+          "newPayoutPrice": {
+            "exact": "39456/65",
+            "value": 607.0153846153846
+          },
+          "wealthA": {
+            "exact": "720",
+            "value": 720.0
+          },
+          "wealthB": {
+            "exact": "8640/13",
+            "value": 664.6153846153846
+          }
+        }
+      ],
+      [
+        {
+          "growth": {
+            "exact": "1/20",
+            "value": 0.05
+          },
+          "retention": {
+            "exact": "1/4",
+            "value": 0.25
+          },
+          "payout": {
+            "exact": "3/4",
+            "value": 0.75
+          }
+        },
+        {
+          "growth": {
+            "exact": "1/10",
+            "value": 0.1
+          },
+          "ROE": {
+            "exact": "1/4",
+            "value": 0.25
+          },
+          "DIV1": {
+            "exact": "198/5",
+            "value": 39.6
+          },
+          "price": {
+            "exact": "396",
+            "value": 396.0
+          },
+          "newGrowth": {
+            "exact": "1/8",
+            "value": 0.125
+          },
+          "newDIV1": {
+            "exact": "135/4",
+            "value": 33.75
+          },
+          "newPrice": {
+            "exact": "450",
+            "value": 450.0
+          }
+        }
+      ],
+      [
+        {
+          "ROE": {
+            "exact": "51/200",
+            "value": 0.255
+          },
+          "upliftPP": {
+            "exact": "21/2",
+            "value": 10.5
+          }
+        },
+        {
+          "ROE": {
+            "exact": "51/200",
+            "value": 0.255
+          },
+          "growth": {
+            "exact": "51/400",
+            "value": 0.1275
+          },
+          "DIV1": {
+            "exact": "1353/8",
+            "value": 169.125
+          },
+          "P0": {
+            "exact": "67650/17",
+            "value": 3979.4117647058824
+          },
+          "newROE": {
+            "exact": "29/100",
+            "value": 0.29
+          },
+          "newGrowth": {
+            "exact": "29/200",
+            "value": 0.145
+          },
+          "newDIV1": {
+            "exact": "687/4",
+            "value": 171.75
+          },
+          "newPrice": {
+            "exact": "6870",
+            "value": 6870.0
+          },
+          "targetROE": {
+            "exact": "51/160",
+            "value": 0.31875
+          },
+          "targetDE": {
+            "exact": "135/56",
+            "value": 2.4107142857142856
+          },
+          "deltaDE": {
+            "exact": "51/56",
+            "value": 0.9107142857142857
+          }
+        }
+      ],
+      [
+        {
+          "retention": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "growth": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "DIV1": {
+            "exact": "40",
+            "value": 40.0
+          },
+          "P0": {
+            "exact": "1000/3",
+            "value": 333.3333333333333
+          }
+        },
+        {
+          "retention": {
+            "exact": "3/5",
+            "value": 0.6
+          },
+          "growth": {
+            "exact": "9/100",
+            "value": 0.09
+          },
+          "DIV1": {
+            "exact": "436/25",
+            "value": 17.44
+          },
+          "priceLowDiscount": {
+            "exact": "1744/3",
+            "value": 581.3333333333334
+          },
+          "priceHighDiscount": {
+            "exact": "436",
+            "value": 436.0
+          },
+          "priceChange": {
+            "exact": "-436/3",
+            "value": -145.33333333333334
+          },
+          "relativePriceChange": {
+            "exact": "-1/4",
+            "value": -0.25
+          }
+        }
+      ]
+    ],
+    "T3-10": [
+      [
+        {
+          "CFO": {
+            "exact": "3/2",
+            "value": 1.5
+          },
+          "beforeFinancing": {
+            "exact": "-1/2",
+            "value": -0.5
+          }
+        },
+        {
+          "NWC0": {
+            "exact": "9/5",
+            "value": 1.8
+          },
+          "NWC1": {
+            "exact": "3",
+            "value": 3.0
+          },
+          "deltaNWC": {
+            "exact": "6/5",
+            "value": 1.2
+          },
+          "CFO": {
+            "exact": "1",
+            "value": 1.0
+          },
+          "cashBefore": {
+            "exact": "-1/10",
+            "value": -0.1
+          },
+          "borrowing": {
+            "exact": "2/5",
+            "value": 0.4
+          },
+          "PPE1": {
+            "exact": "49/10",
+            "value": 4.9
+          },
+          "equity1": {
+            "exact": "39/5",
+            "value": 7.8
+          },
+          "assets1": {
+            "exact": "87/10",
+            "value": 8.7
+          }
+        }
+      ],
+      [
+        {
+          "CM_RUB": {
+            "exact": "80000",
+            "value": 80000.0
+          },
+          "EBIT_RUB": {
+            "exact": "30000",
+            "value": 30000.0
+          },
+          "EBITDA_RUB": {
+            "exact": "40000",
+            "value": 40000.0
+          }
+        },
+        {
+          "Sales0": {
+            "exact": "12000000",
+            "value": 12000000.0
+          },
+          "Sales1": {
+            "exact": "12650000",
+            "value": 12650000.0
+          },
+          "VC0": {
+            "exact": "7000000",
+            "value": 7000000.0
+          },
+          "VCflex": {
+            "exact": "7700000",
+            "value": 7700000.0
+          },
+          "VC1": {
+            "exact": "8030000",
+            "value": 8030000.0
+          },
+          "EBIT0": {
+            "exact": "2000000",
+            "value": 2000000.0
+          },
+          "EBITflex": {
+            "exact": "2500000",
+            "value": 2500000.0
+          },
+          "EBIT1": {
+            "exact": "1470000",
+            "value": 1470000.0
+          },
+          "revenueVolume": {
+            "exact": "1200000",
+            "value": 1200000.0
+          },
+          "revenuePrice": {
+            "exact": "-500000",
+            "value": -500000.0
+          },
+          "revenueInteraction": {
+            "exact": "-50000",
+            "value": -50000.0
+          },
+          "revenueChange": {
+            "exact": "650000",
+            "value": 650000.0
+          },
+          "profitVolume": {
+            "exact": "500000",
+            "value": 500000.0
+          },
+          "profitPrice": {
+            "exact": "-550000",
+            "value": -550000.0
+          },
+          "profitUnitCost": {
+            "exact": "-330000",
+            "value": -330000.0
+          },
+          "profitFixed": {
+            "exact": "-150000",
+            "value": -150000.0
+          },
+          "profitChange": {
+            "exact": "-530000",
+            "value": -530000.0
+          }
+        }
+      ],
+      [
+        {
+          "breakevenUnits": {
+            "exact": "6000",
+            "value": 6000.0
+          },
+          "EBIT_at_breakeven": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "DOL_at_zero": null
+        },
+        {
+          "DOL": {
+            "exact": "5/2",
+            "value": 2.5
+          },
+          "volumeGrowth": {
+            "exact": "1/10",
+            "value": 0.1
+          },
+          "profitGrowth": {
+            "exact": "1/4",
+            "value": 0.25
+          },
+          "newEBIT_RUB": {
+            "exact": "2500000",
+            "value": 2500000.0
+          }
+        }
+      ],
+      [
+        {
+          "Sales0": {
+            "exact": "1000",
+            "value": 1000.0
+          },
+          "Sales1": {
+            "exact": "1080",
+            "value": 1080.0
+          },
+          "VC0": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "VCflex": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "VC1": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "EBIT0": {
+            "exact": "1000",
+            "value": 1000.0
+          },
+          "EBITflex": {
+            "exact": "1200",
+            "value": 1200.0
+          },
+          "EBIT1": {
+            "exact": "1080",
+            "value": 1080.0
+          },
+          "revenueVolume": {
+            "exact": "200",
+            "value": 200.0
+          },
+          "revenuePrice": {
+            "exact": "-100",
+            "value": -100.0
+          },
+          "revenueInteraction": {
+            "exact": "-20",
+            "value": -20.0
+          },
+          "revenueChange": {
+            "exact": "80",
+            "value": 80.0
+          },
+          "profitVolume": {
+            "exact": "200",
+            "value": 200.0
+          },
+          "profitPrice": {
+            "exact": "-120",
+            "value": -120.0
+          },
+          "profitUnitCost": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "profitFixed": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "profitChange": {
+            "exact": "80",
+            "value": 80.0
+          }
+        },
+        {
+          "Sales0": {
+            "exact": "12000000",
+            "value": 12000000.0
+          },
+          "Sales1": {
+            "exact": "12650000",
+            "value": 12650000.0
+          },
+          "VC0": {
+            "exact": "7000000",
+            "value": 7000000.0
+          },
+          "VCflex": {
+            "exact": "7700000",
+            "value": 7700000.0
+          },
+          "VC1": {
+            "exact": "8030000",
+            "value": 8030000.0
+          },
+          "EBIT0": {
+            "exact": "2000000",
+            "value": 2000000.0
+          },
+          "EBITflex": {
+            "exact": "2500000",
+            "value": 2500000.0
+          },
+          "EBIT1": {
+            "exact": "1470000",
+            "value": 1470000.0
+          },
+          "revenueVolume": {
+            "exact": "1200000",
+            "value": 1200000.0
+          },
+          "revenuePrice": {
+            "exact": "-500000",
+            "value": -500000.0
+          },
+          "revenueInteraction": {
+            "exact": "-50000",
+            "value": -50000.0
+          },
+          "revenueChange": {
+            "exact": "650000",
+            "value": 650000.0
+          },
+          "profitVolume": {
+            "exact": "500000",
+            "value": 500000.0
+          },
+          "profitPrice": {
+            "exact": "-550000",
+            "value": -550000.0
+          },
+          "profitUnitCost": {
+            "exact": "-330000",
+            "value": -330000.0
+          },
+          "profitFixed": {
+            "exact": "-150000",
+            "value": -150000.0
+          },
+          "profitChange": {
+            "exact": "-530000",
+            "value": -530000.0
+          }
+        }
+      ],
+      [
+        {
+          "VC0_RUB": {
+            "exact": "200000",
+            "value": 200000.0
+          },
+          "VCflex_RUB": {
+            "exact": "240000",
+            "value": 240000.0
+          },
+          "VCactual_RUB": {
+            "exact": "246000",
+            "value": 246000.0
+          },
+          "volumeCost_RUB": {
+            "exact": "40000",
+            "value": 40000.0
+          },
+          "unitCost_RUB": {
+            "exact": "6000",
+            "value": 6000.0
+          },
+          "totalCostChange_RUB": {
+            "exact": "46000",
+            "value": 46000.0
+          }
+        },
+        {
+          "Sales0": {
+            "exact": "12000000",
+            "value": 12000000.0
+          },
+          "Sales1": {
+            "exact": "12650000",
+            "value": 12650000.0
+          },
+          "VC0": {
+            "exact": "7000000",
+            "value": 7000000.0
+          },
+          "VCflex": {
+            "exact": "7700000",
+            "value": 7700000.0
+          },
+          "VC1": {
+            "exact": "8030000",
+            "value": 8030000.0
+          },
+          "EBIT0": {
+            "exact": "2000000",
+            "value": 2000000.0
+          },
+          "EBITflex": {
+            "exact": "2500000",
+            "value": 2500000.0
+          },
+          "EBIT1": {
+            "exact": "1470000",
+            "value": 1470000.0
+          },
+          "revenueVolume": {
+            "exact": "1200000",
+            "value": 1200000.0
+          },
+          "revenuePrice": {
+            "exact": "-500000",
+            "value": -500000.0
+          },
+          "revenueInteraction": {
+            "exact": "-50000",
+            "value": -50000.0
+          },
+          "revenueChange": {
+            "exact": "650000",
+            "value": 650000.0
+          },
+          "profitVolume": {
+            "exact": "500000",
+            "value": 500000.0
+          },
+          "profitPrice": {
+            "exact": "-550000",
+            "value": -550000.0
+          },
+          "profitUnitCost": {
+            "exact": "-330000",
+            "value": -330000.0
+          },
+          "profitFixed": {
+            "exact": "-150000",
+            "value": -150000.0
+          },
+          "profitChange": {
+            "exact": "-530000",
+            "value": -530000.0
+          }
+        }
+      ],
+      [
+        {
+          "planRevenue_RUB": {
+            "exact": "40",
+            "value": 40.0
+          },
+          "actualRevenue_RUB": {
+            "exact": "20",
+            "value": 20.0
+          },
+          "totalUnitsBoth": {
+            "exact": "2",
+            "value": 2.0
+          }
+        },
+        {
+          "planCM_RUB": {
+            "exact": "18000",
+            "value": 18000.0
+          },
+          "planEBIT_RUB": {
+            "exact": "12000",
+            "value": 12000.0
+          },
+          "controlCM_RUB": {
+            "exact": "19800",
+            "value": 19800.0
+          },
+          "actualCM_RUB": {
+            "exact": "19200",
+            "value": 19200.0
+          },
+          "volumeEffect_RUB": {
+            "exact": "1800",
+            "value": 1800.0
+          },
+          "mixEffect_RUB": {
+            "exact": "-600",
+            "value": -600.0
+          },
+          "actualEBIT_RUB": {
+            "exact": "13200",
+            "value": 13200.0
+          }
+        }
+      ],
+      [
+        {
+          "uniqueCashCauseIdentified": false
+        },
+        {
+          "Sales0": {
+            "exact": "10000000",
+            "value": 10000000.0
+          },
+          "Sales1": {
+            "exact": "10450000",
+            "value": 10450000.0
+          },
+          "VC0": {
+            "exact": "6000000",
+            "value": 6000000.0
+          },
+          "VCflex": {
+            "exact": "6600000",
+            "value": 6600000.0
+          },
+          "VC1": {
+            "exact": "6875000",
+            "value": 6875000.0
+          },
+          "EBIT0": {
+            "exact": "2000000",
+            "value": 2000000.0
+          },
+          "EBITflex": {
+            "exact": "2400000",
+            "value": 2400000.0
+          },
+          "EBIT1": {
+            "exact": "1475000",
+            "value": 1475000.0
+          },
+          "revenueVolume": {
+            "exact": "1000000",
+            "value": 1000000.0
+          },
+          "revenuePrice": {
+            "exact": "-500000",
+            "value": -500000.0
+          },
+          "revenueInteraction": {
+            "exact": "-50000",
+            "value": -50000.0
+          },
+          "revenueChange": {
+            "exact": "450000",
+            "value": 450000.0
+          },
+          "profitVolume": {
+            "exact": "400000",
+            "value": 400000.0
+          },
+          "profitPrice": {
+            "exact": "-550000",
+            "value": -550000.0
+          },
+          "profitUnitCost": {
+            "exact": "-275000",
+            "value": -275000.0
+          },
+          "profitFixed": {
+            "exact": "-100000",
+            "value": -100000.0
+          },
+          "profitChange": {
+            "exact": "-525000",
+            "value": -525000.0
+          }
+        }
+      ]
+    ]
+  },
+  "baselineFormulaExamples": {
+    "income": {
+      "EBITDA": {
+        "exact": "70",
+        "value": 70.0
+      },
+      "EBIT": {
+        "exact": "50",
+        "value": 50.0
+      },
+      "NI": {
+        "exact": "32",
+        "value": 32.0
+      }
+    },
+    "nopat": {
+      "NOPAT": {
+        "exact": "104",
+        "value": 104.0
+      }
+    },
+    "balance": {
+      "Equity": {
+        "exact": "40",
+        "value": 40.0
+      }
+    },
+    "accounting-nwc": {
+      "NWC": {
+        "exact": "20",
+        "value": 20.0
+      }
+    },
+    "operating-nwc": {
+      "NWC": {
+        "exact": "8",
+        "value": 8.0
+      }
+    },
+    "delta-nwc": {
+      "deltaNWC": {
+        "exact": "3",
+        "value": 3.0
+      }
+    },
+    "nwc-impact": {
+      "effect": {
+        "exact": "-3",
+        "value": -3.0
+      }
+    },
+    "cfo": {
+      "CFO": {
+        "exact": "60",
+        "value": 60.0
+      }
+    },
+    "fcff": {
+      "FCFF": {
+        "exact": "34",
+        "value": 34.0
+      }
+    },
+    "roe": {
+      "ROE": {
+        "exact": "1/2",
+        "value": 0.5
+      }
+    },
+    "roc": {
+      "ROC": {
+        "exact": "52/125",
+        "value": 0.416
+      }
+    },
+    "dupont": {
+      "ROE": {
+        "exact": "1/2",
+        "value": 0.5
+      }
+    },
+    "roe-leverage": {
+      "ROE1": {
+        "exact": "11/50",
+        "value": 0.22
+      },
+      "ROE2": {
+        "exact": "29/100",
+        "value": 0.29
+      }
+    },
+    "ccc": {
+      "days": {
+        "exact": "50",
+        "value": 50.0
+      }
+    },
+    "operating-margin": {
+      "margin": {
+        "exact": "1/6",
+        "value": 0.16666666666666666
+      }
+    },
+    "ratio-basis": {
+      "avgA": {
+        "exact": "100",
+        "value": 100.0
+      },
+      "averageReturn": {
+        "exact": "1/5",
+        "value": 0.2
+      },
+      "openingReturn": {
+        "exact": "1/4",
+        "value": 0.25
+      },
+      "closingReturn": {
+        "exact": "1/6",
+        "value": 0.16666666666666666
+      }
+    },
+    "roa-framings": {
+      "EBIT_ROA": {
+        "exact": "1/5",
+        "value": 0.2
+      },
+      "NOPAT_ROA": {
+        "exact": "4/25",
+        "value": 0.16
+      },
+      "NI_ROA": {
+        "exact": "3/25",
+        "value": 0.12
+      }
+    },
+    "asset-turnover": {
+      "turnover": {
+        "exact": "3",
+        "value": 3.0
+      }
+    },
+    "roa-two-factor": {
+      "ROA": {
+        "exact": "6/25",
+        "value": 0.24
+      }
+    },
+    "roc-capital-bases": {
+      "grossROC": {
+        "exact": "4/25",
+        "value": 0.16
+      },
+      "netROC": {
+        "exact": "1/5",
+        "value": 0.2
+      }
+    },
+    "after-tax-debt": {
+      "interest": {
+        "exact": "10",
+        "value": 10.0
+      },
+      "shield": {
+        "exact": "2",
+        "value": 2.0
+      },
+      "afterTaxCost": {
+        "exact": "2/25",
+        "value": 0.08
+      }
+    },
+    "roc-from-roe": {
+      "ROC": {
+        "exact": "627/3400",
+        "value": 0.18441176470588236
+      }
+    },
+    "interest-coverage": {
+      "ICR": {
+        "exact": "3",
+        "value": 3.0
+      }
+    },
+    "degree-leverage": {
+      "DFL": {
+        "exact": "3/2",
+        "value": 1.5
+      },
+      "NI_relative_growth": {
+        "exact": "3/20",
+        "value": 0.15
+      }
+    },
+    "equity-multiplier": {
+      "EM": {
+        "exact": "5/2",
+        "value": 2.5
+      },
+      "onePlusDE": {
+        "exact": "2",
+        "value": 2.0
+      },
+      "APoverE": {
+        "exact": "1/2",
+        "value": 0.5
+      }
+    },
+    "economic-profit": {
+      "EP": {
+        "exact": "-2",
+        "value": -2.0
+      },
+      "NI": {
+        "exact": "34/5",
+        "value": 6.8
+      },
+      "ROE": {
+        "exact": "17/150",
+        "value": 0.11333333333333333
+      }
+    },
+    "current-liquidity": {
+      "CR": {
+        "exact": "2",
+        "value": 2.0
+      }
+    },
+    "quick-liquidity": {
+      "QR": {
+        "exact": "6/5",
+        "value": 1.2
+      }
+    },
+    "cash-liquidity": {
+      "cashRatio": {
+        "exact": "1/5",
+        "value": 0.2
+      }
+    },
+    "dso-days": {
+      "DSO": {
+        "exact": "5",
+        "value": 5.0
+      }
+    },
+    "dih-days": {
+      "DIH": {
+        "exact": "30",
+        "value": 30.0
+      }
+    },
+    "dpo-days": {
+      "DPO": {
+        "exact": "36",
+        "value": 36.0
+      }
+    },
+    "cycle-funding-limits": {
+      "AR": {
+        "exact": "30",
+        "value": 30.0
+      },
+      "INV": {
+        "exact": "20",
+        "value": 20.0
+      },
+      "AP": {
+        "exact": "10",
+        "value": 10.0
+      },
+      "NWC": {
+        "exact": "40",
+        "value": 40.0
+      },
+      "CCC": {
+        "exact": "50",
+        "value": 50.0
+      },
+      "dailyCOGS": {
+        "exact": "1/2",
+        "value": 0.5
+      },
+      "proxyNWC": {
+        "exact": "25",
+        "value": 25.0
+      }
+    },
+    "growth-retention": {
+      "growth": {
+        "exact": "1/8",
+        "value": 0.125
+      }
+    },
+    "gordon-next-dividend": {
+      "DIV1": {
+        "exact": "135/4",
+        "value": 33.75
+      },
+      "P0": {
+        "exact": "450",
+        "value": 450.0
+      }
+    },
+    "fcfe": {
+      "NB": {
+        "exact": "5",
+        "value": 5.0
+      },
+      "FCFE": {
+        "exact": "37",
+        "value": 37.0
+      }
+    }
+  },
+  "newFormulaExamples": {
+    "c3-inventory-cost-chain": {
+      "materials": {
+        "exact": "60",
+        "value": 60.0
+      },
+      "production": {
+        "exact": "102",
+        "value": 102.0
+      },
+      "produced": {
+        "exact": "99",
+        "value": 99.0
+      },
+      "cogs": {
+        "exact": "90",
+        "value": 90.0
+      },
+      "EBIT": {
+        "exact": "62",
+        "value": 62.0
+      },
+      "DA": {
+        "exact": "8",
+        "value": 8.0
+      },
+      "EBITDA": {
+        "exact": "70",
+        "value": 70.0
+      },
+      "EBT": {
+        "exact": "52",
+        "value": 52.0
+      },
+      "tax": {
+        "exact": "13",
+        "value": 13.0
+      },
+      "NI": {
+        "exact": "39",
+        "value": 39.0
+      },
+      "NOPAT": {
+        "exact": "93/2",
+        "value": 46.5
+      }
+    },
+    "c3-pnl-embedded-depreciation": {
+      "materials": {
+        "exact": "60",
+        "value": 60.0
+      },
+      "production": {
+        "exact": "102",
+        "value": 102.0
+      },
+      "produced": {
+        "exact": "99",
+        "value": 99.0
+      },
+      "cogs": {
+        "exact": "90",
+        "value": 90.0
+      },
+      "EBIT": {
+        "exact": "62",
+        "value": 62.0
+      },
+      "DA": {
+        "exact": "8",
+        "value": 8.0
+      },
+      "EBITDA": {
+        "exact": "70",
+        "value": 70.0
+      },
+      "EBT": {
+        "exact": "52",
+        "value": 52.0
+      },
+      "tax": {
+        "exact": "13",
+        "value": 13.0
+      },
+      "NI": {
+        "exact": "39",
+        "value": 39.0
+      },
+      "NOPAT": {
+        "exact": "93/2",
+        "value": 46.5
+      }
+    },
+    "c3-analysis-growth-share": {
+      "salesGrowth": {
+        "exact": "1/5",
+        "value": 0.2
+      },
+      "EBITgrowth": {
+        "exact": "6/25",
+        "value": 0.24
+      },
+      "NIgrowth": {
+        "exact": "3/10",
+        "value": 0.3
+      },
+      "COGSshare": {
+        "exact": "1/2",
+        "value": 0.5
+      },
+      "SGAshare": {
+        "exact": "7/45",
+        "value": 0.15555555555555556
+      },
+      "EBITmargin": {
+        "exact": "31/90",
+        "value": 0.34444444444444444
+      },
+      "NOPATmargin": {
+        "exact": "31/120",
+        "value": 0.25833333333333336
+      },
+      "NIshare": {
+        "exact": "13/60",
+        "value": 0.21666666666666667
+      }
+    },
+    "c3-cash-reconciliation": {
+      "EBITDA": {
+        "exact": "70",
+        "value": 70.0
+      },
+      "EBIT": {
+        "exact": "60",
+        "value": 60.0
+      },
+      "EBT": {
+        "exact": "54",
+        "value": 54.0
+      },
+      "tax": {
+        "exact": "54/5",
+        "value": 10.8
+      },
+      "NI": {
+        "exact": "216/5",
+        "value": 43.2
+      },
+      "NOPAT": {
+        "exact": "48",
+        "value": 48.0
+      },
+      "NWC0": {
+        "exact": "45",
+        "value": 45.0
+      },
+      "NWC1": {
+        "exact": "57",
+        "value": 57.0
+      },
+      "deltaNWC": {
+        "exact": "12",
+        "value": 12.0
+      },
+      "receipts": {
+        "exact": "288",
+        "value": 288.0
+      },
+      "purchases": {
+        "exact": "186",
+        "value": 186.0
+      },
+      "supplierPayments": {
+        "exact": "180",
+        "value": 180.0
+      },
+      "CFO": {
+        "exact": "206/5",
+        "value": 41.2
+      },
+      "FCFF": {
+        "exact": "11",
+        "value": 11.0
+      },
+      "FCFE": {
+        "exact": "106/5",
+        "value": 21.2
+      },
+      "cashEnd": {
+        "exact": "131/5",
+        "value": 26.2
+      },
+      "PPEend": {
+        "exact": "135",
+        "value": 135.0
+      },
+      "debtEnd": {
+        "exact": "90",
+        "value": 90.0
+      },
+      "equityEnd": {
+        "exact": "641/5",
+        "value": 128.2
+      },
+      "assetsEnd": {
+        "exact": "1246/5",
+        "value": 249.2
+      }
+    },
+    "c3-direct-cfo": {
+      "EBITDA": {
+        "exact": "70",
+        "value": 70.0
+      },
+      "EBIT": {
+        "exact": "60",
+        "value": 60.0
+      },
+      "EBT": {
+        "exact": "54",
+        "value": 54.0
+      },
+      "tax": {
+        "exact": "54/5",
+        "value": 10.8
+      },
+      "NI": {
+        "exact": "216/5",
+        "value": 43.2
+      },
+      "NOPAT": {
+        "exact": "48",
+        "value": 48.0
+      },
+      "NWC0": {
+        "exact": "45",
+        "value": 45.0
+      },
+      "NWC1": {
+        "exact": "57",
+        "value": 57.0
+      },
+      "deltaNWC": {
+        "exact": "12",
+        "value": 12.0
+      },
+      "receipts": {
+        "exact": "288",
+        "value": 288.0
+      },
+      "purchases": {
+        "exact": "186",
+        "value": 186.0
+      },
+      "supplierPayments": {
+        "exact": "180",
+        "value": 180.0
+      },
+      "CFO": {
+        "exact": "206/5",
+        "value": 41.2
+      },
+      "FCFF": {
+        "exact": "11",
+        "value": 11.0
+      },
+      "FCFE": {
+        "exact": "106/5",
+        "value": 21.2
+      },
+      "cashEnd": {
+        "exact": "131/5",
+        "value": 26.2
+      },
+      "PPEend": {
+        "exact": "135",
+        "value": 135.0
+      },
+      "debtEnd": {
+        "exact": "90",
+        "value": 90.0
+      },
+      "equityEnd": {
+        "exact": "641/5",
+        "value": 128.2
+      },
+      "assetsEnd": {
+        "exact": "1246/5",
+        "value": 249.2
+      }
+    },
+    "c3-interest-classification-bridge": {
+      "CFO_fin": {
+        "exact": "236/5",
+        "value": 47.2
+      },
+      "CFF_fin": {
+        "exact": "-6",
+        "value": -6.0
+      },
+      "deltaCash": {
+        "exact": "31/5",
+        "value": 6.2
+      },
+      "FCFF": {
+        "exact": "11",
+        "value": 11.0
+      }
+    },
+    "c3-payout-retention": {
+      "EPS0": {
+        "exact": "24/5",
+        "value": 4.8
+      },
+      "DIV0_A": {
+        "exact": "48",
+        "value": 48.0
+      },
+      "DPS0_A": {
+        "exact": "12/5",
+        "value": 2.4
+      },
+      "retainedA": {
+        "exact": "48",
+        "value": 48.0
+      },
+      "DIV0_B": {
+        "exact": "288/5",
+        "value": 57.6
+      },
+      "DPS0_B": {
+        "exact": "72/25",
+        "value": 2.88
+      },
+      "retainedB": {
+        "exact": "192/5",
+        "value": 38.4
+      },
+      "immediateDifference": {
+        "exact": "48/5",
+        "value": 9.6
+      }
+    },
+    "c3-shareholder-return": {
+      "price1": {
+        "exact": "18816/25",
+        "value": 752.64
+      },
+      "priceGain": {
+        "exact": "2016/25",
+        "value": 80.64
+      },
+      "TSR": {
+        "exact": "1/5",
+        "value": 0.2
+      },
+      "ROE": {
+        "exact": "6/25",
+        "value": 0.24
+      },
+      "PB": {
+        "exact": "3/2",
+        "value": 1.5
+      },
+      "newPayoutPrice": {
+        "exact": "39456/65",
+        "value": 607.0153846153846
+      },
+      "wealthA": {
+        "exact": "720",
+        "value": 720.0
+      },
+      "wealthB": {
+        "exact": "8640/13",
+        "value": 664.6153846153846
+      }
+    },
+    "c3-forward-book-multiple": {
+      "PB": {
+        "exact": "3/2",
+        "value": 1.5
+      },
+      "ROE": {
+        "exact": "6/25",
+        "value": 0.24
+      }
+    },
+    "c3-budget-contribution": {
+      "EBIT_RUB": {
+        "exact": "2000000",
+        "value": 2000000.0
+      },
+      "EBITDA_RUB": {
+        "exact": "2600000",
+        "value": 2600000.0
+      }
+    },
+    "c3-operating-leverage": {
+      "DOL": {
+        "exact": "5/2",
+        "value": 2.5
+      },
+      "volumeGrowth": {
+        "exact": "1/10",
+        "value": 0.1
+      },
+      "profitGrowth": {
+        "exact": "1/4",
+        "value": 0.25
+      },
+      "newEBIT_RUB": {
+        "exact": "2500000",
+        "value": 2500000.0
+      }
+    },
+    "c3-flexible-budget": {
+      "Sales0": {
+        "exact": "12000000",
+        "value": 12000000.0
+      },
+      "Sales1": {
+        "exact": "12650000",
+        "value": 12650000.0
+      },
+      "VC0": {
+        "exact": "7000000",
+        "value": 7000000.0
+      },
+      "VCflex": {
+        "exact": "7700000",
+        "value": 7700000.0
+      },
+      "VC1": {
+        "exact": "8030000",
+        "value": 8030000.0
+      },
+      "EBIT0": {
+        "exact": "2000000",
+        "value": 2000000.0
+      },
+      "EBITflex": {
+        "exact": "2500000",
+        "value": 2500000.0
+      },
+      "EBIT1": {
+        "exact": "1470000",
+        "value": 1470000.0
+      },
+      "revenueVolume": {
+        "exact": "1200000",
+        "value": 1200000.0
+      },
+      "revenuePrice": {
+        "exact": "-500000",
+        "value": -500000.0
+      },
+      "revenueInteraction": {
+        "exact": "-50000",
+        "value": -50000.0
+      },
+      "revenueChange": {
+        "exact": "650000",
+        "value": 650000.0
+      },
+      "profitVolume": {
+        "exact": "500000",
+        "value": 500000.0
+      },
+      "profitPrice": {
+        "exact": "-550000",
+        "value": -550000.0
+      },
+      "profitUnitCost": {
+        "exact": "-330000",
+        "value": -330000.0
+      },
+      "profitFixed": {
+        "exact": "-150000",
+        "value": -150000.0
+      },
+      "profitChange": {
+        "exact": "-530000",
+        "value": -530000.0
+      }
+    },
+    "c3-revenue-variance": {
+      "Sales0": {
+        "exact": "12000000",
+        "value": 12000000.0
+      },
+      "Sales1": {
+        "exact": "12650000",
+        "value": 12650000.0
+      },
+      "VC0": {
+        "exact": "7000000",
+        "value": 7000000.0
+      },
+      "VCflex": {
+        "exact": "7700000",
+        "value": 7700000.0
+      },
+      "VC1": {
+        "exact": "8030000",
+        "value": 8030000.0
+      },
+      "EBIT0": {
+        "exact": "2000000",
+        "value": 2000000.0
+      },
+      "EBITflex": {
+        "exact": "2500000",
+        "value": 2500000.0
+      },
+      "EBIT1": {
+        "exact": "1470000",
+        "value": 1470000.0
+      },
+      "revenueVolume": {
+        "exact": "1200000",
+        "value": 1200000.0
+      },
+      "revenuePrice": {
+        "exact": "-500000",
+        "value": -500000.0
+      },
+      "revenueInteraction": {
+        "exact": "-50000",
+        "value": -50000.0
+      },
+      "revenueChange": {
+        "exact": "650000",
+        "value": 650000.0
+      },
+      "profitVolume": {
+        "exact": "500000",
+        "value": 500000.0
+      },
+      "profitPrice": {
+        "exact": "-550000",
+        "value": -550000.0
+      },
+      "profitUnitCost": {
+        "exact": "-330000",
+        "value": -330000.0
+      },
+      "profitFixed": {
+        "exact": "-150000",
+        "value": -150000.0
+      },
+      "profitChange": {
+        "exact": "-530000",
+        "value": -530000.0
+      }
+    },
+    "c3-profit-variance": {
+      "Sales0": {
+        "exact": "12000000",
+        "value": 12000000.0
+      },
+      "Sales1": {
+        "exact": "12650000",
+        "value": 12650000.0
+      },
+      "VC0": {
+        "exact": "7000000",
+        "value": 7000000.0
+      },
+      "VCflex": {
+        "exact": "7700000",
+        "value": 7700000.0
+      },
+      "VC1": {
+        "exact": "8030000",
+        "value": 8030000.0
+      },
+      "EBIT0": {
+        "exact": "2000000",
+        "value": 2000000.0
+      },
+      "EBITflex": {
+        "exact": "2500000",
+        "value": 2500000.0
+      },
+      "EBIT1": {
+        "exact": "1470000",
+        "value": 1470000.0
+      },
+      "revenueVolume": {
+        "exact": "1200000",
+        "value": 1200000.0
+      },
+      "revenuePrice": {
+        "exact": "-500000",
+        "value": -500000.0
+      },
+      "revenueInteraction": {
+        "exact": "-50000",
+        "value": -50000.0
+      },
+      "revenueChange": {
+        "exact": "650000",
+        "value": 650000.0
+      },
+      "profitVolume": {
+        "exact": "500000",
+        "value": 500000.0
+      },
+      "profitPrice": {
+        "exact": "-550000",
+        "value": -550000.0
+      },
+      "profitUnitCost": {
+        "exact": "-330000",
+        "value": -330000.0
+      },
+      "profitFixed": {
+        "exact": "-150000",
+        "value": -150000.0
+      },
+      "profitChange": {
+        "exact": "-530000",
+        "value": -530000.0
+      }
+    },
+    "c3-market-multiples": {
+      "MarketCap_million": {
+        "exact": "600",
+        "value": 600.0
+      },
+      "PE": {
+        "exact": "12",
+        "value": 12.0
+      },
+      "PB": {
+        "exact": "3",
+        "value": 3.0
+      },
+      "MVA_million": {
+        "exact": "400",
+        "value": 400.0
+      }
+    }
+  },
+  "counts": {
+    "newWorkedExamples": 54,
+    "baselineFormulas": 36,
+    "newFormulas": 15
+  }
+}

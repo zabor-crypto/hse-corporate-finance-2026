@@ -1,0 +1,1209 @@
+{
+  "schemaVersion": 1,
+  "release": "0.4.0",
+  "acceptedContentSourceFingerprint": "79e2a930596ffab6f8e710fbc93bdbf9256c4a16",
+  "publicBaseCommit": "f54827ad6e40782ad188f562aef6ee30f732b9aa",
+  "historyStrategy": "File export onto a separate branch from public main; no private commit objects, remotes, alternates, merges or Git history imported. This fingerprint describes reviewed source provenance only.",
+  "historicalFirstImportManifest": {
+    "path": "PUBLIC_SOURCE_MANIFEST.json",
+    "sha256": "081a8fd0b18e9e8a05755bd0c21ca30088a31b908a009b1db54e462cc8334f37",
+    "meaning": "Unmodified historical first-import evidence; its original BLOCKED/UNKNOWN values are not current release state."
+  },
+  "scope": "Original app source, synthetic tests/oracles, config, build/release tooling and necessary public documentation. Manifest does not self-hash. Exact public commit is independently bound by Git and release receipt after freeze.",
+  "files": [
+    {
+      "path": ".github/workflows/pages.yml",
+      "acceptedSourceSha256": "cdc7f2bd98663bd6a735c86c6a0b5a0ab188800eb14587896c9377a02e5bcb51",
+      "publicSha256": "7de648700c04e2f504d5fd782bb52b26c8f86fadb919549a8ba246b910670e2a",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": ".gitignore",
+      "acceptedSourceSha256": "93b6d08c85f5155ec4dba6a349fc4cb88fbb50f5d7da5a187cbff4e332c238c5",
+      "publicSha256": "e5c72d0e92e04374a654d6d27a9e9642cdc6b993332c5b2dae71b25d81e64a8f",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": ".nvmrc",
+      "acceptedSourceSha256": "b1b863935ae0ecf87162501ac32d6b3d398badb59d91794fda7d6410cdd79559",
+      "publicSha256": "b1b863935ae0ecf87162501ac32d6b3d398badb59d91794fda7d6410cdd79559",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "LICENSE-CODE",
+      "acceptedSourceSha256": "142d33bfd8290587831c8b3ec0464ed6adc66d521617e3b101bdf70eea383b3d",
+      "publicSha256": "142d33bfd8290587831c8b3ec0464ed6adc66d521617e3b101bdf70eea383b3d",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "LICENSE-CONTENT",
+      "acceptedSourceSha256": "fe0fc3f1382f83ead35350ffbc71a7329f8437a398147409084de281f2895338",
+      "publicSha256": "fe0fc3f1382f83ead35350ffbc71a7329f8437a398147409084de281f2895338",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "README.md",
+      "acceptedSourceSha256": "8fb1bba54499be63f178416c2bf263acbfc826750e1c27764a2ebbd14894e1fe",
+      "publicSha256": "a496dd33c35d58658aaffa27fd333633b5894824479304d2752a66e5897c166b",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "acceptedSourceSha256": "b99a175752ba01d50e1c58c39c08b8794f6636f137bb9cbda1f060a07c8975e6",
+      "publicSha256": "b99a175752ba01d50e1c58c39c08b8794f6636f137bb9cbda1f060a07c8975e6",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "acceptedSourceSha256": "ecabf8c92abd3b98a96e195a86defa088390963f50b9d948abe6601125a6bcdf",
+      "publicSha256": "ecabf8c92abd3b98a96e195a86defa088390963f50b9d948abe6601125a6bcdf",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "docs/ASSESSMENT_CALIBRATION.md",
+      "acceptedSourceSha256": "1e92f2ad57c47e52c6df6786c0eb1da177efd25ad896c637c631268326939128",
+      "publicSha256": "1e92f2ad57c47e52c6df6786c0eb1da177efd25ad896c637c631268326939128",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "docs/ASSUMPTIONS_REGISTER.md",
+      "acceptedSourceSha256": "94f3c83acd55b5ab948d160172fe8d952e11d9731dc8416656111e6988c17c54",
+      "publicSha256": "94f3c83acd55b5ab948d160172fe8d952e11d9731dc8416656111e6988c17c54",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "docs/CONTENT_QUALITY_AUTHOR_NOTES.md",
+      "acceptedSourceSha256": "b5de5f7d02c6627670d6b9ca6f9e3a6cd375f5063e383b4bd6931a04b4133202",
+      "publicSha256": "b5de5f7d02c6627670d6b9ca6f9e3a6cd375f5063e383b4bd6931a04b4133202",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "docs/CURRICULUM_REGISTRY.md",
+      "acceptedSourceSha256": "a3a45b7195a77f0c616ffa8b12349d9e105a1cd938d168880a29d8d95584e6a0",
+      "publicSha256": "0fc863cea957ecb4b5d116f5a31e58fefafadb604b6f82340b11b25508de8748",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "docs/OWNER_RELEASE_DECISIONS.md",
+      "acceptedSourceSha256": "3d14fb27f68142b77ce6a1bfabbf2c6650481ab854d1ae98f6ed870e72bd9158",
+      "publicSha256": "3beb7b76fb7d0eef6ec6e0b14e743d33dab62a2d1f870802322d61c83c09b889",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "docs/PROJECT_STATUS.md",
+      "acceptedSourceSha256": "a1a49d35d9e507898fce85c9018b7977b34164d3adcb31fcfac168d05822c2df",
+      "publicSha256": "80c0998261290fcf824b69df98a8f1981bbe12052eeb286523635121d4fad6fd",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "docs/PUBLIC_RELEASE_PROCESS.md",
+      "acceptedSourceSha256": "26fe3e268d15e42e710e626af29e53532204e15b913ed904e6c39ae376b80d21",
+      "publicSha256": "0e5aedee3a86e3a970fd90642cd30e65afc4bab4fb60880fd3dad5f71db65f8d",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "docs/SEM3_3_1_TO_3_9_COVERAGE_MATRIX.md",
+      "acceptedSourceSha256": "d82fec9db0022f6ee493be2af02c6b0120669abff921f57955979d1f01a09bcd",
+      "publicSha256": "d82fec9db0022f6ee493be2af02c6b0120669abff921f57955979d1f01a09bcd",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "docs/SEM3_COVERAGE_MATRIX.md",
+      "acceptedSourceSha256": "a079f4102f8a96d38bc6b2a20678f82b42f439c9fb26fb50156f3d1c53c3284d",
+      "publicSha256": "a079f4102f8a96d38bc6b2a20678f82b42f439c9fb26fb50156f3d1c53c3284d",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "docs/SOURCE_MAP.md",
+      "acceptedSourceSha256": "0e36b92633d62565617d666dd17a222c0854b34ed075f7ab47d4d956f47a5cce",
+      "publicSha256": "0e36b92633d62565617d666dd17a222c0854b34ed075f7ab47d4d956f47a5cce",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "docs/TRANCHE03_SCOPE_MATRIX.md",
+      "acceptedSourceSha256": "76234f31be734c28b07733ec98f0cd25e1a7008b7729b4d716df23b2964bddd4",
+      "publicSha256": "76234f31be734c28b07733ec98f0cd25e1a7008b7729b4d716df23b2964bddd4",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "index.html",
+      "acceptedSourceSha256": "155870e44ce32bce42ad9712ea75309722b578d09a62b7c4ead9f7e4bb915495",
+      "publicSha256": "155870e44ce32bce42ad9712ea75309722b578d09a62b7c4ead9f7e4bb915495",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "package-lock.json",
+      "acceptedSourceSha256": "e904e551a4d0e4920d6d80d362528f4f0dc315da2e3c7a69883cefc59bb70388",
+      "publicSha256": "b4fdc8aff31af928dc8dedced8dd795d904281a90195a670807d76e0e8389cb8",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "package.json",
+      "acceptedSourceSha256": "56d0cf3dc512769432ce2fd4cade37763e6e338c3242e4787ec5bfffe2e7fa1d",
+      "publicSha256": "497e8ab168eb50fdc4cad638e41e0a0e1bd7934734596642a5a86daaf24ac0ee",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "playwright.c3-delta-qa.config.ts",
+      "acceptedSourceSha256": "2c592fcd779034f0038d6a051825b015552bfba4e3d87aef37182d5cb29a2e87",
+      "publicSha256": "545f94603ae37e9d97c8f3612b7dd3d572351eec23dbb37cbed668d682dcc790",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "playwright.c3-qa.config.ts",
+      "acceptedSourceSha256": "4610be75308b6ff01808d4f31c982a46182b2753ab1db1d02304a1c57712a30b",
+      "publicSha256": "4610be75308b6ff01808d4f31c982a46182b2753ab1db1d02304a1c57712a30b",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "playwright.config.ts",
+      "acceptedSourceSha256": "919e8efd9e66a16136606acc6c840239fb84d6fe6e72392527cf31ea43e6cdfe",
+      "publicSha256": "919e8efd9e66a16136606acc6c840239fb84d6fe6e72392527cf31ea43e6cdfe",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "publication-policy.json",
+      "acceptedSourceSha256": "03148442033dce375a816e32c4e1905a09910a01a640c479e5848e0f8ee2dffa",
+      "publicSha256": "86a4278536604c11f09e69ed7988c6970004bb07e14248fd4a3f8e40dde48414",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "scripts/audit-artifact.mjs",
+      "acceptedSourceSha256": "96fa89cadf4c025685f1cb74316e3dd9ca5e94f496d41d3411a4f396f5220c0c",
+      "publicSha256": "96fa89cadf4c025685f1cb74316e3dd9ca5e94f496d41d3411a4f396f5220c0c",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "scripts/audit-core.mjs",
+      "acceptedSourceSha256": "2de66c019de6242cdecd1f6b653df6da0095ccf77a2ff186ab6ecd1ce4288dd3",
+      "publicSha256": "2de66c019de6242cdecd1f6b653df6da0095ccf77a2ff186ab6ecd1ce4288dd3",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "scripts/audit-public.mjs",
+      "acceptedSourceSha256": "e731a8bca6e992510f849502f1d4cc3d2761f22249890de03129d8ca1487aa9e",
+      "publicSha256": "e731a8bca6e992510f849502f1d4cc3d2761f22249890de03129d8ca1487aa9e",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "scripts/check-release.mjs",
+      "acceptedSourceSha256": "56fba726b290f6090c1d1c3274b7f9bb302311d6b77d513e940016a53c043f64",
+      "publicSha256": "56fba726b290f6090c1d1c3274b7f9bb302311d6b77d513e940016a53c043f64",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "scripts/create-handoff.mjs",
+      "acceptedSourceSha256": "5f601da09651b9ce5c519c4e82d169cdddbdfd7ad4e1b13ae129c6a7d53780e5",
+      "publicSha256": "5f601da09651b9ce5c519c4e82d169cdddbdfd7ad4e1b13ae129c6a7d53780e5",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "scripts/prepare-public-source.mjs",
+      "acceptedSourceSha256": "3493aae3d6bea1460fe8a4f3d217e60e9997ca8440f217c363477d2ea4b642dd",
+      "publicSha256": "bca814a921f2b6b753b6df34ef00f9c0c0ef6be56bd55ce0245d551c30f8a779",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "src/app/App.tsx",
+      "acceptedSourceSha256": "d8eaf7cc510058e46bb812c3e06e6cbd2dad2de646341f2ec21f315c7e1e3ae3",
+      "publicSha256": "d8eaf7cc510058e46bb812c3e06e6cbd2dad2de646341f2ec21f315c7e1e3ae3",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/app/build.ts",
+      "acceptedSourceSha256": "f2f085cac7f38a291a685c30dc6a0e172ca18d7f12a4a84390707d011ee75308",
+      "publicSha256": "f2f085cac7f38a291a685c30dc6a0e172ca18d7f12a4a84390707d011ee75308",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/app/styles.css",
+      "acceptedSourceSha256": "aa405ef85878aef949d482355579bc0d090080b54d72dcfb64d1e83df8e50ab5",
+      "publicSha256": "aa405ef85878aef949d482355579bc0d090080b54d72dcfb64d1e83df8e50ab5",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/app/styles/components.css",
+      "acceptedSourceSha256": "12d90fd2c52eba044d12f04615a85b53a68f404f8b3ac61b19bd0f5b2a72edd6",
+      "publicSha256": "12d90fd2c52eba044d12f04615a85b53a68f404f8b3ac61b19bd0f5b2a72edd6",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/app/styles/foundation.css",
+      "acceptedSourceSha256": "529e9b6dbe6e875dc7883356306116d407fb87f29ae9ec16da6f533092afc63b",
+      "publicSha256": "529e9b6dbe6e875dc7883356306116d407fb87f29ae9ec16da6f533092afc63b",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/app/styles/responsive.css",
+      "acceptedSourceSha256": "b8c1f830b19f87ecce15e0c02fb252f6de0f34726c5f56ceae8215c0b91104ac",
+      "publicSha256": "b8c1f830b19f87ecce15e0c02fb252f6de0f34726c5f56ceae8215c0b91104ac",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/app/styles/tranche03.css",
+      "acceptedSourceSha256": "2ce1705a4467057d6eadd6ef42a14484033d5892b9b82081b1fec81c76468b4e",
+      "publicSha256": "2ce1705a4467057d6eadd6ef42a14484033d5892b9b82081b1fec81c76468b4e",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/assets/favicon.svg",
+      "acceptedSourceSha256": "21fcaa67f50dec3fc3f843786003140a9c8464062632e5a751f3bc5693e06319",
+      "publicSha256": "21fcaa67f50dec3fc3f843786003140a9c8464062632e5a751f3bc5693e06319",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/components/CausalDiagram.tsx",
+      "acceptedSourceSha256": "630984f1ab6c1475736a6eab323b9053ef7be828be1c6fd79da8bf9e51ca1ecd",
+      "publicSha256": "630984f1ab6c1475736a6eab323b9053ef7be828be1c6fd79da8bf9e51ca1ecd",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/components/Common.tsx",
+      "acceptedSourceSha256": "f056d42dcdc50aab102c19bff5a9edcbcc54444593279bcd92107ff5e673802a",
+      "publicSha256": "f056d42dcdc50aab102c19bff5a9edcbcc54444593279bcd92107ff5e673802a",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/components/ErrorLog.tsx",
+      "acceptedSourceSha256": "71457df017b448a8b91339f2a6062fcdca448d1a4745e286c2d8ea0f409dad2c",
+      "publicSha256": "71457df017b448a8b91339f2a6062fcdca448d1a4745e286c2d8ea0f409dad2c",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/components/IntegratedModel.tsx",
+      "acceptedSourceSha256": "d3c57d0c0fe195bd48dfa7848da01456dafda527d354483822aad06d1438b171",
+      "publicSha256": "d3c57d0c0fe195bd48dfa7848da01456dafda527d354483822aad06d1438b171",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/components/Math.tsx",
+      "acceptedSourceSha256": "75cf5c0bf8e7c2f5b348ba63403a16d16cc3f7095a9fa3cff10bb9c1749ca0f1",
+      "publicSha256": "75cf5c0bf8e7c2f5b348ba63403a16d16cc3f7095a9fa3cff10bb9c1749ca0f1",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/components/Problem.tsx",
+      "acceptedSourceSha256": "b2a9fc781b345b7be07db99aa013991517fcca6bc9ced1318eabaa1aef109c77",
+      "publicSha256": "b2a9fc781b345b7be07db99aa013991517fcca6bc9ced1318eabaa1aef109c77",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/components/StepByStep.tsx",
+      "acceptedSourceSha256": "ed7d539872caaaca09324a67be78964a78213ca33f46fc9e43a9373b5055c2ce",
+      "publicSha256": "ed7d539872caaaca09324a67be78964a78213ca33f46fc9e43a9373b5055c2ce",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/assessment/curated.ts",
+      "acceptedSourceSha256": "8ab188a6496e847c9416282ac9a577a8952456e3a5be89002959afc656c25d63",
+      "publicSha256": "8ab188a6496e847c9416282ac9a577a8952456e3a5be89002959afc656c25d63",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/assessment/index.ts",
+      "acceptedSourceSha256": "ffe60df838c11ce47d3cf5ed0fb7db6d5ef3e21f6142730eef0d2f984c85a4b1",
+      "publicSha256": "ffe60df838c11ce47d3cf5ed0fb7db6d5ef3e21f6142730eef0d2f984c85a4b1",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/assessment/legacy-calibration.ts",
+      "acceptedSourceSha256": "34322fd92bbac5a49d0712577b96a7ed4b71bd5d09b90dad4aafa6abe264898f",
+      "publicSha256": "34322fd92bbac5a49d0712577b96a7ed4b71bd5d09b90dad4aafa6abe264898f",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/assessment/roe-value-comparison.ts",
+      "acceptedSourceSha256": "374e1b62e7ae8a11ac5a167486f7063320953b1335b32b0b563fb6dafd33063b",
+      "publicSha256": "374e1b62e7ae8a11ac5a167486f7063320953b1335b32b0b563fb6dafd33063b",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-consolidation.ts",
+      "acceptedSourceSha256": "03c5e6b7d151cbf6b4f72f81d5cda8a1df25ca27abe97a1b6a635b12e5930aa1",
+      "publicSha256": "03c5e6b7d151cbf6b4f72f81d5cda8a1df25ca27abe97a1b6a635b12e5930aa1",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-formulas.ts",
+      "acceptedSourceSha256": "d9ac3ac555a0d05b092258dd7cf8c1cea8209ef8a0b53b3e8d57fe32091c48c9",
+      "publicSha256": "d9ac3ac555a0d05b092258dd7cf8c1cea8209ef8a0b53b3e8d57fe32091c48c9",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-integrated.ts",
+      "acceptedSourceSha256": "84aca02917ef67ef454061953bdebf78de8f08d8fd01b405251854bddc842a59",
+      "publicSha256": "84aca02917ef67ef454061953bdebf78de8f08d8fd01b405251854bddc842a59",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-lessons.ts",
+      "acceptedSourceSha256": "6a94b4d67dba93585088b01fafdd1783d6b9418c794323c34f0d026faef81c5e",
+      "publicSha256": "6a94b4d67dba93585088b01fafdd1783d6b9418c794323c34f0d026faef81c5e",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-leverage-reverse.ts",
+      "acceptedSourceSha256": "4c0d9073de16ec004ea9805e71765f2207c826da704fc4751f16c6b430fd128d",
+      "publicSha256": "4c0d9073de16ec004ea9805e71765f2207c826da704fc4751f16c6b430fd128d",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-linkage.ts",
+      "acceptedSourceSha256": "13293002766f8eb9a77ed92541012027e01972e52b4f27378de1c18ce8bcecfd",
+      "publicSha256": "13293002766f8eb9a77ed92541012027e01972e52b4f27378de1c18ce8bcecfd",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-model-problems.ts",
+      "acceptedSourceSha256": "5ff6b021defe5698ad61e27eb64f11746bf6796a5bdfc63fe36f9cd729454eb2",
+      "publicSha256": "5ff6b021defe5698ad61e27eb64f11746bf6796a5bdfc63fe36f9cd729454eb2",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-questions.ts",
+      "acceptedSourceSha256": "de4cbbb35ab17c6b1239940b4ad96a482d06898b9945d150f4b0696c62a3e39d",
+      "publicSha256": "de4cbbb35ab17c6b1239940b4ad96a482d06898b9945d150f4b0696c62a3e39d",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-ratios-focus.ts",
+      "acceptedSourceSha256": "f5de90a0c2306493eb17d612aed147dc8dcd250eb0c282e5458e4c7a2a57a85e",
+      "publicSha256": "f5de90a0c2306493eb17d612aed147dc8dcd250eb0c282e5458e4c7a2a57a85e",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/c3-theory.ts",
+      "acceptedSourceSha256": "51cf11cd4d82a6d851cb32b1201d84a86c9386f8fd788d73c2f79c63639e7204",
+      "publicSha256": "51cf11cd4d82a6d851cb32b1201d84a86c9386f8fd788d73c2f79c63639e7204",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/equity-cash-formula.ts",
+      "acceptedSourceSha256": "30b59c73e897b477476e3d0ef42c0f231016af1c35aa7d6faca52cf520e03b78",
+      "publicSha256": "30b59c73e897b477476e3d0ef42c0f231016af1c35aa7d6faca52cf520e03b78",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/formulas.ts",
+      "acceptedSourceSha256": "8eb35bcd690297a9f3af8936af1688fce4b327270d94e48c39c42b4ca8a825df",
+      "publicSha256": "8eb35bcd690297a9f3af8936af1688fce4b327270d94e48c39c42b4ca8a825df",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/index.ts",
+      "acceptedSourceSha256": "73c4f37755cfaf4e2843e8996fb036df85cc07135fbbdbf1fb937663bd17ff67",
+      "publicSha256": "73c4f37755cfaf4e2843e8996fb036df85cc07135fbbdbf1fb937663bd17ff67",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons.ts",
+      "acceptedSourceSha256": "38507d917952dd6de1e317c34eb45a998459b65c0cb34e3477593f9d735232f5",
+      "publicSha256": "38507d917952dd6de1e317c34eb45a998459b65c0cb34e3477593f9d735232f5",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-01.ts",
+      "acceptedSourceSha256": "aa8fb4f92f632211f95a48b39e377a2badefebf3647023caaf38f00c33766dc3",
+      "publicSha256": "aa8fb4f92f632211f95a48b39e377a2badefebf3647023caaf38f00c33766dc3",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-02.ts",
+      "acceptedSourceSha256": "ca9789a5391c24a5597e5c0e9df47bb1fb87b05a0c7ab7cd9c07b2d908216722",
+      "publicSha256": "ca9789a5391c24a5597e5c0e9df47bb1fb87b05a0c7ab7cd9c07b2d908216722",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-03.ts",
+      "acceptedSourceSha256": "b59b89d8c9043d1ffe5ed18f52dd1578d8f6bfa4dd41f9b91aca9c2fa9b789c1",
+      "publicSha256": "b59b89d8c9043d1ffe5ed18f52dd1578d8f6bfa4dd41f9b91aca9c2fa9b789c1",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-04.ts",
+      "acceptedSourceSha256": "7d523394926ef9975a4804bfaf4d0c32c44c71bfe537d4e95eecb14a58518f52",
+      "publicSha256": "7d523394926ef9975a4804bfaf4d0c32c44c71bfe537d4e95eecb14a58518f52",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-05.ts",
+      "acceptedSourceSha256": "9304a3e891ba9ef8bbafe47514c08b2d0bd402c23ed26a8fcd2772b7e956c18c",
+      "publicSha256": "9304a3e891ba9ef8bbafe47514c08b2d0bd402c23ed26a8fcd2772b7e956c18c",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-06.ts",
+      "acceptedSourceSha256": "42549e9c752a2f8806a973f409a6972470ec20cd951809d0022dd92bfd1d6e0c",
+      "publicSha256": "42549e9c752a2f8806a973f409a6972470ec20cd951809d0022dd92bfd1d6e0c",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-07.ts",
+      "acceptedSourceSha256": "95384fa55a342ac218cac64f0988e3af9ab90a024b39b2f78d20daf5acc2f03a",
+      "publicSha256": "95384fa55a342ac218cac64f0988e3af9ab90a024b39b2f78d20daf5acc2f03a",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-08.ts",
+      "acceptedSourceSha256": "9e52af9b8c96fef73bb92823bbd6c87a5ea7d1723371760dc20129adea4f7c71",
+      "publicSha256": "9e52af9b8c96fef73bb92823bbd6c87a5ea7d1723371760dc20129adea4f7c71",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-09.ts",
+      "acceptedSourceSha256": "58412ca654532c408f7030eaac61abb1c6060491b3e9ccf4ccf511371b918762",
+      "publicSha256": "58412ca654532c408f7030eaac61abb1c6060491b3e9ccf4ccf511371b918762",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/lessons/t3-10.ts",
+      "acceptedSourceSha256": "ca3735132c4e4090be06ff2796c4f6c6c8495b9fc57a0211e7ce8cd2c9ce0294",
+      "publicSha256": "ca3735132c4e4090be06ff2796c4f6c6c8495b9fc57a0211e7ce8cd2c9ce0294",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/liquidity-formulas.ts",
+      "acceptedSourceSha256": "296748391cacc21032d67c737c193b77c99f566d09cadb37c7f8b1348946fcc3",
+      "publicSha256": "296748391cacc21032d67c737c193b77c99f566d09cadb37c7f8b1348946fcc3",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/questions.ts",
+      "acceptedSourceSha256": "a20545443b19a9ecc377f8ccc870719190d1e9fe0b9d83663290f7214cd3f289",
+      "publicSha256": "a20545443b19a9ecc377f8ccc870719190d1e9fe0b9d83663290f7214cd3f289",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/ratios-formulas.ts",
+      "acceptedSourceSha256": "e655a560b0401d866af19427937a1829cdd04f463d1d3072f0713a4bb19d097e",
+      "publicSha256": "e655a560b0401d866af19427937a1829cdd04f463d1d3072f0713a4bb19d097e",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/ratios-lessons.ts",
+      "acceptedSourceSha256": "c0c40f952a7cb91e69d533b5f888ff8533d53577b35dfe5b9aada3b5f2ecd47d",
+      "publicSha256": "c0c40f952a7cb91e69d533b5f888ff8533d53577b35dfe5b9aada3b5f2ecd47d",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/ratios-questions.ts",
+      "acceptedSourceSha256": "3c9960da247c50232bac6f0e5acc8bf5d78dd4a9a73a487cfd2aa1d591fdc062",
+      "publicSha256": "3c9960da247c50232bac6f0e5acc8bf5d78dd4a9a73a487cfd2aa1d591fdc062",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/topics.ts",
+      "acceptedSourceSha256": "9738ab1a8600ef946f4a55b049525f55dc32020be72f97eee3fe579aeadd8854",
+      "publicSha256": "9738ab1a8600ef946f4a55b049525f55dc32020be72f97eee3fe579aeadd8854",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/transfer/index.ts",
+      "acceptedSourceSha256": "dbf03ddf07e7512bdc67519657bb1e2e4577f0f91e94c745a4b40cae9ba9ead1",
+      "publicSha256": "dbf03ddf07e7512bdc67519657bb1e2e4577f0f91e94c745a4b40cae9ba9ead1",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/transfer/liquidity-cycle.ts",
+      "acceptedSourceSha256": "02e8a4ee79300250e5558fbf60078d3c5cf62c89f6de78a3b4fcf93c877acc77",
+      "publicSha256": "02e8a4ee79300250e5558fbf60078d3c5cf62c89f6de78a3b4fcf93c877acc77",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/transfer/nwc-cash.ts",
+      "acceptedSourceSha256": "ac0949eec03d4b7a7e06baede2a9cea339b7c3fee259e026f0b72ae795be4a6f",
+      "publicSha256": "ac0949eec03d4b7a7e06baede2a9cea339b7c3fee259e026f0b72ae795be4a6f",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/transfer/payout-growth.ts",
+      "acceptedSourceSha256": "881f6994e17d541ce25e5f419eacc4218ed9a4b623794d3f54f786cf0350cd1b",
+      "publicSha256": "881f6994e17d541ce25e5f419eacc4218ed9a4b623794d3f54f786cf0350cd1b",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/transfer/returns-rebuild.ts",
+      "acceptedSourceSha256": "964f1a738ff4ad51c3c0f8a957dfa84ea5f2abd6eccbd4d0ca835a815855b569",
+      "publicSha256": "964f1a738ff4ad51c3c0f8a957dfa84ea5f2abd6eccbd4d0ca835a815855b569",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/transfer/shared.ts",
+      "acceptedSourceSha256": "44e5583938fdd82b1342d9e2e12412718bdb11ee6973e273677d2b076377b69a",
+      "publicSha256": "44e5583938fdd82b1342d9e2e12412718bdb11ee6973e273677d2b076377b69a",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/content/types.ts",
+      "acceptedSourceSha256": "5993ef85a136fc689527bbc47ebc8733b6b2fd7c3f3b137669b4857f180de973",
+      "publicSha256": "5993ef85a136fc689527bbc47ebc8733b6b2fd7c3f3b137669b4857f180de973",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/curriculum/assembly.ts",
+      "acceptedSourceSha256": "1a0c399ac5cde02c11fbb67d5463dc60d910f3fdac171e6e56d3830ed313c775",
+      "publicSha256": "1a0c399ac5cde02c11fbb67d5463dc60d910f3fdac171e6e56d3830ed313c775",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/curriculum/blueprints.ts",
+      "acceptedSourceSha256": "594306b0e17578f0ccc5785ab663facb8f49afb47d22e07455f3255caae4a2cc",
+      "publicSha256": "594306b0e17578f0ccc5785ab663facb8f49afb47d22e07455f3255caae4a2cc",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/curriculum/c3-ratios-focus.ts",
+      "acceptedSourceSha256": "c6911fabfa6b29e7a22bdc8db89d5cb4970c96d020cc707601465c876b2c143c",
+      "publicSha256": "c6911fabfa6b29e7a22bdc8db89d5cb4970c96d020cc707601465c876b2c143c",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/curriculum/content-integrity.ts",
+      "acceptedSourceSha256": "828fa8b169b0207c44070486cfff1a32fb4f8b6b48632a57cc2128ac8664434b",
+      "publicSha256": "828fa8b169b0207c44070486cfff1a32fb4f8b6b48632a57cc2128ac8664434b",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/curriculum/errors.ts",
+      "acceptedSourceSha256": "43c4065b0c42f838b1bbc832db7a6897ab0adc2b9c0482438b2cd79f8e995624",
+      "publicSha256": "43c4065b0c42f838b1bbc832db7a6897ab0adc2b9c0482438b2cd79f8e995624",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/curriculum/index.ts",
+      "acceptedSourceSha256": "f8e23e826741ac7695f0729b6a847ced29480c01b6d432be39bab0a8b55ef528",
+      "publicSha256": "f8e23e826741ac7695f0729b6a847ced29480c01b6d432be39bab0a8b55ef528",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/curriculum/integrity.ts",
+      "acceptedSourceSha256": "f099489e976670d0d30a03b75c3b677515dbfde2d6c90b267d7b665f36576505",
+      "publicSha256": "f099489e976670d0d30a03b75c3b677515dbfde2d6c90b267d7b665f36576505",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/curriculum/review-ledger.ts",
+      "acceptedSourceSha256": "de87bb4c5ec8e4ce87ecd8436ec2cf7e7c3d6688b5568dd17190ea1110e21375",
+      "publicSha256": "de87bb4c5ec8e4ce87ecd8436ec2cf7e7c3d6688b5568dd17190ea1110e21375",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/curriculum/types.ts",
+      "acceptedSourceSha256": "d1c68f940b2768aaace402810a94d0238405e52d40204afa5d48cb5ff8709ed4",
+      "publicSha256": "d1c68f940b2768aaace402810a94d0238405e52d40204afa5d48cb5ff8709ed4",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/engine/finance/index.ts",
+      "acceptedSourceSha256": "f15336d66a44258613470593b06ec8a3621e48e8cfacc0f8cf17fb2fa3b07d3a",
+      "publicSha256": "f15336d66a44258613470593b06ec8a3621e48e8cfacc0f8cf17fb2fa3b07d3a",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/engine/finance/ratios.ts",
+      "acceptedSourceSha256": "254eb5c825ad3f58ccca3a69a2b2c3a192c4d33f123d518132219370387b4e47",
+      "publicSha256": "254eb5c825ad3f58ccca3a69a2b2c3a192c4d33f123d518132219370387b4e47",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/engine/finance/three-year.ts",
+      "acceptedSourceSha256": "0caf0135731175fe2ca2077dd30d8879d1d96a9625f2f33db476a63b8d9b46d9",
+      "publicSha256": "0caf0135731175fe2ca2077dd30d8879d1d96a9625f2f33db476a63b8d9b46d9",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/engine/grading/attempt.ts",
+      "acceptedSourceSha256": "c0ff5aaae2f2c829fec348841be09c9b672f19d9e4a02c2e53db3bf8bf55bf7f",
+      "publicSha256": "c0ff5aaae2f2c829fec348841be09c9b672f19d9e4a02c2e53db3bf8bf55bf7f",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/engine/grading/index.ts",
+      "acceptedSourceSha256": "563dd9f03c6dc48271dc5d5fe46626d9131640b23e00d239ac3508c969f38327",
+      "publicSha256": "563dd9f03c6dc48271dc5d5fe46626d9131640b23e00d239ac3508c969f38327",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/engine/grading/units.ts",
+      "acceptedSourceSha256": "828796b53168144ca74ec4d42fcd4da31eb0f1d108b53c413919793fa98e7a73",
+      "publicSha256": "828796b53168144ca74ec4d42fcd4da31eb0f1d108b53c413919793fa98e7a73",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/main.tsx",
+      "acceptedSourceSha256": "a3b28994b35ce29f55ab711b72fe3e9956b928427450ed648ce8913eebb1d107",
+      "publicSha256": "a3b28994b35ce29f55ab711b72fe3e9956b928427450ed648ce8913eebb1d107",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/storage/progress.ts",
+      "acceptedSourceSha256": "a1ac52f70fb119e71b922251fa8720fac855a925ddc2dc0e7a7d02046e5a3473",
+      "publicSha256": "a1ac52f70fb119e71b922251fa8720fac855a925ddc2dc0e7a7d02046e5a3473",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/storage/useProgress.ts",
+      "acceptedSourceSha256": "75f5e96d6566ee08b24c6a4c3880251a480ca17332951c1b8bb0ea073299ef61",
+      "publicSha256": "75f5e96d6566ee08b24c6a4c3880251a480ca17332951c1b8bb0ea073299ef61",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/views/Curriculum.tsx",
+      "acceptedSourceSha256": "83a5afcb63a0a39099046c42883d9da2a32541be626d49e0d1ab48ca50b5c2e2",
+      "publicSha256": "83a5afcb63a0a39099046c42883d9da2a32541be626d49e0d1ab48ca50b5c2e2",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/views/Exam.tsx",
+      "acceptedSourceSha256": "01ae1503a1ebeb309323f73445474c1ea28c0045a6a52bc652b932f9f2dc151c",
+      "publicSha256": "01ae1503a1ebeb309323f73445474c1ea28c0045a6a52bc652b932f9f2dc151c",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/views/Formulas.tsx",
+      "acceptedSourceSha256": "2cc03881c31db05e90328aa61b729d08d35b77d597a83a2d54f81ddf742256a0",
+      "publicSha256": "2cc03881c31db05e90328aa61b729d08d35b77d597a83a2d54f81ddf742256a0",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/views/Home.tsx",
+      "acceptedSourceSha256": "23544a91bd3c47a8f2a6ec99879279d28b28000e55d95eca2bd924d9126276a7",
+      "publicSha256": "23544a91bd3c47a8f2a6ec99879279d28b28000e55d95eca2bd924d9126276a7",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/views/LessonView.tsx",
+      "acceptedSourceSha256": "4b66e97000deb42f1eb72c9cf624dc4223209e3d4324c634f5aff0c92d26dd5a",
+      "publicSha256": "4b66e97000deb42f1eb72c9cf624dc4223209e3d4324c634f5aff0c92d26dd5a",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/views/Practice.tsx",
+      "acceptedSourceSha256": "1f22f3000f97cc72ddc880f52ef4fd5be4629fc20794f3fb3afa14c9e110bea2",
+      "publicSha256": "1f22f3000f97cc72ddc880f52ef4fd5be4629fc20794f3fb3afa14c9e110bea2",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/views/ProgressView.tsx",
+      "acceptedSourceSha256": "5306b2c6ee9e81041400f9cc939106820023687f6986c2a1439ab521eddff4f4",
+      "publicSha256": "5306b2c6ee9e81041400f9cc939106820023687f6986c2a1439ab521eddff4f4",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "src/views/RatioLab.tsx",
+      "acceptedSourceSha256": "ca992dddb8cc17ac766eac78f7281892777f988b6e0118f26917ba17522ebaca",
+      "publicSha256": "ca992dddb8cc17ac766eac78f7281892777f988b6e0118f26917ba17522ebaca",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/assessment.spec.ts",
+      "acceptedSourceSha256": "421d910acd5ff57b8c0f90a16a0374e1077aec264c23cb988d000d4ecb3dbd77",
+      "publicSha256": "421d910acd5ff57b8c0f90a16a0374e1077aec264c23cb988d000d4ecb3dbd77",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/c3-complete.spec.ts",
+      "acceptedSourceSha256": "15a4e3e688d18785eebb8ee44c13934f054e336343f542ddb02dae98e4ec363e",
+      "publicSha256": "15a4e3e688d18785eebb8ee44c13934f054e336343f542ddb02dae98e4ec363e",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/c3-ratios-focus.spec.ts",
+      "acceptedSourceSha256": "7c72bb3a20feafc0d321e6c3a195e2483aac4abbb4f2be1bccf049d92f25ef91",
+      "publicSha256": "9e1c0eeff294c7b851d5e8f7f6957283bbc32f11c4273a6e958504fb9b4fedbd",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "tests/e2e/c3-ux.spec.ts",
+      "acceptedSourceSha256": "fcabc8784f887d8d10fe75fb800b220169f2761c5750839074314f8f0c87caf0",
+      "publicSha256": "fcabc8784f887d8d10fe75fb800b220169f2761c5750839074314f8f0c87caf0",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/helpers.ts",
+      "acceptedSourceSha256": "a51a8b61e3ee7849eff8126e663d695363b6a4cc4719bd4bc851f1ca5a3c1015",
+      "publicSha256": "a51a8b61e3ee7849eff8126e663d695363b6a4cc4719bd4bc851f1ca5a3c1015",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/learning.spec.ts",
+      "acceptedSourceSha256": "69433e664faa9cc8ee6fdde33ab2a3bbcd6dd7397d2d8d75865f7bcc138c72a9",
+      "publicSha256": "69433e664faa9cc8ee6fdde33ab2a3bbcd6dd7397d2d8d75865f7bcc138c72a9",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/progress.spec.ts",
+      "acceptedSourceSha256": "1ddd79bdca4a89172e7bd290e497baee29389354791e64d61d02695ffc4b86e0",
+      "publicSha256": "1ddd79bdca4a89172e7bd290e497baee29389354791e64d61d02695ffc4b86e0",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/quality.spec.ts",
+      "acceptedSourceSha256": "1c847dc16821950d1b6d8d658874a5db68f9c9cff39bcd34f4ca26041c1eda84",
+      "publicSha256": "1c847dc16821950d1b6d8d658874a5db68f9c9cff39bcd34f4ca26041c1eda84",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/ratios-lab.spec.ts",
+      "acceptedSourceSha256": "4b937d591919147fed0e112b4b712fc2cc765902ecd6e3f47b712a53e82e6214",
+      "publicSha256": "4b937d591919147fed0e112b4b712fc2cc765902ecd6e3f47b712a53e82e6214",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/tranche03.spec.ts",
+      "acceptedSourceSha256": "e56852048a456edbdb14504b4d62852c8be1074ef0b7f57f2ace3b9ee6a5d001",
+      "publicSha256": "e56852048a456edbdb14504b4d62852c8be1074ef0b7f57f2ace3b9ee6a5d001",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/e2e/webkit.spec.ts",
+      "acceptedSourceSha256": "2db3f1818bad5ba18bea1b4bc227725ed3b04c6cdfdcda14895435b5e0209f66",
+      "publicSha256": "2db3f1818bad5ba18bea1b4bc227725ed3b04c6cdfdcda14895435b5e0209f66",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/baseline-provenance.json",
+      "acceptedSourceSha256": "e9058a888d651c34f34d07d2ebdbbc5b82787a3551e0139644fe340b9ce78029",
+      "publicSha256": "e9058a888d651c34f34d07d2ebdbbc5b82787a3551e0139644fe340b9ce78029",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/baseline-v1-progress.json",
+      "acceptedSourceSha256": "7d84c0ddbd3c8dd08a37d81dbbc24186e0930d849d7b324b02f1510ff095689e",
+      "publicSha256": "7d84c0ddbd3c8dd08a37d81dbbc24186e0930d849d7b324b02f1510ff095689e",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-consolidation-oracles.json",
+      "acceptedSourceSha256": "192f15a6e80b80e0364201101c4e86d03bf4ee9818660ff71e72af461aed3db2",
+      "publicSha256": "192f15a6e80b80e0364201101c4e86d03bf4ee9818660ff71e72af461aed3db2",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-independent-oracles.json",
+      "acceptedSourceSha256": "5c9e22c81d73f211a79c348f11e8730840e3c67a19571bfba3f8f176536f78f2",
+      "publicSha256": "5c9e22c81d73f211a79c348f11e8730840e3c67a19571bfba3f8f176536f78f2",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-lesson-formula-oracles.json",
+      "acceptedSourceSha256": "cc02c688854f20a55344e27c77188aafee8edd844461c507f4564ec58653722a",
+      "publicSha256": "cc02c688854f20a55344e27c77188aafee8edd844461c507f4564ec58653722a",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-new-problems-oracles.json",
+      "acceptedSourceSha256": "203f51b52cb02e920e57450db24cd481c45a497a3ad44dd559381a3d7a2e0c14",
+      "publicSha256": "203f51b52cb02e920e57450db24cd481c45a497a3ad44dd559381a3d7a2e0c14",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-pre-delta-object-hashes.json",
+      "acceptedSourceSha256": "eb77412121522148a58c162fb71d7a680d6d5ca0dd1644d8a679ae731b0d4b70",
+      "publicSha256": "eb77412121522148a58c162fb71d7a680d6d5ca0dd1644d8a679ae731b0d4b70",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-ratios-focus-grading-probes.json",
+      "acceptedSourceSha256": "85cf2c44bf507f22724154bee1446e26bd13a4ffd683cbbee9a2ce401e0a326b",
+      "publicSha256": "85cf2c44bf507f22724154bee1446e26bd13a4ffd683cbbee9a2ce401e0a326b",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-ratios-focus-independent-oracles.json",
+      "acceptedSourceSha256": "1585b8901dd8f7fe71deb4533bf3939938e139718c2a9d70615a882f2cffd335",
+      "publicSha256": "1585b8901dd8f7fe71deb4533bf3939938e139718c2a9d70615a882f2cffd335",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-reverse-roc-oracles.json",
+      "acceptedSourceSha256": "09c7fd4586af218617123d60549f1e6c08512fd04147724ac1394527367fc6a9",
+      "publicSha256": "09c7fd4586af218617123d60549f1e6c08512fd04147724ac1394527367fc6a9",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-seminar-calibrations.json",
+      "acceptedSourceSha256": "76160c333c650fa8e7639c253da43cba4729f650b3a1c0286e6d122e3266c45f",
+      "publicSha256": "76160c333c650fa8e7639c253da43cba4729f650b3a1c0286e6d122e3266c45f",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-theory-oracles.json",
+      "acceptedSourceSha256": "25ae596906fa81f4f84c0f23f21a3f4bd4813cbcbdd60048707767590aba9c9b",
+      "publicSha256": "25ae596906fa81f4f84c0f23f21a3f4bd4813cbcbdd60048707767590aba9c9b",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/c3-three-year-oracles.json",
+      "acceptedSourceSha256": "03449916ad9f73abc7a3ebfdd50088a96c7397479f4e6dcde91b90f9a66ee3f0",
+      "publicSha256": "03449916ad9f73abc7a3ebfdd50088a96c7397479f4e6dcde91b90f9a66ee3f0",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/original-bank-oracles.json",
+      "acceptedSourceSha256": "c651b6e53311f6cf32f3bb0c4987f543ecf1efaf91cca752b23e850eeed505af",
+      "publicSha256": "c651b6e53311f6cf32f3bb0c4987f543ecf1efaf91cca752b23e850eeed505af",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/ratios-independent-oracles.json",
+      "acceptedSourceSha256": "70a916c2fcef95bd714ff41df0b534a7aaac832e0fe25b2d22f7625e94f8d610",
+      "publicSha256": "70a916c2fcef95bd714ff41df0b534a7aaac832e0fe25b2d22f7625e94f8d610",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/ratios-question-oracles.json",
+      "acceptedSourceSha256": "09279d1fe4d3cd52a7137e315516e76a59c61e6fb9e852608162338c91dcdd4d",
+      "publicSha256": "09279d1fe4d3cd52a7137e315516e76a59c61e6fb9e852608162338c91dcdd4d",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/fixtures/tranche03-independent-oracles.json",
+      "acceptedSourceSha256": "8671288e9f7e7b10d3762f1990ed41b795f373a27d96b8c5cc2594745f36b043",
+      "publicSha256": "8671288e9f7e7b10d3762f1990ed41b795f373a27d96b8c5cc2594745f36b043",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-baseline-finance-check.mjs",
+      "acceptedSourceSha256": "25f7681283012bb37e593e8cf008371c65a693eabefb5832871a6876da4c0584",
+      "publicSha256": "25f7681283012bb37e593e8cf008371c65a693eabefb5832871a6876da4c0584",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-blind-grade.py",
+      "acceptedSourceSha256": "931dc63ef94930dcdeb4e6a443e2e09aebddd1d65570ce4a11f5245e256299a5",
+      "publicSha256": "931dc63ef94930dcdeb4e6a443e2e09aebddd1d65570ce4a11f5245e256299a5",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-combine-independent-oracles.py",
+      "acceptedSourceSha256": "2c89baea6c620ee0b4305da602693687813b3d0ea11f7658a0c07aef9d6dcd2d",
+      "publicSha256": "2c89baea6c620ee0b4305da602693687813b3d0ea11f7658a0c07aef9d6dcd2d",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-consolidation-check.mjs",
+      "acceptedSourceSha256": "92b98daf6b8a27a66c6875e76be2e1d818a6de4090c7b7afae09fdc42e8cb9ed",
+      "publicSha256": "92b98daf6b8a27a66c6875e76be2e1d818a6de4090c7b7afae09fdc42e8cb9ed",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-consolidation-oracle.py",
+      "acceptedSourceSha256": "bdc7a67e640f87d119e78589d51a404df65014c87b080802c48455a688d5028f",
+      "publicSha256": "bdc7a67e640f87d119e78589d51a404df65014c87b080802c48455a688d5028f",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-content-snapshot.mjs",
+      "acceptedSourceSha256": "2a6876930ca16ea5caee567532cac0419497f8461e0260119c725e7d3c9556cc",
+      "publicSha256": "2a6876930ca16ea5caee567532cac0419497f8461e0260119c725e7d3c9556cc",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-corpus-oracle-check.mjs",
+      "acceptedSourceSha256": "b8ed2354d870a96ab98c924e19c03baf65b4573c0b7d41db5188e34499cd20d1",
+      "publicSha256": "b8ed2354d870a96ab98c924e19c03baf65b4573c0b7d41db5188e34499cd20d1",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-lesson-formula-oracles.py",
+      "acceptedSourceSha256": "262d6db3cd0acc06bf01e102d203b571bac196cc7e1cc92482c293aab392b4a1",
+      "publicSha256": "262d6db3cd0acc06bf01e102d203b571bac196cc7e1cc92482c293aab392b4a1",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-lessons-formulas-check.py",
+      "acceptedSourceSha256": "d624d93ed6a18409c74a9b7931d3cf78bdc3d0f80c893f0f2c26d25e3f243947",
+      "publicSha256": "d624d93ed6a18409c74a9b7931d3cf78bdc3d0f80c893f0f2c26d25e3f243947",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-model-problem-check.mjs",
+      "acceptedSourceSha256": "80be83072f295b7a6fc38b467029ef832adc1691cea0c31174b802cbbbff251e",
+      "publicSha256": "80be83072f295b7a6fc38b467029ef832adc1691cea0c31174b802cbbbff251e",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-net-roc-check.mjs",
+      "acceptedSourceSha256": "3aa4ad8fe8841dc4221803f17d876d00976491580b1ca28179f9dd99db2660d2",
+      "publicSha256": "3aa4ad8fe8841dc4221803f17d876d00976491580b1ca28179f9dd99db2660d2",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-new-problems-check.py",
+      "acceptedSourceSha256": "a5d1b091c2377776261d9081c0e1ffdeec996260b48f0aeeafa3cef036f1f75d",
+      "publicSha256": "a5d1b091c2377776261d9081c0e1ffdeec996260b48f0aeeafa3cef036f1f75d",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-new-problems-oracles.py",
+      "acceptedSourceSha256": "955872328e160019eba62120e2d74d4596fdf81578adf94d1f326283c0b04746",
+      "publicSha256": "955872328e160019eba62120e2d74d4596fdf81578adf94d1f326283c0b04746",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-qa-probes.mjs",
+      "acceptedSourceSha256": "21dafd97e80e3b1ebe0ed775db84db53a256cfa3cc6ee31d957d029866be30c8",
+      "publicSha256": "21dafd97e80e3b1ebe0ed775db84db53a256cfa3cc6ee31d957d029866be30c8",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-ratios-focus-oracle.py",
+      "acceptedSourceSha256": "608a503ed5b7b60ab747ac3c2e89e0991074378acd0352f9c4bcb87578d5982f",
+      "publicSha256": "608a503ed5b7b60ab747ac3c2e89e0991074378acd0352f9c4bcb87578d5982f",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-reverse-roc-check.mjs",
+      "acceptedSourceSha256": "c918fa8406f4881597c3748f111283441c151c32c53af1dd3b0df02a639953d9",
+      "publicSha256": "c918fa8406f4881597c3748f111283441c151c32c53af1dd3b0df02a639953d9",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-reverse-roc-oracle.py",
+      "acceptedSourceSha256": "eefb0a69cd71f0d1fcc81c65e816442e418b45126f423d7035694998d49b6077",
+      "publicSha256": "eefb0a69cd71f0d1fcc81c65e816442e418b45126f423d7035694998d49b6077",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-source-audit.py",
+      "acceptedSourceSha256": "ab9246d9cfcfebe550aa0dcf000a219588bd65b9c4b746b6ace39267c2c56a9e",
+      "publicSha256": "ab9246d9cfcfebe550aa0dcf000a219588bd65b9c4b746b6ace39267c2c56a9e",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-theory-check.mjs",
+      "acceptedSourceSha256": "748fdee476e1c6391fa7d5c9a875c778e7804a8857b46d584bd98e0ce9a66c4a",
+      "publicSha256": "748fdee476e1c6391fa7d5c9a875c778e7804a8857b46d584bd98e0ce9a66c4a",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-theory-oracles.py",
+      "acceptedSourceSha256": "626aa7d5c46a63f89bf3e1976006e078e0fbe794fc14d06970af78f710f9ec30",
+      "publicSha256": "626aa7d5c46a63f89bf3e1976006e078e0fbe794fc14d06970af78f710f9ec30",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-three-year-check.mjs",
+      "acceptedSourceSha256": "f52171e71ad809e8f9acf0df9556d0097e329e636c6efa5b2cab63cfbc32f927",
+      "publicSha256": "f52171e71ad809e8f9acf0df9556d0097e329e636c6efa5b2cab63cfbc32f927",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-three-year-oracle.py",
+      "acceptedSourceSha256": "7a71f4abf7c2d20e995b90efdc01216951512e4e2287cced94326a9a96067548",
+      "publicSha256": "7a71f4abf7c2d20e995b90efdc01216951512e4e2287cced94326a9a96067548",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-tolerance-check.mjs",
+      "acceptedSourceSha256": "005d1a2caa9bf1f2e486136cd7eaf76eab86e2909af1ed8defd0f98cea565c86",
+      "publicSha256": "005d1a2caa9bf1f2e486136cd7eaf76eab86e2909af1ed8defd0f98cea565c86",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/c3-units-check.mjs",
+      "acceptedSourceSha256": "a62d543e2050cee2c0725b36394f00257d6e1811de27b8e7d73e3f0c219f4916",
+      "publicSha256": "a62d543e2050cee2c0725b36394f00257d6e1811de27b8e7d73e3f0c219f4916",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/review/storage-review.mjs",
+      "acceptedSourceSha256": "4c6c15a8609e030ff038eb07757cfc88e488366811d9aa8182e5cf67efcf2404",
+      "publicSha256": "4c6c15a8609e030ff038eb07757cfc88e488366811d9aa8182e5cf67efcf2404",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/assessment-provenance.test.ts",
+      "acceptedSourceSha256": "3b51d4d3f4682c9a49cb05621a3918798fbbb29f06ae9b4f99fc290622104c22",
+      "publicSha256": "3b51d4d3f4682c9a49cb05621a3918798fbbb29f06ae9b4f99fc290622104c22",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/c3-blueprints.test.ts",
+      "acceptedSourceSha256": "3a8a8697388ea8c38431c7b4f48363a87927868349a7ca35dd676b09195816dc",
+      "publicSha256": "3a8a8697388ea8c38431c7b4f48363a87927868349a7ca35dd676b09195816dc",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/c3-content.test.ts",
+      "acceptedSourceSha256": "bdc648210face714d8fbfecddc8dd7554af9d7f9122d76f77cc3f112d2532cb7",
+      "publicSha256": "bdc648210face714d8fbfecddc8dd7554af9d7f9122d76f77cc3f112d2532cb7",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/c3-oracles.test.ts",
+      "acceptedSourceSha256": "c991f05fbe0220bcf107e023997397135e280c5e8c4ec7253584e5173b3a26fe",
+      "publicSha256": "c991f05fbe0220bcf107e023997397135e280c5e8c4ec7253584e5173b3a26fe",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/c3-ratios-focus.test.ts",
+      "acceptedSourceSha256": "ab738b9cc4b3e2170645f0bd1da9e0d0b1820c4d41080903424221d7ff9943ad",
+      "publicSha256": "ab738b9cc4b3e2170645f0bd1da9e0d0b1820c4d41080903424221d7ff9943ad",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/c3-ux.test.ts",
+      "acceptedSourceSha256": "d7911b7e53223fc27154f9d6132e2dc32b02ffa072c56e3ce100a40be60e62cf",
+      "publicSha256": "d7911b7e53223fc27154f9d6132e2dc32b02ffa072c56e3ce100a40be60e62cf",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/content.test.ts",
+      "acceptedSourceSha256": "f1d57899198a655ab29abb21744096f805ddc4cb9c2a0f5311c908158934d4a3",
+      "publicSha256": "f1d57899198a655ab29abb21744096f805ddc4cb9c2a0f5311c908158934d4a3",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/curriculum-content-integrity.test.ts",
+      "acceptedSourceSha256": "09faf1f63b154f0288a0ddd5c2fbfb667f1e7da82e8910a24f0e86293c44c72c",
+      "publicSha256": "09faf1f63b154f0288a0ddd5c2fbfb667f1e7da82e8910a24f0e86293c44c72c",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/curriculum-registry.test.ts",
+      "acceptedSourceSha256": "c7672380a8bad0f08be137b8c2553077ee3ca6ff263077bbe32409334e3fc534",
+      "publicSha256": "c7672380a8bad0f08be137b8c2553077ee3ca6ff263077bbe32409334e3fc534",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/curriculum-storage.test.ts",
+      "acceptedSourceSha256": "da951f96e172a0365e9eb400023c82b33469ab957e3399534f68191f87d115f0",
+      "publicSha256": "da951f96e172a0365e9eb400023c82b33469ab957e3399534f68191f87d115f0",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/favicon-artifact.test.ts",
+      "acceptedSourceSha256": "37fb6cc7c8126a4c7cf6677feed42f53308eedcca7634cb83d028ab4c5bd1701",
+      "publicSha256": "37fb6cc7c8126a4c7cf6677feed42f53308eedcca7634cb83d028ab4c5bd1701",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/finance.test.ts",
+      "acceptedSourceSha256": "366e254a4688d6e78c0678e4504a1d8ef77649e2477d74db51a9aefbe39609dd",
+      "publicSha256": "366e254a4688d6e78c0678e4504a1d8ef77649e2477d74db51a9aefbe39609dd",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/financial-fixtures.test.ts",
+      "acceptedSourceSha256": "5181806730098c345424513b1f463673b74874087a34190a45e7fda41f175edd",
+      "publicSha256": "5181806730098c345424513b1f463673b74874087a34190a45e7fda41f175edd",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/font-notices.test.ts",
+      "acceptedSourceSha256": "3bfbeee7fca6325528a064898fdc612ed45060c7c6a3ab1ac3619a521a09f643",
+      "publicSha256": "3bfbeee7fca6325528a064898fdc612ed45060c7c6a3ab1ac3619a521a09f643",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/future-topic-ui.test.ts",
+      "acceptedSourceSha256": "dcfdb7bd5f9fd9ad85d44b808915f6c3658e3455073b53843b3c963899f7f748",
+      "publicSha256": "dcfdb7bd5f9fd9ad85d44b808915f6c3658e3455073b53843b3c963899f7f748",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/grading.test.ts",
+      "acceptedSourceSha256": "eca3784340978600d10f7e0d217f3a23658b199583dd8b4b32c7d0cb5f8d2e02",
+      "publicSha256": "eca3784340978600d10f7e0d217f3a23658b199583dd8b4b32c7d0cb5f8d2e02",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/historical-feedback.test.ts",
+      "acceptedSourceSha256": "f4aabd7c00117874f91b7820e7d518cbc524128def9bbaaa8ad150d8639469f2",
+      "publicSha256": "f4aabd7c00117874f91b7820e7d518cbc524128def9bbaaa8ad150d8639469f2",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/progress-compatibility.test.ts",
+      "acceptedSourceSha256": "1fa7bff31dd49f6af3fee7ba5a56651583f314c9bd7978fe0182f5e3352e3610",
+      "publicSha256": "1fa7bff31dd49f6af3fee7ba5a56651583f314c9bd7978fe0182f5e3352e3610",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/ratios.test.ts",
+      "acceptedSourceSha256": "ac9c94a14eb60dbb37f280cb26b154d1f46423077207add84fb63755b46ac319",
+      "publicSha256": "ac9c94a14eb60dbb37f280cb26b154d1f46423077207add84fb63755b46ac319",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/release-audit.test.ts",
+      "acceptedSourceSha256": "c7690203b83423ebae1f4430ef29a47f954ac9214872e4bc3222796449f6413f",
+      "publicSha256": "c7690203b83423ebae1f4430ef29a47f954ac9214872e4bc3222796449f6413f",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/release-binding.test.ts",
+      "acceptedSourceSha256": "ec9de09a521440049ec8fd1fd7b72461cf4fdf9b01dece4f79db97a11b99ccc6",
+      "publicSha256": "ec9de09a521440049ec8fd1fd7b72461cf4fdf9b01dece4f79db97a11b99ccc6",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/storage.test.ts",
+      "acceptedSourceSha256": "6f60603de6813864c427b8157c459db485a23c9db0c08b790443982a52d577e8",
+      "publicSha256": "6f60603de6813864c427b8157c459db485a23c9db0c08b790443982a52d577e8",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/three-year.test.ts",
+      "acceptedSourceSha256": "b36496a21f875abf49e3b1e8b06b2f83373e82255e735a13594fcc4edd4ed93b",
+      "publicSha256": "b36496a21f875abf49e3b1e8b06b2f83373e82255e735a13594fcc4edd4ed93b",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/tranche03-oracles.test.ts",
+      "acceptedSourceSha256": "f97e268dcf8bc4d217462f07bf960682613d8962e6d07e31d0c8095be5bd8972",
+      "publicSha256": "f97e268dcf8bc4d217462f07bf960682613d8962e6d07e31d0c8095be5bd8972",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/units.test.ts",
+      "acceptedSourceSha256": "afda9b9189669c5edebd0b2e2fc06baab471d2625b91b9341b0e78c4a2d335db",
+      "publicSha256": "afda9b9189669c5edebd0b2e2fc06baab471d2625b91b9341b0e78c4a2d335db",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tests/unit/workflow.test.ts",
+      "acceptedSourceSha256": "8b709a476ccde419f42778b37dc2e9ec14a3c52f629226ccb66f0329a884d1cc",
+      "publicSha256": "8b709a476ccde419f42778b37dc2e9ec14a3c52f629226ccb66f0329a884d1cc",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "tsconfig.json",
+      "acceptedSourceSha256": "a2941153350223faf2c94e1b4fb439a79fb0ef8f4d31abc4500ab04f0484aac5",
+      "publicSha256": "a2941153350223faf2c94e1b4fb439a79fb0ef8f4d31abc4500ab04f0484aac5",
+      "exactAcceptedBytes": true
+    },
+    {
+      "path": "vite.config.ts",
+      "acceptedSourceSha256": "86a352b6242dfbeda59ebe712b006e9c1e6254edaa289c7677287360d13a2f69",
+      "publicSha256": "c53cd19b8ff106e602389dff2fe2434e0b3eaf0382e9105bfb64919dd27e9c80",
+      "exactAcceptedBytes": false
+    },
+    {
+      "path": "docs/PUBLIC_RELEASE_V0_4_0.md",
+      "acceptedSourceSha256": null,
+      "publicSha256": "36ca835a57421ee2e6076c581f8fdc741e630e5981fcc1e1bc93d4c12029f029",
+      "exactAcceptedBytes": false
+    }
+  ],
+  "newFiles": [
+    "PUBLIC_RELEASE_DELTA_MANIFEST.json",
+    "docs/PUBLIC_RELEASE_V0_4_0.md"
+  ],
+  "permittedTransformations": [
+    "Version0.4.0 and scoped owner authorization metadata; historical0.3 authorization preserved",
+    "Current public README/status/release docs and complete relative-link/export allowlist",
+    "Run full accepted browser coverage in verify job; deploy job/guards unchanged",
+    "Configurable local ratios-test ports with reviewed defaults unchanged, extra config paths in build dirty metadata",
+    "Ignore generated evidence/download directories so private validation outputs cannot become source"
+  ],
+  "excludedCategories": [
+    "Private Git commit objects/history/remotes, entire private auditZIP and evidence/private-derived",
+    "Teacher XLSX/PDF/photos/fullrawcellmap",
+    "Realstudentdata and localworkstationpaths"
+  ],
+  "financialContentAndStoredResults": "All accepted app src/, numerical keys/units/IDs/versions and progress/storage schema are byte-preserved. Tests add no new financial keys.",
+  "releaseAuthorization": "Owner current0.4 conditional authorization in publication-policy.json; not a claim of successful CI/deployment/teacher approval or learning mastery."
+}

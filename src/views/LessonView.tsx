@@ -1,4 +1,5 @@
 import { CausalDiagram } from "../components/CausalDiagram";
+import { IntegratedModel } from "../components/IntegratedModel";
 import { WorkedExample, NwcLab } from "../components/StepByStep";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
@@ -48,6 +49,8 @@ import {
   emptyDraft,
   pct,
   href,
+  publishedLessonContent,
+  publishedProblemContent,
 } from "../components/Common";
 import {
   grade,
@@ -67,15 +70,25 @@ export function LessonView({
   data: Progress;
   update: (fn: (p: Progress) => Progress) => void;
 }) {
-  const l = lessons.find((l) => l.id === id);
+  const l = publishedLessonContent().find((l) => l.id === id);
+  const availableProblems = publishedProblemContent();
   useEffect(() => {
     if (anchor)
       document.getElementById(anchor)?.scrollIntoView({ behavior: "instant" });
   }, [id, anchor]);
-  if (!l) return <Curriculum />;
+  if (!l)
+    return (
+      <>
+        <div className="notice" role="status">
+          Этот раздел пока недоступен. Выберите опубликованный урок в карте
+          программы.
+        </div>
+        <Curriculum />
+      </>
+    );
   return (
     <>
-      <div className="eyebrow">УЧЕБНИК / ТЕМА 3 / {l.id}</div>
+      <div className="eyebrow">УЧЕБНИК / {l.id}</div>
       <div className="page-heading compact">
         <div>
           <h1>{l.title}</h1>
@@ -181,6 +194,7 @@ export function LessonView({
             </section>
           ))}
           {l.id === "T3-03" && <NwcLab />}
+          {l.id === "T3-11" && <IntegratedModel />}
           <Sources refs={l.sourceRefs} />
           {Object.keys(data.lessons).some(
             (k) => k.startsWith(`${l.id}@`) && k !== `${l.id}@${l.version}`,
@@ -196,13 +210,15 @@ export function LessonView({
               Чтение, верные числа и самостоятельный перенос — разные
               наблюдения. Ни одна отметка чтения не означает освоение.
             </p>
-            {(l.practiceIds ?? []).map((pid) => (
-              <p key={pid}>
-                <Link to={`practice/${pid}`}>
-                  {problems.find((p) => p.id === pid)?.title ?? pid}
-                </Link>
-              </p>
-            ))}
+            {(l.practiceIds ?? [])
+              .filter((pid) => availableProblems.some((p) => p.id === pid))
+              .map((pid) => (
+                <p key={pid}>
+                  <Link to={`practice/${pid}`}>
+                    {problems.find((p) => p.id === pid)?.title ?? pid}
+                  </Link>
+                </p>
+              ))}
           </div>
           <div className="row">
             <button
@@ -228,7 +244,7 @@ export function LessonView({
               )}
             </button>
             <Link
-              to={`practice/${problems.find((p) => p.lessonId === l.id)?.id ?? ""}`}
+              to={`practice/${availableProblems.find((p) => p.lessonId === l.id)?.id ?? ""}`}
               className="button outline"
             >
               Закрепить в практике <ArrowRight size={17} />

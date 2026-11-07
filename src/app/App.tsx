@@ -1,3 +1,8 @@
+import {
+  curriculumRegistry,
+  availableLessons,
+  publishedModules,
+} from "../curriculum";
 import { useProgress } from "../storage/useProgress";
 import { RatioLab } from "../views/RatioLab";
 import { buildInfo } from "./build";
@@ -49,6 +54,8 @@ import {
   emptyDraft,
   pct,
   href,
+  readingProgress,
+  publishedLessonContent,
 } from "../components/Common";
 import { Home } from "../views/Home";
 import { LessonView } from "../views/LessonView";
@@ -75,12 +82,29 @@ export default function App() {
     return () => window.removeEventListener("hashchange", nav);
   }, []);
   const [section, id, anchor] = route.split("/");
-  const doneLessons = lessons.filter(
-    (l) => data.lessons[`${l.id}@${l.version}`],
-  ).length;
+  const doneLessons = readingProgress(data);
+  const visibleLessons = publishedLessonContent();
+  const modules = publishedModules().filter(
+    (m) => m.reviewStatus === "PUBLISHED",
+  );
+  const activeLesson = visibleLessons.find((l) => l.id === id);
+  const lessonNode = availableLessons().find((l) => l.id === activeLesson?.id);
+  const currentModule =
+    modules.find((m) => m.id === lessonNode?.moduleId) ?? modules[0];
+  const moduleLessons = visibleLessons.filter((l) =>
+    currentModule?.lessonIds.includes(l.id),
+  );
+  const doneModuleLessons = currentModule
+    ? readingProgress(data, currentModule.id)
+    : 0;
+  const firstLesson = visibleLessons[0];
   const nav = [
     { to: "home", label: "Обзор", icon: LayoutDashboard },
-    { to: "learn/T3-01", label: "Учебник", icon: BookOpen },
+    {
+      to: firstLesson ? `learn/${firstLesson.id}` : "curriculum",
+      label: "Учебник",
+      icon: BookOpen,
+    },
     { to: "practice", label: "Практикум", icon: NotebookPen },
     { to: "exam", label: "Мини-контрольная", icon: Clock3 },
     { to: "ratios", label: "Связи коэффициентов", icon: Route },
@@ -113,12 +137,17 @@ export default function App() {
             ? "CF · Learning OS · Закрыть меню"
             : "CF · Learning OS · Открыть меню"
         }
+        aria-expanded={mobile}
+        aria-controls="course-navigation"
         onClick={() => setMobile(!mobile)}
       >
         {mobile ? <X /> : <Menu />}
         <span>CF · Learning OS</span>
       </button>
-      <aside className={`sidebar ${mobile ? "is-open" : ""}`}>
+      <aside
+        id="course-navigation"
+        className={`sidebar ${mobile ? "is-open" : ""}`}
+      >
         <Link to="home" className="brand">
           <span className="brand-mark">
             cf<span>↗</span>
@@ -143,16 +172,29 @@ export default function App() {
         </nav>
         <div className="sidebar-course">
           <div className="eyebrow">ТЕКУЩИЙ РАЗДЕЛ</div>
-          <strong>03 · Финансовый анализ</strong>
-          <p>От отчётности к решениям</p>
+          <strong>{currentModule?.title ?? "Программа обучения"}</strong>
+          <p>Доступные учебные разделы</p>
           <div className="bar">
             <span
-              style={{ width: `${(doneLessons / topics.length) * 100}%` }}
+              style={{
+                width: `${moduleLessons.length ? (doneModuleLessons / moduleLessons.length) * 100 : 0}%`,
+              }}
             />
           </div>
           <small>
-            {doneLessons} из {topics.length} подразделов прочитано
+            {doneModuleLessons} из {moduleLessons.length} доступных разделов
+            прочитано
           </small>
+          {modules.map((module) => {
+            const entry = visibleLessons.find((l) =>
+              module.lessonIds.includes(l.id),
+            );
+            return entry && modules.length > 1 ? (
+              <Link key={module.id} to={`learn/${entry.id}`}>
+                {module.title}
+              </Link>
+            ) : null;
+          })}
           <Link to="curriculum">
             Вся программа <ArrowRight size={14} />
           </Link>
@@ -167,11 +209,11 @@ export default function App() {
       <div className="workspace">
         <header className="topbar">
           <div>
-            Корпоративные финансы <ChevronRight size={14} />
-            <strong>Тема 3</strong>
+            {curriculumRegistry.course.title} <ChevronRight size={14} />
+            <strong>{currentModule?.id ?? "Учебная программа"}</strong>
           </div>
           <span className="local-badge">
-            <span /> Учебная версия · 0.3 Beta
+            <span /> Учебная версия · {buildInfo.version}
           </span>
         </header>
         <main id="main" tabIndex={-1}>
@@ -188,14 +230,19 @@ export default function App() {
                 update((p) => ({ ...p, returnContext: null }));
               }}
             >
-              <ArrowLeft size={16} /> К заданию · черновик сохранён
+              <ArrowLeft size={16} />{" "}
+              {returnTo.startsWith("practice/")
+                ? "К заданию · черновик сохранён"
+                : returnTo === "exam"
+                  ? "К результату контрольной"
+                  : "Вернуться к предыдущему разделу"}
             </button>
           )}
           {section === "home" && <Home data={data} doneLessons={doneLessons} />}
           {section === "learn" && (
             <LessonView
               key={id}
-              id={id ?? "T3-01"}
+              id={id ?? firstLesson?.id ?? ""}
               anchor={anchor}
               data={data}
               update={update}

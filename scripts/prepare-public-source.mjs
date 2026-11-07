@@ -64,6 +64,8 @@ const rootFiles = new Set([
   "vite.config.ts",
   "vitest.config.ts",
   "playwright.config.ts",
+  "playwright.c3-qa.config.ts",
+  "playwright.c3-delta-qa.config.ts",
   "tsconfig.json",
   ".gitignore",
   ".nvmrc",
@@ -82,6 +84,11 @@ const publicDocs = new Set([
   "ARCHITECTURE.md",
   "ASSUMPTIONS_REGISTER.md",
   "SOURCE_MAP.md",
+  "PROJECT_STATUS.md",
+  "CURRICULUM_REGISTRY.md",
+  "SEM3_3_1_TO_3_9_COVERAGE_MATRIX.md",
+  "PUBLIC_RELEASE_PROCESS.md",
+  "PUBLIC_RELEASE_V0_4_0.md",
 ]);
 for (const p of paths) {
   const allow =

@@ -6,3 +6,7 @@ test-results/
 .DS_Store
 *.pdf
 .env*
+
+# Generated validation/download outputs are not public source.
+evidence/
+verified-manifest/

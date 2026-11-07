@@ -1,0 +1,171 @@
+{
+  "provenance": "Independent exact Fraction calculations from final prompt-only data; saved before author source or keys were read. Synthetic original cases only, no private workbook table.",
+  "promptSHA256": "30e588a6644a78485cb60fe4c4e41b185900521ba152adda68acdfe415c7ebd3",
+  "blindOracleSHA256": "3d52a8f20ef8003dffcc6ba4231979cde0f3e425870530157ecfd7bbb10b982f",
+  "problems": [
+    {
+      "id": "C3-RF01",
+      "version": "1.0.0",
+      "stages": {
+        "nopat": {
+          "exact": "54",
+          "expected": 54.0,
+          "unit": "млн ₽"
+        },
+        "ni": {
+          "exact": "81/2",
+          "expected": 40.5,
+          "unit": "млн ₽"
+        },
+        "roa-nopat": {
+          "exact": "18",
+          "expected": 18.0,
+          "unit": "%"
+        },
+        "roe": {
+          "exact": "135/4",
+          "expected": 33.75,
+          "unit": "%"
+        },
+        "ni-margin": {
+          "exact": "135/23",
+          "expected": 5.869565217391305,
+          "unit": "%"
+        }
+      },
+      "independentStageIds": [
+        "roa-nopat",
+        "roe",
+        "ni-margin"
+      ]
+    },
+    {
+      "id": "C3-RF02",
+      "version": "1.0.0",
+      "stages": {
+        "ni": {
+          "exact": "153/5",
+          "expected": 30.6,
+          "unit": "млн ₽"
+        },
+        "interest-after-tax": {
+          "exact": "189/25",
+          "expected": 7.56,
+          "unit": "млн ₽"
+        },
+        "nopat": {
+          "exact": "954/25",
+          "expected": 38.16,
+          "unit": "млн ₽"
+        },
+        "roc-gross": {
+          "exact": "53/3",
+          "expected": 17.666666666666668,
+          "unit": "%"
+        },
+        "roc-net": {
+          "exact": "106/5",
+          "expected": 21.2,
+          "unit": "%"
+        }
+      },
+      "independentStageIds": [
+        "nopat",
+        "roc-gross",
+        "roc-net"
+      ]
+    },
+    {
+      "id": "C3-RF03",
+      "version": "1.0.0",
+      "stages": {
+        "purchases": {
+          "exact": "564",
+          "expected": 564.0,
+          "unit": "млн ₽"
+        },
+        "current-ratio": {
+          "exact": "12/5",
+          "expected": 2.4,
+          "unit": "раз"
+        },
+        "ccc": {
+          "exact": "246959/4230",
+          "expected": 58.38274231678487,
+          "unit": "дни"
+        },
+        "delta-nwc": {
+          "exact": "44",
+          "expected": 44.0,
+          "unit": "млн ₽"
+        },
+        "cfo": {
+          "exact": "34",
+          "expected": 34.0,
+          "unit": "млн ₽"
+        }
+      },
+      "independentStageIds": [
+        "current-ratio",
+        "ccc",
+        "cfo"
+      ]
+    },
+    {
+      "id": "C3-RF04",
+      "version": "1.0.0",
+      "stages": {
+        "book-zero": {
+          "exact": "1662/5",
+          "expected": 332.4,
+          "unit": "млн ₽"
+        },
+        "growth": {
+          "exact": "54/5",
+          "expected": 10.8,
+          "unit": "%"
+        },
+        "dividend-next": {
+          "exact": "14958/625",
+          "expected": 23.9328,
+          "unit": "млн ₽"
+        },
+        "equity-value": {
+          "exact": "29916/65",
+          "expected": 460.24615384615385,
+          "unit": "млн ₽"
+        },
+        "price-book": {
+          "exact": "18/13",
+          "expected": 1.3846153846153846,
+          "unit": "раз"
+        }
+      },
+      "independentStageIds": [
+        "growth",
+        "equity-value",
+        "price-book"
+      ]
+    },
+    {
+      "id": "C3-RF05",
+      "version": "1.0.0",
+      "stages": {},
+      "independentStageIds": [],
+      "correctOptionIds": [
+        "B"
+      ]
+    },
+    {
+      "id": "C3-RF06",
+      "version": "1.0.0",
+      "stages": {},
+      "independentStageIds": [],
+      "correctOptionIds": [
+        "A",
+        "B",
+        "D"
+      ]
+    }
+  ]
+}

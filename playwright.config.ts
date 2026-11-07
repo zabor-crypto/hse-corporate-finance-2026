@@ -31,7 +31,7 @@ export default defineConfig({
   projects: [
     {
       name: "desktop-1440",
-      testIgnore: "**/webkit.spec.ts",
+      testIgnore: ["**/webkit.spec.ts", "**/c3-complete.spec.ts", "**/c3-ratios-focus.spec.ts"],
       use: {
         browserName: "chromium",
         launchOptions: { executablePath },
@@ -40,7 +40,7 @@ export default defineConfig({
     },
     {
       name: "mobile-390",
-      testIgnore: "**/webkit.spec.ts",
+      testIgnore: ["**/webkit.spec.ts", "**/c3-complete.spec.ts", "**/c3-ratios-focus.spec.ts"],
       use: {
         ...devices["iPhone 13"],
         browserName: "chromium",

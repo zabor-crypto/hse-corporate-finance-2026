@@ -47,7 +47,9 @@ test("historical problem version remains in export and is separated from current
     .toBe(9);
   const counter = page.locator(".stats-grid > div").nth(2);
   await expect(counter).toContainText("1");
-  await expect(counter).toContainText("ответов прежних версий");
+  await expect(counter).toContainText(
+    "исторических ответов вне текущего доступного набора",
+  );
   const exported = await exportProgress(page);
   expect(exported.answers).toEqual(historical.answers);
   await page.reload();

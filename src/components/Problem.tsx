@@ -2,7 +2,7 @@ import { lessons } from "../content";
 import { useState } from "react";
 import type { Problem } from "../content/types";
 import type { AnswerRecord, Draft, Mode, Progress } from "../storage/progress";
-import { reasoningStatus } from "../storage/progress";
+import { reasoningStatus, draftKey } from "../storage/progress";
 import { assessedStages, gradeAttempt } from "../engine/grading/attempt";
 import { unitFeedback, unitPolicy, units } from "../engine/grading/units";
 import { Link, pct } from "./Common";
@@ -131,9 +131,11 @@ export function QuestionFields({
 export function Workpad({
   draft,
   onChange,
+  disabled = false,
 }: {
   draft: Draft;
   onChange: (d: Draft) => void;
+  disabled?: boolean;
 }) {
   return (
     <details className="workpad">
@@ -142,6 +144,7 @@ export function Workpad({
         Промежуточные расчёты
         <textarea
           aria-label="Черновик расчётов"
+          disabled={disabled}
           value={draft.workpad ?? ""}
           onChange={(e) => onChange({ ...draft, workpad: e.target.value })}
         />
@@ -199,19 +202,23 @@ export function Feedback({
   result,
   data,
   update,
+  returnRoute,
 }: {
   p: Problem;
   result: AnswerRecord;
   data?: Progress;
   update?: (fn: (p: Progress) => Progress) => void;
+  returnRoute?: string;
 }) {
-  const anchor = lessons
-    .find((l) => l.id === p.lessonId)
-    ?.sections.find((s) =>
-      s.formulaIds?.some((f) =>
-        (Array.isArray(p.formulaIds) ? p.formulaIds : []).includes(f),
-      ),
-    )?.id;
+  const anchor =
+    p.theorySectionId ??
+    lessons
+      .find((l) => l.id === p.lessonId)
+      ?.sections.find((s) =>
+        s.formulaIds?.some((f) =>
+          (Array.isArray(p.formulaIds) ? p.formulaIds : []).includes(f),
+        ),
+      )?.id;
   const [checked, setChecked] = useState<number[]>([]);
   const state = data
     ? reasoningStatus(result, data)
@@ -312,7 +319,45 @@ export function Feedback({
               <b>{e.code}</b>: {e.message}
             </p>
           ))}
-          <Link to={`learn/${p.lessonId}${anchor ? `/${anchor}` : ""}`}>
+          <Link
+            to={`learn/${p.lessonId}${anchor ? `/${anchor}` : ""}`}
+            onClick={() => {
+              if (!update || !returnRoute) return;
+              update((state) => {
+                const key = `${p.id}@${p.version}`,
+                  old = state.exposures?.[key],
+                  practice = returnRoute.startsWith("practice/"),
+                  draft = draftKey("practice", p.id, p.version);
+                return {
+                  ...state,
+                  returnContext: { route: returnRoute, problemId: p.id },
+                  ...(practice
+                    ? {
+                        drafts: {
+                          ...state.drafts,
+                          [draft]: {
+                            ...(state.drafts[draft] ?? {
+                              values: {},
+                              selected: [],
+                            }),
+                            assistanceUsed: true,
+                          },
+                        },
+                        exposures: {
+                          ...state.exposures,
+                          [key]: {
+                            firstSeenAt:
+                              old?.firstSeenAt ?? new Date().toISOString(),
+                            modes: old?.modes ?? ["practice"],
+                            assistanceUsed: true,
+                          },
+                        },
+                      }
+                    : {}),
+                };
+              });
+            }}
+          >
             Вернуться к экономической логике
           </Link>
         </div>

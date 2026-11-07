@@ -1,4 +1,8 @@
 import { test, expect } from "@playwright/test";
+import { readFileSync } from "node:fs";
+const packageVersion = JSON.parse(
+  readFileSync(new URL("../../package.json", import.meta.url), "utf8"),
+).version;
 import { lessons, formulas } from "../../src/content";
 import {
   assertNoPageErrors,
@@ -16,7 +20,7 @@ test("Pages subdirectory loads assets, version, navigation and keyboard skip lin
 }) => {
   expect(new URL(page.url()).pathname).toBe(SUBPATH);
   const version = page.getByTestId("build-version");
-  await expect(version).toContainText(/0\.3\.0/);
+  await expect(version).toContainText(packageVersion);
   await expect(version).toContainText(/[0-9a-f]{7,40}/i);
   const assetUrls = await page
     .locator("script[src],link[rel=stylesheet]")

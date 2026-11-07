@@ -1,4 +1,5 @@
 import { transferEvidence, reasoningStatus } from "../storage/progress";
+import { ErrorLog } from "../components/ErrorLog";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import {
@@ -47,6 +48,7 @@ import {
   emptyDraft,
   pct,
   href,
+  publishedProblemContent,
 } from "../components/Common";
 import {
   grade,
@@ -68,9 +70,12 @@ export function ProgressView({
   const [status, setStatus] = useState("");
   const [mode, setMode] = useState<Mode>("practice");
   const [reset, setReset] = useState(false);
+  const availableProblems = publishedProblemContent();
   const records = data.answers.filter((a) => a.mode === mode);
   const current = records.filter((a) =>
-    problems.some((p) => p.id === a.problemId && p.version === a.version),
+    availableProblems.some(
+      (p) => p.id === a.problemId && p.version === a.version,
+    ),
   );
   const old = records.length - current.length;
   const latest = new Map<string, AnswerRecord>();
@@ -173,17 +178,20 @@ export function ProgressView({
           <strong>
             {[...latest.values()].filter((a) => a.score === 1).length}
           </strong>
-          <p>заданий решено верно</p>
+          <p>
+            из {availableProblems.length} доступных заданий: последний ответ
+            верен
+          </p>
         </div>
         <div>
           <strong>{old}</strong>
-          <p>ответов прежних версий</p>
+          <p>исторических ответов вне текущего доступного набора</p>
         </div>
       </div>
       <section className="panel">
         <h2>Что подтверждено этими записями</h2>
         <p>
-          Числовые баллы учитывают только числа и выбор вариантов.{" "}
+          Объективный балл учитывает числа, выбранные единицы и варианты ответа.{" "}
           {
             data.answers.filter(
               (a) => reasoningStatus(a, data) === "SUBMITTED_NOT_REVIEWED",
@@ -199,8 +207,8 @@ export function ProgressView({
         </p>
         <p>
           Новый вариант с первой самостоятельной попытки без отмеченной помощи:{" "}
-          {transferEvidence(data, problems).cleanFirstSuccesses}. Статус
-          результата обучения: NOT_PROVEN. Это наблюдение приложения, не
+          {transferEvidence(data, problems).cleanFirstSuccesses}. Освоение
+          материала ещё не подтверждено. Это наблюдение приложения, не
           подтверждение готовности к контрольной.
         </p>
         <p>
@@ -208,7 +216,8 @@ export function ProgressView({
           истории; единицы в них отдельно не оценивались.
         </p>
       </section>
-      <h2>Работа над ошибками</h2>
+      <ErrorLog data={data} update={update} />
+      <h2>Последние попытки с ошибками</h2>
       <section className="panel">
         {mistakes.length ? (
           mistakes.map((a) => (

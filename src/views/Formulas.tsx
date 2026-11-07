@@ -46,6 +46,8 @@ import {
   emptyDraft,
   pct,
   href,
+  publishedFormulaContent,
+  publishedLessonContent,
 } from "../components/Common";
 import {
   grade,
@@ -60,7 +62,11 @@ export function Formulas({
   id?: string;
   support: (s: string) => void;
 }) {
-  const list = id ? formulas.filter((f) => f.id === id) : formulas;
+  const available = publishedFormulaContent();
+  const list = id ? available.filter((f) => f.id === id) : available;
+  const nwcLesson = publishedLessonContent().find((l) =>
+    l.sections.some((s) => s.formulaIds?.includes("operating-nwc")),
+  );
   return (
     <>
       <div className="eyebrow">СПРАВОЧНИК / ФОРМУЛЫ И МОДЕЛИ</div>
@@ -75,14 +81,24 @@ export function Formulas({
           Все формулы
         </Link>
       )}
+      {id && !list.length && (
+        <p className="notice" role="status">
+          Формула не найдена. Выберите модель в полном справочнике.
+        </p>
+      )}
       <div className="formula-list">
         {list.map((f) => (
           <FormulaCard id={f.id} full key={f.id} />
         ))}
       </div>
-      <button className="button outline" onClick={() => support("learn/T3-03")}>
-        Разобраться с оборотным капиталом <ArrowRight size={17} />
-      </button>
+      {nwcLesson && (
+        <button
+          className="button outline"
+          onClick={() => support(`learn/${nwcLesson.id}`)}
+        >
+          Разобраться с оборотным капиталом <ArrowRight size={17} />
+        </button>
+      )}
     </>
   );
 }

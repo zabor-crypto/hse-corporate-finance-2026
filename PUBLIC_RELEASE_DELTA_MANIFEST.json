@@ -230,8 +230,8 @@
     {
       "path": "src/app/styles/foundation.css",
       "acceptedSourceSha256": "529e9b6dbe6e875dc7883356306116d407fb87f29ae9ec16da6f533092afc63b",
-      "publicSha256": "529e9b6dbe6e875dc7883356306116d407fb87f29ae9ec16da6f533092afc63b",
-      "exactAcceptedBytes": true
+      "publicSha256": "8000e9b3b54e45a34caad116a3b314f3c6f021beb9315e77ef097e8097940e3a",
+      "exactAcceptedBytes": false
     },
     {
       "path": "src/app/styles/responsive.css",
@@ -1198,13 +1198,14 @@
     "Run full accepted browser coverage in verify job; deploy job/guards unchanged",
     "Configurable local ratios-test ports with reviewed defaults unchanged, extra config paths in build dirty metadata",
     "Ignore generated evidence/download directories so private validation outputs cannot become source",
-    "Bound native UX PNG capture dimensions after actual Ubuntu32767-pixel failure; retain all route/accessibility/overflow/navigation assertions and report viewport fallback explicitly."
+    "Bound native UX PNG capture dimensions after actual Ubuntu32767-pixel failure; retain all route/accessibility/overflow/navigation assertions and report viewport fallback explicitly.",
+    "Wrap overlong page-heading words for actual LinuxWebKit320 C3-R01 clipping; one presentation CSS property only, without font-size/title/formula/financial changes or hiding content."
   ],
   "excludedCategories": [
     "Private Git commit objects/history/remotes, entire private auditZIP and evidence/private-derived",
     "Teacher XLSX/PDF/photos/fullrawcellmap",
     "Realstudentdata and localworkstationpaths"
   ],
-  "financialContentAndStoredResults": "All accepted app src/, numerical keys/units/IDs/versions and progress/storage schema are byte-preserved. Tests add no new financial keys.",
+  "financialContentAndStoredResults": "Accepted content, financial engine, grading, storage, registry and all numerical keys/units/IDs/versions remain byte-preserved. One presentation stylesheet changes only heading word wrapping for a confirmed320px defect. Tests add no new financial keys.",
   "releaseAuthorization": "Owner current0.4 conditional authorization in publication-policy.json; not a claim of successful CI/deployment/teacher approval or learning mastery."
 }

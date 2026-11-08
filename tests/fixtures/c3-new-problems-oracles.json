@@ -1,0 +1,323 @@
+{
+  "role": "Independent reviewer; input facts transcribed from frozen draft; no application engine used for keys.",
+  "problems": {
+    "C3-Q01": {
+      "stages": {
+        "materials": {
+          "expected": 75.0,
+          "exact": "75",
+          "unit": "млн ₽"
+        },
+        "produced": {
+          "expected": 135.0,
+          "exact": "135",
+          "unit": "млн ₽"
+        },
+        "cogs": {
+          "expected": 125.0,
+          "exact": "125",
+          "unit": "млн ₽"
+        },
+        "ebitda": {
+          "expected": 90.0,
+          "exact": "90",
+          "unit": "млн ₽"
+        },
+        "ni": {
+          "expected": 54.4,
+          "exact": "272/5",
+          "unit": "млн ₽"
+        }
+      },
+      "independentProof": [
+        "Materials balance15+80=75+20.",
+        "Production130+openingWIP12=completed135+closingWIP7.",
+        "Completed135+openingFG18=COGS125+closingFG28.",
+        "EBIT80;NI54.4+tax13.6+I12+recognizedDA10=EBITDA90."
+      ]
+    },
+    "C3-Q02": {
+      "stages": {
+        "produced": {
+          "expected": 118.0,
+          "exact": "118",
+          "unit": "млн ₽"
+        },
+        "production": {
+          "expected": 122.0,
+          "exact": "122",
+          "unit": "млн ₽"
+        },
+        "purchases": {
+          "expected": 65.0,
+          "exact": "65",
+          "unit": "млн ₽"
+        },
+        "ebitda": {
+          "expected": 70.0,
+          "exact": "70",
+          "unit": "млн ₽"
+        },
+        "ni": {
+          "expected": 36.0,
+          "exact": "36",
+          "unit": "млн ₽"
+        }
+      },
+      "independentProof": [
+        "Reverse cost bridges:completed118,periodproduction122,materialsused70.",
+        "Openingmaterials18+purchases65=usage70+ending13.",
+        "NI36+tax12+I12+DA10=EBITDA70."
+      ]
+    },
+    "C3-Q03": {
+      "correctOptionIds": [
+        "A",
+        "C",
+        "E"
+      ],
+      "optionReasoning": {
+        "A": "Fixed behavior does not determine traceability; dedicated fixed salary is a counterexample.",
+        "B": "Unfinished or unsold goods can retain costs as assets.",
+        "C": "EBITDA adds back DA already included in the P&L expenses.",
+        "D": "Ordinary dividends distribute NI and are not operating expenses.",
+        "E": "Selling commissions can vary with sales despite commercial function."
+      }
+    },
+    "C3-Q04": {
+      "stages": {
+        "nwc": {
+          "expected": 16.0,
+          "exact": "16",
+          "unit": "млн ₽"
+        },
+        "cfo": {
+          "expected": 46.0,
+          "exact": "46",
+          "unit": "млн ₽"
+        },
+        "fcff": {
+          "expected": 23.5,
+          "exact": "47/2",
+          "unit": "млн ₽"
+        },
+        "fcfe": {
+          "expected": 28.0,
+          "exact": "28",
+          "unit": "млн ₽"
+        },
+        "cash": {
+          "expected": 32.0,
+          "exact": "32",
+          "unit": "млн ₽"
+        }
+      },
+      "independentProof": [
+        "Inventory releases3;receivablesconsume14;supplierrepaymentconsumes5 => netcashuse16.",
+        "FCFF23.5 from NOPAT57.5+DA12−NWC16−CapEx30.",
+        "FCFE28−Div8=20=CFO46+CFI−30+CFF4."
+      ]
+    },
+    "C3-Q05": {
+      "stages": {
+        "ebit": {
+          "expected": 75.0,
+          "exact": "75",
+          "unit": "млн ₽"
+        },
+        "ni-b": {
+          "expected": 52.8,
+          "exact": "264/5",
+          "unit": "млн ₽"
+        },
+        "fcff-a": {
+          "expected": 15.0,
+          "exact": "15",
+          "unit": "млн ₽"
+        },
+        "fcff-b": {
+          "expected": 15.0,
+          "exact": "15",
+          "unit": "млн ₽"
+        },
+        "fcfe-b": {
+          "expected": 7.8,
+          "exact": "39/5",
+          "unit": "млн ₽"
+        }
+      },
+      "independentProof": [
+        "Operating NOPAT60 common to both;NI_A60,NI_B52.8.",
+        "CFO_A57,CFO_B49.8;add back aftertaxinterest7.2 for same FCFF15."
+      ]
+    },
+    "C3-Q06": {
+      "correctOptionIds": [
+        "C"
+      ],
+      "optionReasoning": {
+        "A": "Positive NOPAT does not specify DA, paid investment or working-capital growth.",
+        "B": "Ending debt is a stock, not new borrowing net of repayment.",
+        "C": "Missing investment/operating stocks and funding flows prevent unique FCFF/FCFE.",
+        "D": "Omitted CapEx is unknown; assigning zero would be an extra disclosed assumption."
+      }
+    },
+    "C3-Q07": {
+      "stages": {
+        "growth": {
+          "expected": 8.0,
+          "exact": "8",
+          "unit": "%"
+        },
+        "price-original": {
+          "expected": 518.4,
+          "exact": "2592/5",
+          "unit": "млн ₽"
+        },
+        "price-new": {
+          "expected": 550.0,
+          "exact": "550",
+          "unit": "млн ₽"
+        }
+      },
+      "independentProof": [
+        "HistoricalNI80 and constantROE20% imply beginningbook400.",
+        "OldDIV0=48 gives valuationbook432;NI1=86.4,DIV1=51.84,P0=518.4.",
+        "NewDIV0=40 gives valuationbook440;NI1=88,DIV1=44,P0=550.",
+        "Same-date ownerwealth is566.4 versus590;prices alone exclude immediateDIV0."
+      ]
+    },
+    "C3-Q08": {
+      "stages": {
+        "growth": {
+          "expected": 4.0,
+          "exact": "4",
+          "unit": "%"
+        },
+        "retention": {
+          "expected": 25.0,
+          "exact": "25",
+          "unit": "%"
+        },
+        "payout": {
+          "expected": 75.0,
+          "exact": "75",
+          "unit": "%"
+        }
+      },
+      "independentProof": [
+        "DIV1 already future:6/(.115−.04)=80.",
+        "Book retention.25 at ROE.16 yields.04;market required return.115 is a different quantity."
+      ]
+    },
+    "C3-Q09": {
+      "correctOptionIds": [
+        "A",
+        "C",
+        "E"
+      ],
+      "optionReasoning": {
+        "A": "A new payout does not determine a unique leverage without an objective/constraint.",
+        "B": "Cash-netted ROC is not grossROC used in the unadjusted leverage identity.",
+        "C": "At fixed grosscapital and operatingNOPAT, changing debt changes interest and NI; must recalculate.",
+        "D": "BookNI/equity is not automatically risk-adjusted marketrequiredreturn.",
+        "E": "Holding required equity return fixed under higher debt is an explicit strong assumption, not a market law."
+      }
+    },
+    "C3-Q10": {
+      "stages": {
+        "revenue-volume": {
+          "expected": 1.5,
+          "exact": "3/2",
+          "unit": "млн ₽"
+        },
+        "revenue-price": {
+          "expected": -0.4,
+          "exact": "-2/5",
+          "unit": "млн ₽"
+        },
+        "revenue-interaction": {
+          "expected": -0.05,
+          "exact": "-1/20",
+          "unit": "млн ₽"
+        },
+        "revenue-change": {
+          "expected": 1.05,
+          "exact": "21/20",
+          "unit": "млн ₽"
+        },
+        "flex-ebit": {
+          "expected": 2.6,
+          "exact": "13/5",
+          "unit": "млн ₽"
+        },
+        "actual-ebit": {
+          "expected": 1.77,
+          "exact": "177/100",
+          "unit": "млн ₽"
+        },
+        "unit-cost-impact": {
+          "expected": -0.18,
+          "exact": "-9/50",
+          "unit": "млн ₽"
+        }
+      },
+      "independentProof": [
+        "Revenue plan12million versus actual13.05million.",
+        "Profit bridge volume+.6,price−.45,unitcost−.18,fixed−.2 totals−.23million => EBIT1.77.",
+        "Do not add separate revenueinteraction again after price already evaluated at actual volume."
+      ]
+    },
+    "C3-Q11": {
+      "stages": {
+        "plan-contribution": {
+          "expected": 14.0,
+          "exact": "14",
+          "unit": "тыс. ₽"
+        },
+        "actual-ebit": {
+          "expected": 7.0,
+          "exact": "7",
+          "unit": "тыс. ₽"
+        },
+        "volume-impact": {
+          "expected": 1.4,
+          "exact": "7/5",
+          "unit": "тыс. ₽"
+        },
+        "mix-impact": {
+          "expected": -2.4,
+          "exact": "-12/5",
+          "unit": "тыс. ₽"
+        }
+      },
+      "independentProof": [
+        "PlanCM14000,actual13000,controlat220units50/50mix15400.",
+        "Volume+1400 plusmix−2400=totalCM−1000;unchangedF gives EBIT8000→7000.",
+        "Price/unitcost unchanged;this is specified genuine mix, not singleproduct price-volume interaction."
+      ]
+    },
+    "C3-Q12": {
+      "correctOptionIds": [
+        "B"
+      ],
+      "optionReasoning": {
+        "A": "EBIT14−8−4=2 already deducts embedded DA;1 double-deducts it.",
+        "B": "CM6,EBIT2,EBITDA3 with DA1 embedded in F.",
+        "C": "Subtracting DA-inclusiveF leaves EBIT, not EBITDA.",
+        "D": "Aggregate costs and sales do not determine product mix;product-specific quantities/margins are missing."
+      },
+      "independentNumeric": {
+        "CM": 6,
+        "EBIT": 2,
+        "EBITDA": 3
+      }
+    }
+  },
+  "counts": {
+    "problems": 12,
+    "numericStages": 37,
+    "MCproblems": 4,
+    "MCoptionDecisions": 18
+  }
+}

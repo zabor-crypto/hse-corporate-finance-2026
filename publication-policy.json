@@ -19,5 +19,23 @@
     "educationalContent": "Original lesson explanations, authored prompts, feedback, hints and rubrics, and original documentation prose: CC BY 4.0.",
     "excluded": "Teacher PDF files, photographs, private evidence/history, personal data and third-party material without redistribution rights. Mathematical facts and bibliographic references do not acquire exclusive rights through this notice.",
     "thirdParty": "Dependencies and their font/assets remain under their own licenses; see bundled THIRD_PARTY_NOTICES."
+  },
+  "candidate": {
+    "version": "0.4.0",
+    "state": "OWNER_AUTHORIZED_SUBJECT_TO_RELEASE_GATES",
+    "publicPushMergeDeployAuthorized": true,
+    "newPullRequestsAuthorized": true,
+    "accountPrivacyChangesAuthorized": false,
+    "note": "Owner authorizes this accepted-content release only after current exact public-checkout/PR/main CI and guarded Pages gates. This does not authorize private-source distribution, financial changes or bypasses. Deployment status is read from Actions/build-info, not inferred from this policy."
+  },
+  "ownerAuthorizationV040": {
+    "version": "0.4.0",
+    "repository": "zabor-crypto/hse-corporate-finance-2026",
+    "date": "2026-11-08",
+    "acceptedInputRC": "79e2a930596ffab6f8e710fbc93bdbf9256c4a16",
+    "authorizationRecordSha256": "fa5da65392f47e0b5379573aed7ebfa004608712d9ebd7baeeef23f4b97757c9",
+    "conditions": "Listed owner gates; public-only delta from f54827a, no financial/ID/version/schema changes, successful exact-head and exact-main CI, existing guarded dispatch with approved exact main SHA and verified artifact, then hosted QA.",
+    "scopeRecord": "Structured private capture of current owner messages; hash is not a raw-message byte digest.",
+    "historicalAuthorization": "ownerAuthorization above remains the unchanged v0.3.0 record."
   }
 }

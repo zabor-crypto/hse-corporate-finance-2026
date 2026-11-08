@@ -1,3 +1,4 @@
+import { curriculumRegistry, publishedModules } from "../curriculum";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import {
@@ -46,6 +47,9 @@ import {
   emptyDraft,
   pct,
   href,
+  objectiveProgress,
+  publishedLessonContent,
+  publishedProblemContent,
 } from "../components/Common";
 import {
   grade,
@@ -60,18 +64,15 @@ export function Home({
   data: Progress;
   doneLessons: number;
 }) {
-  const practice = data.answers.filter((a) => a.mode === "practice");
-  const solved = new Set(
-    practice
-      .filter(
-        (a) =>
-          a.score === 1 &&
-          problems.some((p) => p.id === a.problemId && p.version === a.version),
-      )
-      .map((a) => a.problemId),
-  ).size;
+  const visibleLessons = publishedLessonContent();
+  const visibleProblems = publishedProblemContent();
+  const modules = publishedModules().filter(
+    (m) => m.reviewStatus === "PUBLISHED",
+  );
+  const solved = objectiveProgress(data);
   const next =
-    lessons.find((l) => !data.lessons[`${l.id}@${l.version}`]) ?? lessons[0];
+    visibleLessons.find((l) => !data.lessons[`${l.id}@${l.version}`]) ??
+    visibleLessons[0];
   return (
     <>
       <div className="page-heading">
@@ -89,29 +90,40 @@ export function Home({
           </p>
         </div>
         <span className="semester">
-          ОСЕННИЙ СЕМЕСТР<small>2026 / 2027</small>
+          УЧИТЕСЬ В СВОЁМ ТЕМПЕ<small>Теория · практика · проверка</small>
         </span>
       </div>
       <section className="hero-card">
         <div className="hero-content">
           <span className="pill">
-            ТЕМА 03 <span>В РАБОТЕ</span>
+            {modules[0]?.id ?? "ПРОГРАММА"}{" "}
+            <span>
+              {!visibleLessons.length
+                ? "ГОТОВИТСЯ"
+                : visibleLessons.length < curriculumRegistry.lessons.length
+                  ? "ДОСТУПЕН ЧАСТИЧНО"
+                  : "УРОКИ ОПУБЛИКОВАНЫ"}
+            </span>
           </span>
-          <h2>
-            Финансовая отчётность
-            <br />и финансовый анализ
-          </h2>
+          <h2>{modules[0]?.title ?? curriculumRegistry.course.title}</h2>
           <p>
             Три отчёта. Одна компания. Научитесь видеть
             <br className="desktop" /> экономический смысл за каждым
             показателем.
           </p>
-          <Link className="button light" to={`learn/${next.id}`}>
-            {doneLessons ? "Продолжить обучение" : "Начать обучение"}
+          <Link
+            className="button light"
+            to={next ? `learn/${next.id}` : "curriculum"}
+          >
+            {next
+              ? doneLessons
+                ? "Продолжить обучение"
+                : "Начать обучение"
+              : "Открыть карту программы"}
             <ArrowRight size={18} />
           </Link>
           <div className="hero-meta">
-            <Clock3 size={15} /> {lessons.length} учебных подразделов{" "}
+            <Clock3 size={15} /> {visibleLessons.length} учебных подразделов{" "}
             <span>·</span> Пошаговая практика
           </div>
         </div>
@@ -156,7 +168,7 @@ export function Home({
           <div>
             <strong>
               {doneLessons}
-              <small> / {lessons.length}</small>
+              <small> / {visibleLessons.length}</small>
             </strong>
             <p>подраздела прочитано</p>
           </div>
@@ -168,9 +180,9 @@ export function Home({
           <div>
             <strong>
               {solved}
-              <small> / {problems.length}</small>
+              <small> / {visibleProblems.length}</small>
             </strong>
-            <p>заданий с верным числовым ответом</p>
+            <p>заданий: последний ответ верен</p>
           </div>
         </div>
         <div>
@@ -178,7 +190,7 @@ export function Home({
             <Route />
           </span>
           <div>
-            <strong>9</strong>
+            <strong>{seminarMap.length}</strong>
             <p>задач в карте семинара</p>
           </div>
         </div>
@@ -199,14 +211,16 @@ export function Home({
       <div className="section-heading">
         <h2>Ваш маршрут обучения</h2>
         <Link to="curriculum">
-          Карта всей темы <ArrowRight size={16} />
+          Карта программы <ArrowRight size={16} />
         </Link>
       </div>
       <div className="lesson-grid">
-        {lessons.map((l, i) => (
+        {visibleLessons.map((l, i) => (
           <Link key={l.id} to={`learn/${l.id}`} className="lesson-card">
             <div className="card-top">
-              <span className="chapter-number">0{i + 1}</span>
+              <span className="chapter-number">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <span className="tag">{l.id}</span>
               {data.lessons[`${l.id}@${l.version}`] && <Check size={20} />}
             </div>
@@ -231,9 +245,25 @@ export function Home({
           <div className="eyebrow">ПОНЯТЬ → РАССЧИТАТЬ → ОБЪЯСНИТЬ</div>
           <h3>Формула становится навыком в практике</h3>
           <p>
-            {problems.filter((p) => p.transfer?.seed === undefined).length}{" "}
-            основных заданий и 32 варианта четырёх моделей: понятия, расчёты и
-            многошаговые кейсы.
+            {
+              visibleProblems.filter((p) => p.transfer?.seed === undefined)
+                .length
+            }{" "}
+            основных заданий и{" "}
+            {
+              visibleProblems.filter((p) => p.transfer?.seed !== undefined)
+                .length
+            }{" "}
+            вариантов{" "}
+            {
+              new Set(
+                visibleProblems
+                  .filter((p) => p.transfer?.seed !== undefined)
+                  .map((p) => p.transfer?.familyId),
+              ).size
+            }{" "}
+            моделей: понятия, расчёты и многошаговые кейсы. Варианты одной
+            модели не считаются разными компетенциями.
           </p>
         </div>
         <Link to="practice" className="button outline">
@@ -243,10 +273,10 @@ export function Home({
       <div className="scope-note">
         <span className="tag">ЧЕСТНЫЙ ПРОГРЕСС</span>
         <p>
-          Доступны {lessons.map((l) => l.id).join(", ")}. Остальные{" "}
-          {topics.length - lessons.length} подразделов запланированы.
-          Мини-контрольная проверяет этот материал и не заменяет экзамен по всей
-          теме.
+          Доступны {visibleLessons.length} проверенных учебных разделов. Ещё{" "}
+          {curriculumRegistry.lessons.length - visibleLessons.length} разделов
+          карты готовятся или ожидают проверки. Отметки чтения и результаты
+          упражнений не означают освоения темы или готовности к экзамену.
         </p>
       </div>
     </>

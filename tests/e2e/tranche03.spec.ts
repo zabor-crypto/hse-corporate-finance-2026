@@ -87,7 +87,7 @@ for (const family of transferFamilies) {
     expect(repeat.assessmentContext?.firstIndependentAttempt).toBe(false);
     await page.goto("#/progress");
     await expect(
-      page.getByText(/Статус результата обучения: NOT_PROVEN/).first(),
+      page.getByText(/Освоение материала ещё не подтверждено/).first(),
     ).toBeVisible();
     const exported = clone((await readProgress(page))!);
     await importProgress(page, exported);
@@ -330,7 +330,7 @@ test("unseen-family exam uses four fresh variants and retains honest objective p
     ),
   ).toBeVisible();
   await expect(
-    page.getByText(/Статус результата обучения: NOT_PROVEN/),
+    page.getByText(/Освоение материала ещё не подтверждено/),
   ).toBeVisible();
 });
 test("finite variant exhaustion is reported instead of silently recycling seen seeds", async ({

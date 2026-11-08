@@ -4,7 +4,7 @@ import {
   calcRatioRelationships,
   type RatioRelationshipsInput,
 } from "../engine/finance/ratios";
-import { Link } from "../components/Common";
+import { Link, publishedLessonContent } from "../components/Common";
 import { MathFormula } from "../components/Math";
 const initial: RatioRelationshipsInput = {
   sales: 150,
@@ -310,15 +310,23 @@ export function RatioLab() {
                 </p>
               </article>
               <div className="row">
-                <Link to="learn/T3-05" className="button">
-                  Разобрать рентабельность <ArrowRight size={16} />
-                </Link>
-                <Link to="learn/T3-06" className="button outline">
-                  Рычаг
-                </Link>
-                <Link to="learn/T3-08" className="button outline">
-                  DuPont
-                </Link>
+                {[
+                  { id: "T3-05", label: "Разобрать рентабельность" },
+                  { id: "T3-06", label: "Рычаг" },
+                  { id: "T3-08", label: "DuPont" },
+                ]
+                  .filter(({ id }) =>
+                    publishedLessonContent().some((l) => l.id === id),
+                  )
+                  .map(({ id, label }, i) => (
+                    <Link
+                      key={id}
+                      to={`learn/${id}`}
+                      className={`button ${i ? "outline" : ""}`}
+                    >
+                      {label} {i === 0 && <ArrowRight size={16} />}
+                    </Link>
+                  ))}
               </div>
             </>
           )}

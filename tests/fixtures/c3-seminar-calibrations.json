@@ -1,0 +1,557 @@
+{
+  "role": "Independent reviewer; rational arithmetic, no author-engine imports",
+  "sourceCalibrations": {
+    "3.1": {
+      "status": "CONDITIONAL_CORE_AND_NONUNIQUE_ROC",
+      "assumptions": [
+        "Costs do not already include the separately deducted DA.",
+        "NWC means operating noncash NWC; CapEx70 is paid in-period.",
+        "Operating FA only, no disposals or other changes for illustrative IC dates."
+      ],
+      "values": {
+        "EBITDA": {
+          "exact": "150",
+          "value": 150.0
+        },
+        "EBIT": {
+          "exact": "130",
+          "value": 130.0
+        },
+        "NOPAT": {
+          "exact": "104",
+          "value": 104.0
+        },
+        "NWC1": {
+          "exact": "70",
+          "value": 70.0
+        },
+        "deltaNWC": {
+          "exact": "20",
+          "value": 20.0
+        },
+        "FCFF": {
+          "exact": "34",
+          "value": 34.0
+        },
+        "IC0": {
+          "exact": "250",
+          "value": 250.0
+        },
+        "IC1": {
+          "exact": "320",
+          "value": 320.0
+        },
+        "ICavg": {
+          "exact": "285",
+          "value": 285.0
+        },
+        "ROC_opening": {
+          "exact": "52/125",
+          "value": 0.416
+        },
+        "ROC_closing": {
+          "exact": "13/40",
+          "value": 0.325
+        },
+        "ROC_average": {
+          "exact": "104/285",
+          "value": 0.3649122807017544
+        },
+        "NI_if_new_interest_accrual_zero": {
+          "exact": "92",
+          "value": 92.0
+        },
+        "NI_if_full_year_new_interest_accrual6": {
+          "exact": "436/5",
+          "value": 87.2
+        }
+      },
+      "nonunique": [
+        "No capital date/base specified; the three ROC values are conditional alternatives, not three official answers.",
+        "First payment next year does not establish zero current interest expense; current accrual a gives NI92−0.8a."
+      ]
+    },
+    "3.2": {
+      "status": "DETERMINATE_INCREMENT_HOLDING_OTHERS_FIXED",
+      "values": {
+        "NWC0": {
+          "exact": "8",
+          "value": 8.0
+        },
+        "NWC1": {
+          "exact": "11",
+          "value": 11.0
+        },
+        "deltaNWC": {
+          "exact": "3",
+          "value": 3.0
+        },
+        "FCFF_change": {
+          "exact": "-3",
+          "value": -3.0
+        },
+        "inventory_effect": {
+          "exact": "3",
+          "value": 3.0
+        },
+        "AR_effect": {
+          "exact": "-5",
+          "value": -5.0
+        },
+        "AP_effect": {
+          "exact": "-1",
+          "value": -1.0
+        }
+      },
+      "nonunique": [
+        "Absolute total FCFF is not supplied."
+      ]
+    },
+    "3.3": {
+      "status": "PARTLY_DETERMINATE_CONSOLIDATION_UNDERDEFINED",
+      "values": {
+        "AT_A_on_opening_assets": {
+          "exact": "2",
+          "value": 2.0
+        },
+        "AT_B_on_opening_assets": {
+          "exact": "1",
+          "value": 1.0
+        },
+        "ROA_NI_A": {
+          "exact": "1/5",
+          "value": 0.2
+        },
+        "ROA_NI_B": {
+          "exact": "1/5",
+          "value": 0.2
+        },
+        "ROS_A": {
+          "exact": "1/10",
+          "value": 0.1
+        },
+        "ROS_B": {
+          "exact": "1/5",
+          "value": 0.2
+        }
+      },
+      "symbolic": {
+        "NOPAT_A": "10+2.5*(1−t_A)",
+        "NOPAT_B": "4+1*(1−t_B)"
+      },
+      "nonunique": [
+        "Tax rates absent for NOPAT operating margin.",
+        "B initial sales20 versus later100 has unspecified external/internal scope.",
+        "Assets after consolidation and unrealized inventory-profit elimination absent. No unique post-merger key."
+      ]
+    },
+    "3.4": {
+      "status": "PROFITABILITY_CONDITIONAL_CASHFLOWS_UNDERDEFINED",
+      "assumptions": [
+        "Indirect100 excludes separately stated DA50.",
+        "Assets1000 financed only by D+E, no other liabilities for D/E reconstruction."
+      ],
+      "values": {
+        "EBITDA": {
+          "exact": "200",
+          "value": 200.0
+        },
+        "EBIT": {
+          "exact": "150",
+          "value": 150.0
+        },
+        "NOPAT": {
+          "exact": "120",
+          "value": 120.0
+        },
+        "ROA_NOPAT": {
+          "exact": "3/25",
+          "value": 0.12
+        },
+        "unlevered": {
+          "D": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "E": {
+            "exact": "1000",
+            "value": 1000.0
+          },
+          "I": {
+            "exact": "0",
+            "value": 0.0
+          },
+          "NI": {
+            "exact": "120",
+            "value": 120.0
+          },
+          "ROE": {
+            "exact": "3/25",
+            "value": 0.12
+          },
+          "ROA_NI": {
+            "exact": "3/25",
+            "value": 0.12
+          },
+          "DFL": {
+            "exact": "1",
+            "value": 1.0
+          }
+        },
+        "D_over_E_1": {
+          "D": {
+            "exact": "500",
+            "value": 500.0
+          },
+          "E": {
+            "exact": "500",
+            "value": 500.0
+          },
+          "I": {
+            "exact": "50",
+            "value": 50.0
+          },
+          "NI": {
+            "exact": "80",
+            "value": 80.0
+          },
+          "ROE": {
+            "exact": "4/25",
+            "value": 0.16
+          },
+          "ROA_NI": {
+            "exact": "2/25",
+            "value": 0.08
+          },
+          "DFL": {
+            "exact": "3/2",
+            "value": 1.5
+          }
+        }
+      },
+      "symbolic": {
+        "FCFF": "170−deltaOperatingNWC−CapEx",
+        "FCFE_debt_case": "130−deltaOperatingNWC−CapEx+netBorrowing"
+      },
+      "nonunique": [
+        "Total assets constant does not separately specify CapEx, deltaOperatingNWC, net borrowing or dividend/cash policies. No unconditional FCFF/FCFE numeric key."
+      ]
+    },
+    "3.5": {
+      "status": "DETERMINATE_UNDER_SLIDE76_MARGIN_AND_CONSISTENT_ASSET_BASIS",
+      "assumptions": [
+        "Operating margin is NOPAT/Sales, not EBIT/Sales.",
+        "Assets50 is the basis used by supplied turnover and requested return; periods and stock dates aligned.",
+        "Interest500 thousand equals0.5 million."
+      ],
+      "values": {
+        "Sales": {
+          "exact": "150",
+          "value": 150.0
+        },
+        "NOPAT": {
+          "exact": "12",
+          "value": 12.0
+        },
+        "NI": {
+          "exact": "58/5",
+          "value": 11.6
+        },
+        "ROA_NOPAT": {
+          "exact": "6/25",
+          "value": 0.24
+        },
+        "ROA_NI": {
+          "exact": "29/125",
+          "value": 0.232
+        },
+        "ROE": {
+          "exact": "29/75",
+          "value": 0.38666666666666666
+        }
+      },
+      "wrong_convention_counterexample": {
+        "ROE_if_8pct_meant_EBIT_margin": {
+          "exact": "23/75",
+          "value": 0.30666666666666664
+        }
+      }
+    },
+    "3.6": {
+      "status": "DETERMINATE_UNDER_GROSS_SLIDE79_CAPITAL",
+      "values": {
+        "ROC": {
+          "exact": "627/3400",
+          "value": 0.18441176470588236
+        }
+      },
+      "assumptions": [
+        "Capital=D+E on matching basis.",
+        "Debt cost10.5% is already after tax; no second tax multiplier."
+      ]
+    },
+    "3.7": {
+      "status": "THREE_STATEMENTS_REQUIRE_EXPLICIT_POLICIES",
+      "assumptions_for_profit_block_only": [
+        "Operating margin30% is NOPAT/Sales per76.",
+        "Debt250 unchanged, annual interest rate10%, proportional tax20%."
+      ],
+      "profit_block": [
+        {
+          "year": 1,
+          "Sales": {
+            "exact": "200",
+            "value": 200.0
+          },
+          "NOPAT": {
+            "exact": "60",
+            "value": 60.0
+          },
+          "interest": {
+            "exact": "25",
+            "value": 25.0
+          },
+          "NI": {
+            "exact": "40",
+            "value": 40.0
+          },
+          "dividends_at_50pct_NI": {
+            "exact": "20",
+            "value": 20.0
+          }
+        },
+        {
+          "year": 2,
+          "Sales": {
+            "exact": "250",
+            "value": 250.0
+          },
+          "NOPAT": {
+            "exact": "75",
+            "value": 75.0
+          },
+          "interest": {
+            "exact": "25",
+            "value": 25.0
+          },
+          "NI": {
+            "exact": "55",
+            "value": 55.0
+          },
+          "dividends_at_50pct_NI": {
+            "exact": "55/2",
+            "value": 27.5
+          }
+        },
+        {
+          "year": 3,
+          "Sales": {
+            "exact": "230",
+            "value": 230.0
+          },
+          "NOPAT": {
+            "exact": "69",
+            "value": 69.0
+          },
+          "interest": {
+            "exact": "25",
+            "value": 25.0
+          },
+          "NI": {
+            "exact": "49",
+            "value": 49.0
+          },
+          "dividends_at_50pct_NI": {
+            "exact": "49/2",
+            "value": 24.5
+          }
+        }
+      ],
+      "nonunique": [
+        "NWC turnover5 must be declared as opening/end/average and cash-inclusive versus operating.",
+        "30 starting NWC and25 cash cannot be added if NWC already includes cash.",
+        "CapEx, residual assets/life, actual operating AR/INV/AP split, cash and funding policies not supplied.",
+        "No unique full cash/balance model or book-equity return date; author must supply assumptions and reviewer will recompute after handoff."
+      ]
+    },
+    "3.8": {
+      "status": "DETERMINATE_WITH_EXPLICIT_GORDON_STEADY_STATE",
+      "assumptions": [
+        "NI60 is last-year NI0; next dividend is NI0*(1+g)*payout.",
+        "Constant payout/ROE/re, no share count changes, g=b*ROE and re>g.",
+        "Policy comparison keeps historical NI0 and stated ROE; does not mechanically forecast a new actual NI path."
+      ],
+      "values": {
+        "DIV0": {
+          "exact": "36",
+          "value": 36.0
+        },
+        "growth": {
+          "exact": "1/10",
+          "value": 0.1
+        },
+        "ROE": {
+          "exact": "1/4",
+          "value": 0.25
+        },
+        "NI1": {
+          "exact": "66",
+          "value": 66.0
+        },
+        "DIV1": {
+          "exact": "198/5",
+          "value": 39.6
+        },
+        "value0": {
+          "exact": "396",
+          "value": 396.0
+        },
+        "newPayout": {
+          "exact": "1/2",
+          "value": 0.5
+        },
+        "newGrowth": {
+          "exact": "1/8",
+          "value": 0.125
+        },
+        "newDIV1": {
+          "exact": "135/4",
+          "value": 33.75
+        },
+        "newValue0": {
+          "exact": "450",
+          "value": 450.0
+        }
+      }
+    },
+    "3.9": {
+      "status": "FIRST_TWO_COMPARISONS_CONDITIONAL_FINAL_TARGET_UNDERDEFINED",
+      "assumptions": [
+        "Source ROC15% uses gross D+E for slide79 relation.",
+        "Given historical NI0 remains300; constant ROC and re17% across hypothetical policies.",
+        "rd10% pretax with t20% gives8% after tax; all Gordon denominators positive. Constant re as leverage rises is an illustrative assumption, not general market behavior."
+      ],
+      "values": {
+        "ROE": {
+          "exact": "51/200",
+          "value": 0.255
+        },
+        "growth": {
+          "exact": "51/400",
+          "value": 0.1275
+        },
+        "DIV1": {
+          "exact": "1353/8",
+          "value": 169.125
+        },
+        "value0": {
+          "exact": "67650/17",
+          "value": 3979.4117647058824
+        },
+        "ROE_at_leverage2": {
+          "exact": "29/100",
+          "value": 0.29
+        },
+        "growth_at_leverage2": {
+          "exact": "29/200",
+          "value": 0.145
+        },
+        "DIV1_at_leverage2": {
+          "exact": "687/4",
+          "value": 171.75
+        },
+        "value_at_leverage2": {
+          "exact": "6870",
+          "value": 6870.0
+        }
+      },
+      "conditional_counterexamples_for_60pct_payout": {
+        "if_preserve_growth": {
+          "D_over_E": {
+            "exact": "135/56",
+            "value": 2.4107142857142856
+          },
+          "increase_from_1_5": {
+            "exact": "51/56",
+            "value": 0.9107142857142857
+          }
+        },
+        "if_preserve_price": {
+          "growth": {
+            "exact": "5627/47140",
+            "value": 0.11936784047518031
+          },
+          "D_over_E": {
+            "exact": "9995/4714",
+            "value": 2.1202800169707254
+          },
+          "increase_from_1_5": {
+            "exact": "1462/2357",
+            "value": 0.6202800169707255
+          }
+        }
+      },
+      "nonunique": [
+        "Final question does not specify preserving growth, price or another objective. Distinct valid conditional leverage answers prove no unique source answer."
+      ]
+    },
+    "slide87": {
+      "sourceRoundedCCC": {
+        "exact": "57",
+        "value": 57.0
+      },
+      "sourceRoundedDailyCOGS": {
+        "exact": "27/2",
+        "value": 13.5
+      },
+      "roundedApproxNWC": {
+        "exact": "1539/2",
+        "value": 769.5
+      },
+      "exactSnapshotOperatingNWC": {
+        "exact": "1092",
+        "value": 1092.0
+      },
+      "unroundedDSO": {
+        "exact": "101105/5819",
+        "value": 17.374978518645815
+      },
+      "unroundedDIH": {
+        "exact": "25769/246",
+        "value": 104.7520325203252
+      },
+      "unroundedDPO_COGS_proxy": {
+        "exact": "31901/492",
+        "value": 64.83943089430895
+      },
+      "assumption": "Source snapshot balances used as proxies for averages; actual annual average balances and purchases not supplied."
+    },
+    "slide91": {
+      "NI_margin": {
+        "exact": "226/13025",
+        "value": 0.017351247600767755
+      },
+      "assetTurnover": {
+        "exact": "2605/1352",
+        "value": 1.926775147928994
+      },
+      "ROA_NI": {
+        "exact": "113/3380",
+        "value": 0.03343195266272189
+      },
+      "equityMultiplier": {
+        "exact": "13520/1331",
+        "value": 10.157776108189331
+      },
+      "ROE": {
+        "exact": "452/1331",
+        "value": 0.3395942900075131
+      },
+      "MVA": {
+        "exact": "2747/10",
+        "value": 274.7
+      },
+      "roundingCaution": "Revenue2605 and displayed costs2560 imply45, while NI45.2 is separately given; rounded graphic is not an exact audited statement."
+    }
+  }
+}

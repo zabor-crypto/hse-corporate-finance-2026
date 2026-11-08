@@ -2,13 +2,20 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
+import {buildSync} from 'esbuild';
 import ts from 'typescript';
 import os from 'node:os';
 const root=process.cwd();
 const out=fs.mkdtempSync(path.join(os.tmpdir(),'cflos-storage-review-')); fs.mkdirSync(out,{recursive:true});
 const files={};for(const name of ['src/app/App.tsx','src/views/ProgressView.tsx','src/views/Exam.tsx','src/views/Practice.tsx','src/views/LessonView.tsx','src/views/Formulas.tsx','src/components/StepByStep.tsx','src/components/Problem.tsx','src/components/Common.tsx','src/components/Math.tsx','src/storage/progress.ts','tests/unit/storage.test.ts']){const bytes=fs.readFileSync(path.join(root,name));const dest=path.join(out,path.basename(name));fs.writeFileSync(dest,bytes);files[name]={sha256:crypto.createHash('sha256').update(bytes).digest('hex'),custody:dest};}
 const storageSource=fs.readFileSync(path.join(out,'progress.ts'),'utf8');const app=fs.readFileSync(path.join(out,'App.tsx'),'utf8');const progressView=fs.readFileSync(path.join(out,'ProgressView.tsx'),'utf8');const examView=fs.readFileSync(path.join(out,'Exam.tsx'),'utf8');
-const js=ts.transpileModule(storageSource,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
+// Capture every runtime dependency, then compile the preserved snapshot rather than importing
+// relative TS paths from a data URL. esbuild is already pinned by the existing Vite lockfile.
+const discovery=buildSync({entryPoints:['src/storage/progress.ts'],absWorkingDir:root,bundle:true,platform:'node',format:'esm',write:false,metafile:true});
+for(const name of Object.keys(discovery.metafile.inputs)){const bytes=fs.readFileSync(path.join(root,name));const dest=path.join(out,'inputs',name);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,bytes);files[name]={sha256:crypto.createHash('sha256').update(bytes).digest('hex'),custody:dest};}
+assert.equal(fs.readFileSync(path.join(out,'inputs/src/storage/progress.ts'),'utf8'),storageSource,'storage preimage changed during capture');
+const js=buildSync({entryPoints:[path.join(out,'inputs/src/storage/progress.ts')],bundle:true,platform:'node',format:'esm',write:false}).outputFiles[0].text;
+fs.writeFileSync(path.join(out,'storage-runtime.mjs'),js);
 const s=await import('data:text/javascript;base64,'+Buffer.from(js).toString('base64'));
 const results=[];const check=(name,fn)=>{try{fn();results.push({name,status:'PASS'});}catch(e){results.push({name,status:'FAIL',message:e.message});}};
 const snapshot={title:'QA synthetic',id:'P',version:'1',solution:['QA'],stages:[{id:'a',label:'A',expected:3,unit:'million_RUB',solution:'QA'}]};

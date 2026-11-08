@@ -50,6 +50,7 @@ const aliases: Record<string, UnitId> = {
   fraction: "fraction",
   "п.п.": "percentage-point",
   раз: "multiple",
+  раза: "multiple",
   дни: "day",
   дней: "day",
   день: "day",

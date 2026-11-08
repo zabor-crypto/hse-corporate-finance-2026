@@ -38,6 +38,14 @@ jobs:
       - run: npm run review:storage
       - run: npm run build
       - run: npm run test:e2e
+      - run: npm run test:e2e:c3
+        env:
+          CFLOS_QA_REPORT: evidence/release-0.4.0/c3.json
+          CFLOS_QA_OUTPUT: evidence/release-0.4.0/c3-results
+      - run: npx playwright test --config playwright.c3-delta-qa.config.ts
+        env:
+          CFLOS_DELTA_REPORT: evidence/release-0.4.0/ratios-focus.json
+          CFLOS_DELTA_OUTPUT: evidence/release-0.4.0/ratios-focus-results
       - run: npm run audit:artifact
       - run: npm run audit:public -- --strict
       - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
@@ -47,6 +55,7 @@ jobs:
           path: |
             evidence/tranche02
             evidence/tranche03
+            evidence/release-0.4.0
             playwright-report
             test-results
           retention-days: 14

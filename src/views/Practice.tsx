@@ -26,11 +26,21 @@ import {
   topics,
   lessons,
   formulas,
-  problems,
+  problems as allProblems,
   seminarMap,
   sampleExamIds,
 } from "../content";
 import type { Problem, SourceRef } from "../content/types";
+import { curriculumRegistry } from "../curriculum";
+const problems = allProblems.filter((p) =>
+  curriculumRegistry.problems.some(
+    (n) =>
+      n.id === p.id &&
+      n.version === p.version &&
+      n.availability === "available" &&
+      n.reviewStatus === "PUBLISHED",
+  ),
+);
 import { gradeNumeric, gradeSelection, gradeStages } from "../engine/grading";
 import {
   blankProgress,
@@ -219,7 +229,9 @@ export function Practice({
       </div>
       <div className="page-heading compact">
         <div>
-          <h1>{p.title}</h1>
+          <h1>
+            {mode === "study" ? p.title : (p.independent?.title ?? p.title)}
+          </h1>
         </div>
       </div>
       <div className="practice-layout">
@@ -289,7 +301,13 @@ export function Practice({
               </details>
             ))}
           {attempt && (
-            <Feedback p={p} result={attempt} data={data} update={update} />
+            <Feedback
+              p={p}
+              result={attempt}
+              data={data}
+              update={update}
+              returnRoute={`practice/${p.id}`}
+            />
           )}
           <Sources refs={p.sourceRefs} />
         </article>
@@ -303,7 +321,13 @@ export function Practice({
             </button>
           ) : (
             <>
-              <button onClick={() => assist(`learn/${p.lessonId}`)}>
+              <button
+                onClick={() =>
+                  assist(
+                    `learn/${p.lessonId}${p.theorySectionId ? `/${p.theorySectionId}` : ""}`,
+                  )
+                }
+              >
                 <BookOpen size={17} /> Открыть учебный раздел{" "}
                 <ArrowRight size={16} />
               </button>

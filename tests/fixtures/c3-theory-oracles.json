@@ -1,0 +1,788 @@
+{
+  "role": "Independent Finance Reviewer; all160 option decisions independently explained",
+  "items": [
+    {
+      "id": "C3-T01",
+      "correctOptionIds": [
+        "a"
+      ],
+      "optionReasoning": {
+        "a": "AR is a date stock and annual sales a period flow.",
+        "b": "Both annual sales and CFO are flows.",
+        "c": "CFO then cash is flow then stock, reversed.",
+        "d": "Expenses and profit are both period flows."
+      }
+    },
+    {
+      "id": "C3-T02",
+      "correctOptionIds": [
+        "a",
+        "d"
+      ],
+      "optionReasoning": {
+        "a": "Paid dividends reduce cash and retained equity.",
+        "b": "A distribution is not an EBIT or taxable operating expense.",
+        "c": "Under stated financing convention the payment is CFF, not CFO.",
+        "d": "It distributes capital-owner claims rather than creating P&L expense."
+      }
+    },
+    {
+      "id": "C3-T03",
+      "correctOptionIds": [
+        "a",
+        "d"
+      ],
+      "optionReasoning": {
+        "a": "Gross profit is100−60=40 from the current sale.",
+        "b": "Collection of oldAR does not add current sales: sales100.",
+        "c": "Collection swaps AR for cash without a second gain.",
+        "d": "Revenue100 and old-account collections40 arise from different events."
+      }
+    },
+    {
+      "id": "C3-T04",
+      "correctOptionIds": [
+        "a"
+      ],
+      "optionReasoning": {
+        "a": "Completed cost120+openingFG10−closingFG25=105.",
+        "b": "120 omits net inventory accumulation15.",
+        "c": "135 adds net inventory growth instead of subtracting it.",
+        "d": "95 equals120−25 and omits opening stock10."
+      }
+    },
+    {
+      "id": "C3-T05",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Reported expenses already contain DA: EBIT200−120−30=50.",
+        "b": "38 deducts embedded DA12 a second time.",
+        "c": "EBITDA50+10+2=62.",
+        "d": "The proposed second deduction repeats an expense already in EBIT."
+      }
+    },
+    {
+      "id": "C3-T06",
+      "correctOptionIds": [
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Directness depends on the cost object, not variable behavior.",
+        "b": "A dedicated fixed salary is a counterexample.",
+        "c": "Traceability and response to activity are independent dimensions.",
+        "d": "SG&A can include variable commissions and stepped fixed costs."
+      }
+    },
+    {
+      "id": "C3-T07",
+      "correctOptionIds": [
+        "a",
+        "b"
+      ],
+      "optionReasoning": {
+        "a": "NI=(100−20)*.8=64.",
+        "b": "NOPAT=100*.8=80.",
+        "c": "64 leaves interest in a purported financing-neutral numerator.",
+        "d": "80 ignores after-tax interest16 in actual equity income."
+      }
+    },
+    {
+      "id": "C3-T08",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Cash and short-term debt add equally to CA and CL, delta0.",
+        "b": "The operating AR/INV/AP set does not receive either financial item.",
+        "c": "Cash and bank loan are both excluded from simplified operating NWC.",
+        "d": "No fall in CA−CL occurs until a separately specified spending transaction."
+      }
+    },
+    {
+      "id": "C3-T09",
+      "correctOptionIds": [
+        "a",
+        "d"
+      ],
+      "optionReasoning": {
+        "a": "Trade receivables are operating assets.",
+        "b": "Cash is excluded from noncash operating NWC.",
+        "c": "Interest-bearing bank financing is excluded from spontaneous AP.",
+        "d": "Operating supplier AP finances operating assets and has minus sign."
+      }
+    },
+    {
+      "id": "C3-T10",
+      "correctOptionIds": [
+        "a"
+      ],
+      "optionReasoning": {
+        "a": "Inventory release6 less supplier debt repayment9 gives CFO−3.",
+        "b": "Plus3 reverses the net cash effect.",
+        "c": "Plus15 treats supplier repayment as an inflow.",
+        "d": "Minus15 treats inventory release as an outflow."
+      }
+    },
+    {
+      "id": "C3-T11",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Reclassification changes components, not total cash.",
+        "b": "Moving interest byI necessarily changes CFO byI.",
+        "c": "Comparable CFO requires harmonizing the category policy.",
+        "d": "Accounting category relabeling produces no new profit."
+      }
+    },
+    {
+      "id": "C3-T12",
+      "correctOptionIds": [
+        "a"
+      ],
+      "optionReasoning": {
+        "a": "FCFE80−8+15−5=82.",
+        "b": "72 excludes net borrowing10.",
+        "c": "90 adds net borrowing but ignores interest after tax.",
+        "d": "The plausible wrong add-interest route is98=80+8+15−5, not102."
+      }
+    },
+    {
+      "id": "C3-T13",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Subtract investment gain10 from NI when deriving CFO.",
+        "b": "Putting sale proceeds30 in CFO duplicates a CFI cash transaction.",
+        "c": "Sale proceeds30 belong to the stated investing category.",
+        "d": "Adding gain10 again compounds the double count; tax is separately reconciled."
+      }
+    },
+    {
+      "id": "C3-T14",
+      "correctOptionIds": [
+        "b",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "New borrowing is financing and does not add to FCFF.",
+        "b": "Paid CapEx40 reduces FCFF40 holding operations fixed.",
+        "c": "Borrowing40 is CFF+40.",
+        "d": "Zero net total cash does not mean both entries belong in CFO."
+      }
+    },
+    {
+      "id": "C3-T15",
+      "correctOptionIds": [
+        "b"
+      ],
+      "optionReasoning": {
+        "a": "NI/Assets is one possible convention, not a guaranteed one.",
+        "b": "The economic numerator and stock date must be identified first.",
+        "c": "GrossROC uses D+E, not automatically the same asset numerator/base.",
+        "d": "NI, EBIT and NOPAT are financially different numerators."
+      }
+    },
+    {
+      "id": "C3-T16",
+      "correctOptionIds": [
+        "a"
+      ],
+      "optionReasoning": {
+        "a": "Average equity(80+120)/2=100, so ROE20%.",
+        "b": "25% uses opening equity80.",
+        "c": "16.667% uses closing equity120.",
+        "d": "40% does not use the required average denominator100."
+      }
+    },
+    {
+      "id": "C3-T17",
+      "correctOptionIds": [
+        "a",
+        "d"
+      ],
+      "optionReasoning": {
+        "a": ".08*3=.24 gives NOPAT/Assets on consistent bases.",
+        "b": "ROE needs NI and equity, not just operating return.",
+        "c": "24% is a return on assets, not NI divided by sales.",
+        "d": "Interest/tax bridge and equity are required to reach ROE."
+      }
+    },
+    {
+      "id": "C3-T18",
+      "correctOptionIds": [
+        "a",
+        "d"
+      ],
+      "optionReasoning": {
+        "a": "Gross and cash-net capital are distinct contracts.",
+        "b": "With positive NOPAT and nonzero cash their returns differ.",
+        "c": "Unadjusted gross leverage identity cannot accept cash-netROC.",
+        "d": "Numerator, capital composition and time base must be matched."
+      }
+    },
+    {
+      "id": "C3-T19",
+      "correctOptionIds": [
+        "b"
+      ],
+      "optionReasoning": {
+        "a": "A second tax adjustment understates an already after-tax rate.",
+        "b": "Use the stated after-tax .105 directly in the leverage spread.",
+        "c": "Dividing an interest rate by equity creates a different dimension.",
+        "d": "WACC also requires equity cost and financing weights."
+      }
+    },
+    {
+      "id": "C3-T20",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "ICR100/25=4.",
+        "b": "DFL denominator is EBIT−I, not I.",
+        "c": "DFL100/75=4/3.",
+        "d": "No D/E can be recovered from EBIT and I without debt/equity bases and rate."
+      }
+    },
+    {
+      "id": "C3-T21",
+      "correctOptionIds": [
+        "b",
+        "d"
+      ],
+      "optionReasoning": {
+        "a": "Negative operating earnings are not positive debt-service coverage.",
+        "b": "EBIT below zero cannot cover positive interest from operating profit.",
+        "c": "Absolute value destroys the economically relevant loss sign.",
+        "d": "Actual liquidity also depends on cash receipts, debt maturity and funding."
+      }
+    },
+    {
+      "id": "C3-T22",
+      "correctOptionIds": [
+        "b",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Higher bookROE is not a sufficient value-creation condition.",
+        "b": "Smaller equity denominator and greater financial risk can raise ROE.",
+        "c": "Return must be compared with matching risk-adjusted required return.",
+        "d": "Cost of equity can rise with financial leverage; constancy is an assumption."
+      }
+    },
+    {
+      "id": "C3-T23",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "With positive unchanged CL, rising CA raises CR despite declining cash.",
+        "b": "Slow or doubtful current assets do not guarantee payment ability.",
+        "c": "Asset quality and conversion timing matter.",
+        "d": "Inventory and receivables are not instant cash equivalents."
+      }
+    },
+    {
+      "id": "C3-T24",
+      "correctOptionIds": [
+        "a"
+      ],
+      "optionReasoning": {
+        "a": "Permitted quick assets10+20=30; QR30/25=1.2.",
+        "b": "1.8=(75−30)/25 wrongly retains prepayments.",
+        "c": "3.0=75/25 is total current ratio.",
+        "d": "2.4=(75−15)/25 removes prepayments but wrongly retains inventory."
+      }
+    },
+    {
+      "id": "C3-T25",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "The receivable stock perimeter must match related credit-sales flow.",
+        "b": "Including cash sales without adjustment understates credit collection days.",
+        "c": "Period length and seasonal averaging affect the estimate.",
+        "d": "Monthly flow with annual365 multiplier is a period mismatch."
+      }
+    },
+    {
+      "id": "C3-T26",
+      "correctOptionIds": [
+        "a",
+        "b"
+      ],
+      "optionReasoning": {
+        "a": "Supplier AP arises from credit purchases, so matching purchase base is preferable.",
+        "b": "COGS can proxy purchases only with disclosed limitations.",
+        "c": "Bank loan is a different creditor/financing class.",
+        "d": "Inventory changes make purchases differ from sold cost."
+      }
+    },
+    {
+      "id": "C3-T27",
+      "correctOptionIds": [
+        "b",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "NOPAT/Sales substitution leaves NOPAT/Equity, not actualNI/Equity.",
+        "b": "Cancellation gives exactly NOPAT/Equity on common bases.",
+        "c": "The new numerator excludes financing interest effects.",
+        "d": "Another tax factor does not restore missing interest expenses."
+      }
+    },
+    {
+      "id": "C3-T28",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "OldROE=.10*2*2=.40; new=.08*2*3=.48.",
+        "b": "The stated margin declines; ROE growth cannot prove the opposite.",
+        "c": "Equity multiplier increase outweighs margin decline.",
+        "d": "ROE can change through margin or multiplier at unchanged turnover."
+      }
+    },
+    {
+      "id": "C3-T29",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Internal balances and unrealized inventory profit can require eliminations.",
+        "b": "Group external sales exclude intragroup trades.",
+        "c": "Group asset perimeter, taxes and stock timing must be consistent.",
+        "d": "Naive summation ignores consolidation adjustments and incompatible reported perimeters."
+      }
+    },
+    {
+      "id": "C3-T30",
+      "correctOptionIds": [
+        "b",
+        "d"
+      ],
+      "optionReasoning": {
+        "a": "Identical final ROE can mask different operational and leverage risk.",
+        "b": "Factor decomposition and comparable accounting bases are warranted.",
+        "c": "Accrual return does not determine cash flow.",
+        "d": "Risk pricing and future cash are additionally needed for valuation."
+      }
+    },
+    {
+      "id": "C3-T31",
+      "correctOptionIds": [
+        "b"
+      ],
+      "optionReasoning": {
+        "a": "10 is past dividend, not next expected payment.",
+        "b": "Next dividend10*(1+.05)=10.5.",
+        "c": "9.5 applies the growth sign backwards.",
+        "d": "15 is the return percentage, not a cash dividend amount."
+      }
+    },
+    {
+      "id": "C3-T32",
+      "correctOptionIds": [
+        "b",
+        "d"
+      ],
+      "optionReasoning": {
+        "a": "The ordinary finite positive-growth perpetuity requires re>g.",
+        "b": "When g>=re the assumed positive-dividend perpetuity does not converge.",
+        "c": "A negative algebraic denominator is model failure, not a price forecast.",
+        "d": "A revised finite high-growth stage or other justified model may be needed."
+      }
+    },
+    {
+      "id": "C3-T33",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Retention and return on reinvested equity must be coherently defined.",
+        "b": "Payout and financing constraints limit internally sustainable growth.",
+        "c": "A stable target financing structure and matching beginning-equity ROE support the model.",
+        "d": "Historical ROE cannot guarantee reinvestment opportunities forever."
+      }
+    },
+    {
+      "id": "C3-T34",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Price200/10=20, EPS20/10=2, PE10 and PB2 on common money/share scales.",
+        "b": "Book return is not automatically investor required return.",
+        "c": "MVA200−100=100 is a valuation stock, not annualEP flow.",
+        "d": "Price is not a declared dividend; DPS needs payout data."
+      }
+    },
+    {
+      "id": "C3-T35",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Volume20*10=200, price100*1=100 and interaction20*1=20.",
+        "b": "A single product has no changing product mix here.",
+        "c": "Fact1320−plan1000=320.",
+        "d": "200+100 omits interaction20."
+      }
+    },
+    {
+      "id": "C3-T36",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Plan100*3+200=500, flexible120*3+200=560, excess590−560=30.",
+        "b": "60 of total increase90 is normal volume cost under the plan rate.",
+        "c": "Volume increase20*3=60.",
+        "d": "A higher cost at same activity is not automatically favorable."
+      }
+    },
+    {
+      "id": "C3-T37",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Contribution100−60=40; EBIT40−20=20 because fixed costs include DA; DOL2.",
+        "b": "Including DA makes the residual EBIT rather than EBITDA.",
+        "c": "At fixed unit economics sales+1% produces EBIT20.4, a2% increase.",
+        "d": "At EBIT0 a relative operating-profit sensitivity divides by zero."
+      }
+    },
+    {
+      "id": "C3-T38",
+      "correctOptionIds": [
+        "a",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Payment occurs in first-year investing flow.",
+        "b": "NewDA begins next year under the explicit policy.",
+        "c": "PPE increases by paid acquisition and decreases by previously operating asset DA.",
+        "d": "Capitalization of an asset does not eliminate the cash payment."
+      }
+    },
+    {
+      "id": "C3-T39",
+      "correctOptionIds": [
+        "b",
+        "c"
+      ],
+      "optionReasoning": {
+        "a": "Bank funding does not repair operating margin or collection timing.",
+        "b": "The new liability and CFF financing flow are distinct from the operating cash use.",
+        "c": "Future interest charges reduce NI and cash availability.",
+        "d": "External funding does not prove operations self-financing."
+      }
+    },
+    {
+      "id": "C3-T40",
+      "correctOptionIds": [
+        "b",
+        "d"
+      ],
+      "optionReasoning": {
+        "a": "Missing policies cannot be silently assigned zero and called official.",
+        "b": "Full statements require explicit stock, tax, investment, payout and funding policies.",
+        "c": "Sales is not a legitimate balancing plug.",
+        "d": "An explicit conditional model with both identities is useful without uniqueness claim."
+      }
+    }
+  ],
+  "numericDerivations": {
+    "C3-T03": {
+      "grossProfit": {
+        "exact": "40",
+        "value": 40.0
+      },
+      "sales": {
+        "exact": "100",
+        "value": 100.0
+      },
+      "collections": {
+        "exact": "40",
+        "value": 40.0
+      }
+    },
+    "C3-T04": {
+      "COGS": {
+        "exact": "105",
+        "value": 105.0
+      },
+      "reverseSignCOGS": {
+        "exact": "135",
+        "value": 135.0
+      },
+      "omittedOpeningCOGS": {
+        "exact": "95",
+        "value": 95.0
+      }
+    },
+    "C3-T05": {
+      "EBIT": {
+        "exact": "50",
+        "value": 50.0
+      },
+      "EBITDA": {
+        "exact": "62",
+        "value": 62.0
+      }
+    },
+    "C3-T07": {
+      "NI": {
+        "exact": "64",
+        "value": 64.0
+      },
+      "NOPAT": {
+        "exact": "80",
+        "value": 80.0
+      }
+    },
+    "C3-T10": {
+      "deltaNWC": {
+        "exact": "3",
+        "value": 3.0
+      },
+      "CFOeffect": {
+        "exact": "-3",
+        "value": -3.0
+      }
+    },
+    "C3-T12": {
+      "afterTaxInterest": {
+        "exact": "8",
+        "value": 8.0
+      },
+      "netBorrowing": {
+        "exact": "10",
+        "value": 10.0
+      },
+      "FCFE": {
+        "exact": "82",
+        "value": 82.0
+      },
+      "wrongAddInterestFCFE": {
+        "exact": "98",
+        "value": 98.0
+      }
+    },
+    "C3-T13": {
+      "saleGain": {
+        "exact": "10",
+        "value": 10.0
+      },
+      "CFOgainAdjustment": {
+        "exact": "-10",
+        "value": -10.0
+      },
+      "CFIproceeds": {
+        "exact": "30",
+        "value": 30.0
+      }
+    },
+    "C3-T14": {
+      "FCFFcapexEffect": {
+        "exact": "-40",
+        "value": -40.0
+      },
+      "CFFborrowingEffect": {
+        "exact": "40",
+        "value": 40.0
+      },
+      "combinedCashEffect": {
+        "exact": "0",
+        "value": 0.0
+      }
+    },
+    "C3-T16": {
+      "avgEquity": {
+        "exact": "100",
+        "value": 100.0
+      },
+      "ROEavg": {
+        "exact": "1/5",
+        "value": 0.2
+      },
+      "ROEopening": {
+        "exact": "1/4",
+        "value": 0.25
+      },
+      "ROEclosing": {
+        "exact": "1/6",
+        "value": 0.16666666666666666
+      }
+    },
+    "C3-T17": {
+      "ROA_NOPAT": {
+        "exact": "6/25",
+        "value": 0.24
+      }
+    },
+    "C3-T20": {
+      "ICR": {
+        "exact": "4",
+        "value": 4.0
+      },
+      "DFL": {
+        "exact": "4/3",
+        "value": 1.3333333333333333
+      }
+    },
+    "C3-T24": {
+      "CA": {
+        "exact": "75",
+        "value": 75.0
+      },
+      "QRdeclared": {
+        "exact": "6/5",
+        "value": 1.2
+      },
+      "QRnaive": {
+        "exact": "9/5",
+        "value": 1.8
+      },
+      "CR": {
+        "exact": "3",
+        "value": 3.0
+      },
+      "wrongRetainedInventory": {
+        "exact": "12/5",
+        "value": 2.4
+      }
+    },
+    "C3-T28": {
+      "ROEold": {
+        "exact": "2/5",
+        "value": 0.4
+      },
+      "ROEnew": {
+        "exact": "12/25",
+        "value": 0.48
+      }
+    },
+    "C3-T31": {
+      "DIV1": {
+        "exact": "21/2",
+        "value": 10.5
+      }
+    },
+    "C3-T34": {
+      "price": {
+        "exact": "20",
+        "value": 20.0
+      },
+      "EPS": {
+        "exact": "2",
+        "value": 2.0
+      },
+      "PE": {
+        "exact": "10",
+        "value": 10.0
+      },
+      "PB": {
+        "exact": "2",
+        "value": 2.0
+      },
+      "MVA": {
+        "exact": "100",
+        "value": 100.0
+      },
+      "ROEgivenBookBase": {
+        "exact": "1/5",
+        "value": 0.2
+      }
+    },
+    "C3-T35": {
+      "volumeEffect": {
+        "exact": "200",
+        "value": 200.0
+      },
+      "priceEffect": {
+        "exact": "100",
+        "value": 100.0
+      },
+      "interaction": {
+        "exact": "20",
+        "value": 20.0
+      },
+      "total": {
+        "exact": "320",
+        "value": 320.0
+      }
+    },
+    "C3-T36": {
+      "planCost": {
+        "exact": "500",
+        "value": 500.0
+      },
+      "flexCost": {
+        "exact": "560",
+        "value": 560.0
+      },
+      "volumeCost": {
+        "exact": "60",
+        "value": 60.0
+      },
+      "excessVsFlex": {
+        "exact": "30",
+        "value": 30.0
+      },
+      "totalVsPlan": {
+        "exact": "90",
+        "value": 90.0
+      }
+    },
+    "C3-T37": {
+      "contribution": {
+        "exact": "40",
+        "value": 40.0
+      },
+      "EBIT": {
+        "exact": "20",
+        "value": 20.0
+      },
+      "DOL": {
+        "exact": "2",
+        "value": 2.0
+      },
+      "EBITafterSalesUp1pct": {
+        "exact": "102/5",
+        "value": 20.4
+      },
+      "relativeEBITgrowth": {
+        "exact": "1/50",
+        "value": 0.02
+      }
+    }
+  },
+  "preFixFindings": [
+    "T04 explain95 as omitted opening stock, not sign-subtracted stock.",
+    "T12 wrong add-after-tax-interest route is98, not102.",
+    "T24 source83 and diagnose2.4 as retaining inventory while excluding prepayments.",
+    "T22 direct value-creation source81 should be included.",
+    "Standalone numerical units and stock/flow dates should be stated, especially aggregate/per-share scaling inT34."
+  ]
+}

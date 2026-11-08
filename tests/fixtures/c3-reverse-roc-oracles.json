@@ -1,0 +1,98 @@
+{
+  "id": "C3-R01",
+  "version": "1.0.0",
+  "origin": "Independent Finance Reviewer, Fraction arithmetic from input-only message before reading authored source/keys; monetary route and pre-taxP&L cross-check.",
+  "inputs": {
+    "roe": 0.216,
+    "equity": 75.0,
+    "debtEquity": 0.6,
+    "afterTaxDebtCost": 0.09,
+    "taxRate": 0.25
+  },
+  "stages": [
+    {
+      "id": "ni",
+      "expected": 16.2,
+      "exact": "81/5",
+      "unit": "млн ₽"
+    },
+    {
+      "id": "interest-after-tax",
+      "expected": 4.05,
+      "exact": "81/20",
+      "unit": "млн ₽"
+    },
+    {
+      "id": "nopat",
+      "expected": 20.25,
+      "exact": "81/4",
+      "unit": "млн ₽"
+    },
+    {
+      "id": "roc-gross",
+      "expected": 16.875,
+      "exact": "135/8",
+      "unit": "%"
+    }
+  ],
+  "proof": {
+    "debt": {
+      "exact": "45",
+      "value": 45.0
+    },
+    "grossCapital": {
+      "exact": "120",
+      "value": 120.0
+    },
+    "ni": {
+      "exact": "81/5",
+      "value": 16.2
+    },
+    "afterTaxInterest": {
+      "exact": "81/20",
+      "value": 4.05
+    },
+    "NOPAT": {
+      "exact": "81/4",
+      "value": 20.25
+    },
+    "grossROC": {
+      "exact": "27/160",
+      "value": 0.16875
+    },
+    "pretaxInterest": {
+      "exact": "27/5",
+      "value": 5.4
+    },
+    "EBIT": {
+      "exact": "27",
+      "value": 27.0
+    },
+    "EBT": {
+      "exact": "108/5",
+      "value": 21.6
+    },
+    "actualTax": {
+      "exact": "27/5",
+      "value": 5.4
+    },
+    "wrongDoubleTaxInterest": {
+      "exact": "243/80",
+      "value": 3.0375
+    },
+    "wrongDoubleTaxNOPAT": {
+      "exact": "1539/80",
+      "value": 19.2375
+    },
+    "wrongDoubleTaxROCPercent": {
+      "exact": "513/32",
+      "value": 16.03125
+    }
+  },
+  "domains": [
+    "Positive equity and gross capital; constant matched annual debt/equity bases.",
+    "Tax<1 needed only to reconstruct pretax values; after-tax inverse relation already uses given net debt cost.",
+    "Full proportional shield and no additional profit/tax items ensure NOPAT=NI+after-taxI.",
+    "Cash-net ROC not substituted into gross identity."
+  ]
+}

@@ -1,3 +1,8 @@
+import {
+  curriculumRegistry,
+  availableLessons,
+  publishedModules,
+} from "../curriculum";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import {
@@ -46,30 +51,138 @@ export function Link({
   to,
   children,
   className = "",
+  onClick,
 }: {
   to: string;
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }) {
   return (
-    <a className={className} href={href(to)}>
+    <a className={className} href={href(to)} onClick={onClick}>
       {children}
     </a>
   );
 }
 
+/** Presentation only: private source metadata never becomes a public PDF link. */
+export function sourceLabel(s: SourceRef): string {
+  const base = s.pages?.length
+    ? s.label.replace(/\s*·?\s*слайды?\s+[\d,–—\- ]+/gi, "").trim()
+    : s.label;
+  const pages = s.pages?.length ? ` · слайды ${s.pages.join(", ")}` : "";
+  const task =
+    s.seminar && !s.label.includes(s.seminar) ? ` · задача ${s.seminar}` : "";
+  return `${base}${pages}${task}`;
+}
+
+/** Resolve registry publication decisions to the compiled content, preserving stable URLs. */
+export function publishedLessonContent(bank = lessons) {
+  const modules = new Set(
+    publishedModules()
+      .filter((m) => m.reviewStatus === "PUBLISHED")
+      .map((m) => m.id),
+  );
+  const reviewed = availableLessons().filter(
+    (l) => l.reviewStatus === "PUBLISHED" && modules.has(l.moduleId),
+  );
+  return bank.filter((l) =>
+    reviewed.some((node) => node.id === l.id && node.version === l.version),
+  );
+}
+export function publishedProblemContent(bank = problems) {
+  const lessonIds = new Set(publishedLessonContent().map((l) => l.id));
+  return bank.filter(
+    (p) =>
+      lessonIds.has(p.lessonId) &&
+      curriculumRegistry.problems.some(
+        (node) =>
+          node.id === p.id &&
+          node.version === p.version &&
+          node.availability === "available" &&
+          node.reviewStatus === "PUBLISHED",
+      ),
+  );
+}
+export function publishedFormulaContent() {
+  const lessonIds = new Set(publishedLessonContent().map((l) => l.id));
+  return formulas.filter(
+    (f) =>
+      lessonIds.has(f.lessonId) &&
+      curriculumRegistry.formulas.some(
+        (n) =>
+          n.id === f.id &&
+          n.availability === "available" &&
+          n.reviewStatus === "PUBLISHED",
+      ),
+  );
+}
+
+/** Reading is a current-version mark, not a claim of mastery. */
+export function readingProgress(data: Progress, moduleId?: string) {
+  return publishedLessonContent().filter(
+    (l) =>
+      Boolean(data.lessons[`${l.id}@${l.version}`]) &&
+      (!moduleId ||
+        curriculumRegistry.lessons.some(
+          (node) => node.id === l.id && node.moduleId === moduleId,
+        )),
+  ).length;
+}
+
+/** Latest current-version objective result includes both numbers and selections. */
+export function objectiveProgress(data: Progress) {
+  const latest = new Map<string, AnswerRecord>();
+  const available = new Map(
+    publishedProblemContent().map((p) => [p.id, p.version]),
+  );
+  for (const a of data.answers) {
+    if (a.mode !== "practice" || available.get(a.problemId) !== a.version)
+      continue;
+    const previous = latest.get(a.problemId);
+    if (
+      !previous ||
+      Date.parse(a.timestamp) > Date.parse(previous.timestamp) ||
+      (Date.parse(a.timestamp) === Date.parse(previous.timestamp) &&
+        a.id > previous.id)
+    )
+      latest.set(a.problemId, a);
+  }
+  return [...latest.values()].filter((a) => a.score === 1).length;
+}
+
 export function Sources({ refs }: { refs: SourceRef[] }) {
+  if (!refs.length) return null;
+  const privateSources = refs.some(
+    (s) => s.kind === "lecture" || s.kind === "seminar",
+  );
   return (
-    <p className="sources">
-      Источники:{" "}
-      {refs
-        .map(
-          (s) =>
-            `${s.label}${s.pages?.length ? ` · слайды ${s.pages.join(", ")}` : ""}${s.seminar ? ` · ${s.seminar}` : ""}`,
-        )
-        .join("; ")}
-      . Физическая нумерация PDF.
-    </p>
+    <div className="sources">
+      <p>
+        Источники:{" "}
+        {[...new Map(refs.map((s) => [sourceLabel(s), s])).values()].map(
+          (s, i) => (
+            <span key={sourceLabel(s)}>
+              {i > 0 ? "; " : ""}
+              {s.kind === "external" && s.url ? (
+                <a href={s.url} target="_blank" rel="noreferrer">
+                  {sourceLabel(s)}
+                </a>
+              ) : (
+                sourceLabel(s)
+              )}
+            </span>
+          ),
+        )}
+        .
+      </p>
+      {privateSources && (
+        <p>
+          Материалы преподавателя — частные PDF, на сайте не размещены. Номера
+          слайдов указаны по физическим страницам PDF.
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -81,7 +194,7 @@ export function FormulaCard({
   full?: boolean;
 }) {
   const [copyStatus, setCopyStatus] = useState("");
-  const f = formulas.find((x) => x.id === id);
+  const f = publishedFormulaContent().find((x) => x.id === id);
   if (!f) return null;
   return (
     <article className="formula-card" id={f.id}>

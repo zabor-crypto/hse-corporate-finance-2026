@@ -42,6 +42,8 @@ export interface AnswerRecord {
     assistanceUsed: boolean;
   };
 }
+import type { PaperSnapshot } from "../curriculum/types";
+import { validPaperSnapshot } from "../curriculum/assembly";
 export interface ExamSession {
   id: string;
   problemIds: string[];
@@ -49,6 +51,7 @@ export interface ExamSession {
   startedAt: string;
   finishedAt?: string;
   seenProblemIds?: string[];
+  paper?: PaperSnapshot;
 }
 export interface Progress {
   schemaVersion: 1;
@@ -67,6 +70,14 @@ export interface Progress {
     checkedIndices: number[];
   }[];
   returnContext?: { route: string; problemId: string } | null;
+  errorReviews?: {
+    answerId: string;
+    stageId: string;
+    category:
+      "concept" | "sign" | "unit" | "timing" | "formula" | "interpretation";
+    note: string;
+    timestamp: string;
+  }[];
 }
 export interface StorageLike {
   getItem(key: string): string | null;
@@ -137,7 +148,49 @@ export function validProblemSnapshot(x: unknown): boolean {
     )
   );
 }
+/** Validate present historical provenance against its own snapshot, never today's bank. */
+function coherentAttempt(a: Record<string, unknown>): boolean {
+  const snapshot = a.problemSnapshot as Record<string, unknown>;
+  if (snapshot.id !== a.problemId || snapshot.version !== a.version)
+    return false;
+  // Schema1 legacy records may omit exact assessed IDs; preserve that format.
+  if (a.assessedStageIds === undefined) return true;
+  const assessed = a.assessedStageIds as string[];
+  const results = a.stageResults as { id: string }[];
+  const stages = snapshot.stages as { id: string }[];
+  const selection = snapshot.type === "single" || snapshot.type === "multi";
+  const known = new Set(selection ? ["selection"] : stages.map((s) => s.id));
+  return (
+    assessed.length > 0 &&
+    new Set(assessed).size === assessed.length &&
+    new Set(results.map((s) => s.id)).size === results.length &&
+    results.length === assessed.length &&
+    assessed.every((id) => known.has(id) && results.some((s) => s.id === id))
+  );
+}
 export function validProgress(x: unknown): x is Progress {
+  if (!object(x)) return false;
+  if (
+    x.errorReviews !== undefined &&
+    (!Array.isArray(x.errorReviews) ||
+      !x.errorReviews.every(
+        (e) =>
+          object(e) &&
+          typeof e.answerId === "string" &&
+          typeof e.stageId === "string" &&
+          [
+            "concept",
+            "sign",
+            "unit",
+            "timing",
+            "formula",
+            "interpretation",
+          ].includes(e.category as string) &&
+          typeof e.note === "string" &&
+          validDate(e.timestamp),
+      ))
+  )
+    return false;
   if (
     !object(x) ||
     x.schemaVersion !== 1 ||
@@ -234,7 +287,8 @@ export function validProgress(x: unknown): x is Progress {
             finiteScore(s.score) &&
             (s.errorCode === null || typeof s.errorCode === "string"),
         ) &&
-        validProblemSnapshot(a.problemSnapshot),
+        validProblemSnapshot(a.problemSnapshot) &&
+        coherentAttempt(a),
     )
   )
     return false;
@@ -259,6 +313,19 @@ export function validProgress(x: unknown): x is Progress {
           )[id] === "string",
       ) &&
       (x.exam.seenProblemIds === undefined || strings(x.exam.seenProblemIds)) &&
+      (x.exam.paper === undefined ||
+        (validPaperSnapshot(x.exam.paper) &&
+          JSON.stringify(x.exam.paper.problemIds) ===
+            JSON.stringify(x.exam.problemIds) &&
+          x.exam.paper.problemIds.every(
+            (id) =>
+              x.exam !== null &&
+              object(x.exam) &&
+              object(x.exam.versions) &&
+              x.exam.paper !== undefined &&
+              (x.exam.paper as PaperSnapshot).versions[id] ===
+                x.exam.versions[id],
+          ))) &&
       validDate(x.exam.startedAt) &&
       (x.exam.finishedAt === undefined || validDate(x.exam.finishedAt)))
   );
@@ -330,6 +397,18 @@ export function mergeProgress(current: Progress, incoming: unknown): Progress {
         ) === i,
     ),
     returnContext: current.returnContext ?? incoming.returnContext ?? null,
+    errorReviews: [
+      ...(current.errorReviews ?? []),
+      ...(incoming.errorReviews ?? []),
+    ].filter(
+      (e, i, a) =>
+        a.findIndex(
+          (x) =>
+            x.answerId === e.answerId &&
+            x.stageId === e.stageId &&
+            x.timestamp === e.timestamp,
+        ) === i,
+    ),
     exam: current.exam ?? incoming.exam,
     archives: [
       ...current.archives,

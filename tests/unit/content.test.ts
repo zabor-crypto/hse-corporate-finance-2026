@@ -17,11 +17,16 @@ import {
 } from "../../src/engine/finance";
 import { gradeNumeric } from "../../src/engine/grading";
 describe("curriculum and assessment integrity", () => {
-  it("does not imply complete Topic3 coverage", () => {
+  it("contains the eleven reviewed Topic3 lessons without inventing future topics", () => {
     expect(topics).toHaveLength(11);
     expect(
       topics.filter((t) => t.status === "implemented").map((t) => t.id),
-    ).toEqual(["T3-01", "T3-03", "T3-05", "T3-06", "T3-07", "T3-08"]);
+    ).toEqual(
+      Array.from(
+        { length: 11 },
+        (_, i) => `T3-${String(i + 1).padStart(2, "0")}`,
+      ),
+    );
     expect(seminarMap.map((s) => s.id)).toEqual([
       "3.1",
       "3.2",
@@ -62,7 +67,7 @@ describe("curriculum and assessment integrity", () => {
         ).toBe(true);
   });
   it("keeps first reviewed bank limited and sample exam composition explicit", () => {
-    expect(problems).toHaveLength(62);
+    expect(problems.filter((p) => p.id.startsWith("T3-"))).toHaveLength(62);
     expect(problems.filter((p) => p.transfer?.seed !== undefined)).toHaveLength(
       32,
     );

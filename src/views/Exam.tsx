@@ -25,7 +25,7 @@ import {
   topics,
   lessons,
   formulas,
-  problems,
+  problems as allProblems,
   seminarMap,
   sampleExamIds,
   ratiosExamIds,
@@ -33,6 +33,22 @@ import {
   transferFamilies,
 } from "../content";
 import type { Problem, SourceRef } from "../content/types";
+import {
+  curriculumRegistry,
+  assemblePaper,
+  type ExamBlueprint,
+  type PaperSnapshot,
+} from "../curriculum";
+import { unseenHistory } from "../curriculum/errors";
+const problems = allProblems.filter((p) =>
+  curriculumRegistry.problems.some(
+    (n) =>
+      n.id === p.id &&
+      n.version === p.version &&
+      n.availability === "available" &&
+      n.reviewStatus === "PUBLISHED",
+  ),
+);
 import { gradeNumeric, gradeSelection, gradeStages } from "../engine/grading";
 import {
   blankProgress,
@@ -68,6 +84,27 @@ export function Exam({
   const session = data.exam;
   const [index, setIndex] = useState(0);
   const [error, setError] = useState("");
+  const [seed, setSeed] = useState("20261107");
+  const [unseenOnly, setUnseenOnly] = useState(false);
+  const [clock, setClock] = useState(Date.now());
+  useEffect(() => {
+    if (!session || session.finishedAt) return;
+    setClock(Date.now());
+    const timer = window.setInterval(() => setClock(Date.now()), 1000);
+    return () => window.clearInterval(timer);
+  }, [session?.id, session?.finishedAt]);
+  const remaining = session?.paper
+    ? Math.max(
+        0,
+        Math.ceil(
+          (Date.parse(session.startedAt) +
+            session.paper.blueprint.minutes * 60000 -
+            clock) /
+            1000,
+        ),
+      )
+    : null;
+  const expired = remaining === 0;
   const ids = session?.problemIds ?? sampleExamIds;
   const bank = ids
     .map((id) => problems.find((p) => p.id === id))
@@ -88,11 +125,41 @@ export function Exam({
   );
   const start = (
     problemIds: string[] = session?.problemIds ?? sampleExamIds,
+    paper?: PaperSnapshot,
   ) => {
+    if (
+      !problemIds.length ||
+      new Set(problemIds).size !== problemIds.length ||
+      problemIds.some((id) => !problems.some((p) => p.id === id))
+    ) {
+      setError(
+        "Сохранённый состав недоступен. Выберите проверенный вариант; исходная сессия сохранена.",
+      );
+      return;
+    }
+    if (
+      paper &&
+      (JSON.stringify(paper.problemIds) !== JSON.stringify(problemIds) ||
+        problemIds.some(
+          (id) =>
+            problems.find((p) => p.id === id)?.version !== paper.versions[id],
+        ))
+    ) {
+      setError(
+        "Версия состава изменилась. Выберите новый вариант; исходная сессия сохранена.",
+      );
+      return;
+    }
     setIndex(0);
     setError("");
     update((x) => ({
       ...x,
+      archives: x.exam
+        ? [
+            ...x.archives,
+            { kind: "exam-session", session: structuredClone(x.exam) },
+          ]
+        : x.archives,
       exam: {
         id: crypto.randomUUID(),
         problemIds: [...problemIds],
@@ -101,10 +168,32 @@ export function Exam({
             .filter((p) => problemIds.includes(p.id))
             .map((p) => [p.id, p.version]),
         ),
-        seenProblemIds: Object.keys(x.exposures ?? {}),
+        seenProblemIds: unseenHistory(x).seenKeys,
         startedAt: new Date().toISOString(),
+        ...(paper ? { paper: structuredClone(paper) } : {}),
       },
     }));
+  };
+  const startBlueprint = (blueprint: ExamBlueprint) => {
+    try {
+      const paper = assemblePaper(
+        curriculumRegistry,
+        {
+          ...blueprint,
+          ...(unseenOnly ? { unseenPolicy: "require" as const } : {}),
+        },
+        Number(seed),
+        unseenHistory(data),
+        new Date().toISOString(),
+      );
+      start(paper.problemIds, paper);
+    } catch (e) {
+      setError(
+        e instanceof Error && e.message.includes("assembly identity")
+          ? "Номер набора должен быть целым числом от0 до4294967295."
+          : "Недостаточно подходящих проверенных заданий для этого состава и истории показов. Попробуйте другой состав или разрешите знакомые задания.",
+      );
+    }
   };
   const current = bank[Math.min(index, bank.length - 1)];
   useEffect(() => {
@@ -129,7 +218,7 @@ export function Exam({
   if (!session)
     return (
       <>
-        <div className="eyebrow">САМОСТОЯТЕЛЬНАЯ ПРОВЕРКА / MVP</div>
+        <div className="eyebrow">САМОСТОЯТЕЛЬНАЯ ПРОВЕРКА</div>
         <div className="page-heading compact">
           <div>
             <h1>Соберите всё вместе.</h1>
@@ -139,6 +228,50 @@ export function Exam({
             </p>
           </div>
         </div>
+        <section className="exam-intro">
+          <h2>Подготовка к контрольной №3</h2>
+          <p>
+            Авторские тренировочные варианты, а не прогноз вопросов
+            преподавателя. Калибровка по фотографиям реальных контрольных пока
+            недоступна. Числовой балл не устанавливает понимание.
+          </p>
+          <label>
+            Номер набора (seed){" "}
+            <input
+              inputMode="numeric"
+              value={seed}
+              onChange={(e) => setSeed(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={unseenOnly}
+              onChange={(e) => setUnseenOnly(e.target.checked)}
+            />
+            Только задания без прежних показов и попыток в этой истории
+          </label>
+          <p>
+            Без этой опции сборщик предпочитает новые задания, но может включить
+            знакомые; это будет указано в начале. В одном варианте нет
+            эквивалентных семейств.
+          </p>
+          {curriculumRegistry.blueprints
+            .filter((b) => b.reviewStatus === "PUBLISHED")
+            .map((b) => (
+              <div className="panel" key={b.id}>
+                <h3>{b.title}</h3>
+                <p>
+                  {b.slots.length} заданий · {b.minutes} минут · разбор после
+                  отправки
+                </p>
+                <button className="button" onClick={() => startBlueprint(b)}>
+                  Собрать {b.id}
+                </button>
+              </div>
+            ))}
+          {error && <p role="alert">{error}</p>}
+        </section>
         <section className="exam-intro">
           <h2>Контрольная на новых наборах</h2>
           <p>
@@ -236,6 +369,7 @@ export function Exam({
             <div key={r.id}>
               <h2>{(r.problemSnapshot as Problem).title}</h2>
               <Feedback
+                returnRoute="exam"
                 p={r.problemSnapshot as Problem}
                 result={r}
                 data={data}
@@ -244,9 +378,11 @@ export function Exam({
             </div>
           ))}
         </div>
-        <button className="button" onClick={() => start()}>
-          Новая попытка
-        </button>
+        {!session.paper && (
+          <button className="button" onClick={() => start()}>
+            Новая попытка
+          </button>
+        )}
         <button
           className="button outline"
           style={{ marginLeft: 10 }}
@@ -261,7 +397,9 @@ export function Exam({
             }))
           }
         >
-          Выбрать другую контрольную
+          {session.paper
+            ? "Выбрать новый вариант"
+            : "Выбрать другую контрольную"}
         </button>
         <p>Предыдущий результат останется в истории.</p>
       </>
@@ -274,7 +412,7 @@ export function Exam({
           Сохранённая сессия относится к предыдущей версии. Её черновики
           сохраняются. Начните новую попытку на текущих заданиях.
         </p>
-        <button className="button" onClick={() => start()}>
+        <button className="button" onClick={() => start(sampleExamIds)}>
           Начать новую версию
         </button>
       </div>
@@ -298,6 +436,33 @@ export function Exam({
       <div className="eyebrow">
         МИНИ-КОНТРОЛЬНАЯ / ВОПРОС {index + 1} ИЗ {bank.length}
       </div>
+      {session.paper && (
+        <section className="panel" aria-label="Паспорт контрольной">
+          <p>
+            {session.paper.blueprint.title} · {session.paper.blueprint.id}@
+            {session.paper.blueprint.version} · seed {session.paper.seed}
+          </p>
+          <p role="timer">
+            Осталось: {Math.floor((remaining ?? 0) / 60)}:
+            {String((remaining ?? 0) % 60).padStart(2, "0")}.{" "}
+            {expired
+              ? "Время истекло. Ввод закрыт; отправьте сохранённые ответы."
+              : ""}
+          </p>
+          <p>
+            Ранее открывались:{" "}
+            {
+              session.paper.problemIds.filter((id) =>
+                session.seenProblemIds?.includes(
+                  `${id}@${session.versions[id]}`,
+                ),
+              ).length
+            }{" "}
+            из {bank.length}. Состав и версии сохранены; старые попытки не
+            переоцениваются.
+          </p>
+        </section>
+      )}
       <div className="exam-navigation">
         {bank.map((q, i) => (
           <button
@@ -319,15 +484,19 @@ export function Exam({
         <QuestionFields
           p={p}
           mode="exam"
+          disabled={expired}
           draft={draft}
           onChange={(d) => {
+            if (expired) return;
             setError("");
             update((x) => ({ ...x, drafts: { ...x.drafts, [key]: d } }));
           }}
         />
         <Workpad
           draft={draft}
+          disabled={expired}
           onChange={(d) =>
+            !expired &&
             update((x) => ({ ...x, drafts: { ...x.drafts, [key]: d } }))
           }
         />
@@ -356,7 +525,7 @@ export function Exam({
         <button
           className="button"
           onClick={() => {
-            if (answered < bank.length) {
+            if (answered < bank.length && !session.paper) {
               setError(
                 "Заполните все задания перед отправкой. Можно переключаться по номерам сверху.",
               );

@@ -316,6 +316,7 @@ main {
 }
 .page-heading h1 {
   margin-bottom: 16px;
+  overflow-wrap: anywhere;
 }
 .page-heading h1 em {
   color: #51705c;

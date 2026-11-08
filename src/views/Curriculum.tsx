@@ -1,3 +1,4 @@
+import { curriculumRegistry } from "../curriculum";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import {
@@ -46,6 +47,8 @@ import {
   emptyDraft,
   pct,
   href,
+  publishedLessonContent,
+  publishedProblemContent,
 } from "../components/Common";
 import {
   grade,
@@ -54,100 +57,187 @@ import {
   Feedback,
 } from "../components/Problem";
 export function Curriculum() {
+  const visibleLessons = publishedLessonContent();
+  const visibleProblems = publishedProblemContent();
+  const availableTopics = topics.filter((t) =>
+    visibleLessons.some((l) => l.id === t.id || t.lessonIds.includes(l.id)),
+  );
   return (
     <>
-      <div className="eyebrow">КАРТА КОМПЕТЕНЦИЙ / ТЕМА 3</div>
+      <div className="eyebrow">КАРТА УЧЕБНОЙ ПРОГРАММЫ</div>
       <div className="page-heading compact">
         <div>
           <h1>Большая картина.</h1>
           <p>
-            11 подразделов и все 9 задач семинара. Два подраздела доступны в
-            MVP.
+            Доступно {visibleLessons.length} учебных разделов из{" "}
+            {curriculumRegistry.lessons.length} в текущей карте. Ниже — навыки и{" "}
+            {seminarMap.length} задач семинара; наличие упражнения не означает
+            полного разбора исходной задачи.
           </p>
         </div>
       </div>
-      <div className="curriculum-list">
-        {topics.map((t) => (
-          <article className="panel" key={t.id}>
-            <div className="row spread">
-              <span className="eyebrow">{t.id}</span>
-              <span
-                className={`tag ${t.status === "implemented" ? "available" : ""}`}
-              >
-                {t.status === "implemented" ? "Доступен в MVP" : "Запланирован"}
-              </span>
-            </div>
-            <h2>{t.title}</h2>
-            <p>{t.summary}</p>
-            <ul>
-              {t.outcomes.map((o) => (
-                <li key={o}>{o}</li>
-              ))}
-            </ul>
-            <p className="muted">
-              Предпосылки: {t.prerequisites.join(", ") || "начальный раздел"} ·
-              Семинар: {t.seminarIds.join(", ")}
-            </p>
-            {t.roadmapNote && <p>{t.roadmapNote}</p>}
-            <Sources refs={t.sourceRefs} />
-            {t.status === "implemented" && (
-              <Link to={`learn/${t.lessonIds[0]}`} className="text-link">
-                Изучить раздел <ArrowRight size={16} />
-              </Link>
-            )}
-            {t.id === "T3-06" && <LeveragePreview />}
-          </article>
-        ))}
-      </div>
-      <h2>Все задачи семинара 3</h2>
-      <div className="panel seminar-map">
-        {seminarMap.map((s) => (
-          <div key={s.id}>
-            <h3>Задача {s.id}</h3>
-            <p>
-              {JSON.stringify(s, null, 0)
-                .replace(/[{}\[\]"]/g, " ")
-                .replace(/,/g, " · ")}
-            </p>
+      {curriculumRegistry.modules.map((module) => (
+        <section key={module.id} aria-label={module.title}>
+          <h2>{module.title}</h2>
+          <div className="curriculum-list">
+            {topics
+              .filter((t) =>
+                module.lessonIds.some(
+                  (id) => id === t.id || t.lessonIds.includes(id),
+                ),
+              )
+              .map((t) => {
+                const published = visibleLessons.filter(
+                  (l) => l.id === t.id || t.lessonIds.includes(l.id),
+                );
+                return (
+                  <article className="panel" key={t.id}>
+                    <div className="row spread">
+                      <span className="eyebrow">{t.id}</span>
+                      <span
+                        className={`tag ${published.length ? "available" : ""}`}
+                      >
+                        {published.length
+                          ? "Урок доступен"
+                          : lessons.some(
+                                (l) =>
+                                  l.id === t.id || t.lessonIds.includes(l.id),
+                              )
+                            ? "На проверке"
+                            : "Запланирован"}
+                      </span>
+                    </div>
+                    <h3>{t.title}</h3>
+                    <p>{t.summary}</p>
+                    <ul>
+                      {t.outcomes.map((o) => (
+                        <li key={o}>{o}</li>
+                      ))}
+                    </ul>
+                    <p className="muted">
+                      Предпосылки:{" "}
+                      {t.prerequisites.length
+                        ? t.prerequisites.map((id, i) => {
+                            const prerequisite = topics.find(
+                              (x) => x.id === id,
+                            );
+                            const lesson = visibleLessons.find(
+                              (l) =>
+                                l.id === id ||
+                                prerequisite?.lessonIds.includes(l.id),
+                            );
+                            return (
+                              <span key={id}>
+                                {i > 0 && "; "}
+                                {lesson ? (
+                                  <Link to={`learn/${lesson.id}`}>
+                                    {prerequisite?.title}
+                                  </Link>
+                                ) : (
+                                  `${prerequisite?.title ?? id} (запланирован)`
+                                )}
+                              </span>
+                            );
+                          })
+                        : "начальный раздел"}
+                      .
+                    </p>
+                    <Sources refs={t.sourceRefs} />
+                    {published.map((l) => (
+                      <Link
+                        key={l.id}
+                        to={`learn/${l.id}`}
+                        className="text-link"
+                      >
+                        {published.length > 1
+                          ? `Изучить: ${l.title}`
+                          : "Изучить раздел"}{" "}
+                        <ArrowRight size={16} />
+                      </Link>
+                    ))}
+                  </article>
+                );
+              })}
           </div>
-        ))}
+        </section>
+      ))}
+      <h2>Задачи семинара: что нужно уметь</h2>
+      <div className="curriculum-list seminar-map">
+        {seminarMap.map((s) => {
+          const related = visibleLessons.filter((l) =>
+            s.topicIds.includes(l.id),
+          );
+          const exercises = visibleProblems.filter(
+            (p) =>
+              p.transfer?.seed === undefined &&
+              p.sourceRefs.some(
+                (ref) => ref.kind === "seminar" && ref.seminar === s.id,
+              ),
+          );
+          return (
+            <article className="panel competency-card" key={s.id}>
+              <div className="row spread">
+                <span className="eyebrow">Задача {s.id}</span>
+                <span className="tag">
+                  {s.status === "needs-assumptions"
+                    ? "Нужны явные предпосылки"
+                    : s.status === "planned"
+                      ? "Частичное покрытие"
+                      : "Есть учебный разбор"}
+                </span>
+              </div>
+              <h3>{s.title}</h3>
+              <h4>Что требуется</h4>
+              <ul>
+                {s.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+              <h4>Перед расчётом</h4>
+              <ul>
+                {s.assumptions.map((assumption) => (
+                  <li key={assumption}>{assumption}</li>
+                ))}
+              </ul>
+              <p>
+                <b>Связанные уроки:</b>{" "}
+                {related.length
+                  ? related.map((l, i) => (
+                      <span key={l.id}>
+                        {i > 0 && "; "}
+                        <Link to={`learn/${l.id}`}>{l.title}</Link>
+                      </span>
+                    ))
+                  : "полный урок ещё не опубликован"}
+                .
+              </p>
+              {exercises.length ? (
+                <details>
+                  <summary>Учебные упражнения ({exercises.length})</summary>
+                  <ul>
+                    {exercises.map((p) => (
+                      <li key={p.id}>
+                        <Link to={`practice/${p.id}`}>{p.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ) : (
+                <p>Отдельное упражнение ещё не опубликовано.</p>
+              )}
+              <details>
+                <summary>Покрытие и неоднозначности условия</summary>
+                <p>{s.note}</p>
+              </details>
+            </article>
+          );
+        })}
       </div>
       <p className="notice">
-        Накопительный экзаменационный тренажёр будет расширяться по мере выпуска
-        подразделов. Тема 3 целиком ещё не реализована.
+        Опубликовано {availableTopics.length} разделов карты. Программа
+        расширяется по мере подготовки и проверки материала. Отметка чтения и
+        верный ответ не подтверждают готовность к контрольной.
       </p>
     </>
-  );
-}
-
-function LeveragePreview() {
-  const [de, setDe] = useState(0.7);
-  const roc = 0.18441176470588236;
-  const roe = roc + de * (roc - 0.105);
-  return (
-    <div className="leverage-preview">
-      <div className="eyebrow">ПРЕДВАРИТЕЛЬНАЯ СВЯЗЬ / НЕ ПОЛНЫЙ УРОК</div>
-      <MathFormula latex="ROE=ROC+\frac{D}{E}(ROC-r_d(1-t))" />
-      <label>
-        Долг / капитал: {de.toFixed(1)}
-        <input
-          aria-label="Долг к капиталу"
-          type="range"
-          min="0"
-          max="2"
-          step="0.1"
-          value={de}
-          onChange={(e) => setDe(Number(e.target.value))}
-        />
-      </label>
-      <p>
-        ROC {pct(roc)} + эффект рычага = ROE <b>{(roe * 100).toFixed(2)}%</b>
-      </p>
-      <small>
-        После налогов долг стоит 10,5%. Здесь капитал = D + E, без вычета cash;
-        NOPAT = NI + I(1 − t). Постоянная доходность и цена долга — модельное
-        допущение.
-      </small>
-    </div>
   );
 }

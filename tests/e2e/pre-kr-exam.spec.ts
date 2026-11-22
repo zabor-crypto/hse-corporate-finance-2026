@@ -1,0 +1,76 @@
+import { test, expect } from "@playwright/test";
+import { baseline, clone, readProgress, seedLegacyProgressBeforeBoot } from "./helpers";
+import { content, blueprint } from "../../src/runtime/t4-data";
+
+test("fixed training paper: explicit seen fallback, voluntary timer, retained old records", async ({ page }, info) => {
+  const data = clone(baseline);
+  data.exam = null;
+  data.exposures = Object.fromEntries(content.problems.map(p => [`${p.id}@${p.version}`, { firstSeenAt: "2026-11-01T00:00:00Z", assistanceUsed: false, modes: ["practice" as const] }]));
+  const original = JSON.stringify(data);
+  const errors: string[] = [];
+  page.on("pageerror", e => errors.push(e.message));
+  await page.goto("./build-info.json");
+  await seedLegacyProgressBeforeBoot(page, data);
+  await page.goto("#/exam/T4");
+  await expect(page.getByRole("heading", { level: 1, name: "Соберите всё вместе." })).toBeVisible();
+  const seed = page.getByLabel("Номер набора (seed)", { exact: true });
+  const unseen = page.getByLabel("Только задания без прежних показов и попыток в этой истории", { exact: true });
+  const watch = page.getByLabel("Включить авторский таймер · по желанию", { exact: true });
+  await expect(unseen).not.toBeChecked();
+  await expect(watch).not.toBeChecked();
+  await expect(page.locator(".exam-fixed-composition").first()).toContainText("Состав фиксирован");
+  await seed.fill("17");
+  await seed.focus();
+  await page.keyboard.press("Tab");
+  await expect(unseen).toBeFocused();
+  await page.keyboard.press("Space");
+  await expect(unseen).toBeChecked();
+  await page.keyboard.press("Tab");
+  await expect(watch).toBeFocused();
+  const geometry = await page.locator(".exam-settings").evaluate(el => ({
+    documentWidth: document.documentElement.scrollWidth, viewport: innerWidth,
+    labels: [...el.querySelectorAll(".exam-checkbox")].map(label => ({ right: label.getBoundingClientRect().right, height: label.getBoundingClientRect().height, inputWidth: label.querySelector("input")!.getBoundingClientRect().width, inputRight: label.querySelector("input")!.getBoundingClientRect().right })),
+  }));
+  expect(geometry.documentWidth).toBeLessThanOrEqual(geometry.viewport + 1);
+  geometry.labels.forEach(label => { expect(label.height).toBeGreaterThanOrEqual(44); expect(label.right).toBeLessThanOrEqual(geometry.viewport + 1); expect(label.inputWidth).toBe(20); expect(label.inputRight).toBeLessThanOrEqual(label.right); });
+  await info.attach("actual-controls-geometry", { body: JSON.stringify(geometry), contentType: "application/json" });
+  if ([360, 1440].includes(page.viewportSize()!.width)) { await page.evaluate(() => scrollTo(0, 0)); await page.screenshot({ path: info.outputPath("exam-controls.png"), fullPage: true, scale: "css", animations: "disabled" }); }
+  await page.getByRole("button", { name: `Собрать ${blueprint.id}`, exact: true }).click();
+  await expect(page.getByRole("alert")).toContainText("не хватает невиданных");
+  await expect(page.locator(".question-title")).toHaveCount(0);
+  await page.getByRole("button", { name: `Разрешить знакомые и собрать ${blueprint.id}`, exact: true }).click();
+  await expect(page.locator(".question-title")).toBeVisible();
+  await expect.poll(async () => (await readProgress(page))?.exam?.paper?.blueprint.id).toBe(blueprint.id);
+  const started = (await readProgress(page))!;
+  expect(started.answers).toEqual(data.answers);
+  expect(started.exam!.problemIds).toEqual(blueprint.slots.flatMap(s => s.problemIds ?? []));
+  expect(await page.evaluate(() => localStorage.getItem("cflos.progress.v1"))).toBe(original);
+  await expect(page.getByRole("timer")).toHaveCount(0);
+  await expect(page.locator(".feedback,.assumptions,.support-card")).toHaveCount(0);
+  const numericIndex = started.exam!.problemIds.findIndex(id => !content.problems.find(p => p.id === id)!.options);
+  expect(numericIndex).toBeGreaterThanOrEqual(0);
+  await page.getByRole("button", { name: `Вопрос ${numericIndex + 1}`, exact: true }).click();
+  const firstInput = page.locator(".number-field input").first();
+  await firstInput.fill("-1,25");
+  await page.locator("main h1").click();
+  await page.reload();
+  await page.getByRole("button", { name: `Вопрос ${numericIndex + 1}`, exact: true }).click();
+  await expect(firstInput).toHaveValue("-1,25");
+  await expect(page.getByRole("timer")).toHaveCount(0);
+  await page.clock.install();
+  await page.getByRole("button", { name: /Включить авторский таймер на/ }).click();
+  await expect(page.getByRole("timer")).toContainText("Авторский ориентир");
+  await page.clock.fastForward((blueprint.minutes + 1) * 60000);
+  await expect(page.getByRole("timer")).toContainText("Можно продолжать");
+  await expect(firstInput).toBeEnabled();
+  await firstInput.fill("0");
+  await page.getByRole("button", { name: "Завершить и проверить", exact: true }).click();
+  await expect(page.getByRole("heading", { level: 1, name: /Числа и выбор вариантов/ })).toBeVisible();
+  await expect(page.locator(".feedback").first()).toBeVisible();
+  await expect.poll(async () => (await readProgress(page))?.answers.length).toBe(data.answers.length + blueprint.slots.length);
+  const finished = (await readProgress(page))!;
+  expect(finished.answers.slice(0, data.answers.length)).toEqual(data.answers);
+  expect(finished.exam?.finishedAt).toBeTruthy();
+  expect(finished.answers.slice(data.answers.length).every(r => (r.problemSnapshot as {id:string}).id === r.problemId)).toBe(true);
+  expect(errors).toEqual([]);
+});

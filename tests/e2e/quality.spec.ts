@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import {
   startIsolated,
+  waitForLoadedHeading,
   assertNoPageErrors,
   noPageOverflow,
   screenshotEvidence,
@@ -72,6 +73,7 @@ test("reduced motion and visible keyboard focus preserve navigation", async ({
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("./");
+  await waitForLoadedHeading(page);
   expect(
     await page.evaluate(
       () => matchMedia("(prefers-reduced-motion: reduce)").matches,

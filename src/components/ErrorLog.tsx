@@ -1,8 +1,9 @@
 import { useState } from "react";
 import type { Progress } from "../storage/progress";
-import { curriculumRegistry } from "../curriculum";
+import { getActivePack } from "../runtime";
 import { buildErrorLog, targetedRetest } from "../curriculum/errors";
 import { Link } from "./Common";
+import { getProblemLabel } from "../pedagogy/problem-labels";
 const categories = {
   concept: "Понятие",
   sign: "Знак",
@@ -18,7 +19,7 @@ export function ErrorLog({
   data: Progress;
   update: (fn: (p: Progress) => Progress) => void;
 }) {
-  const errors = buildErrorLog(data, curriculumRegistry);
+  const errors = buildErrorLog(data, getActivePack().registry);
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [tags, setTags] = useState<Record<string, keyof typeof categories>>({});
   if (!errors.length)
@@ -27,8 +28,7 @@ export function ErrorLog({
         <h2>Журнал ошибок</h2>
         <p>
           Проверенных ошибочных ответов пока нет. После попытки здесь появятся
-          наблюдаемые категории, ссылки на теорию и новый вариант для повторной
-          проверки.
+          наблюдаемые расхождения и следующий шаг: фрагмент урока или подходящее задание.
         </p>
       </section>
     );
@@ -36,17 +36,14 @@ export function ErrorLog({
     <section className="panel">
       <h2>Журнал ошибок и повторная проверка</h2>
       <p>
-        Код проверки показывает расхождение ответа, а не установленную причину
-        непонимания. Причину можно отметить самостоятельно; балл исходной
-        попытки сохраняется. Показаны последние{Math.min(20, errors.length)} из
-        {errors.length} стадий.
+        Сначала разберите расхождение, затем попробуйте другой подходящий случай. Ваша отметка причины не меняет исходный балл. Показаны последние {Math.min(20, errors.length)} из {errors.length} проверенных шагов.
       </p>
       {errors
         .slice(-20)
         .reverse()
         .map((e) => {
           const key = `${e.answerId}:${e.stageId}`,
-            next = targetedRetest(e, data, curriculumRegistry),
+            next = targetedRetest(e, data, getActivePack().registry),
             review = (data.errorReviews ?? [])
               .filter(
                 (r) => r.answerId === e.answerId && r.stageId === e.stageId,
@@ -55,12 +52,12 @@ export function ErrorLog({
                 (a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp),
               )[0];
           return (
-            <article className="panel" key={key}>
+            <article className="panel" key={key} data-problem-id={e.problemId} data-stage-id={e.stageId}>
               <h3>
-                {e.problemId}@{e.version} · {e.stageId}
+                {getProblemLabel({ id: e.problemId, title: e.title })} · {e.stageLabel ?? "Выбор ответа"}
               </h3>
               <p>
-                Наблюдаемая категория: {categories[e.category]} ({e.code}).{" "}
+                Что проверить: {categories[e.category]}.{" "}
                 {e.remedy}
               </p>
               {e.provenance === "HISTORICAL_SNAPSHOT" && (
@@ -121,20 +118,19 @@ export function ErrorLog({
               >
                 Сохранить мою отметку
               </button>
+              {e.theoryRoute && <p><Link to={e.theoryRoute}>Разобрать соответствующий фрагмент урока</Link></p>}
               {next ? (
-                <p>
-                  <Link className="button outline" to={`practice/${next.id}`}>
-                    Повторная проверка · другие данные
-                  </Link>
-                  {next.familyId === e.familyId
-                    ? " Это вариант того же семейства: повтор модели не доказывает перенос."
-                    : " Выбран ещё не открывавшийся вариант с пересекающимися понятиями."}
-                </p>
+                <p><Link className="button outline" to={`practice/${next.id}`}>
+                  Другой случай на тот же механизм
+                </Link>{" "}{next.familyId === e.familyId
+                  ? "Та же модель с другими данными; это повтор, а не доказательство переноса."
+                  : "Подобран неоткрывавшийся случай с теми же навыками и без следующих по курсу предпосылок."}</p>
               ) : (
-                <p>
-                  Подходящего неоткрывавшегося проверенного варианта пока нет.
-                  История не сбрасывается.
-                </p>
+                <div className="notice">
+                  <p>Подходящего нового задания на этот шаг сейчас нет. Сверьтесь с фрагментом урока: выпишите исходные величины, даты и единицы, затем повторите исходный расчёт.</p>
+                  <Link to={`practice/${e.problemId}`}>Вернуться к прежнему заданию · повтор</Link>
+                  <p>Прежняя попытка сохранена. Повтор знакомого случая не считается самостоятельным переносом.</p>
+                </div>
               )}
             </article>
           );

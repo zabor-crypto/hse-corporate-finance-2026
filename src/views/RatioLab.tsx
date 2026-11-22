@@ -21,8 +21,33 @@ const initial: RatioRelationshipsInput = {
 };
 const percent = (v: number) =>
   `${(v * 100).toLocaleString("ru-RU", { maximumFractionDigits: 2 })}%`;
+/** Incomplete prefixes stay editable and never become an invented zero. */
+export function parseRatioInput(raw: string) {
+  const s = raw.trim().replace(/−/g, "-").replace(",", ".");
+  return /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s) ? Number(s) : NaN;
+}
 export function RatioLab() {
-  const [input, setInput] = useState(initial);
+  const [raw, setRaw] = useState<Record<string, string>>(() =>
+    Object.fromEntries(
+      Object.entries(initial)
+        .filter(([, v]) => typeof v === "number")
+        .map(([k, v]) => [k, String(k === "taxRate" ? Number(v) * 100 : v)]),
+    ),
+  );
+  const [policy, setPolicy] = useState({
+    capitalBasis: initial.capitalBasis,
+    taxLossTreatment: initial.taxLossTreatment,
+  });
+  const input: RatioRelationshipsInput = {
+    ...initial,
+    ...policy,
+    ...Object.fromEntries(
+      Object.entries(raw).map(([k, v]) => [
+        k,
+        parseRatioInput(v) / (k === "taxRate" ? 100 : 1),
+      ]),
+    ),
+  };
   let result: ReturnType<typeof calcRatioRelationships> | null = null;
   let error = "";
   try {
@@ -31,10 +56,7 @@ export function RatioLab() {
     error = e instanceof Error ? e.message : "Проверьте исходные данные";
   }
   const update = (key: keyof RatioRelationshipsInput, value: string) =>
-    setInput((p) => ({
-      ...p,
-      [key]: value.trim() === "" ? NaN : Number(value.replace(",", ".")),
-    }));
+    setRaw((p) => ({ ...p, [key]: value }));
   const fields: [keyof RatioRelationshipsInput, string][] = [
     ["sales", "Выручка, млн ₽"],
     ["ebit", "EBIT, млн ₽"],
@@ -74,7 +96,7 @@ export function RatioLab() {
               <input
                 aria-label={label}
                 inputMode="decimal"
-                value={Number.isNaN(input[key]) ? "" : String(input[key])}
+                value={raw[key] ?? ""}
                 onChange={(e) => update(key, e.target.value)}
               />
             </label>
@@ -84,16 +106,8 @@ export function RatioLab() {
             <input
               aria-label="Налог, %"
               inputMode="decimal"
-              value={Number.isNaN(input.taxRate) ? "" : input.taxRate * 100}
-              onChange={(e) =>
-                setInput((p) => ({
-                  ...p,
-                  taxRate:
-                    e.target.value.trim() === ""
-                      ? NaN
-                      : Number(e.target.value.replace(",", ".")) / 100,
-                }))
-              }
+              value={raw.taxRate ?? ""}
+              onChange={(e) => update("taxRate", e.target.value)}
             />
           </label>
           <label>
@@ -102,7 +116,7 @@ export function RatioLab() {
               aria-label="База ROC"
               value={input.capitalBasis}
               onChange={(e) =>
-                setInput((p) => ({
+                setPolicy((p) => ({
                   ...p,
                   capitalBasis: e.target
                     .value as RatioRelationshipsInput["capitalBasis"],
@@ -121,7 +135,7 @@ export function RatioLab() {
               aria-label="Налог при убытке"
               value={input.taxLossTreatment}
               onChange={(e) =>
-                setInput((p) => ({
+                setPolicy((p) => ({
                   ...p,
                   taxLossTreatment: e.target.value as
                     "no-credit" | "full-credit",
@@ -134,7 +148,25 @@ export function RatioLab() {
               </option>
             </select>
           </label>
-          <button className="button outline" onClick={() => setInput(initial)}>
+          <button
+            className="button outline"
+            onClick={() => {
+              setRaw(
+                Object.fromEntries(
+                  Object.entries(initial)
+                    .filter(([, v]) => typeof v === "number")
+                    .map(([k, v]) => [
+                      k,
+                      String(k === "taxRate" ? Number(v) * 100 : v),
+                    ]),
+                ),
+              );
+              setPolicy({
+                capitalBasis: initial.capitalBasis,
+                taxLossTreatment: initial.taxLossTreatment,
+              });
+            }}
+          >
             Вернуть исходный пример
           </button>
           <p className="sources">

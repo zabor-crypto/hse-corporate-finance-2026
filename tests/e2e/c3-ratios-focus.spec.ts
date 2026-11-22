@@ -3,7 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { readFileSync } from "node:fs";
 import { problems, formulas } from "../../src/content";
 import { c3RatiosFocusBlueprint as template } from "../../src/curriculum/c3-ratios-focus";
-import { referenceUnit, screenshotEvidence } from "./helpers";
+import { referenceUnit, screenshotEvidence, readProgress } from "./helpers";
 import type { Progress } from "../../src/storage/progress";
 const KEY = "cflos.progress.v1";
 const base = `http://127.0.0.1:${process.env.CFLOS_DELTA_PORT ?? 5202}/hse-corporate-finance-2026/`;
@@ -21,7 +21,7 @@ interface Oracle {
 const oracles = JSON.parse(readFileSync(new URL("../fixtures/c3-ratios-focus-independent-oracles.json", import.meta.url), "utf8")).problems as Oracle[];
 const legacy = JSON.parse(readFileSync(new URL("../fixtures/baseline-v1-progress.json", import.meta.url), "utf8"));
 const ids = oracles.map(p => p.id);
-const read = (page: Page): Promise<Progress> => page.evaluate(key => JSON.parse(localStorage.getItem(key)!), KEY);
+const read = async(page:Page):Promise<Progress> => (await readProgress(page))!;
 const errors = new WeakMap<Page, string[]>();
 function observe(page: Page) { const items: string[] = []; errors.set(page, items); page.on("pageerror", e => items.push(e.message)); page.on("console", m => { if (m.type() === "error")
     items.push(m.text()); }); page.on("response", r => { if (r.status() >= 400 && [new URL(base).origin, new URL(second).origin].includes(new URL(r.url()).origin))
@@ -111,8 +111,9 @@ test("six ratios: independent assessment, reviewed grading, repeat passport, hel
     }
     const cash = q.stages.find(s => s.id === "cfo")!;
     await page.getByLabel("Единица ответа: " + cash.label, { exact: true }).selectOption("thousand-rub");
+    const beforePracticeIds = new Set((await read(page)).answers.map(a => a.id));
     await page.getByRole("button", { name: "Проверить ответ", exact: true }).click();
-    await expect.poll(async () => (await read(page)).answers.at(-1)!.stageResults.find(s => s.id === "cfo")!.correct).toBe(false);
+    await expect.poll(async () => (await read(page)).answers.find(a => !beforePracticeIds.has(a.id) && a.problemId === q.id && a.mode === "practice")?.stageResults.find(s => s.id === "cfo")?.correct).toBe(false);
     await page.getByLabel("Единица ответа: " + cash.label, { exact: true }).selectOption("million-rub");
     await page.locator(`[id="${q.id}-current-ratio"]`).fill("2,40004");
     await page.getByRole("button", { name: "Проверить ответ", exact: true }).click();
@@ -120,7 +121,7 @@ test("six ratios: independent assessment, reviewed grading, repeat passport, hel
     await page.getByRole("button", { name: "Показать опоры · отметить использование помощи", exact: true }).click();
     await page.getByRole("button", { name: "Открыть учебный раздел", exact: true }).click();
     await expect(page.locator("main h1")).toBeVisible();
-    await page.getByRole("button", { name: "К заданию · черновик сохранён", exact: true }).click();
+    await page.getByRole("button", { name: "К заданию · продолжить с черновиком", exact: true }).click();
     await expect(page.locator(`[id="${q.id}-current-ratio"]`)).toHaveValue("2,40004");
     await page.getByRole("button", { name: "Проверить ответ", exact: true }).click();
     await expect.poll(async () => (await read(page)).answers.at(-1)!.assessmentContext?.assistanceUsed).toBe(true);
@@ -131,7 +132,7 @@ test("six ratios: independent assessment, reviewed grading, repeat passport, hel
     await expect(page.locator(".katex-error")).toHaveCount(0);
     await fits(page);
     await screenshotEvidence(page, info, "focus-theory-math");
-    await page.getByRole("button", { name: "К заданию · черновик сохранён", exact: true }).click();
+    await page.getByRole("button", { name: "К заданию · продолжить с черновиком", exact: true }).click();
     await importData(page, legacy);
     const merged = await read(page);
     for (const old of legacy.answers as Progress["answers"])

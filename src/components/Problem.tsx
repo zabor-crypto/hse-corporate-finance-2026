@@ -1,11 +1,13 @@
-import { lessons } from "../content";
+import { getActivePack } from "../runtime";
 import { useState } from "react";
 import type { Problem } from "../content/types";
 import type { AnswerRecord, Draft, Mode, Progress } from "../storage/progress";
 import { reasoningStatus, draftKey } from "../storage/progress";
 import { assessedStages, gradeAttempt } from "../engine/grading/attempt";
-import { unitFeedback, unitPolicy, units } from "../engine/grading/units";
+import { unitPolicy, units } from "../engine/grading/units";
 import { Link, pct } from "./Common";
+import { remedyRouteFor } from "../curriculum/errors";
+import { answerFeedback } from "../pedagogy/feedback";
 export const grade = gradeAttempt;
 export function QuestionFields({
   p,
@@ -100,7 +102,15 @@ export function QuestionFields({
         );
       })}
       {p.reasoning && (
-        <div className="reasoning-box">
+        <details
+          className="reasoning-box"
+          open={p.type === "single" || p.type === "multi" ? undefined : true}
+        >
+          <summary>
+            {p.type === "single" || p.type === "multi"
+              ? "Объяснить выбор · по желанию"
+              : "Пояснение решения · для самопроверки"}
+          </summary>
           <label htmlFor={`${p.id}-reasoning`}>
             {mode === "study"
               ? p.reasoning.prompt
@@ -123,7 +133,7 @@ export function QuestionFields({
             Текст сохраняется. Содержательную правильность программа не
             оценивает.
           </small>
-        </div>
+        </details>
       )}
     </>
   );
@@ -210,15 +220,8 @@ export function Feedback({
   update?: (fn: (p: Progress) => Progress) => void;
   returnRoute?: string;
 }) {
-  const anchor =
-    p.theorySectionId ??
-    lessons
-      .find((l) => l.id === p.lessonId)
-      ?.sections.find((s) =>
-        s.formulaIds?.some((f) =>
-          (Array.isArray(p.formulaIds) ? p.formulaIds : []).includes(f),
-        ),
-      )?.id;
+  const theoryRoute = remedyRouteFor(p.id, getActivePack().registry, p, result.stageResults.find(s => !s.correct)?.id)
+    ?? `learn/${p.lessonId}`;
   const [checked, setChecked] = useState<number[]>([]);
   const state = data
     ? reasoningStatus(result, data)
@@ -232,22 +235,18 @@ export function Feedback({
         Числа и выбор вариантов: {pct(result.objectiveScore ?? result.score)}
       </h3>
       <p>
-        {statusLabels[state]}. Этот балл не подтверждает понимание или перенос
-        навыка.
+        {statusLabels[state]}. Проверены ответы, а не содержательная правильность объяснения.
       </p>
       {result.unitsStatus === undefined && (
         <p>Историческая запись: единицы ответа отдельно не проверялись.</p>
       )}
-      {result.stageResults.map((r) => (
-        <p key={r.id}>
-          {r.correct ? "✓" : "↳"}{" "}
-          {p.stages.find((s) => s.id === r.id)?.label ?? "Выбор вариантов"}:{" "}
-          {r.correct
-            ? "верно"
-            : (unitFeedback[r.errorCode ?? "VALUE"] ??
-              "Проверьте выбранные варианты.")}
-        </p>
-      ))}
+      {result.stageResults.map((r) => {
+        const help = answerFeedback(p, r.id, r.errorCode);
+        return <div key={r.id}>
+          <p>{r.correct ? "✓" : "↳"} {p.stages.find(s => s.id === r.id)?.label ?? "Выбор ответа"}: {r.correct ? "верно" : help.message}</p>
+          {!r.correct && <p><b>Первый шаг.</b> {help.firstStep}</p>}
+        </div>;
+      })}
       {p.reasoning && (
         <details className="reasoning-box">
           <summary>Самопроверка объяснения — отдельно от балла</summary>
@@ -310,17 +309,8 @@ export function Feedback({
       </details>
       {result.score < 1 && (
         <div className="diagnostic">
-          <p>
-            Сначала проверьте указанный тип ошибки. По одному неверному числу
-            нельзя достоверно определить пробел в понимании.
-          </p>
-          {(Array.isArray(p.commonErrors) ? p.commonErrors : []).map((e) => (
-            <p key={e.code}>
-              <b>{e.code}</b>: {e.message}
-            </p>
-          ))}
           <Link
-            to={`learn/${p.lessonId}${anchor ? `/${anchor}` : ""}`}
+            to={theoryRoute}
             onClick={() => {
               if (!update || !returnRoute) return;
               update((state) => {
@@ -330,7 +320,7 @@ export function Feedback({
                   draft = draftKey("practice", p.id, p.version);
                 return {
                   ...state,
-                  returnContext: { route: returnRoute, problemId: p.id },
+                  returnContext: { route: returnRoute, problemId: p.id, targetRoute: theoryRoute },
                   ...(practice
                     ? {
                         drafts: {

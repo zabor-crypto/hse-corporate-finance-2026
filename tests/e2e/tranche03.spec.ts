@@ -14,6 +14,7 @@ import {
   STORAGE_KEY,
   revealSupport,
   secondaryOrigin,
+  openReflection,
 } from "./helpers";
 test.beforeEach(async ({ page }) => startIsolated(page));
 test.afterEach(async ({ page }) => assertNoPageErrors(page));
@@ -52,6 +53,7 @@ for (const family of transferFamilies) {
     )!;
     await openProblem(page, p);
     await fillAnswer(page, p);
+    await openReflection(page);
     await page
       .getByLabel("Ваше объяснение", { exact: true })
       .fill(
@@ -98,7 +100,8 @@ for (const family of transferFamilies) {
     });
     try {
       const target = await targetContext.newPage();
-      await target.goto(secondaryOrigin);
+      await target.goto(`${secondaryOrigin}#/home/T3`);
+      await expect(target.locator(".topbar strong")).toHaveText("T3");
       await importProgress(target, exported);
       expect((await readProgress(target))!.answers).toEqual(exported.answers);
       expect((await readProgress(target))!.reasoningReviews).toEqual(
@@ -362,7 +365,7 @@ test("finite variant exhaustion is reported instead of silently recycling seen s
     page.getByRole("button", { name: "Начать на новых наборах", exact: true }),
   ).toBeDisabled();
   await expect(
-    page.getByText("В одном из семейств все восемь наборов уже открывались.", {
+    page.getByText("В одном из семейств все наборы уже открывались.", {
       exact: true,
     }),
   ).toBeVisible();

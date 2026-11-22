@@ -2,3 +2,77 @@
 @import "./styles/components.css";
 @import "./styles/responsive.css";
 @import "./styles/tranche03.css";
+
+/* Exam controls keep their labels and hit targets together on narrow screens. */
+.exam-settings {
+  display: grid;
+  gap: 12px;
+  max-width: 48rem;
+  margin: 20px auto;
+  text-align: left;
+}
+.exam-seed-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.exam-seed-field label {
+  font-weight: 600;
+}
+.exam-seed-field input {
+  width: 100%;
+  max-width: 20rem;
+  min-width: 0;
+  min-height: 44px;
+  font-size: 16px;
+}
+.exam-intro .exam-checkbox {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.exam-intro .exam-checkbox input {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 0;
+}
+.exam-intro .exam-checkbox span {
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+.exam-intro .exam-settings p,
+.exam-timer-note {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.exam-intro .exam-fixed-composition {
+  color: var(--ink);
+}
+@media (max-width: 600px) {
+  main {
+    padding-top: 16px;
+  }
+  .page-heading {
+    margin-bottom: 16px;
+  }
+  .page-heading .eyebrow {
+    margin-bottom: 10px;
+  }
+  .exam-intro {
+    padding: 24px 16px;
+  }
+  .exam-settings {
+    margin: 16px 0;
+  }
+}
+
+/* Stage-specific help must clear the fixed header on narrow and desktop layouts. */
+.formula-card[id] { scroll-margin-top: 108px; }

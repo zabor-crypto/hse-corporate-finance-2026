@@ -1,19 +1,15 @@
-import katex from "katex";
+import { lazy, Suspense } from "react";
+const Renderer = lazy(() => import("./MathRenderer"));
 export function MathFormula({ latex }: { latex: string }) {
   return (
-    <div
-      className="math-scroll"
-      tabIndex={0}
-      role="group"
-      aria-label="Формула. При необходимости прокрутите по горизонтали"
-      dangerouslySetInnerHTML={{
-        __html: katex.renderToString(latex, {
-          throwOnError: false,
-          output: "htmlAndMathml",
-          displayMode: true,
-          strict: "ignore",
-        }),
-      }}
-    />
+    <Suspense
+      fallback={
+        <div className="math-scroll" aria-busy="true">
+          Загрузка формулы…
+        </div>
+      }
+    >
+      <Renderer latex={latex} />
+    </Suspense>
   );
 }

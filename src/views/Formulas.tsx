@@ -20,14 +20,6 @@ import {
   Clock3,
   LockKeyhole,
 } from "lucide-react";
-import {
-  topics,
-  lessons,
-  formulas,
-  problems,
-  seminarMap,
-  sampleExamIds,
-} from "../content";
 import type { Problem, SourceRef } from "../content/types";
 import { gradeNumeric, gradeSelection, gradeStages } from "../engine/grading";
 import {

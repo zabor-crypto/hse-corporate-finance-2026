@@ -49,11 +49,66 @@ export async function startIsolated(page: Page) {
   await page.goto("./");
   await expect(page.locator("main")).toBeVisible();
 }
+/** Read actual canonical IDB bytes. No application write or in-memory shortcut. */
 export async function readProgress(page: Page): Promise<Progress | null> {
-  return page.evaluate((key) => {
-    const bytes = localStorage.getItem(key);
-    return bytes ? JSON.parse(bytes) : null;
+  return page.evaluate(async (key) => {
+    const env = await new Promise<any>((resolve) => {
+      const r = indexedDB.open("cflos.progress.v2");
+      r.onupgradeneeded = () => r.transaction?.abort();
+      r.onerror = () => resolve(null);
+      r.onsuccess = () => {
+        const db = r.result;
+        if (!db.objectStoreNames.contains("state")) {
+          db.close();
+          resolve(null);
+          return;
+        }
+        const tx = db.transaction("state", "readonly"),
+          q = tx.objectStore("state").get("current");
+        q.onsuccess = () => resolve(q.result ?? null);
+        q.onerror = () => resolve(null);
+        tx.oncomplete = () => db.close();
+      };
+    });
+    if (!env) {
+      const bytes = localStorage.getItem(key);
+      return bytes ? JSON.parse(bytes) : null;
+    }
+    if (env.revision === 0 && env.legacyRaw === null) return null; // pristine initialized store, no saved session yet
+    const s = env.data;
+    if (s.format !== "snapshot-pool-v1")
+      throw Error("Unexpected canonical storage format");
+    const answers = s.answers.map((a: any) =>
+      Object.fromEntries(
+        a.keys.map((k: string) => [
+          k,
+          k === "problemSnapshot" ? s.snapshots[a.snapshotIndex] : a.record[k],
+        ]),
+      ),
+    );
+    return Object.fromEntries(
+      s.keys.map((k: string) => [k, k === "answers" ? answers : s.meta[k]]),
+    );
   }, STORAGE_KEY);
+}
+/** Synthetic pre-update setup occurs before app boot; never reinterpret a changed legacy copy. */
+export async function seedLegacyProgressBeforeBoot(page: Page, data: Progress) {
+  const origin = new URL(page.url());
+  await page.goto(origin.origin + SUBPATH + "build-info.json");
+  await page.evaluate(
+    async ({ key, data }) => {
+      await new Promise<void>((resolve, reject) => {
+        const r = indexedDB.deleteDatabase("cflos.progress.v2");
+        r.onsuccess = () => resolve();
+        r.onerror = () => reject(r.error);
+        r.onblocked = () =>
+          reject(Error("Synthetic test database still in use"));
+      });
+      localStorage.setItem(key, JSON.stringify(data));
+    },
+    { key: STORAGE_KEY, data },
+  );
+  await page.goto(origin.origin + SUBPATH);
 }
 export async function importProgress(
   page: Page,
@@ -61,11 +116,13 @@ export async function importProgress(
   fileName = "synthetic-progress.json",
 ) {
   await page.goto("#/progress");
-  await page.getByLabel("Импорт прогресса", { exact: true }).setInputFiles({
+  const input = page.getByLabel("Импорт прогресса", { exact: true });
+  await input.setInputFiles({
     name: fileName,
     mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify(data)),
   });
+  await expect(input).toHaveValue(""); // handler resets only after durable import acknowledgement/error
 }
 export async function exportProgress(page: Page): Promise<Progress> {
   await page.goto("#/progress");
@@ -180,4 +237,35 @@ export async function revealSupport(page: Page) {
     exact: true,
   });
   if (await button.count()) await button.click();
+}
+
+/** Optional MC reflection is a deliberate disclosure, never an always-open essay requirement. */
+export async function openReflection(page: Page) {
+  const input = page.getByLabel("Ваше объяснение", { exact: true });
+  if ((await input.count()) && !(await input.isVisible())) {
+    await page
+      .locator("details.reasoning-box>summary")
+      .filter({ hasText: "Объяснить выбор · по желанию" })
+      .click();
+    await expect(input).toBeVisible();
+  }
+}
+/** The primary mechanism route is compact; all original teaching remains available on request. */
+export async function openLegacyReference(page: Page) {
+  const reference = page.locator("details.lesson-reference");
+  if (
+    (await reference.count()) &&
+    !(await reference.evaluate((e) => (e as HTMLDetailsElement).open))
+  ) {
+    await reference.locator(":scope>summary").click();
+    await expect(reference).toHaveAttribute("open", "");
+  }
+  if (await reference.count())
+    await expect(
+      reference.locator('nav[aria-label="Разделы полного справочника"]'),
+    ).toBeVisible();
+}
+export async function waitForLoadedHeading(page: Page) {
+  await expect(page.locator("main h1")).toBeVisible();
+  await expect(page.locator("main h1")).not.toContainText("Загрузка");
 }

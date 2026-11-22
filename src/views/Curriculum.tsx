@@ -1,62 +1,8 @@
-import { curriculumRegistry } from "../curriculum";
-import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
-import {
-  ArrowRight,
-  ArrowLeft,
-  BookOpen,
-  ChartNoAxesCombined,
-  Check,
-  ChevronRight,
-  Download,
-  FlaskConical,
-  GraduationCap,
-  LayoutDashboard,
-  Menu,
-  NotebookPen,
-  Route,
-  Upload,
-  X,
-  Calculator,
-  Clock3,
-  LockKeyhole,
-} from "lucide-react";
-import {
-  topics,
-  lessons,
-  formulas,
-  problems,
-  seminarMap,
-  sampleExamIds,
-} from "../content";
-import type { Problem, SourceRef } from "../content/types";
-import { gradeNumeric, gradeSelection, gradeStages } from "../engine/grading";
-import {
-  blankProgress,
-  draftKey,
-  loadProgress,
-  mergeProgress,
-  saveProgress,
-} from "../storage/progress";
-import type { Progress, Draft, Mode, AnswerRecord } from "../storage/progress";
-import { MathFormula } from "../components/Math";
-import {
-  Link,
-  Sources,
-  FormulaCard,
-  emptyDraft,
-  pct,
-  href,
-  publishedLessonContent,
-  publishedProblemContent,
-} from "../components/Common";
-import {
-  grade,
-  QuestionFields,
-  ProblemContext,
-  Feedback,
-} from "../components/Problem";
+import { ArrowRight } from "lucide-react";
+import { Link, Sources, publishedLessonContent, publishedProblemContent } from "../components/Common";
+import { getActivePack, moduleManifest } from "../runtime";
 export function Curriculum() {
+  const {registry:curriculumRegistry,content:{topics,lessons,seminarMap=[]}}=getActivePack();
   const visibleLessons = publishedLessonContent();
   const visibleProblems = publishedProblemContent();
   const availableTopics = topics.filter((t) =>
@@ -76,6 +22,7 @@ export function Curriculum() {
           </p>
         </div>
       </div>
+      <nav className="row" aria-label="Выбор темы программы">{moduleManifest.map(m=><Link key={m.id} to={`curriculum/${m.id}`}>{m.id} · {m.title}</Link>)}</nav>
       {curriculumRegistry.modules.map((module) => (
         <section key={module.id} aria-label={module.title}>
           <h2>{module.title}</h2>

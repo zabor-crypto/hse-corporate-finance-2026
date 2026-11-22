@@ -10,6 +10,7 @@ import {
   noPageOverflow,
   screenshotEvidence,
   SUBPATH,
+  openLegacyReference,
 } from "./helpers";
 
 test.beforeEach(async ({ page }) => startIsolated(page));
@@ -44,10 +45,8 @@ test("Pages subdirectory loads assets, version, navigation and keyboard skip lin
   await page.keyboard.press("Enter");
   await expect(page.locator("main")).toBeFocused();
   expect(new URL(page.url()).hash).toBe(originalHash);
-  await page
-    .getByRole("link", { name: "Начать обучение", exact: false })
-    .click();
-  await expect(page).toHaveURL(/#\/learn\/T3-01$/);
+  await page.locator(".hero-content a.button").click();
+  await expect(page).toHaveURL(/#\/learn\/T4-01$/);
   await noPageOverflow(page);
 });
 
@@ -62,6 +61,7 @@ for (const lessonId of ["T3-01", "T3-03", "T3-05", "T3-06", "T3-07", "T3-08"]) {
       page.getByRole("heading", { name: lesson!.title, exact: true }),
     ).toBeVisible();
     expect(lesson!.sections.length).toBeGreaterThanOrEqual(4);
+    await openLegacyReference(page);
     const body = page.locator(".lesson-body");
     expect((await body.innerText()).length).toBeGreaterThan(2000);
     expect(await body.locator("math").count()).toBeGreaterThan(0);
@@ -91,12 +91,10 @@ for (const lessonId of ["T3-01", "T3-03", "T3-05", "T3-06", "T3-07", "T3-08"]) {
 test("entire formula reference renders MathML without page overflow", async ({
   page,
 }, info) => {
-  await page.goto("#/formulas");
+  await page.goto("#/formulas/T3");
   await expect(page.locator(".formula-card")).toHaveCount(formulas.length);
   expect(formulas.length).toBeGreaterThanOrEqual(15);
-  expect(await page.locator(".formula-card math").count()).toBe(
-    formulas.length,
-  );
+  await expect(page.locator(".formula-card math")).toHaveCount(formulas.length);
   await expect(page.locator(".katex-error")).toHaveCount(0);
   await noPageOverflow(page);
   await screenshotEvidence(page, info, "all-formulas");
@@ -115,6 +113,6 @@ test("unknown routes and IDs remain recoverable", async ({ page }) => {
   }
   await page.goto("#/home");
   await expect(
-    page.getByRole("heading", { name: /Финансы складываются/ }),
+    page.getByRole("heading", { name: /От вопроса бизнеса/ }),
   ).toBeVisible();
 });

@@ -1,63 +1,12 @@
-import { CausalDiagram } from "../components/CausalDiagram";
-import { IntegratedModel } from "../components/IntegratedModel";
-import { WorkedExample, NwcLab } from "../components/StepByStep";
-import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
-import {
-  ArrowRight,
-  ArrowLeft,
-  BookOpen,
-  ChartNoAxesCombined,
-  Check,
-  ChevronRight,
-  Download,
-  FlaskConical,
-  GraduationCap,
-  LayoutDashboard,
-  Menu,
-  NotebookPen,
-  Route,
-  Upload,
-  X,
-  Calculator,
-  Clock3,
-  LockKeyhole,
-} from "lucide-react";
-import {
-  topics,
-  lessons,
-  formulas,
-  problems,
-  seminarMap,
-  sampleExamIds,
-} from "../content";
-import type { Problem, SourceRef } from "../content/types";
-import { gradeNumeric, gradeSelection, gradeStages } from "../engine/grading";
-import {
-  blankProgress,
-  draftKey,
-  loadProgress,
-  mergeProgress,
-  saveProgress,
-} from "../storage/progress";
-import type { Progress, Draft, Mode, AnswerRecord } from "../storage/progress";
-import { MathFormula } from "../components/Math";
-import {
-  Link,
-  Sources,
-  FormulaCard,
-  emptyDraft,
-  pct,
-  href,
-  publishedLessonContent,
-  publishedProblemContent,
-} from "../components/Common";
-import {
-  grade,
-  QuestionFields,
-  ProblemContext,
-  Feedback,
-} from "../components/Problem";
+import { getProblemLabel } from "../pedagogy/problem-labels";
+import {TeachingLesson} from "../components/TeachingLesson";
+import {LessonSections} from "../components/LessonSections";
+import { WorkedExample } from "../components/StepByStep";
+import { useEffect } from "react";
+import { ArrowRight, Check, Clock3 } from "lucide-react";
+import type { Progress } from "../storage/progress";
+import { Link, Sources, FormulaCard, publishedLessonContent, publishedProblemContent } from "../components/Common";
+import { getActivePack } from "../runtime";
 import { Curriculum } from "./Curriculum";
 export function LessonView({
   id,
@@ -70,6 +19,10 @@ export function LessonView({
   data: Progress;
   update: (fn: (p: Progress) => Progress) => void;
 }) {
+  const pack=getActivePack();
+  const enhancements=pack.config.lessonEnhancements?.[id];
+  const problems=pack.content.problems;
+  const path=pack.config.learningPaths?.[id];
   const l = publishedLessonContent().find((l) => l.id === id);
   const availableProblems = publishedProblemContent();
   useEffect(() => {
@@ -86,6 +39,8 @@ export function LessonView({
         <Curriculum />
       </>
     );
+  const teaching=pack.config.teachingPaths?.[id];
+  if(teaching)return <TeachingLesson key={l.id} lesson={l} path={teaching} anchor={anchor} data={data} update={update}/>;
   return (
     <>
       <div className="eyebrow">УЧЕБНИК / {l.id}</div>
@@ -123,103 +78,34 @@ export function LessonView({
               ))}
             </ul>
           </section>
-          {["T3-01", "T3-03"].includes(l.id) && <CausalDiagram kind="cash" />}
-          {l.id === "T3-06" && <CausalDiagram kind="dupont" />}
-          {l.sections.map((s, i) => (
-            <section key={s.id} id={s.id} className="lesson-section">
-              <div className="section-index">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <h2>{s.title.replace(/^\d+[.)]?\s*/, "")}</h2>
-              {i > 0 && s.businessScenario && (
-                <div className="business-scenario">
-                  <b>Решение в бизнесе.</b> {s.businessScenario}
-                </div>
-              )}
-              {s.paragraphs.map((p, j) => (
-                <p key={j}>{p}</p>
-              ))}
-              {s.formulaIds?.map((f) => (
-                <FormulaCard key={f} id={f} />
-              ))}
-              {s.example && <WorkedExample example={s.example} />}
-              {s.examples?.map((example, i) => (
-                <WorkedExample key={i} example={example} />
-              ))}
-              {s.wrongAttempt && (
-                <details className="wrong-attempt">
-                  <summary>Ошибочная попытка: найдите сбой</summary>
-                  <p>
-                    <b>Попытка:</b> {s.wrongAttempt.attempt}
-                  </p>
-                  <p>
-                    <b>Диагноз:</b> {s.wrongAttempt.diagnosis}
-                  </p>
-                  <p>
-                    <b>Исправление:</b> {s.wrongAttempt.repair}
-                  </p>
-                </details>
-              )}
-              {!!s.deepDive?.length && (
-                <details>
-                  <summary>Дополнительные условия и исключения</summary>
-                  {s.deepDive.map((x) => (
-                    <p key={x}>{x}</p>
-                  ))}
-                </details>
-              )}
-              {s.commonErrors && (
-                <div className="mistake-note">
-                  <b>Где легко ошибиться</b>
-                  <ul>
-                    {s.commonErrors.map((x) => (
-                      <li key={x}>{x}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {s.recall?.map((r, ri) => (
-                <div className="recall" key={ri}>
-                  <div className="eyebrow">ОСТАНОВИТЕСЬ И ОБЪЯСНИТЕ</div>
-                  <p>{r.question}</p>
-                  <details>
-                    <summary>Сверить своё рассуждение</summary>
-                    <p>{r.answer}</p>
-                    <small>
-                      Самопроверка: ответ не оценивается автоматически.
-                    </small>
-                  </details>
-                </div>
-              ))}
-            </section>
-          ))}
-          {l.id === "T3-03" && <NwcLab />}
-          {l.id === "T3-11" && <IntegratedModel />}
+          {enhancements?.beforeSections}
+          <LessonSections sections={l.sections}/>
+          {enhancements?.afterSections}
           <Sources refs={l.sourceRefs} />
           {Object.keys(data.lessons).some(
             (k) => k.startsWith(`${l.id}@`) && k !== `${l.id}@${l.version}`,
           ) && (
             <p>
-              Сохранена отметка чтения предыдущей версии. Она остаётся в
-              истории; новая редакция ещё не отмечена прочитанной.
+              Сохранена отметка чтения предыдущей версии; она остаётся в
+              истории.
             </p>
           )}
           <div className="panel">
             <h2>Самостоятельная практика</h2>
             <p>
-              Чтение, верные числа и самостоятельный перенос — разные
-              наблюдения. Ни одна отметка чтения не означает освоение.
+              Начните с одного задания без подсказок. После ответа можно открыть разбор и проверить ход решения.
             </p>
-            {(l.practiceIds ?? [])
+            {(path?.practiceIds ?? l.practiceIds ?? [])
               .filter((pid) => availableProblems.some((p) => p.id === pid))
               .map((pid) => (
                 <p key={pid}>
                   <Link to={`practice/${pid}`}>
-                    {problems.find((p) => p.id === pid)?.title ?? pid}
+                    {getProblemLabel(problems.find((p) => p.id === pid) ?? {id: pid, title: pid})}
                   </Link>
                 </p>
               ))}
           </div>
+          {path?.nextLessonId && <p><Link className="button" to={`learn/${path.nextLessonId}`}>Следующий механизм →</Link></p>}
           <div className="row">
             <button
               className="button"
@@ -244,7 +130,7 @@ export function LessonView({
               )}
             </button>
             <Link
-              to={`practice/${availableProblems.find((p) => p.lessonId === l.id)?.id ?? ""}`}
+              to={`practice/${(path?.practiceIds ?? l.practiceIds ?? []).find(pid=>availableProblems.some(p=>p.id===pid)) ?? availableProblems.find((p) => p.lessonId === l.id)?.id ?? ""}`}
               className="button outline"
             >
               Закрепить в практике <ArrowRight size={17} />

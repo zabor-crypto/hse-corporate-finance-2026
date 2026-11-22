@@ -1,0 +1,4 @@
+import {defineConfig} from "@playwright/test";
+import {existsSync} from "node:fs";
+const chrome=process.env.CFLOS_CHROME_EXECUTABLE??"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+export default defineConfig({testDir:"./tests/e2e",testMatch:"**/t4-investment.spec.ts",outputDir:"test-results/ppi",fullyParallel:false,workers:1,timeout:45000,expect:{timeout:10000},reporter:[["list"],["json",{outputFile:"test-results/ppi-results.json"}]],use:{baseURL:"http://127.0.0.1:5196/hse-corporate-finance-2026/",browserName:"chromium",launchOptions:{executablePath:existsSync(chrome)?chrome:undefined},trace:"retain-on-failure",screenshot:"only-on-failure"},projects:[360,768,1440].map(width=>({name:`ppi-${width}`,use:{viewport:{width,height:1000}}})),webServer:{command:"npm run preview -- --port 5196 --strictPort",url:"http://127.0.0.1:5196/hse-corporate-finance-2026/",reuseExistingServer:false}});

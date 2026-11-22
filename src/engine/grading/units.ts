@@ -10,8 +10,9 @@ export type UnitId =
   | "multiple"
   | "ratio-fraction"
   | "ratio-percent"
-  | "day";
-export type Dimension = "money" | "rate" | "rate-difference" | "ratio" | "time";
+  | "day"
+  | "year";
+export type Dimension = "money" | "rate" | "rate-difference" | "ratio" | "time" | "year-time";
 export const units: Record<
   UnitId,
   { label: string; dimension: Dimension; factor: number }
@@ -39,6 +40,7 @@ export const units: Record<
   },
   "ratio-percent": { label: "% отношения", dimension: "ratio", factor: 0.01 },
   day: { label: "дни", dimension: "time", factor: 1 },
+  year: { label: "лет", dimension: "year-time", factor: 1 },
 };
 const aliases: Record<string, UnitId> = {
   "млн ₽": "million-rub",
@@ -55,6 +57,10 @@ const aliases: Record<string, UnitId> = {
   дней: "day",
   день: "day",
   days: "day",
+  год: "year",
+  года: "year",
+  лет: "year",
+  years: "year",
 };
 export interface UnitPolicy {
   displayUnit: string;
@@ -80,7 +86,7 @@ export function unitPolicy(referenceLabel: string): UnitPolicy {
           ? "percentage-point"
           : dimension === "ratio"
             ? "multiple"
-            : "day";
+            : dimension === "year-time" ? "year" : "day";
   return {
     displayUnit: referenceLabel,
     referenceUnit,
@@ -95,7 +101,7 @@ export function unitPolicy(referenceLabel: string): UnitPolicy {
             ? "500 тыс. ₽ = 0,5 млн ₽. Число и выбранная единица проверяются вместе."
             : dimension === "ratio"
               ? "Отношение в долях и кратность имеют одинаковый масштаб; 0,2 раза = 20% отношения. Процент ставки — другая величина."
-              : "Все периоды цикла выражены в днях.",
+              : dimension === "year-time" ? "Периоды проекта выражены в годах. Дни не пересчитываются в годы без календарного соглашения." : "Все периоды цикла выражены в днях.",
   };
 }
 export interface UnitGrade extends GradeResult {

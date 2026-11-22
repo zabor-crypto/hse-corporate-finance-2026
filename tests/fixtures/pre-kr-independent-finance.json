@@ -1,0 +1,106 @@
+{
+  "provenance": "Independent condition-only Fraction/Decimal calculation frozen before author key comparison; no application functions in oracle. Values below cover only original authored L2/MPI examples.",
+  "l2": [
+    {
+      "problemId": "T4-L2-01",
+      "version": "1.0.0",
+      "stageId": "cf0",
+      "expected": "-168.0",
+      "exactFraction": "-168"
+    },
+    {
+      "problemId": "T4-L2-01",
+      "version": "1.0.0",
+      "stageId": "cf1",
+      "expected": "45.0",
+      "exactFraction": "45"
+    },
+    {
+      "problemId": "T4-L2-01",
+      "version": "1.0.0",
+      "stageId": "cf2",
+      "expected": "93.0",
+      "exactFraction": "93"
+    },
+    {
+      "problemId": "T4-L2-02",
+      "version": "1.0.0",
+      "stageId": "pv-investments",
+      "expected": "150.0",
+      "exactFraction": "150"
+    },
+    {
+      "problemId": "T4-L2-02",
+      "version": "1.0.0",
+      "stageId": "pv-inflows",
+      "expected": "180.0",
+      "exactFraction": "180"
+    },
+    {
+      "problemId": "T4-L2-02",
+      "version": "1.0.0",
+      "stageId": "npv",
+      "expected": "30.0",
+      "exactFraction": "30"
+    },
+    {
+      "problemId": "T4-L2-02",
+      "version": "1.0.0",
+      "stageId": "pi",
+      "expected": "1.2",
+      "exactFraction": "6/5"
+    }
+  ],
+  "mpi": [
+    {
+      "id": "MPI/A/AF",
+      "expected": "2.4868519909842223891810668670172802404207362885048835462058602554470323065364388",
+      "exactFraction": "3310/1331"
+    },
+    {
+      "id": "MPI/A/NPV",
+      "expected": "3.8422238918106686701728024042073628850488354620586025544703230653643876784372652",
+      "exactFraction": "5114/1331"
+    },
+    {
+      "id": "MPI/A/EAA",
+      "expected": "1.5450151057401812688821752265861027190332326283987915407854984894259818731117825",
+      "exactFraction": "2557/1655"
+    },
+    {
+      "id": "MPI/A/MPI",
+      "expected": "1.0594236579130838949570067394840808738089704857076458284917499419009993028119916",
+      "exactFraction": "45587/43030"
+    },
+    {
+      "id": "MPI/A/MPI_minus_1_percent",
+      "expected": "5.9423657913083894957006739484080873808970485707645828491749941900999302811991634",
+      "exactFraction": "25570/4303"
+    },
+    {
+      "id": "MPI/B/AF",
+      "expected": "3.7907867694084482555215428653035373887774680070288293770296365747496134764763957",
+      "exactFraction": "610510/161051"
+    },
+    {
+      "id": "MPI/B/NPV",
+      "expected": "6.4894412329013790662585143836424486653296160843459525243556388969953617177167481",
+      "exactFraction": "1045131/161051"
+    },
+    {
+      "id": "MPI/B/EAA",
+      "expected": "1.7118982490049303041719218358421647475061833549000016379748079474537681610456831",
+      "exactFraction": "1045131/610510"
+    },
+    {
+      "id": "MPI/B/MPI",
+      "expected": "1.0438948268975623154915877393805683268591329065358974778967899473706094400268124",
+      "exactFraction": "8285007/7936630"
+    },
+    {
+      "id": "MPI/B/MPI_minus_1_percent",
+      "expected": "4.3894826897562315491587739380568326859132906535897477896789947370609440026812388",
+      "exactFraction": "3483770/793663"
+    }
+  ]
+}

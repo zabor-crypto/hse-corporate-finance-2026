@@ -1,0 +1,288 @@
+{
+  "provenance": "Independent condition-only Decimal65/Fraction solutions frozen before author keys or source. Original CFLOS advanced analogues and transfer cases. Supported units separately bound by exact content acceptance source hashes.",
+  "advancedBlindSHA256": "2567e7f1f3b1f6a0fbfd0cd92b7c03a2f2f06b34171b5ea4e86f97d868f30489",
+  "transferBlindSHA256": "5fe19e82dde5ca7f457ec1b160a5ab8028d53e89ee9eee4e752c24d360b2ab76",
+  "finalContentReviewSHA256": "2bdbade61af5a0ad95ebffdcfe38e495b44d982f1c0dd85495c3ce9c98f0f0f5",
+  "values": [
+    {
+      "problemId": "T4-A03",
+      "stageId": "nominal-rate",
+      "expected": "16.6000"
+    },
+    {
+      "problemId": "T4-A03",
+      "stageId": "npv",
+      "expected": "0.6794617853971723242947886073355645106208592309268492589304009289"
+    },
+    {
+      "problemId": "T4-A03",
+      "stageId": "loan-payment",
+      "expected": "2.9009371639271966912759985655231689453176837488170768139411783816"
+    },
+    {
+      "problemId": "T4-A03",
+      "stageId": "initial-equity",
+      "expected": "3"
+    },
+    {
+      "problemId": "T4-A03",
+      "stageId": "min-after-debt",
+      "expected": "1.3390628360728033087240014344768310546823162511829231860588216184"
+    },
+    {
+      "problemId": "T4-A05",
+      "stageId": "annual-saving",
+      "expected": "1.08"
+    },
+    {
+      "problemId": "T4-A05",
+      "stageId": "npv",
+      "expected": "0.18364139980661237148423915458136087709730228331732821927546236489"
+    },
+    {
+      "problemId": "T4-A05",
+      "stageId": "breakeven-saving",
+      "expected": "1.0169733931784967072696917627283412149695274106996259406349417940"
+    },
+    {
+      "problemId": "T4-A07",
+      "stageId": "da",
+      "expected": "2"
+    },
+    {
+      "problemId": "T4-A07",
+      "stageId": "ebit",
+      "expected": "3"
+    },
+    {
+      "problemId": "T4-A07",
+      "stageId": "tax",
+      "expected": "0.75"
+    },
+    {
+      "problemId": "T4-A07",
+      "stageId": "annual-fcf",
+      "expected": "4.25"
+    },
+    {
+      "problemId": "T4-A07",
+      "stageId": "terminal-cf",
+      "expected": "8.25"
+    },
+    {
+      "problemId": "T4-A07",
+      "stageId": "npv",
+      "expected": "4.1183492227427589940705378996402522632629300595896284816790015088"
+    },
+    {
+      "problemId": "T4-A07",
+      "stageId": "irr",
+      "expected": "18.772377741536793204686353352403928526842927184605710791828537454"
+    },
+    {
+      "problemId": "T4-A07",
+      "stageId": "pi",
+      "expected": "1.2573968264214224371294086187275157664539331287243517801049375943"
+    },
+    {
+      "problemId": "T4-A07",
+      "stageId": "dpb",
+      "expected": "6"
+    },
+    {
+      "problemId": "T4-A08",
+      "stageId": "ar",
+      "expected": "1.2328767123287671232876712328767123287671232876712328767123287671"
+    },
+    {
+      "problemId": "T4-A08",
+      "stageId": "inventory",
+      "expected": "0.49315068493150684931506849315068493150684931506849315068493150685"
+    },
+    {
+      "problemId": "T4-A08",
+      "stageId": "ap",
+      "expected": "0.21917808219178082191780821917808219178082191780821917808219178082"
+    },
+    {
+      "problemId": "T4-A08",
+      "stageId": "nwc",
+      "expected": "1.5068493150684931506849315068493150684931506849315068493150684932"
+    },
+    {
+      "problemId": "T4-A08",
+      "stageId": "annual-fcf",
+      "expected": "2.80"
+    },
+    {
+      "problemId": "T4-A08",
+      "stageId": "terminal-cf",
+      "expected": "8.3068493150684931506849315068493150684931506849315068493150684932"
+    },
+    {
+      "problemId": "T4-A08",
+      "stageId": "npv",
+      "expected": "-1.4733261981251068005940090618788926131882157978885783053662147187"
+    },
+    {
+      "problemId": "T4-A09",
+      "stageId": "npv-long",
+      "expected": "12.27621007687570453402394837095646156130102209294514837479488429"
+    },
+    {
+      "problemId": "T4-A09",
+      "stageId": "npv-short",
+      "expected": "8.93463561232156273478587528174305033809166040570999248685199099"
+    },
+    {
+      "problemId": "T4-A09",
+      "stageId": "eaa-long",
+      "expected": "2.8187084365332099471072280739954455966540558685573791313972582864"
+    },
+    {
+      "problemId": "T4-A09",
+      "stageId": "eaa-short",
+      "expected": "3.5927492447129909365558912386706948640483383685800604229607250778"
+    },
+    {
+      "problemId": "T4-A09",
+      "stageId": "chain-long",
+      "expected": "12.276210076875704534023948370956461561301022092945148374794884283"
+    },
+    {
+      "problemId": "T4-A09",
+      "stageId": "chain-short",
+      "expected": "15.647359588521083947998403667725807917424237720293007127612314789"
+    },
+    {
+      "problemId": "T4-A10",
+      "stageId": "eac-1",
+      "expected": "25.000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "problemId": "T4-A10",
+      "stageId": "eac-2",
+      "expected": "24.238095238095238095238095238095238095238095238095238095238095238"
+    },
+    {
+      "problemId": "T4-A10",
+      "stageId": "eac-3",
+      "expected": "24.709969788519637462235649546827794561933534743202416918429003021"
+    },
+    {
+      "problemId": "T4-A10",
+      "stageId": "eac-4",
+      "expected": "25.375781081663434604611075199310493428140486964016375781081663434"
+    },
+    {
+      "problemId": "T4-A10",
+      "stageId": "optimal-life",
+      "expected": "2"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "sales-y1",
+      "expected": "63.00"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "cash-cost-y1",
+      "expected": "46.410"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "da",
+      "expected": "8"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "ebit-y1",
+      "expected": "8.590"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "tax-y1",
+      "expected": "1.71800"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "ocf-y1",
+      "expected": "14.87200"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "nwc0",
+      "expected": "5.7217808219178082191780821917808219178082191780821917808219178082"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "nwc1",
+      "expected": "6.0078698630136986301369863013698630136986301369863013698630136986"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "delta-nwc-y1",
+      "expected": "0.2860890410958904109589041095890410958904109589041095890410958904"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "fcff-y1",
+      "expected": "14.585910958904109589041095890410958904109589041095890410958904110"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "terminal-nwc",
+      "expected": "6.9548603501712328767123287671232876712328767123287671232876712329"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "terminal-cf",
+      "expected": "24.687059300171232876712328767123287671232876712328767123287671233"
+    },
+    {
+      "problemId": "T4-A11",
+      "stageId": "npv",
+      "expected": "12.209020683837544097152400362231067584765476875550006534914527522"
+    },
+    {
+      "problemId": "T4-A12",
+      "stageId": "eac-efficient",
+      "expected": "0.16729725247110196218744708874693780263777287546996477477659234946"
+    },
+    {
+      "problemId": "T4-A12",
+      "stageId": "eac-basic",
+      "expected": "0.20985757004648825229300163337102651086819952255308455836160321648"
+    },
+    {
+      "problemId": "T4-A12",
+      "stageId": "saving",
+      "expected": "0.04256031757538629010555454462408870823042664708311978358501086702"
+    },
+    {
+      "problemId": "T4-C03",
+      "stageId": "irr-low",
+      "expected": "20.0"
+    },
+    {
+      "problemId": "T4-C03",
+      "stageId": "irr-high",
+      "expected": "50.0"
+    },
+    {
+      "problemId": "T4-C03",
+      "stageId": "npv",
+      "expected": "1.065088757396449704142011834319526627218934911242603550295857985"
+    },
+    {
+      "problemId": "T4-C04",
+      "stageId": "fisher",
+      "expected": "15.00"
+    },
+    {
+      "problemId": "T4-C04",
+      "stageId": "delta-npv",
+      "expected": "1.607142857142857142857142857142857142857142857142857142857142857"
+    }
+  ]
+}

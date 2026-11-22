@@ -74,6 +74,11 @@ export interface CurriculumProblem {
   formulaIds: string[];
   sectionId?: string;
   stageIds: string[];
+  /** Teaching prerequisites, not a judgement that a learner has mastered them. */
+  requiredLessonIds?: string[];
+  assessmentCompetencyIds?: string[];
+  stageCompetencyIds?: Record<string, string[]>;
+  stageTheoryIds?: Record<string, string[]>;
   reviewStatus: PublicationStage;
   availability: Availability;
 }

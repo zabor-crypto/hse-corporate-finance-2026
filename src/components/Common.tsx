@@ -1,8 +1,5 @@
-import {
-  curriculumRegistry,
-  availableLessons,
-  publishedModules,
-} from "../curriculum";
+import { getActivePack } from "../runtime";
+import { flushPendingDrafts } from "../storage/useEditableDraft";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import {
@@ -25,14 +22,6 @@ import {
   Clock3,
   LockKeyhole,
 } from "lucide-react";
-import {
-  topics,
-  lessons,
-  formulas,
-  problems,
-  seminarMap,
-  sampleExamIds,
-} from "../content";
 import type { Problem, SourceRef } from "../content/types";
 import { gradeNumeric, gradeSelection, gradeStages } from "../engine/grading";
 import {
@@ -59,7 +48,14 @@ export function Link({
   onClick?: () => void;
 }) {
   return (
-    <a className={className} href={href(to)} onClick={onClick}>
+    <a
+      className={className}
+      href={href(to)}
+      onClick={() => {
+        flushPendingDrafts("navigation");
+        onClick?.();
+      }}
+    >
       {children}
     </a>
   );
@@ -77,25 +73,28 @@ export function sourceLabel(s: SourceRef): string {
 }
 
 /** Resolve registry publication decisions to the compiled content, preserving stable URLs. */
-export function publishedLessonContent(bank = lessons) {
+export function publishedLessonContent(bank = getActivePack().content.lessons) {
   const modules = new Set(
-    publishedModules()
+    getActivePack()
+      .registry.modules.filter((m) => m.availability === "available")
       .filter((m) => m.reviewStatus === "PUBLISHED")
       .map((m) => m.id),
   );
-  const reviewed = availableLessons().filter(
-    (l) => l.reviewStatus === "PUBLISHED" && modules.has(l.moduleId),
-  );
+  const reviewed = getActivePack()
+    .registry.lessons.filter((l) => l.availability === "available")
+    .filter((l) => l.reviewStatus === "PUBLISHED" && modules.has(l.moduleId));
   return bank.filter((l) =>
     reviewed.some((node) => node.id === l.id && node.version === l.version),
   );
 }
-export function publishedProblemContent(bank = problems) {
+export function publishedProblemContent(
+  bank = getActivePack().content.problems,
+) {
   const lessonIds = new Set(publishedLessonContent().map((l) => l.id));
   return bank.filter(
     (p) =>
       lessonIds.has(p.lessonId) &&
-      curriculumRegistry.problems.some(
+      getActivePack().registry.problems.some(
         (node) =>
           node.id === p.id &&
           node.version === p.version &&
@@ -106,10 +105,10 @@ export function publishedProblemContent(bank = problems) {
 }
 export function publishedFormulaContent() {
   const lessonIds = new Set(publishedLessonContent().map((l) => l.id));
-  return formulas.filter(
+  return getActivePack().content.formulas.filter(
     (f) =>
       lessonIds.has(f.lessonId) &&
-      curriculumRegistry.formulas.some(
+      getActivePack().registry.formulas.some(
         (n) =>
           n.id === f.id &&
           n.availability === "available" &&
@@ -124,7 +123,7 @@ export function readingProgress(data: Progress, moduleId?: string) {
     (l) =>
       Boolean(data.lessons[`${l.id}@${l.version}`]) &&
       (!moduleId ||
-        curriculumRegistry.lessons.some(
+        getActivePack().registry.lessons.some(
           (node) => node.id === l.id && node.moduleId === moduleId,
         )),
   ).length;
@@ -177,10 +176,7 @@ export function Sources({ refs }: { refs: SourceRef[] }) {
         .
       </p>
       {privateSources && (
-        <p>
-          Материалы преподавателя — частные PDF, на сайте не размещены. Номера
-          слайдов указаны по физическим страницам PDF.
-        </p>
+        <small>Материалы преподавателя — частные PDF; они не размещаются. Номера — страницы PDF.</small>
       )}
     </div>
   );
@@ -189,15 +185,17 @@ export function Sources({ refs }: { refs: SourceRef[] }) {
 export function FormulaCard({
   id,
   full = false,
+  anchor = true,
 }: {
   id: string;
   full?: boolean;
+  anchor?: boolean;
 }) {
   const [copyStatus, setCopyStatus] = useState("");
   const f = publishedFormulaContent().find((x) => x.id === id);
   if (!f) return null;
   return (
-    <article className="formula-card" id={f.id}>
+    <article className="formula-card" id={anchor ? f.id : undefined}>
       <div className="eyebrow">{f.title}</div>
       <MathFormula latex={f.latex} />
       <p>{f.meaning}</p>

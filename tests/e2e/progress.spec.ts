@@ -10,6 +10,7 @@ import {
   STORAGE_KEY,
   secondaryOrigin,
   SUBPATH,
+  seedLegacyProgressBeforeBoot,
 } from "./helpers";
 
 test.beforeEach(async ({ page }) => startIsolated(page));
@@ -18,11 +19,7 @@ test.afterEach(async ({ page }) => assertNoPageErrors(page));
 test("pre-update schema1 saved localStorage restores nine original records without reset", async ({
   page,
 }) => {
-  await page.evaluate(
-    ({ key, payload }) => localStorage.setItem(key, JSON.stringify(payload)),
-    { key: STORAGE_KEY, payload: baseline },
-  );
-  await page.reload();
+  await seedLegacyProgressBeforeBoot(page, baseline);
   expect((await readProgress(page))!.answers).toEqual(baseline.answers);
   await page.goto("#/exam");
   await expect(
@@ -37,6 +34,9 @@ test("pre-update schema1 saved localStorage restores nine original records witho
 test("historical problem version remains in export and is separated from current practice grades", async ({
   page,
 }) => {
+  // This regression concerns versions within the original module, not other-topic records.
+  await page.goto("#/home/T3");
+  await expect(page.locator(".topbar strong")).toHaveText("T3");
   const historical = clone(baseline);
   historical.answers[0].version = "0.9.0";
   (historical.answers[0].problemSnapshot as { version: string }).version =
@@ -48,7 +48,7 @@ test("historical problem version remains in export and is separated from current
   const counter = page.locator(".stats-grid > div").nth(2);
   await expect(counter).toContainText("1");
   await expect(counter).toContainText(
-    "исторических ответов вне текущего доступного набора",
+    "ответов других тем или версий вне выбранного набора",
   );
   const exported = await exportProgress(page);
   expect(exported.answers).toEqual(historical.answers);
@@ -108,12 +108,15 @@ test("corrupt JSON and malformed nested imports leave exact existing saved bytes
     (key) => localStorage.getItem(key),
     STORAGE_KEY,
   );
+  const canonicalBefore = clone((await readProgress(page))!);
   const file = page.getByLabel("Импорт прогресса", { exact: true });
   await file.setInputFiles({
     name: "corrupt.json",
     mimeType: "application/json",
     buffer: Buffer.from("{bad"),
   });
+  await expect(file).toHaveValue("");
+  expect(await readProgress(page)).toEqual(canonicalBefore);
   expect(
     await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY),
   ).toBe(before);
@@ -121,11 +124,14 @@ test("corrupt JSON and malformed nested imports leave exact existing saved bytes
   badSnapshot.answers[0].problemSnapshot = null;
   await importProgress(page, badSnapshot);
   await expect(
-    page.getByText(/Файл не соответствует схеме прогресса/),
+    page
+      .getByRole("status")
+      .filter({ hasText: /Файл не соответствует схеме прогресса/ }),
   ).toBeVisible();
   expect(
     await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY),
   ).toBe(before);
+  expect(await readProgress(page)).toEqual(canonicalBefore);
   await page.reload();
   expect((await readProgress(page))!.answers).toEqual(baseline.answers);
 });
@@ -142,8 +148,12 @@ test("duplicate import does not duplicate grades and conflicting ID does not rep
     (key) => localStorage.getItem(key),
     STORAGE_KEY,
   );
+  const canonicalBeforeConflict = clone((await readProgress(page))!);
   await importProgress(page, conflicting);
-  await expect(page.getByText(/Конфликт записей с одним ID/)).toBeVisible();
+  await expect(
+    page.getByRole("status").filter({ hasText: /Конфликт записей с одним ID/ }),
+  ).toBeVisible();
+  expect(await readProgress(page)).toEqual(canonicalBeforeConflict);
   expect(
     await page.evaluate((key) => localStorage.getItem(key), STORAGE_KEY),
   ).toBe(before);

@@ -1,86 +1,148 @@
+import { isSupportContext, isSupportTransition } from "../pedagogy/return-context";
+import { StorageStatus } from "../components/StorageStatus";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
-  curriculumRegistry,
-  availableLessons,
-  publishedModules,
-} from "../curriculum";
+  getActivePack,
+  useActivePack,
+  ensureModule,
+  activateModule,
+  moduleIdFromRoute,
+  moduleManifest,
+} from "../runtime";
 import { useProgress } from "../storage/useProgress";
-import { RatioLab } from "../views/RatioLab";
+import { flushPendingDrafts } from "../storage/useEditableDraft";
 import { buildInfo } from "./build";
-import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
 import {
   ArrowRight,
   ArrowLeft,
   BookOpen,
   ChartNoAxesCombined,
-  Check,
   ChevronRight,
-  Download,
-  FlaskConical,
-  GraduationCap,
-  LayoutDashboard,
   Menu,
   NotebookPen,
   Route,
-  Upload,
-  X,
+  LayoutDashboard,
   Calculator,
   Clock3,
-  LockKeyhole,
+  X,
 } from "lucide-react";
 import {
-  topics,
-  lessons,
-  formulas,
-  problems,
-  seminarMap,
-  sampleExamIds,
-} from "../content";
-import type { Problem, SourceRef } from "../content/types";
-import { gradeNumeric, gradeSelection, gradeStages } from "../engine/grading";
-import {
-  blankProgress,
-  draftKey,
-  loadProgress,
-  mergeProgress,
-  saveProgress,
-} from "../storage/progress";
-import type { Progress, Draft, Mode, AnswerRecord } from "../storage/progress";
-import { MathFormula } from "../components/Math";
-import {
   Link,
-  Sources,
-  FormulaCard,
-  emptyDraft,
-  pct,
   href,
   readingProgress,
   publishedLessonContent,
+  publishedProblemContent,
 } from "../components/Common";
-import { Home } from "../views/Home";
-import { LessonView } from "../views/LessonView";
-import { Practice } from "../views/Practice";
-import { Formulas } from "../views/Formulas";
-import { Exam } from "../views/Exam";
-import { Curriculum } from "../views/Curriculum";
-import { ProgressView } from "../views/ProgressView";
+const Home = lazy(() =>
+  import("../views/Home").then((m) => ({ default: m.Home })),
+);
+const LessonView = lazy(() =>
+  import("../views/LessonView").then((m) => ({ default: m.LessonView })),
+);
+const Practice = lazy(() =>
+  import("../views/Practice").then((m) => ({ default: m.Practice })),
+);
+const Formulas = lazy(() =>
+  import("../views/Formulas").then((m) => ({ default: m.Formulas })),
+);
+const Exam = lazy(() =>
+  import("../views/Exam").then((m) => ({ default: m.Exam })),
+);
+const Curriculum = lazy(() =>
+  import("../views/Curriculum").then((m) => ({ default: m.Curriculum })),
+);
+const ProgressView = lazy(() =>
+  import("../views/ProgressView").then((m) => ({ default: m.ProgressView })),
+);
+const RatioLab = lazy(() =>
+  import("../views/RatioLab").then((m) => ({ default: m.RatioLab })),
+);
 export default function App() {
-  const { data, update, notice, importData, raw } = useProgress();
+  const {
+    data,
+    update,
+    notice,
+    importData,
+    raw,
+    getCurrent,
+    ready,
+    recovery,
+    recoverPending,
+  } = useProgress();
   const [route, setRoute] = useState(location.hash.slice(2) || "home");
+  const routeRef = useRef(route);
   const [mobile, setMobile] = useState(false);
-  const returnTo = data.returnContext?.route;
+  const active = useActivePack();
+  const [loadError, setLoadError] = useState("");
+  const [requestedModule, setRequestedModule] = useState<string | null>(null);
+  const [page, routeId] = route.split("/");
+  const wanted = moduleIdFromRoute(page, routeId, active?.id);
+  useEffect(() => {
+    let cancelled = false;
+    setLoadError("");
+    setRequestedModule(null);
+    ensureModule(wanted)
+      .then(() => {
+        if (!cancelled) {
+          activateModule(wanted);
+          setRequestedModule(wanted);
+        }
+      })
+      .catch((e) => {
+        if (!cancelled)
+          setLoadError(
+            e instanceof Error ? e.message : "Не удалось загрузить модуль",
+          );
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [wanted]);
+  const returnTo = isSupportContext(data.returnContext, route) ? data.returnContext?.route : null;
+  const clearReturnContext = () => update(p => p.returnContext ? {...p, returnContext: null} : p);
   useEffect(() => {
     const nav = () => {
-      setRoute(location.hash.slice(2) || "home");
+      const previousFocus = document.activeElement;
+      flushPendingDrafts("navigation");
+      const nextRoute = location.hash.slice(2) || "home";
+      if (getCurrent().returnContext && !isSupportTransition(getCurrent().returnContext, routeRef.current, nextRoute))
+        update(p => p.returnContext ? {...p, returnContext: null} : p);
+      routeRef.current = nextRoute;
+      setRoute(nextRoute);
       setMobile(false);
       window.scrollTo(0, 0);
-      requestAnimationFrame(() =>
-        document.getElementById("main")?.focus({ preventScroll: true }),
-      );
+      requestAnimationFrame(() => {
+        // A student may already have focused the new question before this frame.
+        if ((location.hash.slice(2) || "home") === nextRoute &&
+          (document.activeElement === document.body || document.activeElement === previousFocus))
+          document.getElementById("main")?.focus({ preventScroll: true });
+      });
     };
     window.addEventListener("hashchange", nav);
     return () => window.removeEventListener("hashchange", nav);
-  }, []);
+  }, [getCurrent, update]);
+  if (!ready || !active || requestedModule !== wanted)
+    return (
+      <main id="main" tabIndex={-1}>
+        <h1>
+          {loadError ? "Модуль не загружен" : "Загрузка учебного модуля…"}
+        </h1>
+        {loadError && (
+          <>
+            <p role="alert">{loadError}</p>
+            <button onClick={() => location.reload()}>
+              Повторить загрузку
+            </button>
+            <a href="#/home/T3">Открыть доступный модуль</a>
+          </>
+        )}
+      </main>
+    );
+  const { registry: curriculumRegistry, config } = getActivePack();
+  const availableLessons = () =>
+    curriculumRegistry.lessons.filter((l) => l.availability === "available");
+  const publishedModules = () =>
+    curriculumRegistry.modules.filter((m) => m.availability === "available");
   const [section, id, anchor] = route.split("/");
   const doneLessons = readingProgress(data);
   const visibleLessons = publishedLessonContent();
@@ -97,7 +159,9 @@ export default function App() {
   const doneModuleLessons = currentModule
     ? readingProgress(data, currentModule.id)
     : 0;
-  const firstLesson = visibleLessons[0];
+  const firstLesson =
+    visibleLessons.find((l) => l.id === config.primaryLessonId) ??
+    visibleLessons[0];
   const nav = [
     { to: "home", label: "Обзор", icon: LayoutDashboard },
     {
@@ -105,16 +169,22 @@ export default function App() {
       label: "Учебник",
       icon: BookOpen,
     },
-    { to: "practice", label: "Практикум", icon: NotebookPen },
-    { to: "exam", label: "Мини-контрольная", icon: Clock3 },
+    { to: `practice/${active.id}`, label: "Практикум", icon: NotebookPen },
+    { to: `exam/${active.id}`, label: "Мини-контрольная", icon: Clock3 },
     { to: "ratios", label: "Связи коэффициентов", icon: Route },
-    { to: "formulas", label: "Формулы и модели", icon: Calculator },
+    {
+      to: `formulas/${active.id}`,
+      label: "Формулы и модели",
+      icon: Calculator,
+    },
     { to: "progress", label: "Мой прогресс", icon: ChartNoAxesCombined },
   ];
   const support = (target: string) => {
+    flushPendingDrafts("navigation");
     update((p) => ({
       ...p,
-      returnContext: { route, problemId: route.split("/")[1] ?? "" },
+      returnContext: route.startsWith("practice/") && publishedProblemContent().some(p => p.id === route.split("/")[1])
+        ? {route, problemId: route.split("/")[1], targetRoute: target} : null,
     }));
     location.hash = href(target);
   };
@@ -146,9 +216,10 @@ export default function App() {
       </button>
       <aside
         id="course-navigation"
+        onClickCapture={event => { if (event.target instanceof Element && event.target.closest("a")) clearReturnContext(); }}
         className={`sidebar ${mobile ? "is-open" : ""}`}
       >
-        <Link to="home" className="brand">
+        <Link to="home" className="brand" onClick={clearReturnContext}>
           <span className="brand-mark">
             cf<span>↗</span>
           </span>
@@ -161,6 +232,7 @@ export default function App() {
           {nav.map((n) => (
             <Link
               key={n.to}
+              onClick={clearReturnContext}
               to={n.to}
               className={`nav-item ${section === n.to.split("/")[0] ? "active" : ""}`}
             >
@@ -195,6 +267,13 @@ export default function App() {
               </Link>
             ) : null;
           })}
+          {moduleManifest
+            .filter((m) => m.id !== active.id)
+            .map((m) => (
+              <Link key={m.id} to={`home/${m.id}`}>
+                {m.title}
+              </Link>
+            ))}
           <Link to="curriculum">
             Вся программа <ArrowRight size={14} />
           </Link>
@@ -217,10 +296,16 @@ export default function App() {
           </span>
         </header>
         <main id="main" tabIndex={-1}>
-          {notice && (
-            <div role="status" className="notice">
-              {notice}
-            </div>
+          <StorageStatus notice={notice} />
+          {recovery && (
+            <button
+              onClick={() => {
+                flushPendingDrafts("blur");
+                void recoverPending().catch(() => {});
+              }}
+            >
+              Восстановить найденный черновик явно
+            </button>
           )}
           {returnTo && (
             <button
@@ -232,58 +317,77 @@ export default function App() {
             >
               <ArrowLeft size={16} />{" "}
               {returnTo.startsWith("practice/")
-                ? "К заданию · черновик сохранён"
-                : returnTo === "exam"
+                ? "К заданию · продолжить с черновиком"
+                : returnTo.startsWith("exam")
                   ? "К результату контрольной"
                   : "Вернуться к предыдущему разделу"}
             </button>
           )}
-          {section === "home" && <Home data={data} doneLessons={doneLessons} />}
-          {section === "learn" && (
-            <LessonView
-              key={id}
-              id={id ?? firstLesson?.id ?? ""}
-              anchor={anchor}
-              data={data}
-              update={update}
-            />
-          )}
-          {section === "practice" && (
-            <Practice
-              key={id ?? "catalogue"}
-              id={id}
-              data={data}
-              update={update}
-              support={support}
-            />
-          )}
-          {section === "exam" && <Exam data={data} update={update} />}
-          {section === "formulas" && <Formulas id={id} support={support} />}
-          {section === "curriculum" && <Curriculum />}
-          {section === "ratios" && <RatioLab />}
-          {section === "progress" && (
-            <ProgressView
-              data={data}
-              update={update}
-              raw={raw}
-              onImport={importData}
-            />
-          )}
-          {![
-            "home",
-            "learn",
-            "practice",
-            "exam",
-            "formulas",
-            "curriculum",
-            "ratios",
-            "progress",
-          ].includes(section) && (
-            <div className="panel">
-              <h1>Страница не найдена</h1>
-              <Link to="home">К обзору</Link>
-            </div>
-          )}
+          <Suspense fallback={<p role="status">Загрузка страницы…</p>}>
+            {section === "home" && (
+              <Home data={data} doneLessons={doneLessons} />
+            )}
+            {section === "learn" && (
+              <LessonView
+                key={id}
+                id={id ?? firstLesson?.id ?? ""}
+                anchor={anchor}
+                data={data}
+                update={update}
+              />
+            )}
+            {(section === "practice" || section === "catalog") && (
+              <Practice
+                key={id ?? "catalogue"}
+                id={id}
+                data={data}
+                update={update}
+                support={support}
+                {...{ catalog: section === "catalog", getCurrent }}
+              />
+            )}
+            {section === "exam" && (
+              <Exam
+                key={active.id}
+                data={data}
+                update={update}
+                {...{ getCurrent }}
+              />
+            )}
+            {section === "formulas" && (
+              <Formulas
+                id={id === active.id ? undefined : id}
+                support={support}
+              />
+            )}
+            {section === "curriculum" && <Curriculum />}
+            {section === "ratios" && <RatioLab />}
+            {section === "progress" && (
+              <ProgressView
+                data={data}
+                update={update}
+                raw={raw}
+                onImport={importData}
+                getCurrent={getCurrent}
+              />
+            )}
+            {![
+              "home",
+              "learn",
+              "practice",
+              "catalog",
+              "exam",
+              "formulas",
+              "curriculum",
+              "ratios",
+              "progress",
+            ].includes(section) && (
+              <div className="panel">
+                <h1>Страница не найдена</h1>
+                <Link to="home">К обзору</Link>
+              </div>
+            )}
+          </Suspense>
           <footer>
             <span data-testid="build-version" title={buildInfo.commit}>
               v{buildInfo.version} Beta · {buildInfo.commit.slice(0, 8)}

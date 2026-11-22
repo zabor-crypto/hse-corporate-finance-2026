@@ -13,6 +13,7 @@ import {
   referenceUnit,
   setNumeric,
   revealSupport,
+  openReflection,
 } from "./helpers";
 
 const { problems, sampleExamIds } = content;
@@ -44,6 +45,7 @@ for (let n = 11; n <= 22; n++) {
     await openProblem(page, p!);
     await fillAnswer(page, p!);
     // A deliberately arbitrary explanation must not be graded by keyword matching.
+    await openReflection(page);
     const explanation = page.getByLabel("Ваше объяснение", { exact: true });
     await expect(explanation).toBeVisible();
     const syntheticText =

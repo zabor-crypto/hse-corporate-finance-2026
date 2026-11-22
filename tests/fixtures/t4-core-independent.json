@@ -1,0 +1,153 @@
+{
+  "provenance": "Independent condition-only Decimal65 solutions frozen before author source or grading code. These are original CFLOS authored analogues, not teacher prompts.",
+  "blindResultsSHA256": "b49fc8be36f6cb9c2b31e22c2b01c7cf446101001c755296a0c95e8dd067349f",
+  "reviewSHA256": "e8ff8c76a0a05a633cf1ca4225054d51fdaa7b2a160577130ea143e0ed6d5d3c",
+  "values": [
+    {
+      "problemId": "T4-A01",
+      "stageId": "cf1",
+      "expected": "-18",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A01",
+      "stageId": "terminal-cf",
+      "expected": "74",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A01",
+      "stageId": "npv",
+      "expected": "14.824083366491640387933599095614922353781162610816921520794906886",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A01",
+      "stageId": "irr",
+      "expected": "16.131544813966579694416526238162288199436598125651219043569327826",
+      "unit": "%"
+    },
+    {
+      "problemId": "T4-A01",
+      "stageId": "pi",
+      "expected": "1.1188230381283043253669352999791646981429754778333551423402842960",
+      "unit": "раз"
+    },
+    {
+      "problemId": "T4-A01",
+      "stageId": "pb",
+      "expected": "4",
+      "unit": "лет"
+    },
+    {
+      "problemId": "T4-A01",
+      "stageId": "dpb",
+      "expected": "5",
+      "unit": "лет"
+    },
+    {
+      "problemId": "T4-A01",
+      "stageId": "mirr",
+      "expected": "14.274507605051050902007536987813689324810180769402002465665619410",
+      "unit": "%"
+    },
+    {
+      "problemId": "T4-A02",
+      "stageId": "cf1",
+      "expected": "15",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A02",
+      "stageId": "cf4",
+      "expected": "43.26",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A02",
+      "stageId": "tail-at3",
+      "expected": "540.75",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A02",
+      "stageId": "npv",
+      "expected": "393.83369856342829315802288775261748234721207694180667153640126613",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A02",
+      "stageId": "irr",
+      "expected": "45.014187601673437554479457044785832012637154035462114015545143146",
+      "unit": "%"
+    },
+    {
+      "problemId": "T4-A04",
+      "stageId": "incremental-cash",
+      "expected": "38",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A04",
+      "stageId": "npv",
+      "expected": "-97.77777777777777777777777777777777777777777777777777777777777778",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A04",
+      "stageId": "irr",
+      "expected": "7.3076923076923076923076923076923076923076923076923076923076923077",
+      "unit": "%"
+    },
+    {
+      "problemId": "T4-A06",
+      "stageId": "da",
+      "expected": "9",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A06",
+      "stageId": "saving-after-tax",
+      "expected": "10.40",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A06",
+      "stageId": "da-shield",
+      "expected": "1.80",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A06",
+      "stageId": "annual-fcf",
+      "expected": "12.20",
+      "unit": "млн ₽"
+    },
+    {
+      "problemId": "T4-A06",
+      "stageId": "npv",
+      "expected": "1.0556620288421491045397750937109537692628071636817992503123698462",
+      "unit": "млн ₽"
+    }
+  ],
+  "selections": [
+    {
+      "id": "T4-C01",
+      "selected": [
+        "B"
+      ],
+      "allOptionsReviewed": 4,
+      "status": "PASS"
+    },
+    {
+      "id": "T4-C02",
+      "selected": [
+        "A",
+        "B",
+        "E"
+      ],
+      "allOptionsReviewed": 5,
+      "status": "PASS"
+    }
+  ]
+}

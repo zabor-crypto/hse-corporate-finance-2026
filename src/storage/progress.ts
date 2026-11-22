@@ -69,7 +69,7 @@ export interface Progress {
     timestamp: string;
     checkedIndices: number[];
   }[];
-  returnContext?: { route: string; problemId: string } | null;
+  returnContext?: { route: string; problemId: string; targetRoute?: string } | null;
   errorReviews?: {
     answerId: string;
     stageId: string;
@@ -412,7 +412,13 @@ export function mergeProgress(current: Progress, incoming: unknown): Progress {
     exam: current.exam ?? incoming.exam,
     archives: [
       ...current.archives,
-      ...incoming.archives,
+      // Suppress only byte-identical incoming archive payloads. Distinct audit events remain.
+      ...incoming.archives.filter(
+        (archive) =>
+          !current.archives.some(
+            (existing) => JSON.stringify(existing) === JSON.stringify(archive),
+          ),
+      ),
       {
         kind: "import",
         importedAt: new Date().toISOString(),

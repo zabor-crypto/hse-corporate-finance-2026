@@ -1,116 +1,38 @@
-import { attemptContext, assessedStages } from "../engine/grading/attempt";
+import { getProblemLabel } from "../pedagogy/problem-labels";
+import { attemptContext } from "../engine/grading/attempt";
 import { GuidedSteps } from "../components/StepByStep";
 import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
-import {
-  ArrowRight,
-  ArrowLeft,
-  BookOpen,
-  ChartNoAxesCombined,
-  Check,
-  ChevronRight,
-  Download,
-  FlaskConical,
-  GraduationCap,
-  LayoutDashboard,
-  Menu,
-  NotebookPen,
-  Route,
-  Upload,
-  X,
-  Calculator,
-  Clock3,
-  LockKeyhole,
-} from "lucide-react";
-import {
-  topics,
-  lessons,
-  formulas,
-  problems as allProblems,
-  seminarMap,
-  sampleExamIds,
-} from "../content";
-import type { Problem, SourceRef } from "../content/types";
-import { curriculumRegistry } from "../curriculum";
-const problems = allProblems.filter((p) =>
-  curriculumRegistry.problems.some(
-    (n) =>
-      n.id === p.id &&
-      n.version === p.version &&
-      n.availability === "available" &&
-      n.reviewStatus === "PUBLISHED",
-  ),
-);
-import { gradeNumeric, gradeSelection, gradeStages } from "../engine/grading";
-import {
-  blankProgress,
-  draftKey,
-  loadProgress,
-  mergeProgress,
-  saveProgress,
-} from "../storage/progress";
+import { ArrowRight, ArrowLeft, BookOpen, Calculator } from "lucide-react";
+import type { Problem } from "../content/types";
+import { draftKey } from "../storage/progress";
 import type { Progress, Draft, Mode, AnswerRecord } from "../storage/progress";
-import { MathFormula } from "../components/Math";
-import {
-  Link,
-  Sources,
-  FormulaCard,
-  emptyDraft,
-  pct,
-  href,
-} from "../components/Common";
-import {
-  grade,
-  QuestionFields,
-  ProblemContext,
-  Feedback,
-  Workpad,
-} from "../components/Problem";
+import { Link, Sources, publishedProblemContent } from "../components/Common";
+import { grade, QuestionFields, ProblemContext, Feedback, Workpad } from "../components/Problem";
+import { getActivePack } from "../runtime";
+import { useEditableDraft } from "../storage/useEditableDraft";
 export function Practice({
   id,
+  catalog=false,
   data,
   update,
   support,
 }: {
   id?: string;
+  catalog?:boolean;
   data: Progress;
   update: (fn: (p: Progress) => Progress) => void;
   support: (s: string) => void;
 }) {
-  const initialSeen = useRef(
-    !!(
-      id &&
-      data.exposures?.[`${id}@${problems.find((p) => p.id === id)?.version}`]
-    ),
-  );
-  const [mode, setMode] = useState<Mode>("practice");
-  const [attempt, setAttempt] = useState<AnswerRecord | null>(null);
-  const [message, setMessage] = useState("");
-  useEffect(() => {
-    setAttempt(null);
-    setMessage("");
-  }, [id, mode]);
-  const p = problems.find((p) => p.id === id);
-  useEffect(() => {
-    if (!p) return;
-    const k = `${p.id}@${p.version}`;
-    update((x) => {
-      const old = x.exposures?.[k];
-      if (old?.modes.includes(mode) && (mode !== "study" || old.assistanceUsed))
-        return x;
-      return {
-        ...x,
-        exposures: {
-          ...x.exposures,
-          [k]: {
-            firstSeenAt: old?.firstSeenAt ?? new Date().toISOString(),
-            assistanceUsed: !!old?.assistanceUsed || mode === "study",
-            modes: [...new Set([...(old?.modes ?? []), mode])],
-          },
-        },
-      };
-    });
-  }, [p?.id, mode, update]);
+  const pack=getActivePack();
+  const problems=publishedProblemContent();
+  const p=problems.find(p=>p.id===id);
+  if(p)return <PracticeQuestion key={p.id} p={p} data={data} update={update} support={support}/>;
+  if(!catalog)return <>
+    <div className="eyebrow">САМОСТОЯТЕЛЬНАЯ ПРАКТИКА · {pack.id}</div><h1>Выберите один следующий шаг.</h1>
+    <section className="panel"><h2>Применить механизм к новой ситуации</h2><p>Начните без подсказки формулы. После ответа вы получите разбор; обращение к помощи будет отмечено отдельно.</p><Link className="button" to={`practice/${pack.config.defaultPracticeId}`}>Начать самостоятельную задачу <ArrowRight size={18}/></Link></section>
+    <section className="panel"><h2>Проверить решения вместе</h2><p>В тренировочном варианте объяснения открываются после завершения.</p><Link to={`exam/${pack.id}`}>Выбрать тренировочный вариант</Link></section>
+    <p><Link to={`catalog/${pack.id}`}>Полный каталог заданий</Link> · <Link to={`learn/${pack.config.primaryLessonId}`}>Вернуться к объяснению</Link></p>
+  </>;
   if (!p)
     return (
       <>
@@ -130,9 +52,7 @@ export function Practice({
         <div className="panel">
           <h2>Новый вариант без подсказок</h2>
           <p>
-            Четыре модели по восемь ограниченных наборов данных. Это варианты
-            четырёх компетенций, а не 32 новых умения. После открытия вариант
-            уже не считается невиданным.
+            Варианты объединены по проверяемому механизму. Смена чисел не создаёт нового умения. После открытия вариант уже не считается невиданным.
           </p>
           {[
             ...new Set(
@@ -157,7 +77,7 @@ export function Practice({
                     Новый набор · {f}
                   </Link>
                 ) : (
-                  <span>{f}: все восемь наборов уже открывались.</span>
+                  <span>{f}: все наборы уже открывались.</span>
                 )}
               </p>
             );
@@ -182,7 +102,7 @@ export function Practice({
                           ? "По шагам"
                           : "Расчёт"}
                   </span>
-                  <h3>{p.title}</h3>
+                  <h3>{getProblemLabel(p)}</h3>
                   <p>{p.objective}</p>
                 </div>
                 <ArrowRight size={19} />
@@ -191,11 +111,22 @@ export function Practice({
         </div>
       </>
     );
+  return null;
+}
+function PracticeQuestion({p,data,update,support}:{p:Problem;data:Progress;update:(fn:(p:Progress)=>Progress)=>void;support:(s:string)=>void}){
+  const formulas=getActivePack().content.formulas;
+  const [seenAtEntry]=useState(() => Object.keys(data.exposures ?? {}).some(key => key.split("@")[0] === p.id) || data.answers.some(a => a.problemId === p.id));
+  const [mode,setMode]=useState<Mode>("practice");
+  const [attempt,setAttempt]=useState<AnswerRecord|null>(null);
+  const [message,setMessage]=useState("");
+  useEffect(()=>{setAttempt(null);setMessage("");},[p.id,mode]);
+  useEffect(()=>{const k=`${p.id}@${p.version}`;update(x=>{const old=x.exposures?.[k];if(old?.modes.includes(mode)&&(mode!=="study"||old.assistanceUsed))return x;return {...x,exposures:{...x.exposures,[k]:{firstSeenAt:old?.firstSeenAt??new Date().toISOString(),assistanceUsed:!!old?.assistanceUsed||mode==="study",modes:[...new Set([...(old?.modes??[]),mode])]}}};});},[p.id,mode,update]);
   const key = draftKey(mode, p.id, p.version);
-  const draft = data.drafts[key] ?? emptyDraft();
+  const editor=useEditableDraft({key,saved:data.drafts[key],commit:(k,d)=>update(x=>({...x,drafts:{...x.drafts,[k]:d}}))});
+  const draft=editor.draft;
   const change = (d: Draft) => {
     setAttempt(null);
-    update((x) => ({ ...x, drafts: { ...x.drafts, [key]: d } }));
+    editor.change(d);
   };
   const markAssistance = () => {
     change({ ...draft, assistanceUsed: true });
@@ -221,7 +152,7 @@ export function Practice({
   };
   return (
     <>
-      <Link to="practice" className="back-link">
+      <Link to={`catalog/${getActivePack().id}`} className="back-link">
         <ArrowLeft size={16} /> Все задания
       </Link>
       <div className="eyebrow">
@@ -230,7 +161,7 @@ export function Practice({
       <div className="page-heading compact">
         <div>
           <h1>
-            {mode === "study" ? p.title : (p.independent?.title ?? p.title)}
+            {getProblemLabel(p)}
           </h1>
         </div>
       </div>
@@ -252,8 +183,10 @@ export function Practice({
           </div>
           <ProblemContext p={p} mode={mode} />
           <form
+            onBlur={()=>editor.flush("blur")}
             onSubmit={(e) => {
               e.preventDefault();
+              const draft=editor.flush("grade");
               if (
                 !draft.selected.length &&
                 !Object.values(draft.values).some((x) => x.trim())
@@ -265,7 +198,7 @@ export function Practice({
                 p,
                 draft,
                 mode,
-                attemptContext(p, draft, mode, data, initialSeen.current),
+                attemptContext(p, draft, mode, data, seenAtEntry),
               );
               setAttempt(record);
               setMessage("");

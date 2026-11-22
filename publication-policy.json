@@ -21,12 +21,15 @@
     "thirdParty": "Dependencies and their font/assets remain under their own licenses; see bundled THIRD_PARTY_NOTICES."
   },
   "candidate": {
-    "version": "0.4.0",
-    "state": "OWNER_AUTHORIZED_SUBJECT_TO_RELEASE_GATES",
+    "version": "0.5.0",
+    "state": "OWNER_AUTHORIZED_AFTER_RELEASE_GATES",
+    "taskId": "CFLOS-0.5-PRE-KR-RELEASE-FOCUS",
+    "baselinePublicMain": "5d4bb1da147946f9208f200bdb6267b94386450a",
+    "inputLocalRC": "bc0a532b7605a147bcbb58a550edaec2bc497552",
     "publicPushMergeDeployAuthorized": true,
     "newPullRequestsAuthorized": true,
     "accountPrivacyChangesAuthorized": false,
-    "note": "Owner authorizes this accepted-content release only after current exact public-checkout/PR/main CI and guarded Pages gates. This does not authorize private-source distribution, financial changes or bypasses. Deployment status is read from Actions/build-info, not inferred from this policy."
+    "note": "Owner authorizes a bounded pre-control-work release only after independent financial review, exact candidate checks, successful Ubuntu CI and protected existing Pages workflow. No private PDFs/student data/evidence, no workflow bypass. Historical v0.3/v0.4 authorizations are unchanged."
   },
   "ownerAuthorizationV040": {
     "version": "0.4.0",
@@ -37,5 +40,13 @@
     "conditions": "Listed owner gates; public-only delta from f54827a, no financial/ID/version/schema changes, successful exact-head and exact-main CI, existing guarded dispatch with approved exact main SHA and verified artifact, then hosted QA.",
     "scopeRecord": "Structured private capture of current owner messages; hash is not a raw-message byte digest.",
     "historicalAuthorization": "ownerAuthorization above remains the unchanged v0.3.0 record."
+  },
+  "ownerAuthorizationV050": {
+    "version": "0.5.0",
+    "taskId": "CFLOS-0.5-PRE-KR-RELEASE-FOCUS",
+    "date": "2026-11-22",
+    "repository": "zabor-crypto/hse-corporate-finance-2026",
+    "requestSha256": "4c10da6d856fd80768d0a3ef761f631eede2ff15f1377e584c34119f5f589e94",
+    "conditions": "New financial keys independently checked; exact local candidate unit/build/storage/relevant browser PASS; Ubuntu CI; reviewed public-only PR; guarded deployment from exact main SHA and hosted verification. Account privacy changes are not authorized."
   }
 }

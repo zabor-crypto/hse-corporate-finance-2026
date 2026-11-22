@@ -22,14 +22,8 @@ import {
   Clock3,
   LockKeyhole,
 } from "lucide-react";
-import {
-  topics,
-  lessons,
-  formulas,
-  problems,
-  seminarMap,
-  sampleExamIds,
-} from "../content";
+import { getActivePack } from "../runtime";
+import { flushPendingDrafts } from "../storage/useEditableDraft";
 import type { Problem, SourceRef } from "../content/types";
 import { gradeNumeric, gradeSelection, gradeStages } from "../engine/grading";
 import {
@@ -61,16 +55,22 @@ export function ProgressView({
   update,
   raw,
   onImport,
+  getCurrent,
 }: {
   data: Progress;
   update: (fn: (p: Progress) => Progress) => void;
   raw: string | null;
-  onImport: (incoming: unknown) => void;
+  onImport: (incoming: unknown) => void | Promise<void>;
+  getCurrent?: () => Progress;
 }) {
+  const pack = getActivePack();
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [historyPage, setHistoryPage] = useState(0);
   const [status, setStatus] = useState("");
   const [mode, setMode] = useState<Mode>("practice");
   const [reset, setReset] = useState(false);
   const availableProblems = publishedProblemContent();
+  const problems = availableProblems;
   const records = data.answers.filter((a) => a.mode === mode);
   const current = records.filter((a) =>
     availableProblems.some(
@@ -91,12 +91,17 @@ export function ProgressView({
   });
   const mistakes = [...latest.values()].filter((a) => a.score < 1);
   const download = () => {
+    flushPendingDrafts("export");
+    const latest = getCurrent?.() ?? data;
     const payload = raw
       ? {
-          ...data,
-          archives: [...data.archives, { kind: "original-storage-bytes", raw }],
+          ...latest,
+          archives: [
+            ...latest.archives,
+            { kind: "original-storage-bytes", raw },
+          ],
         }
-      : data;
+      : latest;
     const blob = new Blob([JSON.stringify(payload, null, 2)], {
       type: "application/json",
     });
@@ -116,6 +121,7 @@ export function ProgressView({
             Результаты остаются на этом устройстве. Экспортируйте копию для
             переноса.
           </p>
+          <p>Показатели выбранной темы {pack.id}; история включает все темы.</p>
         </div>
       </div>
       <div className="row">
@@ -132,10 +138,11 @@ export function ProgressView({
             onChange={async (e) => {
               const file = e.target.files?.[0];
               if (!file) return;
+              setStatus("Чтение и сохранение копии…");
               try {
-                if (file.size > 10_000_000)
-                  throw Error("Файл слишком большой (максимум 10 МБ).");
-                onImport(JSON.parse(await file.text()));
+                if (file.size > 100_000_000)
+                  throw Error("Файл слишком большой (максимум 100 МБ).");
+                await onImport(JSON.parse(await file.text()));
                 setStatus("Копия импортирована; история сохранена.");
               } catch (err) {
                 setStatus(
@@ -172,7 +179,7 @@ export function ProgressView({
       <div className="stats-grid">
         <div>
           <strong>{records.length}</strong>
-          <p>попыток в этом режиме</p>
+          <p>попыток в этом режиме · все темы</p>
         </div>
         <div>
           <strong>
@@ -185,7 +192,7 @@ export function ProgressView({
         </div>
         <div>
           <strong>{old}</strong>
-          <p>исторических ответов вне текущего доступного набора</p>
+          <p>ответов других тем или версий вне выбранного набора</p>
         </div>
       </div>
       <section className="panel">
@@ -238,9 +245,9 @@ export function ProgressView({
         ) : (
           <>
             <h3>
-              {records.length
+              {current.length
                 ? "Все последние ответы верны"
-                : "Здесь появятся задания для повторения"}
+                : "В выбранной теме пока нет текущих попыток"}
             </h3>
             <p>После первой попытки вы увидите результат по каждому шагу.</p>
             <Link to="practice" className="text-link">
@@ -249,31 +256,51 @@ export function ProgressView({
           </>
         )}
       </section>
-      <details className="panel history">
+      <details
+        className="panel history"
+        onToggle={(e) => setHistoryOpen(e.currentTarget.open)}
+      >
         <summary>История всех попыток ({records.length})</summary>
-        {records
-          .slice()
-          .reverse()
-          .map((a) => (
-            <div key={a.id}>
-              <b>
-                {a.problemId} · v{a.version}
-              </b>
-              <span>
-                {pct(a.score)} · {new Date(a.timestamp).toLocaleString("ru-RU")}
-              </span>
-              <details>
-                <summary>Исходный ответ и версия задания</summary>
-                <pre>
-                  {JSON.stringify(
-                    { response: a.userResponse, problem: a.problemSnapshot },
-                    null,
-                    2,
-                  )}
-                </pre>
-              </details>
+        {historyOpen && (
+          <>
+            <p>
+              Страница {historyPage + 1} из{" "}
+              {Math.max(1, Math.ceil(records.length / 25))}. JSON загружается
+              при раскрытии ответа.
+            </p>
+            <div className="row">
+              <button
+                disabled={historyPage === 0}
+                onClick={() => setHistoryPage((p) => p - 1)}
+              >
+                Предыдущие 25
+              </button>
+              <button
+                disabled={(historyPage + 1) * 25 >= records.length}
+                onClick={() => setHistoryPage((p) => p + 1)}
+              >
+                Следующие 25
+              </button>
             </div>
-          ))}
+          </>
+        )}
+        {historyOpen &&
+          records
+            .slice()
+            .reverse()
+            .slice(historyPage * 25, (historyPage + 1) * 25)
+            .map((a) => (
+              <div key={a.id}>
+                <b>
+                  {a.problemId} · v{a.version}
+                </b>
+                <span>
+                  {pct(a.score)} ·{" "}
+                  {new Date(a.timestamp).toLocaleString("ru-RU")}
+                </span>
+                <HistoryJSON record={a} />
+              </div>
+            ))}
       </details>
       <div className="reset">
         <button className="text-button" onClick={() => setReset(!reset)}>
@@ -315,5 +342,23 @@ export function ProgressView({
         )}
       </div>
     </>
+  );
+}
+
+function HistoryJSON({ record }: { record: AnswerRecord }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <details onToggle={(e) => setOpen(e.currentTarget.open)}>
+      <summary>Исходный ответ и версия задания</summary>
+      {open && (
+        <pre>
+          {JSON.stringify(
+            { response: record.userResponse, problem: record.problemSnapshot },
+            null,
+            2,
+          )}
+        </pre>
+      )}
+    </details>
   );
 }

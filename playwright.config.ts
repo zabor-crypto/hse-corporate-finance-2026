@@ -31,7 +31,7 @@ export default defineConfig({
   projects: [
     {
       name: "desktop-1440",
-      testIgnore: ["**/webkit.spec.ts", "**/c3-complete.spec.ts", "**/c3-ratios-focus.spec.ts"],
+      testIgnore: ["**/webkit.spec.ts", "**/c3-complete.spec.ts", "**/c3-ratios-focus.spec.ts", "**/pre-kr-*.spec.ts"],
       use: {
         browserName: "chromium",
         launchOptions: { executablePath },
@@ -40,7 +40,7 @@ export default defineConfig({
     },
     {
       name: "mobile-390",
-      testIgnore: ["**/webkit.spec.ts", "**/c3-complete.spec.ts", "**/c3-ratios-focus.spec.ts"],
+      testIgnore: ["**/webkit.spec.ts", "**/c3-complete.spec.ts", "**/c3-ratios-focus.spec.ts", "**/pre-kr-*.spec.ts"],
       use: {
         ...devices["iPhone 13"],
         browserName: "chromium",
@@ -60,6 +60,11 @@ export default defineConfig({
         deviceScaleFactor: 2,
       },
     },
+    ...(["chromium", "webkit"] as const).flatMap(browserName => [360, 768, 1440].map(width => ({
+      name: `pre-kr-${browserName}-${width}`,
+      testMatch: "**/pre-kr-*.spec.ts",
+      use: { browserName, viewport: {width, height: 1000} },
+    }))),
   ],
   webServer: [
     {

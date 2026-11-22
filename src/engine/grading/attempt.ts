@@ -20,19 +20,20 @@ export function attemptContext(
   seenAtEntry = false,
 ): NonNullable<AnswerRecord["assessmentContext"]> {
   const history = data.answers.filter(
-    (a) => a.problemId === p.id && a.version === p.version,
+    (a) => a.problemId === p.id,
   );
-  const priorExposure = data.exposures?.[`${p.id}@${p.version}`];
-  const exposureInStudy = priorExposure?.modes.includes("study") ?? false;
+  const exposures = Object.entries(data.exposures ?? {}).filter(([key]) => key.split("@")[0] === p.id);
+  const exposureInStudy = exposures.some(([, value]) => value.modes.includes("study"));
+  const earlierVersionSeen = exposures.some(([key]) => key !== `${p.id}@${p.version}`);
   return {
     form: mode === "study" ? "guided" : "independent",
     ...(p.transfer ?? {}),
-    seenBefore: seenAtEntry || history.length > 0 || exposureInStudy,
+    seenBefore: seenAtEntry || history.length > 0 || exposureInStudy || earlierVersionSeen,
     firstIndependentAttempt: !history.some((a) => a.mode !== "study"),
     assistanceUsed:
       mode === "study" ||
       !!draft.assistanceUsed ||
-      !!priorExposure?.assistanceUsed,
+      exposures.some(([, value]) => value.assistanceUsed),
   };
 }
 export function gradeAttempt(

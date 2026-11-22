@@ -1,3 +1,5 @@
+import { courseTargetExists, assertCourseTarget } from "./course-targets";
+import { readProgress, waitForLoadedHeading } from "./helpers";
 import { test, expect, chromium, webkit, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { lessons, formulas, problems, seminarMap } from "../../src/content";
@@ -7,27 +9,7 @@ const base =
 const widths = [320, 375, 390, 768, 1024, 1440, 1920];
 async function visit(page: Page, route: string) {
   await page.goto(`${base}#/${route}`);
-  const [section, id] = route.split("/");
-  const heading =
-    section === "learn"
-      ? lessons.find((l) => l.id === id)?.title
-      : (
-          {
-            home: "Финансы складываются",
-            curriculum: "Большая картина.",
-            formulas: "За формулой — смысл.",
-            progress: "Каждая ошибка — следующий шаг.",
-            ratios: "Как связаны коэффициенты",
-            practice: "Практика",
-            exam: "Контрольная",
-          } as Record<string, string>
-        )[section];
-  if (
-    section === "learn" ||
-    ["curriculum", "formulas", "progress", "ratios"].includes(section)
-  )
-    await expect(page.locator("main h1")).toHaveText(heading!);
-  else await expect(page.locator("main h1")).toBeVisible();
+  await assertCourseTarget(page, route);
   await page.evaluate(
     () =>
       new Promise<void>((resolve) =>
@@ -42,17 +24,7 @@ async function fits(page: Page) {
     ),
   ).toBe(true);
 }
-function validRoute(href: string) {
-  const [section, id, anchor] = href.slice(2).split("/");
-  if (section === "learn")
-    return lessons.some(
-      (l) =>
-        l.id === id && (!anchor || l.sections.some((s) => s.id === anchor)),
-    );
-  if (section === "formulas") return !id || formulas.some((f) => f.id === id);
-  if (section === "practice") return !id || problems.some((p) => p.id === id);
-  return ["home", "curriculum", "exam", "ratios", "progress"].includes(section);
-}
+const validRoute = courseTargetExists;
 for (const engine of ["chromium", "webkit"] as const) {
   for (const width of widths) {
     test(`C3 UX ${engine} ${width}: reading, navigation, accessibility`, async ({}, info) => {
@@ -91,9 +63,7 @@ for (const engine of ["chromium", "webkit"] as const) {
           await visit(page, route);
           await fits(page);
           if (route === "home") {
-            const column = await page
-              .locator(".practice-banner > div:nth-child(2)")
-              .boundingBox();
+            const column = await page.locator(".hero-content").boundingBox();
             expect(column?.width).toBeGreaterThanOrEqual(180);
           }
           for (const href of await page
@@ -122,14 +92,24 @@ for (const engine of ["chromium", "webkit"] as const) {
             });
             const documentSize = await page.evaluate(() => ({
               width: Math.max(document.documentElement.scrollWidth, innerWidth),
-              height: Math.max(document.documentElement.scrollHeight, innerHeight),
+              height: Math.max(
+                document.documentElement.scrollHeight,
+                innerHeight,
+              ),
             }));
             // WebKit cannot encode a PNG dimension above 32767 CSS pixels.
             // Keep every route/assertion; record when evidence captures only the viewport.
-            const fullPage = documentSize.width < 32700 && documentSize.height < 32700;
+            const fullPage =
+              documentSize.width < 32700 && documentSize.height < 32700;
             await info.attach(`capture-scope-${route.split("/")[0]}`, {
-              body: JSON.stringify({ route, viewportWidth: width, documentSize, fullPage,
-                captureScope: fullPage ? "full-page" : "viewport", safeDimensionLimit: 32700 }),
+              body: JSON.stringify({
+                route,
+                viewportWidth: width,
+                documentSize,
+                fullPage,
+                captureScope: fullPage ? "full-page" : "viewport",
+                safeDimensionLimit: 32700,
+              }),
               contentType: "application/json",
             });
             await page.screenshot({
@@ -182,7 +162,7 @@ for (const engine of ["chromium", "webkit"] as const) {
         if ([390, 1440].includes(width))
           for (const href of observed) {
             await page.goto(`${base}${href}`);
-            await expect(page.locator("main h1")).toBeVisible();
+            await assertCourseTarget(page, href);
             await expect(page.locator("main h1")).not.toHaveText(
               "Страница не найдена",
             );
@@ -248,7 +228,7 @@ for (const engine of ["chromium", "webkit"] as const) {
         lessons.find((l) => l.id === p.lessonId)!.title,
       );
       await page
-        .getByRole("button", { name: "К заданию · черновик сохранён" })
+        .getByRole("button", { name: "К заданию · продолжить с черновиком" })
         .click();
       await expect(page.locator("main h1")).toHaveText(p.title);
       await expect(page.locator(`[id="${p.id}-${stage.id}"]`)).toHaveValue(
@@ -263,13 +243,7 @@ for (const engine of ["chromium", "webkit"] as const) {
       );
       await page.getByRole("button", { name: "Проверить ответ" }).click();
       await expect
-        .poll(() =>
-          page.evaluate(
-            (key) =>
-              JSON.parse(localStorage.getItem(key)!).answers.at(-1)?.score,
-            key,
-          ),
-        )
+        .poll(() => readProgress(page).then((p) => p?.answers.at(-1)?.score))
         .toBe(1);
       await visit(page, "progress");
       const event = page.waitForEvent("download");
@@ -298,12 +272,9 @@ for (const engine of ["chromium", "webkit"] as const) {
             .getByRole("status")
             .filter({ hasText: "Копия импортирована" }),
         ).toBeVisible();
-        const restored = await imported.evaluate(
-          (key) => JSON.parse(localStorage.getItem(key)!),
-          key,
-        );
-        expect(restored.answers.at(-1).problemId).toBe(p.id);
-        expect(restored.answers.at(-1).score).toBe(1);
+        const restored = (await readProgress(imported))!;
+        expect(restored.answers.at(-1)!.problemId).toBe(p.id);
+        expect(restored.answers.at(-1)!.score).toBe(1);
         const bytes = await imported.evaluate(
           (key) => localStorage.getItem(key),
           key,
@@ -324,13 +295,7 @@ for (const engine of ["chromium", "webkit"] as const) {
           )
           .toBe(bytes);
         await imported.reload();
-        expect(
-          await imported.evaluate(
-            (key) =>
-              JSON.parse(localStorage.getItem(key)!).answers.at(-1).score,
-            key,
-          ),
-        ).toBe(1);
+        expect((await readProgress(imported))!.answers.at(-1)!.score).toBe(1);
         await fits(imported);
       } finally {
         await importedContext.close();

@@ -1,3 +1,4 @@
+import { courseTargetExists, assertCourseTarget } from "./course-targets";
 import { test, expect, type Page, type TestInfo } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFileSync } from "node:fs";
@@ -5,7 +6,13 @@ import { lessons, formulas, problems, sampleExamIds } from "../../src/content";
 import { curriculumRegistry, assemblePaper } from "../../src/curriculum";
 import { c3Blueprints } from "../../src/curriculum/blueprints";
 import { blankProgress, type Progress } from "../../src/storage/progress";
-import { fillAnswer, referenceUnit } from "./helpers";
+import {
+  fillAnswer,
+  referenceUnit,
+  readProgress,
+  openLegacyReference,
+  waitForLoadedHeading,
+} from "./helpers";
 const KEY = "cflos.progress.v1";
 const packageVersion = JSON.parse(
   readFileSync(new URL("../../package.json", import.meta.url), "utf8"),
@@ -28,11 +35,11 @@ test.beforeEach(async ({ page }) => {
 });
 test.afterEach(async ({ page }) => expect(observed.get(page)).toEqual([]));
 async function read(page: Page): Promise<Progress> {
-  return page.evaluate((key) => JSON.parse(localStorage.getItem(key)!), KEY);
+  return (await readProgress(page))!;
 }
 async function open(page: Page, url = base) {
   await page.goto(url);
-  await expect(page.locator("main h1")).toBeVisible();
+  await waitForLoadedHeading(page);
   await page.evaluate(
     () =>
       new Promise<void>((resolve) =>
@@ -42,22 +49,7 @@ async function open(page: Page, url = base) {
 }
 async function route(page: Page, path: string) {
   await page.goto("#/" + path);
-  const [kind, id, anchor] = path.split("/");
-  if (kind === "learn") {
-    await expect(page.locator("main h1")).toHaveText(
-      lessons.find((l) => l.id === id)!.title,
-    );
-    if (anchor) await expect(page.locator(`[id="${anchor}"]`)).toHaveCount(1);
-  } else if (kind === "practice" && id)
-    await expect(page.locator(".problem-prompt")).toHaveText(
-      problems.find((p) => p.id === id)!.independent?.prompt ??
-        problems.find((p) => p.id === id)!.prompt,
-    );
-  else if (kind === "formulas")
-    await expect(page.locator(".formula-card")).toHaveCount(
-      id ? 1 : formulas.length,
-    );
-  else await expect(page.locator("main h1")).toBeVisible();
+  await assertCourseTarget(page, path);
   await page.evaluate(
     () =>
       new Promise<void>((resolve) =>
@@ -72,17 +64,7 @@ async function fits(page: Page) {
     ),
   ).toBe(true);
 }
-function targetExists(href: string) {
-  const [kind, id, section] = href.slice(2).split("/");
-  if (kind === "learn")
-    return lessons.some(
-      (l) =>
-        l.id === id && (!section || l.sections.some((s) => s.id === section)),
-    );
-  if (kind === "formulas") return !id || formulas.some((f) => f.id === id);
-  if (kind === "practice") return !id || problems.some((p) => p.id === id);
-  return ["home", "curriculum", "ratios", "progress", "exam"].includes(kind);
-}
+const targetExists = courseTargetExists;
 async function screenshot(
   page: Page,
   info: TestInfo,
@@ -126,12 +108,13 @@ async function submit(page: Page, score: number) {
 }
 
 for (const width of widths)
-  test(`complete course ${width}: actual route crawler, 11 lessons, 51 formulas, AA`, async ({
+  test(`complete T3 reference ${width}: actual route crawler, 11 lessons, 51 formulas, AA`, async ({
     page,
   }, info) => {
     await page.setViewportSize({ width, height: 1000 });
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await open(page);
+    await open(page, base + "#/home/T3");
+    await expect(page.locator(".topbar strong")).toHaveText("T3");
     await expect(page.locator(".local-badge")).toContainText(packageVersion);
     const seen = new Set<string>();
     const initial = [
@@ -168,7 +151,29 @@ for (const width of widths)
           "A visible contents control at " + width,
         ).toBe(true);
         const lastSection = lesson.sections.at(-1)!;
-        if (desktopVisible) {
+        const projected = await page
+          .locator("details.lesson-reference")
+          .count();
+        if (projected) {
+          const primaryLinks = (
+            desktopVisible ? desktopToc : mobileToc
+          ).locator('a[href*="/path-"]');
+          if (!desktopVisible) await mobileToc.locator("summary").click();
+          const lastPrimary = primaryLinks.last();
+          const primaryHref = await lastPrimary.getAttribute("href");
+          await lastPrimary.click();
+          await expect(
+            page.locator(`[id="${primaryHref!.split("/").at(-1)}"]`),
+          ).toBeInViewport();
+          await openLegacyReference(page);
+          await page
+            .locator('nav[aria-label="Разделы полного справочника"]')
+            .locator(`a[href="#/learn/${lesson.id}/${lastSection.id}"]`)
+            .click();
+          await expect(
+            page.locator("details.lesson-reference"),
+          ).toHaveAttribute("open", "");
+        } else if (desktopVisible) {
           await desktopToc.locator(`a[href="#${lastSection.id}"]`).click();
         } else {
           await mobileToc.locator("summary").click();
@@ -360,7 +365,7 @@ test("wrong attempt → targeted theory → saved question; negative, tolerance,
     .click();
   expect(page.url()).toContain("#/learn/" + p.lessonId + "/");
   await page
-    .getByRole("button", { name: "К заданию · черновик сохранён" })
+    .getByRole("button", { name: "К заданию · продолжить с черновиком" })
     .click();
   await expect(page.locator(`[id="${p.id}-${s.id}"]`)).toHaveValue(
     String(Math.abs(s.expected)),
@@ -392,7 +397,7 @@ test("wrong attempt → targeted theory → saved question; negative, tolerance,
   expect((await read(page)).answers.at(-1)!.userResponse.values.ep).toBe("0");
 });
 
-test("published paper timebox, no method leaks, archive and old/new cross-origin restore", async ({
+test("published untimed paper, no method leaks, archive and old/new cross-origin restore", async ({
   page,
   browser,
 }, info) => {
@@ -431,14 +436,15 @@ test("published paper timebox, no method leaks, archive and old/new cross-origin
     problems.find((p) => p.id === paper.problemIds[0])!,
   );
   await page.clock.fastForward(template.minutes * 60000 + 1001);
-  await expect(page.getByRole("timer")).toContainText("Время истекло");
+  await expect(page.getByRole("timer")).toHaveCount(0);
+  await expect(page.getByText("Без ограничения времени. Завершите работу, когда будете готовы.", {exact:true})).toBeVisible();
   expect(
     await page
       .locator(
         "article.panel input,article.panel select,article.panel textarea",
       )
       .evaluateAll((nodes) =>
-        nodes.every((n) => (n as HTMLInputElement).disabled),
+        nodes.every((n) => !(n as HTMLInputElement).disabled),
       ),
   ).toBe(true);
   await page

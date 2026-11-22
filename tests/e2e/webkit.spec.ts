@@ -14,6 +14,7 @@ import {
   importProgress,
   exportProgress,
   screenshotEvidence,
+  openLegacyReference,
 } from "./helpers";
 test.beforeEach(async ({ page }) => startIsolated(page));
 test.afterEach(async ({ page }) => assertNoPageErrors(page));
@@ -21,6 +22,8 @@ test("Safari-like WebKit mobile renders liquidity math and readable lesson", asy
   page,
 }, info) => {
   await page.goto("#/learn/T3-07");
+  await openLegacyReference(page);
+  await expect(page.locator("math").first()).toBeAttached();
   expect(await page.locator("math").count()).toBeGreaterThan(0);
   await expect(page.locator(".katex-error")).toHaveCount(0);
   await noPageOverflow(page);

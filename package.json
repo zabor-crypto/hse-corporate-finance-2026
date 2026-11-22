@@ -1,7 +1,7 @@
 {
   "name": "hse-corporate-finance-2026",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
@@ -10,14 +10,15 @@
     "test": "vitest run",
     "review:storage": "node tests/review/storage-review.mjs",
     "test:e2e": "playwright test",
-    "test:financial": "vitest run tests/unit/finance.test.ts tests/unit/ratios.test.ts tests/unit/financial-fixtures.test.ts tests/unit/tranche03-oracles.test.ts tests/unit/three-year.test.ts tests/unit/c3-content.test.ts tests/unit/c3-oracles.test.ts",
+    "test:financial": "vitest run tests/unit/finance.test.ts tests/unit/ratios.test.ts tests/unit/financial-fixtures.test.ts tests/unit/tranche03-oracles.test.ts tests/unit/three-year.test.ts tests/unit/c3-content.test.ts tests/unit/c3-oracles.test.ts tests/unit/investment.test.ts tests/unit/t4-content.test.ts tests/unit/t4-advanced.test.ts tests/unit/t3-pedagogy.test.ts tests/unit/pre-kr-finance.test.ts",
     "audit:artifact": "node scripts/audit-artifact.mjs",
     "audit:public": "node scripts/audit-public.mjs",
     "check:release": "node scripts/check-release.mjs",
     "handoff": "node scripts/create-handoff.mjs",
     "prepare:public": "node scripts/prepare-public-source.mjs",
-    "test:curriculum": "vitest run tests/unit/curriculum-registry.test.ts tests/unit/curriculum-content-integrity.test.ts tests/unit/curriculum-storage.test.ts tests/unit/future-topic-ui.test.ts tests/unit/c3-blueprints.test.ts",
-    "test:e2e:c3": "playwright test --config playwright.c3-qa.config.ts"
+    "test:curriculum": "vitest run tests/unit/curriculum-registry.test.ts tests/unit/curriculum-content-integrity.test.ts tests/unit/curriculum-storage.test.ts tests/unit/future-topic-ui.test.ts tests/unit/c3-blueprints.test.ts tests/unit/module-runtime.test.ts tests/unit/t4-content.test.ts tests/unit/t3-pedagogy.test.ts tests/unit/pre-kr-learning.test.ts",
+    "test:e2e:c3": "playwright test --config playwright.c3-qa.config.ts",
+    "test:e2e:ppi": "playwright test --config playwright.ppi.config.ts"
   },
   "dependencies": {
     "katex": "0.18.2",

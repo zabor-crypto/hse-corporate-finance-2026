@@ -1,4 +1,4 @@
-> Release line: v0.4.0. The current owner authorization permits public-only PR, merge and guarded deployment after exact-SHA gates. The historical v0.3.0 decision is unchanged. See [current release scope](PUBLIC_RELEASE_V0_4_0.md) and [PROJECT_STATUS](PROJECT_STATUS.md); actual deployment is established by Actions/build-info, not this document.
+> Release line: v0.5.0. The current owner authorization permits a bounded public-only PR, merge and guarded deployment after exact-SHA gates. Historical v0.3.0/v0.4.0 authorization records are unchanged. See [current release scope](PRE_KR_0_5_RELEASE.md) and [PROJECT_STATUS](PROJECT_STATUS.md); actual deployment is established by Actions/build-info, not this document.
 
 # Public beta release process
 

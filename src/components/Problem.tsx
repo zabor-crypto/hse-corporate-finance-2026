@@ -235,7 +235,7 @@ export function Feedback({
         Числа и выбор вариантов: {pct(result.objectiveScore ?? result.score)}
       </h3>
       <p>
-        {statusLabels[state]}. Проверены ответы, а не содержательная правильность объяснения.
+        {statusLabels[state]}. Автоматический балл не подтверждает понимание; программа не проверяет содержание объяснения.
       </p>
       {result.unitsStatus === undefined && (
         <p>Историческая запись: единицы ответа отдельно не проверялись.</p>

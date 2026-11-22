@@ -12,7 +12,7 @@
   "scope": "Original source, synthetic tests/oracles, configuration and public documentation. This manifest excludes itself from content hashing; exact public SHA and operational gates are bound by Git, Actions and a separate private receipt.",
   "contentHashEncoding": "SHA256 of compact UTF-8 JSON sorted path/mode/sha256 array, ensure_ascii=false, separators comma/colon",
   "exportFileCountExcludingManifest": 263,
-  "exportContentSha256": "fe40ebfa49edea221fb3186f5f099a90c6a133512a8402093ada5d95f46e9bca",
+  "exportContentSha256": "1678e939680e50abd583e00be01cb568862d580a5aec7da1bbfd6a66ed22cc2e",
   "changedFiles": [
     {
       "path": "README.md",
@@ -116,7 +116,7 @@
     },
     {
       "path": "src/components/Problem.tsx",
-      "sha256": "941aa080ad03c96dbc06f57396086e8a7f99f572673de98b6e00071c82bed5f0",
+      "sha256": "c742f1f54f23947b8675b5ab530bbfdb1c992be2a0dfe4c12417c3d0e108746b",
       "baseSha256": "b2a9fc781b345b7be07db99aa013991517fcca6bc9ced1318eabaa1aef109c77"
     },
     {
